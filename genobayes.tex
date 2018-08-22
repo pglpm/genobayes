@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-08-22T13:08:22+0200
+%% Last-Updated: 2018-08-22T23:37:16+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -786,6 +786,49 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
   peer-reviewed by \emph{you}. I'm grateful if you let me know of any
   faults in its premisses, logic, evidence, and of any other criticisms you
   may have.}\fi
+
+\section{Preliminary remarks about Bayesian probability theory}
+\label{sec:prelim_remarks}
+
+Bayesian probability theory is not just a set of new, better recipes meant
+to replace old ones. It requires a different mindset to be used properly.
+
+The only purpose of Bayesian theory is to give the probability of some
+propositions -- let's say \enquote{statements}, somewhat inappropriately
+\citep{copietal1953_r2014,barwiseetal1999_r2003} -- given other statements
+which may concern data, facts, assumptions. For example, Bayesian theory
+can tell us that hypothesis $A$ has probability $x$ given some data and
+initial information $D$, while hypothesis $B$ has probability $y$. That's
+all there is to it. We can then use these probabilities as we like; in
+particular, we can use them within decision theory to choose courses of
+action \citep{raiffaetal1961_r2000,prattetal1995_r1996,soxetal1988_r2013}.
+But concepts like \enquote{statistical significance}, \enquote{rejection},
+\enquote{acceptance}, and similar are foreign to Bayesian theory; or at
+best they're just by-products.
+
+Another important characteristic of Bayesian theory is that it's an
+extension of formal logic or truth calculus. In formal logic, to prove a
+theorem we need some axioms. These may partly come from experimental facts
+or data, but part of them always include assumptions, which are purely
+conjectural, and we cannot get rid of this part. This fact is well known in
+modern science; see for example the quotes by Poincar\'e [quote][ref],
+Einstein [quote][ref], Medawar [quote][ref], Jeffreys [quote][ref].
+Likewise, in probability theory we need to specify initial probabilities.
+These may come from data, but part of them always includes assumptions. The
+phrase \enquote{let the data speak for themselves} is simply impossible.
+
+From this point of view the difference between Bayesian methods and
+traditional methods is not that the former need assumptions while the
+latter don't. Rather, Bayesian methods make these assumptions explicit,
+while traditional methods hide them. This is the reason why many
+traditional results can be obtained as special cases of Bayesian ones.
+
+\medskip
+
+The previous remarks may appear pedantic, but they're important lest we
+misuse Bayesian methods.
+
+
 
 
 \section{When genes keep you awake\ldots}
