@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-08-23T09:40:03+0200
+%% Last-Updated: 2018-08-23T13:10:19+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -812,18 +812,56 @@ But notions like \enquote{statistical significance}, \enquote{acceptance
 or at best they're just secondary notions.
 
 Another important characteristic of Bayesian theory is that it's an
-extension of formal logic, the truth calculus. In formal logic, to prove a
-theorem we need some axioms to start from. These may partly include
-experimental facts or data, but they always also include assumptions that
-are purely conjectural. It's impossible to avoid this conjectural element.
-This impossibility is well known in modern science; we can quote Poincar\'e
-[quote][ref], Einstein [quote][ref], Medawar [quote][ref], Jeffreys
-[quote][ref].
+extension of formal logic, the truth calculus. In fact we'll call it
+\emph{probability calculus} from now on.
 
-Likewise, in probability theory we need to specify initial probabilities.
-These may originate in data, but they always also include additional
-assumptions. The motto \enquote{let the data speak for themselves} is
-simply impossible.
+In formal logic, to prove a theorem we need some axioms to start from.
+These may partly include experimental facts or data, but they always also
+include assumptions that are purely conjectural. It's impossible to avoid
+this conjectural element \citep[see for example][]{harding1976}. This
+impossibility is well known in modern science; we can quote Poincar\'e
+\citey{poincare1902_r1992}:
+\begin{quote}
+  But upon more reflection we realize the position held by hypothesis; we
+  see that the mathematician wouldn't know how to do without it, and the
+  experimenter can't do without it at all \parentext{Introduction}
+\end{quote}
+\begin{quote}
+  Every generalization is a hypothesis \parentext{\chap~IX, p.~176}
+\end{quote}
+Duhem \citey{duhem1906_t1991}:
+\begin{quote}
+  In sum, the physicist can never subject an isolated hypothesis
+    to experimental test, but only a whole group of hypotheses; when the
+    experiment is in disagreement with his predictions, what he learns is
+    that at least one of the hypotheses constituting this group is
+    unacceptable and ought to be modified; but the experiment does not
+    designate which one should be changed \parentext{\sect~VI.2, p.~187}
+\end{quote}
+\begin{quote}
+  Unlike the reduction to absurdity employed by geometers, experimental
+  contradiction does not have the power to transform a physical hypothesis
+  into an indisputable truth; in order to confer this power on it, it would
+  be necessary to enumerate completely the various hypotheses which may
+  cover a determinate group of phenomena; but the physicist is never sure
+  he has exhausted all the imaginable assumptions \parentext{\sect~VI.3,
+    p.~190}
+\end{quote}
+\begin{quote}
+  the realization and interpretation of no matter what experiment in
+  physics imply adherence to a whole set of theoretical propositions
+  \parentext{\sect~VI.5, p.~200}
+\end{quote}
+Medawar \citey{medawar1963}:
+\begin{quote}
+  the starting point of induction, naive observation, innocent observation,
+  is a mere philosophic fiction. There is no such thing as unprejudiced
+  observation
+\end{quote}
+Jeffreys [quote][ref]. Likewise, in the probability
+calculus we need to specify initial probabilities. These may originate in
+data, but they always also include additional assumptions. The motto
+\enquote{let the data speak for themselves} is simply impossible.
 
 The difference between Bayesian methods and traditional methods is
 \emph{not} that the former need additional assumptions while the latter
