@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-04T15:12:26+0200
+%% Last-Updated: 2018-09-04T15:43:32+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -188,7 +188,7 @@ british%
  \DeclareMathSymbol{\nu}{\mathalpha}{egreeki}{"17}
 % \DeclareMathSymbol{\xi}{\mathalpha}{egreeki}{"18}
 % \DeclareMathSymbol{\omicron}{\mathalpha}{egreeki}{"6F}
-% \DeclareMathSymbol{\pi}{\mathalpha}{egreeki}{"19}
+ \DeclareMathSymbol{\pi}{\mathalpha}{egreeki}{"19}
 % \DeclareMathSymbol{\rho}{\mathalpha}{egreeki}{"1A}
 % \DeclareMathSymbol{\sigma}{\mathalpha}{egreeki}{"1B}
 % \DeclareMathSymbol{\tau}{\mathalpha}{egreeki}{"1C}
@@ -747,7 +747,9 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yI}{I}
 \newcommand*{\sH}{H}
 \newcommand*{\yGv}{G}
+\newcommand*{\yGi}[1]{G^{(#1)}}
 \newcommand*{\ySv}{S}
+\newcommand*{\ySi}[1]{S^{(#1)}}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \firmlists
@@ -930,6 +932,49 @@ variations and insomnia symptoms, we can conclude from biologic reasons that
 those variations must have a direct or indirect influence on the symptoms, for
 example they may give susceptibility to insomnia.
 
+\section{Why exchangeability}
+\label{sec:why_exchangeability}
+
+
+
+The sentence \enquote{the probability for an insomnia symptom given a
+  genetic variation} is vague. What we mean is our guess that a given
+individual with that variation presents that symptom. Our guess about a
+particular individuals in the full population is updated from our knowledge
+about individuals we have sampled. Our guess about a new individual is
+affected by the sample data only insofar we believe those data to be
+representative for that individual.
+
+The notion of exchangeability expresses this representativeness in
+probabilistic terms, as explained at length by de~Finetti
+\citey{definetti1931,definetti1937,definetti1938}. Denote by $\ySi{i}_s$
+the statement that individual $i$ has symptom $\yS_s$, and likewise with
+$\yGi{i}_g$ for the combination of genetic variations $g$. The fact that we
+believe, for inferential purposes, that the individuals from a population
+having the same genetic variation $g$ are representative of one another is
+expressed by
+\begin{multline}
+\label{def_exchangeability}
+  \p(\ySi{1}_{s_1}\, \ySi{2}_{s_2}\, \ySi{3}_{s_3}\,\dotso \|
+  \yGi{1}_{g}\, \yGi{2}_{g}\, \yGi{3}_{g}\,\dotso
+  \;\yI)
+  ={}\\
+  \p(\ySi{1}_{\pi(s_1)}\, \ySi{2}_{\pi(s_2)}\, \ySi{3}_{\pi(s_3)}\,\dotso \|
+  \yGi{1}_{g}\, \yGi{2}_{g}\, \yGi{3}_{g}\,\dotso
+  \;\yI)
+\end{multline}
+where $\pi$ is an arbitrary permutation of the symptom labels $s_i$. For example,
+\begin{multline}
+\label{def_exchangeability}
+  \p(\ySi{1}_{5}\, \ySi{2}_{3}\, \ySi{3}_{6}\,\dotso \|
+  \yGi{1}_{g}\, \yGi{2}_{g}\, \yGi{3}_{g}\,\dotso
+  \;\yI)
+  ={}\\
+  \p(\ySi{1}_{6}\, \ySi{2}_{5}\, \ySi{3}_{3}\,\dotso \|
+  \yGi{1}_{g}\, \yGi{2}_{g}\, \yGi{3}_{g}\,\dotso
+  \;\yI).
+\end{multline}
+
 \section{Selection of variables and robustness}
 \label{sec:variable_selection_robustness}
 
@@ -983,7 +1028,7 @@ $\yD$ are robust.
 %\caption{***}\label{fig:comparison_a5}
 %\end{figure}% exp_family_maxent.nb
 
-\newpage
+%\newpage
 \iffalse
 \begin{acknowledgements}
   PGLPM thanks Mari \amp\ Miri for continuous encouragement and affection, and
