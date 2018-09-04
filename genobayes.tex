@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-04T13:25:02+0200
+%% Last-Updated: 2018-09-04T13:30:16+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -883,17 +883,16 @@ misuse Bayesian methods.
 \mynote{Luca: the following thoughts may be naive; I must still read
   \citep{stingoetal2015} and \citep{bushetal2012}}
 
-We want to assess the informational relevance between genetic
-data\mynote{find more precise term} $\set{\yG}$ and (combinations of)
-insomnia symptoms $\set{\yS}$ in the Norwegian or European population. To
-assess this relevance we use data $\yD$ from a population sample. Some
-assumptions or background information $\yI$ are also always present in our
-assessment.
+We want to assess the informational relevance between some genetic
+variations $\set{\yG}$ and (combinations of) insomnia symptoms $\set{\yS}$
+in the Norwegian or European population. To assess this relevance we use
+data $\yD$ from a population sample. Some assumptions or background
+information $\yI$ are also always present in our assessment.
 
-The most straightforward way to assess the informational relevance of
-genetic data $\yG$ for the insomnia symptom $\yS$ is to compare
+The most straightforward way to assess the informational relevance of a
+genetic variation $\yG$ for the insomnia symptom $\yS$ is to compare
 $\p(\yS \| \yG \yD \yI)$ and $\p(\yS \| \yD \yI)$. If these two
-probabilities are approximately equal then the particular genetic data
+probabilities are approximately equal then the particular genetic variation
 $\yG$ are \emph{informationally} irrelevant for our prediction of the
 insomnia symptom $\yS$. The same conclusion holds with $\yG$ and $\yS$
 exchanged: the probability calculus says that
@@ -906,7 +905,7 @@ exchanged: the probability calculus says that
 if $\p(\yS \| \yD \yI)$, $\p(\yG \| \yD \yI)$ aren't zero.
 
 This measure of relevance can be extended to sets of (combinations of)
-symptoms $\set{\yS}$ and of genetic data $\set{\yG}$ by using the
+symptoms $\set{\yS}$ and of genetic variations $\set{\yG}$ by using the
 conditional entropy \citep[\chap~2]{coveretal1991_r2006}
 \begin{equation}
   \label{eq:conditional_entropy}
@@ -923,6 +922,11 @@ the entropy
 \end{equation}
 if $\yG$ is irrelevant to predict $\yS$
 \citep[\chap~2]{coveretal1991_r2006}.
+
+If we find that there is a mutual informational relevance between genetic
+variations and insomnia symptoms, we can conclude from biologic reasons that
+those variations must have a direct or indirect influence on the symptoms, for
+example they may give susceptibility to insomnia.
 
 
 \section{When genes keep you awake\ldots}
