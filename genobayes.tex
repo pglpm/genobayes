@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-04T15:49:03+0200
+%% Last-Updated: 2018-09-04T20:45:05+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -255,9 +255,9 @@ british%
 % \DeclareMathSymbol{\Psi}{\mathalpha}{egreekr}{"09}
 % \DeclareMathSymbol{\Omega}{\mathalpha}{egreekr}{"0A}
 % %
-% \DeclareMathSymbol{\alphaup}{\mathalpha}{egreekr}{"0B}
-% \DeclareMathSymbol{\betaup}{\mathalpha}{egreekr}{"0C}
-% \DeclareMathSymbol{\gammaup}{\mathalpha}{egreekr}{"0D}
+ \DeclareMathSymbol{\alphaup}{\mathalpha}{egreekr}{"0B}
+ \DeclareMathSymbol{\betaup}{\mathalpha}{egreekr}{"0C}
+ \DeclareMathSymbol{\gammaup}{\mathalpha}{egreekr}{"0D}
  \DeclareMathSymbol{\deltaup}{\mathalpha}{egreekr}{"0E}
 % \DeclareMathSymbol{\epsilonup}{\mathalpha}{egreekr}{"0F}
 % \DeclareMathSymbol{\zetaup}{\mathalpha}{egreekr}{"10}
@@ -959,23 +959,56 @@ expressed by
   \yGi{1}_{g}\, \yGi{2}_{g}\, \yGi{3}_{g}\,\dotso
   \;\yI)
   ={}\\
-  \p(\ySi{1}_{\pi(s_1)}\, \ySi{2}_{\pi(s_2)}\, \ySi{3}_{\pi(s_3)}\,\dotso \|
+  \p(\ySi{1}_{s_{\pi(1)}}\, \ySi{2}_{s_{\pi(2)}}\, \ySi{3}_{s_{\pi(3)}}\,\dotso \|
   \yGi{1}_{g}\, \yGi{2}_{g}\, \yGi{3}_{g}\,\dotso
   \;\yI)
 \end{multline}
-where $\pi$ is an arbitrary permutation of the symptom labels $s_i$. For example,
+where $\pi$ is an arbitrary permutation of the individuals' labels $i$. For
+example,
 \begin{multline}
-\label{def_exchangeability}
-  \p(\ySi{1}_{5}\, \ySi{2}_{3}\, \ySi{3}_{6}\,\dotso \|
+\label{example_exchangeability}
+  \p(\ySi{1}_{\text{c}}\, \ySi{2}_{\text{a}}\, \ySi{3}_{\text{b}}\,\dotso \|
   \yGi{1}_{g}\, \yGi{2}_{g}\, \yGi{3}_{g}\,\dotso
   \;\yI)
   ={}\\
-  \p(\ySi{1}_{6}\, \ySi{2}_{5}\, \ySi{3}_{3}\,\dotso \|
+  \p(\ySi{1}_{\text{b}}\, \ySi{2}_{\text{c}}\, \ySi{3}_{\text{a}}\,\dotso \|
   \yGi{1}_{g}\, \yGi{2}_{g}\, \yGi{3}_{g}\,\dotso
   \;\yI).
 \end{multline}
+This mathematical property is called \emph{exchangeability}.
+If the number of individuals is finite it is called \emph{finite}
+exchangeability; letting this number increase indefinitely we reach
+\emph{infinite} exchangeability as a limit \citep{heathetal1976}.
 
-\mynote{add: partial exchangeability}
+Assuming exchangeability for each group of individuals sharing the same
+genetic variation, the mathematical relations above generalize as follows.
+Our probability assignment is the same if we exchange symptom labels
+among individuals \emph{having the same genetic variation}; but it may be
+different if we exchange symptom labels among individuals with different
+genetic variations. The exact mathematical expression may look complicated;
+a concrete example is
+\begin{multline}
+  \label{eq:example_partial_exch}
+  \p(\ySi{1}_{\text{a}}\, \ySi{2}_{\text{c}}\, \ySi{3}_{\text{d}}\,
+  \ySi{4}_{\text{a}}\, \ySi{5}_{\text{b}}\, \ySi{6}_{\text{d}}\,\dotso \|
+  \yGi{1}_{\alphaup}\, \yGi{2}_{\betaup}\, \yGi{3}_{\betaup}\,
+  \yGi{4}_{\gammaup}\, \yGi{5}_{\alphaup}\, \yGi{6}_{\gammaup}\,\dotso
+  \;\yI)
+  ={}\\
+  \p(\ySi{1}_{\text{b}}\, \ySi{2}_{\text{d}}\, \ySi{3}_{\text{c}}\,
+  \ySi{4}_{\text{d}}\, \ySi{5}_{\text{a}}\, \ySi{6}_{\text{a}}\,\dotso \|
+  \yGi{1}_{\alphaup}\, \yGi{2}_{\betaup}\, \yGi{3}_{\betaup}\,
+  \yGi{4}_{\gammaup}\, \yGi{5}_{\alphaup}\, \yGi{6}_{\gammaup}\,\dotso
+  \;\yI)
+\end{multline}
+where the probability remains the same as we exchange symptoms $\text{a}$
+and $\text{b}$ between individuals $1$ and $5$, both having genetic
+variation $\alphaup$; symptoms $\text{c}$ and $\text{d}$ between
+individuals $2$ and $3$, both having genetic variation $\betaup$; symptoms
+$\text{a}$ and $\text{d}$ between individuals $4$ and $6$, both having
+genetic variation $\gammaup$. These exchanges can involve an arbitrary
+number of individuals, symptoms, genetic variations. This general property
+is called \emph{partial} exchangeability\mynote{reference}
 
 \mynote{add: de Finetti's representation theorem for probability
   distributions with the property above}
