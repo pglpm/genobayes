@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-04T20:45:05+0200
+%% Last-Updated: 2018-09-04T23:32:01+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1008,7 +1008,18 @@ individuals $2$ and $3$, both having genetic variation $\betaup$; symptoms
 $\text{a}$ and $\text{d}$ between individuals $4$ and $6$, both having
 genetic variation $\gammaup$. These exchanges can involve an arbitrary
 number of individuals, symptoms, genetic variations. This general property
-is called \emph{partial} exchangeability\mynote{reference}
+is called \emph{partial} exchangeability
+\cites{definetti1938,diaconisetal1980b,diaconis1988}[for a connection with
+sampling theory see][]{sugden1982,sugden1993}.
+
+Note that the property exemplified by \eqn~\eqref{eq:example_partial_exch}
+is more general than just separately stating exchangeability for the
+probability distributions for the individuals sharing the same genetic
+variations. Property~\eqref{eq:example_partial_exch} allows data about
+individuals with a genetic variation to be \emph{relevant} for prediction
+of data about individuals with \emph{another} genetic variation, as we'll
+see shortly.
+
 
 \mynote{add: de Finetti's representation theorem for probability
   distributions with the property above}
