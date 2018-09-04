@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-04T13:30:16+0200
+%% Last-Updated: 2018-09-04T15:12:26+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -746,6 +746,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yS}{S}
 \newcommand*{\yI}{I}
 \newcommand*{\sH}{H}
+\newcommand*{\yGv}{G}
+\newcommand*{\ySv}{S}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \firmlists
@@ -891,16 +893,16 @@ information $\yI$ are also always present in our assessment.
 
 The most straightforward way to assess the informational relevance of a
 genetic variation $\yG$ for the insomnia symptom $\yS$ is to compare
-$\p(\yS \| \yG \yD \yI)$ and $\p(\yS \| \yD \yI)$. If these two
+$\p(\yS \| \yG \,\yD \yI)$ and $\p(\yS \| \yD \yI)$. If these two
 probabilities are approximately equal then the particular genetic variation
 $\yG$ are \emph{informationally} irrelevant for our prediction of the
 insomnia symptom $\yS$. The same conclusion holds with $\yG$ and $\yS$
 exchanged: the probability calculus says that
 \begin{equation}
   \label{eq:exchange_irrelevance}
-  \p(\yS \| \yG \yD \yI) = \p(\yS \| \yD \yI)
+  \p(\yS \| \yG \,\yD \yI) = \p(\yS \| \yD \yI)
   \quad\Longleftrightarrow\quad
-    \p(\yG \| \yS \yD \yI) = \p(\yG \| \yD \yI)
+    \p(\yG \| \yS \,\yD \yI) = \p(\yG \| \yD \yI)
 \end{equation}
 if $\p(\yS \| \yD \yI)$, $\p(\yG \| \yD \yI)$ aren't zero.
 
@@ -911,7 +913,7 @@ conditional entropy \citep[\chap~2]{coveretal1991_r2006}
   \label{eq:conditional_entropy}
   \sH(\set{\yS} \| \set{\yG}, \yD\yI) \defd
   -\sum_{\yG} \p(\yG \| \yD\yI)\,
-  \sum_{\yS} \p(\yS \|\yG\yD\yI) \ln\p(\yS \|\yG\yD\yI),
+  \sum_{\yS} \p(\yS \|\yG\,\yD\yI) \ln\p(\yS \|\yG\,\yD\yI),
 \end{equation}
 which is zero only if $\yG$ gives us certainty about $\yS$, and is equal to
 the entropy 
@@ -920,7 +922,7 @@ the entropy
 -\sum_{\yS}\p(\yS \|\yD\yI) \ln\p(\yS \|\yD\yI)
   \label{eq:entropy_G}
 \end{equation}
-if $\yG$ is irrelevant to predict $\yS$
+if $\yG$ is irrelevant for predicting $\yS$
 \citep[\chap~2]{coveretal1991_r2006}.
 
 If we find that there is a mutual informational relevance between genetic
@@ -928,6 +930,32 @@ variations and insomnia symptoms, we can conclude from biologic reasons that
 those variations must have a direct or indirect influence on the symptoms, for
 example they may give susceptibility to insomnia.
 
+\section{Selection of variables and robustness}
+\label{sec:variable_selection_robustness}
+
+Denote the presence of the genetic variation labelled $i$ by $\yGv_i$ and its
+absence by $\lnot\yGv_i$. We can consider the  relevance of each
+variation individually, say
+\begin{equation}
+  \label{eq:example_relevance_onevariation}
+  \p(\yS \|\yGv_1 \,\yD \yI),
+\end{equation}
+or of the combination of any number of variations, say
+\begin{equation}
+  \label{eq:example_relevance_manyvariations}
+  \p(\yS \|\yGv_1 \lnot\yGv_2 \lnot\yGv_3 \yGv_4 \,\yD \yI).
+\end{equation}
+The probability calculus allows us to assign all these probabilities for
+any amount of data $\yD$ -- since they represent beliefs. If the number of
+combinations is high compared with the number of data, however, these
+probabilities will usually change noticeably when updated with new data; we
+can say that they are less \enquote{robust} to the acquisition of new data.
+This robustness can be quantified in various ways to be discussed later.
+
+From this point of view it makes sense to first consider each genetic
+variation individually and then larger and larger combinations of
+variations, as long as we see that our probabilities conditional on data
+$\yD$ are robust.
 
 \section{When genes keep you awake\ldots}
 \label{sec:intro}
