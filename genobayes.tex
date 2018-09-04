@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-08-24T12:02:41+0200
+%% Last-Updated: 2018-09-04T13:25:02+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -101,7 +101,6 @@ british%
 \newtheoremstyle{innote}{\parsep}{\parsep}{\footnotesize}{}{}{}{0pt}{}
 \theoremstyle{innote}
 \newtheorem*{innote}{}
-
 
 \usepackage[shortlabels,inline]{enumitem}
 \SetEnumitemKey{para}{itemindent=\parindent,leftmargin=0pt,listparindent=\parindent,parsep=0pt,itemsep=\topsep}
@@ -358,7 +357,7 @@ citestyle=authoryear-comp,bibstyle=pglpm-authoryear,autopunct=false,sorting=ny,s
 \DeclareDelimFormat{postnotedelim}{\space}
 \ifarxiv\else\addbibresource{portamanabib.bib}\fi
 \renewcommand{\bibfont}{\footnotesize}
-\appto{\citesetup}{\footnotesize}% smaller font for citations
+%\appto{\citesetup}{\footnotesize}% smaller font for citations
 \defbibheading{bibliography}[\bibname]{\section*{#1}\addcontentsline{toc}{section}{#1}%\markboth{#1}{#1}
 }
 \newcommand*{\citep}{\parencites}
@@ -735,14 +734,18 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %\newcommand*{\qem}{\leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill
 %\quad\hbox{\QEM}}
 
-%\definecolor{notecolour}{RGB}{68,170,153}
+\definecolor{notecolour}{RGB}{68,170,153}
 %\newcommand*{\puzzle}{{\fontencoding{U}\fontfamily{fontawesometwo}\selectfont\symbol{225}}}
-%\newcommand*{\puzzle}{\maltese}
-%\newcommand{\mynote}[1]{ {\color{notecolour}\puzzle\ #1}}
+\newcommand*{\puzzle}{\maltese}
+\newcommand{\mynote}[1]{ {\color{notecolour}\puzzle\ #1}}
 %\newcommand*{\widebar}[1]{{\mkern1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
 
 %\DeclareMathOperator*{\argsup}{arg\,sup}
-
+\newcommand*{\yD}{D}
+\newcommand*{\yG}{G}
+\newcommand*{\yS}{S}
+\newcommand*{\yI}{I}
+\newcommand*{\sH}{H}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \firmlists
@@ -874,7 +877,52 @@ not because the rain is the cause of the clouds, but because its presence gives 
 The previous remarks may appear pedantic, but they're important lest we
 misuse Bayesian methods.
 
+\section{What is the question?}
+\label{sec:what_question}
 
+\mynote{Luca: the following thoughts may be naive; I must still read
+  \citep{stingoetal2015} and \citep{bushetal2012}}
+
+We want to assess the informational relevance between genetic
+data\mynote{find more precise term} $\set{\yG}$ and (combinations of)
+insomnia symptoms $\set{\yS}$ in the Norwegian or European population. To
+assess this relevance we use data $\yD$ from a population sample. Some
+assumptions or background information $\yI$ are also always present in our
+assessment.
+
+The most straightforward way to assess the informational relevance of
+genetic data $\yG$ for the insomnia symptom $\yS$ is to compare
+$\p(\yS \| \yG \yD \yI)$ and $\p(\yS \| \yD \yI)$. If these two
+probabilities are approximately equal then the particular genetic data
+$\yG$ are \emph{informationally} irrelevant for our prediction of the
+insomnia symptom $\yS$. The same conclusion holds with $\yG$ and $\yS$
+exchanged: the probability calculus says that
+\begin{equation}
+  \label{eq:exchange_irrelevance}
+  \p(\yS \| \yG \yD \yI) = \p(\yS \| \yD \yI)
+  \quad\Longleftrightarrow\quad
+    \p(\yG \| \yS \yD \yI) = \p(\yG \| \yD \yI)
+\end{equation}
+if $\p(\yS \| \yD \yI)$, $\p(\yG \| \yD \yI)$ aren't zero.
+
+This measure of relevance can be extended to sets of (combinations of)
+symptoms $\set{\yS}$ and of genetic data $\set{\yG}$ by using the
+conditional entropy \citep[\chap~2]{coveretal1991_r2006}
+\begin{equation}
+  \label{eq:conditional_entropy}
+  \sH(\set{\yS} \| \set{\yG}, \yD\yI) \defd
+  -\sum_{\yG} \p(\yG \| \yD\yI)\,
+  \sum_{\yS} \p(\yS \|\yG\yD\yI) \ln\p(\yS \|\yG\yD\yI),
+\end{equation}
+which is zero only if $\yG$ gives us certainty about $\yS$, and is equal to
+the entropy 
+\begin{equation}
+  \sH(\set{\yS} \| \yD\yI) \defd
+-\sum_{\yS}\p(\yS \|\yD\yI) \ln\p(\yS \|\yD\yI)
+  \label{eq:entropy_G}
+\end{equation}
+if $\yG$ is irrelevant to predict $\yS$
+\citep[\chap~2]{coveretal1991_r2006}.
 
 
 \section{When genes keep you awake\ldots}
