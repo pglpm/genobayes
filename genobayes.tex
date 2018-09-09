@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-09T22:38:52+0200
+%% Last-Updated: 2018-09-09T23:03:40+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1088,6 +1088,22 @@ $\yD$ are robust.
 \section{Approach via the joint probability}
 \label{sec:joint_prob}
 
+We approach this first using finite exchangeability: we are sampling from
+the Norwegian or European population. We then consider the infinite limit
+and see if the results remain the same.
+
+Our initial information is that each individual is characterized by an
+insomnia parameter in $\set{1,\dotsc,8}$ and $94$ gene allele pairs, for a
+total of $8 \times 2^{94} \approx 1.6 \times 10^{29}$ possible combined
+values. The Norwegian or European populations, denoted $N$, are roughly
+$5.3 \times 10^6$ and $740 \times 10^6$, so it's impossible for all values
+to be present in the population. From a mathematical point of view, the set
+of possible frequency distributions of the values reside in a
+$10^6$--$10^8$-dimensional subspace at the edges of the
+$10^{29}$-dimensional simplex of frequency distributions. From this point
+of view the limit $N\to \infty$ does not make much sense. Unless we choose
+a prior probability distribution for the frequency distributions that is
+concentrated on the edges of the simplex.
 
 
 
