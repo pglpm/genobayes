@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-10T13:07:17+0200
+%% Last-Updated: 2018-09-10T14:27:46+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1161,7 +1161,7 @@ distribution\mynote{add refs}:
 \begin{equation}
   \label{eq:multivariate_hyperg}
   \pf(\yf \| n,\yF, N,\yI) =
-\binom{n}{n\yf} \binom{N-n}{N\yF-n\yf} \binom{N}{N\yF}^{-1}.  
+\binom{N}{n}^{-1}\,\yprod\binom{N\yF}{n\yf}.
 \end{equation}
 
 We want to infer the distribution $\yF$ given the distribution $\yf$ of a sample
@@ -1180,11 +1180,11 @@ constant for all possible distributions $\yF$:
   \pf(\yF \| N,\yI) = \binom{N+D-1}{D-1}^{-1}.
 \end{equation}
 Substituting this and~\eqref{eq:multivariate_hyperg} into Bayes's
-theorem~\eqref{eq:F_from_f_generic} and simplifying we obtain
+theorem~\eqref{eq:F_from_f_generic} and simplifying we obtain\mynote{add
+  refs for summation formula}
 \begin{equation}
   \label{eq:F_from_f_specific}
-  \pf(\yF \| \yf, n, N,\yI) \propto
-\binom{N-n}{N\yF-n\yf} \binom{N}{N\yF}^{-1}.
+  \pf(\yF \| \yf, n, N,\yI) = \binom{N+D-1}{n+D-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
 \end{equation}
 
 
