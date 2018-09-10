@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-10T12:49:29+0200
+%% Last-Updated: 2018-09-10T13:07:17+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1150,16 +1150,43 @@ $\yv \defd (\ys,\yg)$ can thus assume
 $D\defd 8\times 2^{94} \approx 1.6 \times 10^{29}$ possible values.
 
 Suppose that the relative distribution of the variate $\yv$ in the whole
-population is $N\yF$ with $\ysum\yF=1$, that is, $N F_{\yv}$ individuals
-have value $\yv$ for this variate. Most components of $\yF$ vanish because
-there are vastly more variate values than individuals. The probability that
-a sample of $n$ individuals has a distribution $\yf$ of variate values is
-given by the multivariate hypergeometric distribution\mynote{add refs}:
+population is $\yF$, where $\yF$ has $D$ components and $\ysum\yF=1$; that
+is, $N F_{\yv}$ individuals have value $\yv$ for this variate. There are
+$\binom{N+D-1}{D-1}$ possible distributions
+\citep[\sect~2.1]{csiszaretal2004b}. Most components of $\yF$ vanish
+because there are vastly more variate values than individuals. The
+probability that a sample of $n$ individuals has a relative distribution
+$\yf$ of the variate is given by the multivariate hypergeometric
+distribution\mynote{add refs}:
 \begin{equation}
   \label{eq:multivariate_hyperg}
   \pf(\yf \| n,\yF, N,\yI) =
 \binom{n}{n\yf} \binom{N-n}{N\yF-n\yf} \binom{N}{N\yF}^{-1}.  
 \end{equation}
+
+We want to infer the distribution $\yF$ given the distribution $\yf$ of a sample
+of size $n\defd 6029$. Using Bayes's theorem,
+\begin{equation}
+  \label{eq:F_from_f_generic}
+  \pf(\yF \| \yf, n, N,\yI) =
+  \frac{\pf(\yf \| n,\yF, N,\yI)\; \pf(\yF \| N,\yI)}{
+  \sum_{\yF}\pf(\yf \| n,\yF, N,\yI)\; \pf(\yF \| N,\yI)}.
+\end{equation}
+We need to assess our initial probability $\yI$ about $\yF$, $\pf(\yF \|
+N,\yI)$. As a first tentative let's assume that this probability is
+constant for all possible distributions $\yF$:
+\begin{equation}
+  \label{eq:constant_prior}
+  \pf(\yF \| N,\yI) = \binom{N+D-1}{D-1}^{-1}.
+\end{equation}
+Substituting this and~\eqref{eq:multivariate_hyperg} into Bayes's
+theorem~\eqref{eq:F_from_f_generic} and simplifying we obtain
+\begin{equation}
+  \label{eq:F_from_f_specific}
+  \pf(\yF \| \yf, n, N,\yI) \propto
+\binom{N-n}{N\yF-n\yf} \binom{N}{N\yF}^{-1}.
+\end{equation}
+
 
 
 \iffalse
