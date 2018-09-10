@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-09T23:03:40+0200
+%% Last-Updated: 2018-09-10T11:37:28+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -220,9 +220,9 @@ british%
 % \DeclareMathSymbol{\varNu}{\mathalpha}{egreeki}{"4E}
 % \DeclareMathSymbol{\varXi}{\mathalpha}{egreeki}{"04}
 % \DeclareMathSymbol{\varOmicron}{\mathalpha}{egreeki}{"4F}
-% \DeclareMathSymbol{\varPi}{\mathalpha}{egreeki}{"05}
+ \DeclareMathSymbol{\varPi}{\mathalpha}{egreeki}{"05}
 % \DeclareMathSymbol{\varRho}{\mathalpha}{egreeki}{"50}
-% \DeclareMathSymbol{\varSigma}{\mathalpha}{egreeki}{"06}
+ \DeclareMathSymbol{\varSigma}{\mathalpha}{egreeki}{"06}
 % \DeclareMathSymbol{\varTau}{\mathalpha}{egreeki}{"54}
 % \DeclareMathSymbol{\varUpsilon}{\mathalpha}{egreeki}{"07}
 % \DeclareMathSymbol{\varPhi}{\mathalpha}{egreeki}{"08}
@@ -750,6 +750,10 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yGi}[1]{G^{(#1)}}
 \newcommand*{\ySv}{S}
 \newcommand*{\ySi}[1]{S^{(#1)}}
+\newcommand*{\yx}{\bm{x}}
+\newcommand*{\yy}{\bm{y}}
+\newcommand*{\ysum}{\tsum}
+\newcommand*{\yprod}{\tprod}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \firmlists
@@ -1087,6 +1091,45 @@ $\yD$ are robust.
 
 \section{Approach via the joint probability}
 \label{sec:joint_prob}
+
+\paragraph{Notation}
+The following notation produces compact but readily understandable
+formulae. Functions and operators on tuples $\yx \defd (x_1,\dotsc,x_D)$, $\yy \defd
+(y_1,\dotsc,y_D)$, and numbers $a$ operate component-wise. For example:
+\begin{subequations}
+    \label{eq:example_notation}
+  \begin{equation}
+    \begin{gathered}
+      \exp\yx \defd \bigl( \exp x_1, \dotsc, \exp x_D \bigr)
+      \qquad
+      \yx^{\yy} \defd \bigl( {x_1}^{y_1}, \dotsc, {x_D}^{y_D} \bigr)
+      \\
+      a\yx \defd (a x_1, \dotsc, a x_D)
+      \qquad
+      \yx^a \defd \bigl( {x_1}^a,\dotsc,{x_D}^a \bigr)
+      \qquad\text{and so on.}
+    \end{gathered}
+  \end{equation}
+The exception are the sum and multiplication operators $\ysum$, $\yprod$:
+\begin{equation}
+  \ysum\yx \defd x_1+\dotsb+x_D
+  \qquad
+  \yprod\yx \defd x_1  \dotsm x_D
+\end{equation}
+so that, for example, \[\ysum\ln(\yx/\yy) \defd \sum_{i=1}^D \ln(x_i/y_i).\]
+Note also the convention
+  \begin{equation}
+    \binom{a}{\yx} \defd \binom{a}{x_1, \dotsc, x_D} \defd
+    \frac{a!}{x_1! \dotsm x_D!}
+    \qquad
+    \yprod\binom{\yy}{\yx} \defd \binom{y_1}{x_1}  \dotsm  \binom{y_D}{x_D},
+  \end{equation}
+\end{subequations}
+where the first expression is the multinomial coefficient.
+\bigskip
+
+
+
 
 We approach this first using finite exchangeability: we are sampling from
 the Norwegian or European population. We then consider the infinite limit
