@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-10T14:27:46+0200
+%% Last-Updated: 2018-09-10T15:03:40+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -760,6 +760,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yv}{x}
 \newcommand*{\yF}{\bm{F}}
 \newcommand*{\yf}{\bm{f}}
+\newcommand*{\ye}{\bm{e}}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \firmlists
@@ -1124,7 +1125,7 @@ The exception are the sum and multiplication operators $\ysum$, $\yprod$:
   \yprod\yx \defd x_1  \dotsm x_D
 \end{equation}
 so that, for example, \[\ysum\ln(\yx/\yy) \defd \sum_{i=1}^D \ln(x_i/y_i).\]
-Note also the convention
+Note also the conventions
   \begin{equation}
     \binom{a}{\yx} \defd \binom{a}{x_1, \dotsc, x_D} \defd
     \frac{a!}{x_1! \dotsm x_D!}
@@ -1186,6 +1187,19 @@ theorem~\eqref{eq:F_from_f_generic} and simplifying we obtain\mynote{add
   \label{eq:F_from_f_specific}
   \pf(\yF \| \yf, n, N,\yI) = \binom{N+D-1}{n+D-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
 \end{equation}
+
+Using the last probability distribution and the multivariate
+hypergeometric~\eqref{eq:multivariate_hyperg} with $n=1$,
+$(f_i)=(\delt_{\yv,i})$, we can calculate the probability that a newly
+sampled individual presents a variate value $\yv$:
+\begin{multline}
+  \label{eq:prob_individual}
+  \pf(\yv \| \yf,n,N,\yI) =
+  \sum_{\yF} \pf(\yv \| \yF-\yf,N-n,\yI)\,\pf(\yF \| \yf, n, N,\yI)
+  ={}\\
+  \sum_{\yF} \frac{NF_{\yv}-nf_{\yv}}{N-n}\, \binom{N+D-1}{n+D-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
+\end{multline}
+
 
 
 
