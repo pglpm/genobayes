@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-11T21:46:12+0200
+%% Last-Updated: 2018-09-11T22:04:22+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1285,18 +1285,15 @@ theorem~\eqref{eq:F_from_f_generic} and simplifying we obtain\mynote{add
   \pf(\yF \| \yf, n, N,\yI) = \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
 \end{equation}
 
-Using the last probability distribution and the multivariate
-hypergeometric~\eqref{eq:multivariate_hyperg} with $n=1$,
-$(x_i)=(\delt_{\yv,i})$, we can calculate the probability that a newly
-sampled individual presents a variate value $\yv$:
-\begin{multline}
-  \label{eq:prob_individual}
-  \pf(\yv \| \yf,n,N,\yI) =
-  \sum_{\yF} \pf(\yv \| \yF-\yf,N-n,\yI)\,\pf(\yF \| \yf, n, N,\yI)
-  ={}\\
-  \sum_{\yF} \frac{N X_{\yv}-n x_{\yv}}{N-n}\, \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
-\end{multline}
-
+We can substitute this in \eqn~\eqref{eq:joint_prob_new_ind_full} and
+simplify, obtaining
+\begin{equation}
+  \label{eq:joint_prob_new_ind_full_const_prior}
+  \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,N, \yI\bigr)  =
+  \sum_{\yF} X_{\ysi{0}, \ygi{0}}\,
+  \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
+\end{equation}
+\mynote{Luca: looking for identities to solve this sum analytically...}
 
 
 
