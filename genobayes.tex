@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-10T15:03:40+0200
+%% Last-Updated: 2018-09-11T13:44:18+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -746,6 +746,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yS}{S}
 \newcommand*{\yI}{I}
 \newcommand*{\sH}{H}
+\newcommand*{\mI}{I}
 \newcommand*{\yGv}{G}
 \newcommand*{\yGi}[1]{G^{(#1)}}
 \newcommand*{\ySv}{S}
@@ -756,8 +757,11 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yprod}{\tprod}
 \newcommand*{\ys}{s}
 \newcommand*{\yg}{g}
+\newcommand*{\ysi}[1]{\ys^{(#1)}}
+\newcommand*{\ygi}[1]{\yg^{(#1)}}
 \newcommand*{\yng}{v}
 \newcommand*{\yv}{x}
+\newcommand*{\yvi}[1]{\yv^{(#1)}}
 \newcommand*{\yF}{\bm{F}}
 \newcommand*{\yf}{\bm{f}}
 \newcommand*{\ye}{\bm{e}}
@@ -805,7 +809,12 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
   faults in its premisses, logic, evidence, and of any other criticisms you
   may have.}\fi
 
-\section{Preliminary remarks about Bayesian probability theory}
+\section{Introductory notes}
+\label{sec:intro}
+
+
+
+\subsection{Preliminary remarks about Bayesian probability theory}
 \label{sec:prelim_remarks}
 
 Bayesian probability theory is not just a set of new, better recipes meant
@@ -816,11 +825,11 @@ about problems of inference. Three points are especially important:
 statements -- more exactly, \enquote{propositions}
 \citep{copietal1953_r2014,barwiseetal1999_r2003} -- given other statements
 that may concern data, facts, hypotheses. For example, Bayesian theory can
-tell us that hypothesis $A$ has probability $x$ given some data $D$ and
+tell us that hypothesis $A$ has probability $x$ given some data $C$ and
 initial information $I$, while hypothesis $B$ has probability $y$ given the
 same conditions:
 \begin{equation*}
-  \p(A \| D, I ) = x, \qquad   \p(B \| D, I ) = y.
+  \p(A \| C, I ) = x, \qquad   \p(B \| C, I ) = y.
 \end{equation*}
 That's all there is to it. We can then use these probabilities as we like;
 in particular, we can use them within decision theory to choose courses of
@@ -892,7 +901,7 @@ not because the rain is the cause of the clouds, but because its presence gives 
 The previous remarks may appear pedantic, but they're important lest we
 misuse Bayesian methods.
 
-\section{What is the question?}
+\subsection{What is the question?}
 \label{sec:what_question}
 
 \mynote{Luca: the following thoughts may be naive; I must still read
@@ -962,7 +971,7 @@ numbers. We shall try all these approaches and see whether their results
 are mutually consistent.
 
 
-\section{Why exchangeability}
+\subsection{Why exchangeability}
 \label{sec:why_exchangeability}
 
 
@@ -1054,7 +1063,7 @@ see shortly.
 \mynote{add: de Finetti's representation theorem for probability
   distributions with the property above}
 
-\section{Selection of variables and robustness}
+\subsection{Selection of variables and robustness}
 \label{sec:variable_selection_robustness}
 
 Denote the presence of the genetic variation labelled $i$ by $\yGv_i$ and its
@@ -1096,64 +1105,95 @@ $\yD$ are robust.
 
 
 
-\section{Approach via the joint probability}
+\section{First approach: joint probability and mutual information}
 \label{sec:joint_prob}
 
-\paragraph{Notation}
+\subsection{Notation}\label{sec:notation}
 The following notation produces compact but readily understandable
-formulae. Functions and operations on tuples $\yx \defd (x_1,\dotsc,x_D)$,
-$\yy \defd (y_1,\dotsc,y_D)$, and numbers $a$ operate component-wise. For
+formulae. Functions and operations on tuples $\yx \defd (x_1,\dotsc,x_C)$,
+$\yy \defd (y_1,\dotsc,y_C)$, and numbers $a$ operate component-wise. For
 example:
 \begin{subequations}
     \label{eq:example_notation}
   \begin{equation}
     \begin{gathered}
-      \exp\yx \defd \bigl( \exp x_1, \dotsc, \exp x_D \bigr)
+      \exp\yx \defd \bigl( \exp x_1, \dotsc, \exp x_C \bigr)
       \qquad
-      \yx\yy \defd ( x_1\,y_1, \dotsc, x_D\,y_D )
+      \yx\yy \defd ( x_1\,y_1, \dotsc, x_C\,y_C )
       \\
-      a\yx \defd (a x_1, \dotsc, a x_D)
+      a\yx \defd (a x_1, \dotsc, a x_C)
       \qquad
-      \yx^a \defd \bigl( {x_1}^a,\dotsc,{x_D}^a \bigr)
+      \yx^a \defd \bigl( {x_1}^a,\dotsc,{x_C}^a \bigr)
       \qquad\text{and so on.}
     \end{gathered}
   \end{equation}
 The exception are the sum and multiplication operators $\ysum$, $\yprod$:
 \begin{equation}
-  \ysum\yx \defd x_1+\dotsb+x_D
+  \ysum\yx \defd x_1+\dotsb+x_C
   \qquad
-  \yprod\yx \defd x_1  \dotsm x_D
+  \yprod\yx \defd x_1  \dotsm x_C
 \end{equation}
-so that, for example, \[\ysum\ln(\yx/\yy) \defd \sum_{i=1}^D \ln(x_i/y_i).\]
+so that, for example, \[\ysum\ln(\yx/\yy) \defd \sum_{i=1}^C \ln(x_i/y_i).\]
 Note also the conventions
   \begin{equation}
-    \binom{a}{\yx} \defd \binom{a}{x_1, \dotsc, x_D} \defd
-    \frac{a!}{x_1! \dotsm x_D!}
+    \binom{a}{\yx} \defd \binom{a}{x_1, \dotsc, x_C} \defd
+    \frac{a!}{x_1! \dotsm x_C!}
     \qquad
-    \yprod\binom{\yy}{\yx} \defd \binom{y_1}{x_1}  \dotsm  \binom{y_D}{x_D},
+    \yprod\binom{\yy}{\yx} \defd \binom{y_1}{x_1}  \dotsm  \binom{y_C}{x_C},
   \end{equation}
 \end{subequations}
 where the first expression is the multinomial coefficient.
-\bigskip
 
 
 
-We approach our problem first using finite exchangeability: we are sampling from
-the Norwegian or European population. 
+\subsection{Scheme of this approach}
+\label{sec:1st_approach_scheme}
+
+Here is the way of thinking and general form of the calculations for this
+approach. We'll see later if these calculations are practically feasible.
 
 Denote by $N$ the amount of Norwegian or European population, roughly equal
-to $5.3 \times 10^6$ or $740 \times 10^6$. Our initial information is that
-each individual is characterized by an insomnia parameter
+to $5.3 \times 10^6$ or $740 \times 10^6$. Our initial information $\yI$ is
+that each individual is characterized by an insomnia parameter
 $\ys \in \set{1,\dotsc,8}$ and $\yng\defd 94$ gene allele pairs, whose
 combinations are denoted
 $\yg \defd (g_1,\dotsc,g_{\yng})\in \set{0,1}^{\yng}$. The combined variate
 $\yv \defd (\ys,\yg)$ can thus assume
-$D\defd 8\times 2^{94} \approx 1.6 \times 10^{29}$ possible values.
+$C\defd 8\times 2^{94} \approx 1.6 \times 10^{29}$ possible values.
+
+We have data $\yD$ consisting in the values of the variate for a sample of
+$n\defd 6029$ individuals: $\yvi{i} \defd \bigl( \ysi{i}, \ygi{i} \bigr)$,
+$i \in \set{1,\dotsc,n}$.
+
+We assess the mutual relevance of insomnia symptoms and genetic data by
+considering their joint probability for a new individual $n+1$, given our data:
+\begin{equation}
+  \label{eq:joint_prob_new_ind}
+  \pf\bigl(\ysi{n+1}, \ygi{n+1} \| \yD, \yI\bigr),
+\end{equation}
+and the marginal probabilities
+\begin{equation}
+  \label{eq:marginals_new_ind}
+  \pf\bigl( \ygi{n+1} \| \yD, \yI\bigr),
+  \qquad
+    \pf\bigl(\ysi{n+1} \| \yD, \yI\bigr).
+\end{equation}
+From these we compute the mutual information \citep[there called
+\enquote{rate of transmission}]{shannon1948}[\chap~2]{coveretal1991_r2006}:
+\begin{multline}
+  \label{eq:mutual_info_new_ind}
+  \mI\bigl( \ysi{n+1} : \ygi{n+1} \| \yD,\yI \bigr) \defd{}\\
+  \sum_{\mathclap{\ysi{n+1},\ygi{n+1}}} \pf\bigl(\ysi{n+1}, \ygi{n+1} \| \yD, \yI\bigr)
+ \; \ln\frac{\pf(\ysi{n+1}, \ygi{n+1} \| \yD, \yI)}{
+    \pf(\ysi{n+1} \| \yD, \yI)\;
+    \pf(\ygi{n+1} \| \yD, \yI)}.
+\end{multline}
+
 
 Suppose that the relative distribution of the variate $\yv$ in the whole
-population is $\yF$, where $\yF$ has $D$ components and $\ysum\yF=1$; that
+population is $\yF$, where $\yF$ has $C$ components and $\ysum\yF=1$; that
 is, $N F_{\yv}$ individuals have value $\yv$ for this variate. There are
-$\binom{N+D-1}{D-1}$ possible distributions
+$\binom{N+C-1}{C-1}$ possible distributions
 \citep[\sect~2.1]{csiszaretal2004b}. Most components of $\yF$ vanish
 because there are vastly more variate values than individuals. The
 probability that a sample of $n$ individuals has a relative distribution
@@ -1178,14 +1218,14 @@ N,\yI)$. As a first tentative let's assume that this probability is
 constant for all possible distributions $\yF$:
 \begin{equation}
   \label{eq:constant_prior}
-  \pf(\yF \| N,\yI) = \binom{N+D-1}{D-1}^{-1}.
+  \pf(\yF \| N,\yI) = \binom{N+C-1}{C-1}^{-1}.
 \end{equation}
 Substituting this and~\eqref{eq:multivariate_hyperg} into Bayes's
 theorem~\eqref{eq:F_from_f_generic} and simplifying we obtain\mynote{add
   refs for summation formula}
 \begin{equation}
   \label{eq:F_from_f_specific}
-  \pf(\yF \| \yf, n, N,\yI) = \binom{N+D-1}{n+D-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
+  \pf(\yF \| \yf, n, N,\yI) = \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
 \end{equation}
 
 Using the last probability distribution and the multivariate
@@ -1197,7 +1237,7 @@ sampled individual presents a variate value $\yv$:
   \pf(\yv \| \yf,n,N,\yI) =
   \sum_{\yF} \pf(\yv \| \yF-\yf,N-n,\yI)\,\pf(\yF \| \yf, n, N,\yI)
   ={}\\
-  \sum_{\yF} \frac{NF_{\yv}-nf_{\yv}}{N-n}\, \binom{N+D-1}{n+D-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
+  \sum_{\yF} \frac{NF_{\yv}-nf_{\yv}}{N-n}\, \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
 \end{multline}
 
 
