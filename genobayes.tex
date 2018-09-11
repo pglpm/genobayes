@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-11T13:44:18+0200
+%% Last-Updated: 2018-09-11T21:46:12+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -175,7 +175,7 @@ british%
  \DeclareMathSymbol{\partialup}{\mathalpha}{egreekr}{"40}
 % \DeclareMathSymbol{\alpha}{\mathalpha}{egreeki}{"0B}
 % \DeclareMathSymbol{\beta}{\mathalpha}{egreeki}{"0C}
-% \DeclareMathSymbol{\gamma}{\mathalpha}{egreeki}{"0D}
+ \DeclareMathSymbol{\gamma}{\mathalpha}{egreeki}{"0D}
 % \DeclareMathSymbol{\delta}{\mathalpha}{egreeki}{"0E}
  \DeclareMathSymbol{\epsilon}{\mathalpha}{egreeki}{"0F}
 % \DeclareMathSymbol{\zeta}{\mathalpha}{egreeki}{"10}
@@ -186,11 +186,11 @@ british%
  \DeclareMathSymbol{\lambda}{\mathalpha}{egreeki}{"15}
 % \DeclareMathSymbol{\mu}{\mathalpha}{egreeki}{"16}
  \DeclareMathSymbol{\nu}{\mathalpha}{egreeki}{"17}
-% \DeclareMathSymbol{\xi}{\mathalpha}{egreeki}{"18}
+ \DeclareMathSymbol{\xi}{\mathalpha}{egreeki}{"18}
 % \DeclareMathSymbol{\omicron}{\mathalpha}{egreeki}{"6F}
  \DeclareMathSymbol{\pi}{\mathalpha}{egreeki}{"19}
 % \DeclareMathSymbol{\rho}{\mathalpha}{egreeki}{"1A}
-% \DeclareMathSymbol{\sigma}{\mathalpha}{egreeki}{"1B}
+ \DeclareMathSymbol{\sigma}{\mathalpha}{egreeki}{"1B}
 % \DeclareMathSymbol{\tau}{\mathalpha}{egreeki}{"1C}
 % \DeclareMathSymbol{\upsilon}{\mathalpha}{egreeki}{"1D}
 % \DeclareMathSymbol{\phi}{\mathalpha}{egreeki}{"1E}
@@ -222,7 +222,7 @@ british%
 % \DeclareMathSymbol{\varOmicron}{\mathalpha}{egreeki}{"4F}
  \DeclareMathSymbol{\varPi}{\mathalpha}{egreeki}{"05}
 % \DeclareMathSymbol{\varRho}{\mathalpha}{egreeki}{"50}
- \DeclareMathSymbol{\varSigma}{\mathalpha}{egreeki}{"06}
+% \DeclareMathSymbol{\varSigma}{\mathalpha}{egreeki}{"06}
 % \DeclareMathSymbol{\varTau}{\mathalpha}{egreeki}{"54}
 % \DeclareMathSymbol{\varUpsilon}{\mathalpha}{egreeki}{"07}
 % \DeclareMathSymbol{\varPhi}{\mathalpha}{egreeki}{"08}
@@ -755,15 +755,19 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yy}{\bm{y}}
 \newcommand*{\ysum}{\tsum}
 \newcommand*{\yprod}{\tprod}
-\newcommand*{\ys}{s}
-\newcommand*{\yg}{g}
+\newcommand*{\ys}{\sigma}
+\newcommand*{\yg}{\gamma}
 \newcommand*{\ysi}[1]{\ys^{(#1)}}
 \newcommand*{\ygi}[1]{\yg^{(#1)}}
+\newcommand*{\yFs}{\bm{S}}
+\newcommand*{\yfs}{\bm{s}}
+\newcommand*{\yFg}{\bm{G}}
+\newcommand*{\yfg}{\bm{g}}
 \newcommand*{\yng}{v}
-\newcommand*{\yv}{x}
+\newcommand*{\yv}{\xi}
 \newcommand*{\yvi}[1]{\yv^{(#1)}}
-\newcommand*{\yF}{\bm{F}}
-\newcommand*{\yf}{\bm{f}}
+\newcommand*{\yF}{\bm{X}}
+\newcommand*{\yf}{\bm{x}}
 \newcommand*{\ye}{\bm{e}}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
@@ -1166,56 +1170,109 @@ $n\defd 6029$ individuals: $\yvi{i} \defd \bigl( \ysi{i}, \ygi{i} \bigr)$,
 $i \in \set{1,\dotsc,n}$.
 
 We assess the mutual relevance of insomnia symptoms and genetic data by
-considering their joint probability for a new individual $n+1$, given our data:
+considering their joint probability for an individual \enquote{$0$} chosen
+at random from the full population, given our data:
 \begin{equation}
   \label{eq:joint_prob_new_ind}
-  \pf\bigl(\ysi{n+1}, \ygi{n+1} \| \yD, \yI\bigr),
+  \pf\bigl(\ysi{0}, \ygi{0} \| \yD, \yI\bigr),
 \end{equation}
 and the marginal probabilities
 \begin{equation}
   \label{eq:marginals_new_ind}
-  \pf\bigl( \ygi{n+1} \| \yD, \yI\bigr),
+  \pf\bigl( \ygi{0} \| \yD, \yI\bigr),
   \qquad
-    \pf\bigl(\ysi{n+1} \| \yD, \yI\bigr).
+    \pf\bigl(\ysi{0} \| \yD, \yI\bigr).
 \end{equation}
 From these we compute the mutual information \citep[there called
 \enquote{rate of transmission}]{shannon1948}[\chap~2]{coveretal1991_r2006}:
-\begin{multline}
-  \label{eq:mutual_info_new_ind}
-  \mI\bigl( \ysi{n+1} : \ygi{n+1} \| \yD,\yI \bigr) \defd{}\\
-  \sum_{\mathclap{\ysi{n+1},\ygi{n+1}}} \pf\bigl(\ysi{n+1}, \ygi{n+1} \| \yD, \yI\bigr)
- \; \ln\frac{\pf(\ysi{n+1}, \ygi{n+1} \| \yD, \yI)}{
-    \pf(\ysi{n+1} \| \yD, \yI)\;
-    \pf(\ygi{n+1} \| \yD, \yI)}.
-\end{multline}
-
-
-Suppose that the relative distribution of the variate $\yv$ in the whole
-population is $\yF$, where $\yF$ has $C$ components and $\ysum\yF=1$; that
-is, $N F_{\yv}$ individuals have value $\yv$ for this variate. There are
-$\binom{N+C-1}{C-1}$ possible distributions
-\citep[\sect~2.1]{csiszaretal2004b}. Most components of $\yF$ vanish
-because there are vastly more variate values than individuals. The
-probability that a sample of $n$ individuals has a relative distribution
-$\yf$ of the variate is given by the multivariate hypergeometric
-distribution\mynote{add refs}:
 \begin{equation}
-  \label{eq:multivariate_hyperg}
-  \pf(\yf \| n,\yF, N,\yI) =
-\binom{N}{n}^{-1}\,\yprod\binom{N\yF}{n\yf}.
+  \label{eq:mutual_info_new_ind}
+  \mI\bigl( \ysi{0} : \ygi{0} \| \yD,\yI \bigr) \defd
+  \sum_{\mathclap{\ysi{0},\ygi{0}}} \pf\bigl(\ysi{0}, \ygi{0} \| \yD, \yI\bigr)
+ \; \ln\frac{\pf(\ysi{0}, \ygi{0} \| \yD, \yI)}{
+    \pf(\ysi{0} \| \yD, \yI)\;
+    \pf(\ygi{0} \| \yD, \yI)}.
 \end{equation}
+The mutual information vanishes if the symptoms and genetic variations are
+completely irrelevant to one another, and is equal to the entropy of either
+marginal probability distribution if they are deterministically related.
+Thus, instead of asking whether they are \enquote{uncorrelated} or
+\enquote{correlated}, we're quantifying their mutual relevance.
 
-We want to infer the distribution $\yF$ given the distribution $\yf$ of a sample
-of size $n\defd 6029$. Using Bayes's theorem,
+\medskip
+
+Our first step is to calculate the joint probability
+distribution~\eqref{eq:joint_prob_new_ind}. It can be calculated if we know
+the joint relative-frequency distribution of the variates in the full
+population. Denote the relative frequency for $\ys$ in the full population
+by $\yFs$, that for $\yg$ by $\yFg$, and their joint frequency distribution
+by $\yF$. Denote the corresponding relative-frequency distributions in the
+sampled population by $\yfs$, $\yfg$, and $\yf$. Note that $\ysum\yF=1$ and
+so on for the other frequency distributions. The joint
+probability~\eqref{eq:joint_prob_new_ind} \emph{when $\yF$ is known} is
+given as a special case of the multivariate hypergeometric distribution:
+\begin{equation}
+  \label{eq:joint_prob_new_ind_hyperg}
+  \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,\yF,N, \yI\bigr) \equiv
+  \pf\bigl(\ysi{0}, \ygi{0} \| \yF,N, \yI\bigr) 
+  =X_{\ysi{0}, \ygi{0}}.
+\end{equation}
+If the frequency distribution $\yF$ isn't known, from the theorem of total
+probability we obtain
+\begin{multline}
+  \label{eq:joint_prob_new_ind_F_unknown}
+  \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,N, \yI\bigr)  =
+  \sum_{\yF}  \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,\yF,N, \yI\bigr) \;
+  \pf( \yF \| \yf, n,N, \yI) \equiv{}\\
+  \sum_{\yF}  X_{\ysi{0}, \ygi{0}}\,  \pf( \yF \| \yf, n,N, \yI).
+\end{multline}
+We must therefore find the probability for $\yF$ given the data. It can
+be found using Bayes's theorem:
 \begin{equation}
   \label{eq:F_from_f_generic}
   \pf(\yF \| \yf, n, N,\yI) =
   \frac{\pf(\yf \| n,\yF, N,\yI)\; \pf(\yF \| N,\yI)}{
   \sum_{\yF}\pf(\yf \| n,\yF, N,\yI)\; \pf(\yF \| N,\yI)}.
 \end{equation}
-We need to assess our initial probability $\yI$ about $\yF$, $\pf(\yF \|
-N,\yI)$. As a first tentative let's assume that this probability is
-constant for all possible distributions $\yF$:
+
+Bayes's theorem requires two probabilities: the probability for the
+frequency distribution $\yf$ of the sampled population, given $\yF$; and
+our initial probability for $\yF$. The first is given by the multivariate
+hypergeometric distribution\mynote{add refs}:
+\begin{equation}
+  \label{eq:multivariate_hyperg}
+  \pf(\yf \| n,\yF, N,\yI) =
+\binom{N}{n}^{-1}\,\yprod\binom{N\yF}{n\yf}.
+\end{equation}
+The second will be discussed later.
+
+Combining \eqns~\eqref{eq:joint_prob_new_ind_F_unknown},
+\eqref{eq:F_from_f_generic}, \eqref{eq:multivariate_hyperg}, and
+simplifying we obtain
+\begin{equation}
+  \label{eq:joint_prob_new_ind_full}
+  \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,N, \yI\bigr)  =
+  \frac{
+    \sum_{\yF} X_{\ysi{0}, \ygi{0}}\,
+    \yprod\binom{N\yF}{n\yf}\; \pf(\yF \| N,\yI)}{
+  \sum_{\yF} \yprod\binom{N\yF}{n\yf}\; \pf(\yF \| N,\yI)}.
+\end{equation}
+
+With an analogous reasoning we find analogous formulae for
+$\pf\bigl(\ysi{0} \| \yf, n,N, \yI\bigr)$ by replacing $\yF$, $\yf$ with
+$\yFs$, $\yfs$; and for $\pf\bigl(\ygi{0} \| \yf, n,N, \yI\bigr)$ by
+replacing $\yF$, $\yf$ with $\yFg$, $\yfg$. From these we can calculate the
+mutual information~\eqref{eq:mutual_info_new_ind}.
+
+
+\subsection{First calculation: constant initial proability}
+\label{sec:first_calc_const_prior}
+
+We need to assess our initial probability $\yI$ about $\yF$,
+$\pf(\yF \| N,\yI)$. As a first tentative let's assume that this
+probability is constant for all possible distributions $\yF$. There are
+$\binom{N+C-1}{C-1}$ possible distributions $\yF$
+\citep[\sect~2.1]{csiszaretal2004b}; hence
 \begin{equation}
   \label{eq:constant_prior}
   \pf(\yF \| N,\yI) = \binom{N+C-1}{C-1}^{-1}.
@@ -1230,14 +1287,14 @@ theorem~\eqref{eq:F_from_f_generic} and simplifying we obtain\mynote{add
 
 Using the last probability distribution and the multivariate
 hypergeometric~\eqref{eq:multivariate_hyperg} with $n=1$,
-$(f_i)=(\delt_{\yv,i})$, we can calculate the probability that a newly
+$(x_i)=(\delt_{\yv,i})$, we can calculate the probability that a newly
 sampled individual presents a variate value $\yv$:
 \begin{multline}
   \label{eq:prob_individual}
   \pf(\yv \| \yf,n,N,\yI) =
   \sum_{\yF} \pf(\yv \| \yF-\yf,N-n,\yI)\,\pf(\yF \| \yf, n, N,\yI)
   ={}\\
-  \sum_{\yF} \frac{NF_{\yv}-nf_{\yv}}{N-n}\, \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
+  \sum_{\yF} \frac{N X_{\yv}-n x_{\yv}}{N-n}\, \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
 \end{multline}
 
 
