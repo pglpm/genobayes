@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-11T22:04:22+0200
+%% Last-Updated: 2018-09-12T13:33:15+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -769,6 +769,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yF}{\bm{X}}
 \newcommand*{\yf}{\bm{x}}
 \newcommand*{\ye}{\bm{e}}
+\newcommand*{\yIc}{I_{0}}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \firmlists
@@ -1268,32 +1269,53 @@ mutual information~\eqref{eq:mutual_info_new_ind}.
 \subsection{First calculation: constant initial proability}
 \label{sec:first_calc_const_prior}
 
-We need to assess our initial probability $\yI$ about $\yF$,
-$\pf(\yF \| N,\yI)$. As a first tentative let's assume that this
-probability is constant for all possible distributions $\yF$. There are
-$\binom{N+C-1}{C-1}$ possible distributions $\yF$
-\citep[\sect~2.1]{csiszaretal2004b}; hence
+We need to assess our initial probability for $\yF$ according to some
+background knowledge. As a first tentative let's consider background
+knowledge $\yIc$ such that the probability is constant for all possible
+distributions $\yF$. There are $\binom{N+C-1}{C-1}$ possible distributions
+$\yF$ \citep[\sect~2.1]{csiszaretal2004b}; hence
 \begin{equation}
   \label{eq:constant_prior}
-  \pf(\yF \| N,\yI) = \binom{N+C-1}{C-1}^{-1}.
+  \pf(\yF \| N,\yIc) = \binom{N+C-1}{C-1}^{-1}.
 \end{equation}
-Substituting this and~\eqref{eq:multivariate_hyperg} into Bayes's
-theorem~\eqref{eq:F_from_f_generic} and simplifying we obtain\mynote{add
-  refs for summation formula}
+With this constant value, \eqn~\eqref{eq:joint_prob_new_ind_full}
+simplifies to
+\begin{equation}
+    \label{eq:joint_prob_new_ind_full_simplified}
+  \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,N, \yIc\bigr)  =
+  \frac{
+    \sum_{\yF} X_{\ysi{0}, \ygi{0}}\,
+    \yprod\binom{N\yF}{n\yf}}{
+  \sum_{\yF} \yprod\binom{N\yF}{n\yf}}.
+\end{equation}
+The sum in the denominator can be calculated with an identity for
+multinomial coefficients\mynote{add
+  refs for summation formula}:
+\begin{equation}
+  \label{eq:multinomial_sum_identity}
+  \sum_{\yF} \yprod\binom{N\yF}{n\yf} = \binom{N+C-1}{n+C-1},
+\end{equation}
+which leads also to
 \begin{equation}
   \label{eq:F_from_f_specific}
   \pf(\yF \| \yf, n, N,\yI) = \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
 \end{equation}
 
-We can substitute this in \eqn~\eqref{eq:joint_prob_new_ind_full} and
-simplify, obtaining
+The sum in the numerator can be rewritten\mynote{explain the steps} obtaining
 \begin{equation}
-  \label{eq:joint_prob_new_ind_full_const_prior}
-  \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,N, \yI\bigr)  =
-  \sum_{\yF} X_{\ysi{0}, \ygi{0}}\,
-  \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
+  \label{eq:numerator_constant_prior}
+  \sum_{\yF} X_{\ysi{0}, \ygi{0}}\, \yprod\binom{N\yF}{n\yf}
+  =
+  \frac{n x_{\ysi{0}, \ygi{0}}+1}{N} \binom{N+C}{n+C}
+  - \frac{1}{N}\binom{N+C-1}{n+C-1}.
 \end{equation}
-\mynote{Luca: looking for identities to solve this sum analytically...}
+
+Simplifying we finally find
+\begin{equation}
+    \label{eq:joint_prob_new_ind_full_const_prior_final}
+  \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,N, \yIc\bigr)  =
+\frac{(N+C)\,(n x_{\ysi{0}, \ygi{0}}+1)}{N\,(n+C)} - \frac{1}{N}.
+\end{equation}
 
 
 
