@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-13T12:46:44+0200
+%% Last-Updated: 2018-09-13T14:45:07+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1316,7 +1316,7 @@ Simplifying we finally find
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_const_prior_final}
   \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,N, \yIc\bigr)  =
-\frac{(N+C)\,(n x_{\ysi{0}, \ygi{0}}+1)}{N\,(n+C)} - \frac{1}{N}.
+\frac{(N+C) n x_{\ysi{0}, \ygi{0}}+N-n}{N\,(n+C)}
 \end{equation}
 
 For large $C$ this is approximately
@@ -1333,17 +1333,18 @@ and for large $N$
     \frac{n x_{\ysi{0}, \ygi{0}} +1}{n + C}.
 \end{equation}
 
-If the probability distribution for $(\ysi{0}, \ygi{0})$ is constant, so
-are the marginals. Thus we obtain, with analogous calculations,
+For the marginal distributions we obtain, by summation,
 \begin{gather}
   \label{eq:marginals_final_const_prior}
     \pf\bigl(\ysi{0} \| \yf, n,N, \yIc\bigr)  =
-\frac{(N+\yCs)\,(n \yfs_{\ysi{0}}+1)}{N\,(n+\yCs)} - \frac{1}{N},
+\frac{(N+C) n s_{\ysi{0}}+(N-n)\yCg}{N\,(n+C)},
 \\
     \pf\bigl(\ygi{0} \| \yf, n,N, \yIc\bigr)  =
-\frac{(N+\yCg)\,(n \yfg_{\ygi{0}}+1)}{N\,(n+\yCg)} - \frac{1}{N}.
+\frac{(N+C) n g_{\ygi{0}}+(N-n)\yCs}{N\,(n+C)}.
 \end{gather}
-
+Note that if the initial probability distribution for $(\ysi{0}, \ygi{0})$
+is constant, then the corresponding marginals for $\ysi{0}$ and $\ygi{0}$
+are \emph{not} constant.
 
 
 
