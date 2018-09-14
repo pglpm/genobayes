@@ -36,7 +36,7 @@ d <- read.csv(paste0(dpath,fs[1]),sep=";")
 
 ## insomnia symptoms = col 6
 ## gene data = cols 8:102
-ngenes <- 3
+ngenes <- 10 #102-7
 data <- d[,c(6,8:(7+ngenes))]
 l <- length(data[1,])
 
