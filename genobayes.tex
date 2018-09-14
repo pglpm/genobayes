@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-14T11:59:20+0200
+%% Last-Updated: 2018-09-14T12:41:07+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1172,6 +1172,14 @@ We have data $\yD$ consisting in the values of the variate for a sample of
 $n\defd 6029$ individuals: $\yvi{i} \defd \bigl( \ysi{i}, \ygi{i} \bigr)$,
 $i \in \set{1,\dotsc,n}$.
 
+Denote the relative frequency for $\ys$ in the full population by $\yFs$,
+that for $\yg$ by $\yFg$, and their joint frequency distribution by $\yF$.
+Note that $\ysum\yF=1$ and so on for the other frequency distributions, and
+that $S_{\ys}=\sum_{\yg}X_{\ys,\yg}$ and
+$G_{\yg}=\sum_{\ys}X_{\ys,\yg}$. Denote the corresponding
+relative-frequency distributions in the sampled population by $\yfs$,
+$\yfg$, and $\yf$; analogous equalities hold for them.
+
 We assess the mutual relevance of insomnia symptoms and genetic data by
 considering their joint probability for an individual \enquote{$0$} chosen
 at random from the full population, given our data:
@@ -1206,14 +1214,10 @@ Thus, instead of asking whether they are \enquote{uncorrelated} or
 
 Our first step is to calculate the joint probability
 distribution~\eqref{eq:joint_prob_new_ind}. It can be calculated if we know
-the joint relative-frequency distribution of the variates in the full
-population. Denote the relative frequency for $\ys$ in the full population
-by $\yFs$, that for $\yg$ by $\yFg$, and their joint frequency distribution
-by $\yF$. Denote the corresponding relative-frequency distributions in the
-sampled population by $\yfs$, $\yfg$, and $\yf$. Note that $\ysum\yF=1$ and
-so on for the other frequency distributions. The joint
-probability~\eqref{eq:joint_prob_new_ind} \emph{when $\yF$ is known} is
-given as a special case of the multivariate hypergeometric distribution:
+the joint relative-frequency distribution $\yF$ of the variates in the full
+population. The joint probability~\eqref{eq:joint_prob_new_ind} \emph{when
+  $\yF$ is known} is given as a special case of the multivariate
+hypergeometric distribution:
 \begin{equation}
   \label{eq:joint_prob_new_ind_hyperg}
   \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,\yF,N, \yI\bigr) \equiv
