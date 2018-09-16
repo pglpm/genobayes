@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-14T12:47:39+0200
+%% Last-Updated: 2018-09-16T12:24:19+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -920,23 +920,25 @@ in the Norwegian or European population. To assess this relevance we use
 data $\yD$ from a population sample. Some assumptions or background
 information $\yI$ are also always present in our assessment.
 
-The most common approach in this kind of problems is to set two hypotheses
+The traditional approach to this kind of problems is to set two hypotheses
 against each other: \enquote{there is a correlation} vs \enquote{there
-  isn't a correlation}, and to assess which is more probable in view of the
-data. Mathematically this corresponds to a dichotomy between an exactly
-zero value and non-zero values of a correlation-like quantity. We'd like to
-approach this problem differently. Rather than contrasting zero against
-non-zero values, we simply calculate that value. \mynote{check
-  \citep{stephensetal2009}: they seem to have a reference with a similar
-  philosophy}
+  isn't a correlation}, and to assess which is more \enquote{significant}
+in view of the data. Mathematically this corresponds to a dichotomy between
+an exactly zero value and non-zero values of a correlation-like quantity.
 
-The most straightforward way to assess the informational relevance of a
-genetic variation $\yG$ for the insomnia symptom $\yS$ is to compare
-$\p(\yS \| \yG \,\yD \yI)$ and $\p(\yS \| \yD \yI)$. If these two
-probabilities are approximately equal then the particular genetic variation
-$\yG$ are \emph{informationally} irrelevant for our prediction of the
-insomnia symptom $\yS$. The same conclusion holds with $\yG$ and $\yS$
-exchanged: the probability calculus says that
+Here we approach this problem differently. Rather than contrasting zero
+against non-zero values, we simply calculate how \emph{relevant} one
+quantity is to make inferences about the other quantity.\mynote{check
+  \citep{stephensetal2009}: they seem to have a reference with a similar
+  philosophy} One quantity, for example $\yG$, is \emph{inferentially} or
+\emph{informationally} relevant when the knowledge of its value leads us to
+have a different degree of belief regarding the value of the other, for
+example $\yS$, compared to when we don't know its value. In other words,
+the probabilities $\p(\yS \| \yG \,\yD \yI)$ and $\p(\yS \| \yD \yI)$ are
+numerically different. If these two probabilities are approximately equal
+then the particular genetic variation $\yG$ are \emph{ir}relevant for our
+prediction of the insomnia symptom $\yS$. The same conclusion holds with
+$\yG$ and $\yS$ exchanged: the probability calculus says that
 \begin{equation}
   \label{eq:exchange_irrelevance}
   \p(\yS \| \yG \,\yD \yI) = \p(\yS \| \yD \yI)
@@ -947,7 +949,8 @@ if $\p(\yS \| \yD \yI)$, $\p(\yG \| \yD \yI)$ aren't zero.
 
 This measure of relevance can be extended to sets of (combinations of)
 symptoms $\set{\yS}$ and of genetic variations $\set{\yG}$ by using the
-conditional entropy \citep[\chap~2]{coveretal1991_r2006}
+conditional entropy
+\citep{shannon1948,kelly1956}[\sect~14.7]{pressetal1988_r2007}[\chap~2]{coveretal1991_r2006}
 \begin{equation}
   \label{eq:conditional_entropy}
   \sH(\set{\yS} \| \set{\yG}, \yD\yI) \defd
@@ -962,12 +965,14 @@ the entropy
   \label{eq:entropy_G}
 \end{equation}
 if $\yG$ is irrelevant for predicting $\yS$
-\citep[\chap~2]{coveretal1991_r2006}.
+\citep[\sect~14.7]{pressetal1988_r2007}[\chap~2]{coveretal1991_r2006}.
+Another, symmetric measure of relevance is the mutual information,
+discussed in \sect~\ref{sec:joint_prob}.
 
-If we find that there is a mutual informational relevance between genetic
-variations and insomnia symptoms, we can conclude from biologic reasons that
-those variations must have a direct or indirect influence on the symptoms, for
-example they may give susceptibility to insomnia.
+If we find that there is mutual informational relevance between genetic
+variations and insomnia symptoms, we can conclude from biologic reasons
+that those variations must have a direct or indirect influence on the
+symptoms, for example they may give susceptibility to insomnia.
 
 There are three main ways to calculate the conditional probabilities of
 above: By calculating first $\p(\yS\yG \|\yD\yI)$,
@@ -1194,8 +1199,9 @@ and the marginal probabilities
   \qquad
     \pf\bigl(\ysi{0} \| \yD, \yI\bigr).
 \end{equation}
-From these we compute the mutual information \citep[there called
-\enquote{rate of transmission}]{shannon1948}[\chap~2]{coveretal1991_r2006}:
+From these we compute the mutual information \citep[in these called
+\enquote{rate of
+  transmission}]{shannon1948,kelly1956}[\sect~14.7]{pressetal1988_r2007}[\chap~2]{coveretal1991_r2006}:
 \begin{equation}
   \label{eq:mutual_info_new_ind}
   \mI\bigl( \ysi{0} : \ygi{0} \| \yD,\yI \bigr) \defd
@@ -1205,10 +1211,11 @@ From these we compute the mutual information \citep[there called
     \pf(\ygi{0} \| \yD, \yI)}.
 \end{equation}
 The mutual information vanishes if the symptoms and genetic variations are
-completely irrelevant to one another, and is equal to the entropy of either
-marginal probability distribution if they are deterministically related.
-Thus, instead of asking whether they are \enquote{uncorrelated} or
-\enquote{correlated}, we're quantifying their mutual relevance.
+completely irrelevant to one another, and is equal to the least of the
+entropies of either marginal probability distribution if they are
+deterministically related. Thus, instead of asking whether they are
+\enquote{uncorrelated} or \enquote{correlated}, we're quantifying their
+mutual relevance.
 
 \medskip
 
