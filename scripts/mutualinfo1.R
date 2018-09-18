@@ -46,3 +46,7 @@ fs <- tally(group_by_at(data,.vars=c(1)))
 fg <- tally(group_by_at(data,.vars=c(2:l)))
 ## data frequencies for both
 fx <- tally(group_by_at(data,.vars=c(1:l)))
+
+
+
+which(apply(ag[,1:10],1,function(r){all(r == ax[45,2:11])}))
