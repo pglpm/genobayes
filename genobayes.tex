@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-16T12:24:19+0200
+%% Last-Updated: 2018-09-18T22:40:54+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -738,7 +738,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %\newcommand*{\puzzle}{{\fontencoding{U}\fontfamily{fontawesometwo}\selectfont\symbol{225}}}
 \newcommand*{\puzzle}{\maltese}
 \newcommand{\mynote}[1]{ {\color{notecolour}\puzzle\ #1}}
-%\newcommand*{\widebar}[1]{{\mkern1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
+\newcommand*{\widebar}[1]{{\mkern1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
 
 %\DeclareMathOperator*{\argsup}{arg\,sup}
 \newcommand*{\yD}{D}
@@ -1373,7 +1373,39 @@ information~\eqref{eq:mutual_info_new_ind} and simplifying we find
   }
 \end{multline}
 
-
+We can divide this sum into three: one sum over the pairs $(\ysi{0},
+\ygi{0})$ which appear in our data, for which $x_{\ysi{0}, \ygi{0}}>0$; one
+sum over the remaining $\ysi{0}$; one over the remaining $\ygi{0}$:
+\begin{multline}
+  \label{eq:mutual_info_final_three}
+  \mI\bigl( \ysi{0} : \ygi{0} \| \yD,\yIc \bigr) =
+  \ln[N\,(n+C)] \\
+  \begin{aligned}[b]
+  &+
+    \!\begin{multlined}[t][0.95\linewidth]
+\sum_{\mathclap{(\ysi{0},\ygi{0}) \in \yD}}
+  \frac{(N+C) n x_{\ysi{0}, \ygi{0}}+N-n}{N\,(n+C)}\times{}\\
+  \ln\frac{(N+C) n x_{\ysi{0}, \ygi{0}}+N-n}{
+    [(N+C) n s_{\ysi{0}}+(N-n)\yCg]\,
+    [(N+C) n g_{\ygi{0}}+(N-n)\yCs]
+  } 
+\end{multlined}
+  \\
+&+\widebar{C}\,
+  \frac{N-n}{N\,(n+C)}
+  \ln(N-n)
+  \\
+  &-\sum_{\mathclap{\ysi{0} \text{ remaining}}}
+  \frac{N-n}{N\,(n+C)}\,
+  \ln [(N+C) n s_{\ysi{0}}+(N-n)\yCg]
+  \\
+  &-\sum_{\mathclap{\ygi{0} \text{ remaining}}}
+  \frac{N-n}{N\,(n+C)}\,
+  \ln [(N+C) n s_{\ygi{0}}+(N-n)\yCs],
+  \end{aligned}
+\end{multline}
+where $\widebar{C}$ is the number of pairs \emph{not} present in the data,
+that is, those for which $x_{\ysi{0}, \ygi{0}}=0$.
 
 \iffalse
 Our initial information is that each individual is characterized by an
