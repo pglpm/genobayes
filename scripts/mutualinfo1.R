@@ -36,6 +36,7 @@ d <- read.csv(paste0(dpath,fs[1]),sep=";")
 
 ## insomnia symptoms = col 6
 ## gene data = cols 8:102
+## genes can be any subset of {1,...,95}
 genes <- 1:15
 ngenes <- length(genes)
 data <- d[,c(6,7+genes)]
