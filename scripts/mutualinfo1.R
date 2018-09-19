@@ -36,7 +36,7 @@ d <- read.csv(paste0(dpath,fs[1]),sep=";")
 
 ## insomnia symptoms = col 6
 ## gene data = cols 8:102
-genes <- 1:3
+genes <- 1:15
 ngenes <- length(genes)
 data <- d[,c(6,7+genes)]
 l <- length(data[1,])
@@ -60,23 +60,25 @@ fg <- data.matrix(tally(group_by_at(data,.vars=c(genes+1))))
 fx <- data.matrix(tally(group_by_at(data,.vars=c(1,genes+1))))
 
 notc <- cx-dim(fx)[1]
-outc <- cg-dim(fg)[1]
+cgminus <- cg-dim(fg)[1]
 
 
-a <- log(ncnn) + sum(apply(fx,1,function(i){
-    ## frequency of pair
-    nx <- i[ngenes+2]
-    ## marginal freqs
-    ns <- fs[i[1],2]
-    ng <- fg[which(apply(fg[,genes],1,function(r){all(r == i[genes+1])})),ngenes+1]
+minfo <- log(ncnn) + sum(sapply(1:8,function(sig){
+    apply(fg,1,function(gam){
+        ## marginal freqs
+        ns <- fs[sig,2]
+        ng <- gam[ngenes+1]
+        ## frequency of pair
+        nx <- sum(apply(fx,1,function(i){all(i[c(1,genes+1)]==c(sig,gam[genes]))*i[ngenes+2]}))
+        numer <- nnc*nx+dn
 
-    numer <- nnc*nx+dn
+        numer/ncnn*(log(numer)-log(nnc*ns+dn*cg)-log(nnc*ng+dn*cs))})})) -
+    cgminus*dn/ncnn*(log(cs) + sum(log(nnc*fs[,2]+dn*cg)))
 
-    numer/ncnn*(log(numer)-log(nnc*ns+dn*cg)-log(nnc*ng+dn*cs))
-})) +
-    notc*dn/ncnn*(
-        log(dn) +
-        sum(log(nnc*fs[,2]+dn*cg)) +
-        sum(log(nnc*fg[,ngenes+1]+dn*cs)) +
-        outc*log(dn*cs))
-        
+
+
+sentropy <- -sum(sapply(1:8,function(sig){
+    prob <- (nnc*fs[sig,2]+dn*cg)/ncnn
+    prob*log(prob)}))
+
+c(minfo,sentropy,minfo/sentropy)
