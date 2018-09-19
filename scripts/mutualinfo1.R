@@ -36,17 +36,41 @@ d <- read.csv(paste0(dpath,fs[1]),sep=";")
 
 ## insomnia symptoms = col 6
 ## gene data = cols 8:102
-ngenes <- 10 #102-7
-data <- d[,c(6,8:(7+ngenes))]
+genes <- 1:10
+ngenes <- length(genes)
+data <- d[,c(6,7+genes)]
 l <- length(data[1,])
+n <- length(data[,1])
+nn <- 5.3e6L
+cs <- 8
+cg <- 2^ngenes
+cx <- cs*cg
+
+## recurring quantities
+nnc <- (nn+cx)
+ncnn <- (n+cx)*nn
+dn <- nn-n
+
 
 ## data frequencies for symptoms
-fs <- tally(group_by_at(data,.vars=c(1)))
+fs <- data.matrix(tally(group_by_at(data,.vars=c(1))))
 ## data frequencies for genes
-fg <- tally(group_by_at(data,.vars=c(2:l)))
+fg <- data.matrix(tally(group_by_at(data,.vars=c(genes+1))))
 ## data frequencies for both
-fx <- tally(group_by_at(data,.vars=c(1:l)))
+fx <- data.matrix(tally(group_by_at(data,.vars=c(1,genes+1))))
+
+notc <- cx-dim(fx)[1]
 
 
+a <- log(ncnn) + sum(apply(fx,1,function(i){
+    ## frequency of pair
+    nx <- i[ngenes+2]
+    ## marginal freqs
+    ns <- fs[i[1],2]
+    ng <- fg[which(apply(fg[,genes],1,function(r){all(r == i[genes+1])})),ngenes+1]
 
-which(apply(ag[,1:10],1,function(r){all(r == ax[45,2:11])}))
+    numer <- nnc*nx+dn
+
+    numer/ncnn*(log(numer)-log(nnc*ns+dn*cg)-log(nnc*ng+dn*cs))
+})) +
+    notc*dn/ncnn*log(dn)
