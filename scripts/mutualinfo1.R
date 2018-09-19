@@ -43,7 +43,7 @@ calculatemutualinfo <- function(whichgenes){
     genes <- c(whichgenes)
     ngenes <- length(genes)
     data <- d[,c(6,7+genes)]
-    print(dim(data))
+    #print(dim(data))
     l <- length(data[1,])
     n <- length(data[,1])
     nn <- 5.3e6L
