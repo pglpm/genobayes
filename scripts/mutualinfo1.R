@@ -34,52 +34,56 @@ dpath = "./"
 fs = dir(path = dpath,pattern = "dataset1")
 d <- read.csv(paste0(dpath,fs[1]),sep=";")
 
-## insomnia symptoms = col 6
-## gene data = cols 8:102
-## genes can be any subset of {1,...,95}
-genes <- 1:15
-ngenes <- length(genes)
-data <- d[,c(6,7+genes)]
-l <- length(data[1,])
-n <- length(data[,1])
-nn <- 5.3e6L
-cs <- 8
-cg <- 2^ngenes
-cx <- cs*cg
+## this function takes the ID of the genes we want to check, between 1 and 95, and returns the mutual info, its max value, and its normalized value
+calculatemutualinfo <- function(whichgenes){
 
-## recurring quantities
-nnc <- (nn+cx)
-ncnn <- (n+cx)*nn
-dn <- nn-n
+    ## insomnia symptoms = col 6
+    ## gene data = cols 8:102
+    ## genes can be any subset of {1,...,95}
+    genes <- whichgenes
+    ngenes <- length(genes)
+    data <- d[,c(6,7+genes)]
+    l <- length(data[1,])
+    n <- length(data[,1])
+    nn <- 5.3e6L
+    cs <- 8
+    cg <- 2^ngenes
+    cx <- cs*cg
 
+    ## recurring quantities
+    nnc <- (nn+cx)
+    ncnn <- (n+cx)*nn
+    dn <- nn-n
 
-## data frequencies for symptoms
-fs <- data.matrix(tally(group_by_at(data,.vars=c(1))))
-## data frequencies for genes
-fg <- data.matrix(tally(group_by_at(data,.vars=c(genes+1))))
-## data frequencies for both
-fx <- data.matrix(tally(group_by_at(data,.vars=c(1,genes+1))))
+    ## data frequencies for symptoms
+    fs <- data.matrix(tally(group_by_at(data,.vars=c(1))))
+    ## data frequencies for genes
+    fg <- data.matrix(tally(group_by_at(data,.vars=c(genes+1))))
+    ## data frequencies for both
+    fx <- data.matrix(tally(group_by_at(data,.vars=c(1,genes+1))))
 
-notc <- cx-dim(fx)[1]
-cgminus <- cg-dim(fg)[1]
+    cgminus <- cg-dim(fg)[1]
 
+    
+    minfo <- log(ncnn) + sum(sapply(1:8,function(sig){
+        apply(fg,1,function(gam){
+            ## marginal freqs
+            ns <- fs[sig,2]
+            ng <- gam[ngenes+1]
+            ## frequency of pair
+            nx <- sum(apply(fx,1,function(i){all(i[c(1,genes+1)]==c(sig,gam[genes]))*i[ngenes+2]}))
+            numer <- nnc*nx+dn
+            
+            numer/ncnn*(log(numer)-log(nnc*ns+dn*cg)-log(nnc*ng+dn*cs))})})) -
+        cgminus*dn/ncnn*(log(cs) + sum(log(nnc*fs[,2]+dn*cg)))
+    
+    
+    
+    sentropy <- -sum(sapply(1:8,function(sig){
+        prob <- (nnc*fs[sig,2]+dn*cg)/ncnn
+        prob*log(prob)}))
 
-minfo <- log(ncnn) + sum(sapply(1:8,function(sig){
-    apply(fg,1,function(gam){
-        ## marginal freqs
-        ns <- fs[sig,2]
-        ng <- gam[ngenes+1]
-        ## frequency of pair
-        nx <- sum(apply(fx,1,function(i){all(i[c(1,genes+1)]==c(sig,gam[genes]))*i[ngenes+2]}))
-        numer <- nnc*nx+dn
-
-        numer/ncnn*(log(numer)-log(nnc*ns+dn*cg)-log(nnc*ng+dn*cs))})})) -
-    cgminus*dn/ncnn*(log(cs) + sum(log(nnc*fs[,2]+dn*cg)))
-
-
-
-sentropy <- -sum(sapply(1:8,function(sig){
-    prob <- (nnc*fs[sig,2]+dn*cg)/ncnn
-    prob*log(prob)}))
-
-c(minfo,sentropy,minfo/sentropy)
+    print(paste0('mutual information = ',minfo))
+    print(paste0('max value = ',sentropy))
+    print(paste0('normalized value = ',minfo/sentropy))
+    c(minfo,sentropy,minfo/sentropy)}

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-19T13:52:58+0200
+%% Last-Updated: 2018-09-19T14:19:14+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1390,9 +1390,9 @@ information~\eqref{eq:mutual_info_new_ind} and simplifying we find
   }
 \end{multline}
 
-We can divide this sum into three: one sum over the pairs $(\yso,
-\ygo)$ which appear in our data, for which $x_{\yso, \ygo}>0$; one
-sum over the remaining $\yso$; one over the remaining $\ygo$:
+We can divide this sum into two parts: one sum over the values of $\yso$
+and $\ygo$ which appear in our data, for which $g_{\ygo}>0$; and one sum
+over the $\yCgn$ remaining $\ygo$ values,  for which $g_{\ygo}=x_{\yso,\ygo}=0$:
 \begin{multline}
   \label{eq:mutual_info_final_three}
   \mI\bigl( \yso : \ygo \| \yD,\yIc \bigr) =
