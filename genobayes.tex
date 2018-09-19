@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-18T22:41:46+0200
+%% Last-Updated: 2018-09-19T13:18:01+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -759,6 +759,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yg}{\gamma}
 \newcommand*{\ysi}[1]{\ys^{(#1)}}
 \newcommand*{\ygi}[1]{\yg^{(#1)}}
+\newcommand*{\yso}{\ys}
+\newcommand*{\ygo}{\yg}
 \newcommand*{\yFs}{\bm{S}}
 \newcommand*{\yfs}{\bm{s}}
 \newcommand*{\yFg}{\bm{G}}
@@ -772,6 +774,10 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yIc}{I_{0}}
 \newcommand*{\yCs}{C_{\sigma}}
 \newcommand*{\yCg}{C_{\gamma}}
+\newcommand*{\yCgd}{\yCg^{+}}
+\newcommand*{\yCgn}{\yCg^{-}}
+\newcommand*{\yCd}{C^{+}}
+\newcommand*{\yCn}{C^{-}}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \firmlists
@@ -1185,6 +1191,14 @@ $G_{\yg}=\sum_{\ys}X_{\ys,\yg}$. Denote the corresponding
 relative-frequency distributions in the sampled population by $\yfs$,
 $\yfg$, and $\yf$; analogous equalities hold for them.
 
+The $\yCg$ possible gene variations are much more numerous than the data
+$n$; not all of them can therefore appear in the data, that is, have
+frequencies $g_\ygi{0}>0$. Denote by $\yCgd$ the number of distinct
+variations present in the data, and by $\yCgn$ the number of those not
+present. Let $\yCd$ and $\yCn$ have the same meaning regarding the joint
+variate $\bigl( \ysi{0}, \ygi{0} \bigr)$. Obviously $\yCg = \yCgd+\yCgn$,
+$C=\yCd+\yCn$, and $\yCd \le \yCgd$.
+
 We assess the mutual relevance of insomnia symptoms and genetic data by
 considering their joint probability for an individual \enquote{$0$} chosen
 at random from the full population, given our data:
@@ -1217,6 +1231,9 @@ deterministically related. Thus, instead of asking whether they are
 \enquote{uncorrelated} or \enquote{correlated}, we're quantifying their
 mutual relevance.
 
+In the rest of this section we'll denote $\ysi{0}$, $\ygi{0}$ simply by
+$\yso$, $\ygo$ for brevity.
+
 \medskip
 
 Our first step is to calculate the joint probability
@@ -1227,18 +1244,18 @@ population. The joint probability~\eqref{eq:joint_prob_new_ind} \emph{when
 hypergeometric distribution:
 \begin{equation}
   \label{eq:joint_prob_new_ind_hyperg}
-  \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,\yF,N, \yI\bigr) \equiv
-  \pf\bigl(\ysi{0}, \ygi{0} \| \yF,N, \yI\bigr) 
-  =X_{\ysi{0}, \ygi{0}}.
+  \pf\bigl(\yso, \ygo \| \yf, n,\yF,N, \yI\bigr) \equiv
+  \pf\bigl(\yso, \ygo \| \yF,N, \yI\bigr) 
+  =X_{\yso, \ygo}.
 \end{equation}
 If the frequency distribution $\yF$ isn't known, from the theorem of total
 probability we obtain
 \begin{multline}
   \label{eq:joint_prob_new_ind_F_unknown}
-  \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,N, \yI\bigr)  =
-  \sum_{\yF}  \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,\yF,N, \yI\bigr) \;
+  \pf\bigl(\yso, \ygo \| \yf, n,N, \yI\bigr)  =
+  \sum_{\yF}  \pf\bigl(\yso, \ygo \| \yf, n,\yF,N, \yI\bigr) \;
   \pf( \yF \| \yf, n,N, \yI) \equiv{}\\
-  \sum_{\yF}  X_{\ysi{0}, \ygi{0}}\,  \pf( \yF \| \yf, n,N, \yI).
+  \sum_{\yF}  X_{\yso, \ygo}\,  \pf( \yF \| \yf, n,N, \yI).
 \end{multline}
 We must therefore find the probability for $\yF$ given the data. It can
 be found using Bayes's theorem:
@@ -1265,16 +1282,16 @@ Combining \eqns~\eqref{eq:joint_prob_new_ind_F_unknown},
 simplifying we obtain
 \begin{equation}
   \label{eq:joint_prob_new_ind_full}
-  \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,N, \yI\bigr)  =
+  \pf\bigl(\yso, \ygo \| \yf, n,N, \yI\bigr)  =
   \frac{
-    \sum_{\yF} X_{\ysi{0}, \ygi{0}}\,
+    \sum_{\yF} X_{\yso, \ygo}\,
     \yprod\binom{N\yF}{n\yf}\; \pf(\yF \| N,\yI)}{
   \sum_{\yF} \yprod\binom{N\yF}{n\yf}\; \pf(\yF \| N,\yI)}.
 \end{equation}
 
 With an analogous reasoning we find analogous formulae for
-$\pf\bigl(\ysi{0} \| \yf, n,N, \yI\bigr)$ by replacing $\yF$, $\yf$ with
-$\yFs$, $\yfs$; and for $\pf\bigl(\ygi{0} \| \yf, n,N, \yI\bigr)$ by
+$\pf\bigl(\yso \| \yf, n,N, \yI\bigr)$ by replacing $\yF$, $\yf$ with
+$\yFs$, $\yfs$; and for $\pf\bigl(\ygo \| \yf, n,N, \yI\bigr)$ by
 replacing $\yF$, $\yf$ with $\yFg$, $\yfg$. From these we can calculate the
 mutual information~\eqref{eq:mutual_info_new_ind}.
 
@@ -1295,9 +1312,9 @@ With this constant value, \eqn~\eqref{eq:joint_prob_new_ind_full}
 simplifies to
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_simplified}
-  \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,N, \yIc\bigr)  =
+  \pf\bigl(\yso, \ygo \| \yf, n,N, \yIc\bigr)  =
   \frac{
-    \sum_{\yF} X_{\ysi{0}, \ygi{0}}\,
+    \sum_{\yF} X_{\yso, \ygo}\,
     \yprod\binom{N\yF}{n\yf}}{
   \sum_{\yF} \yprod\binom{N\yF}{n\yf}}.
 \end{equation}
@@ -1311,50 +1328,50 @@ multinomial coefficients\mynote{add
 which leads also to
 \begin{equation}
   \label{eq:F_from_f_specific}
-  \pf(\yF \| \yf, n, N,\yI) = \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
+  \pf(\yF \| \yf, n, N,\yIc) = \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
 \end{equation}
 
 The sum in the numerator can be rewritten\mynote{explain the steps} obtaining
 \begin{equation}
   \label{eq:numerator_constant_prior}
-  \sum_{\yF} X_{\ysi{0}, \ygi{0}}\, \yprod\binom{N\yF}{n\yf}
+  \sum_{\yF} X_{\yso, \ygo}\, \yprod\binom{N\yF}{n\yf}
   =
-  \frac{n x_{\ysi{0}, \ygi{0}}+1}{N} \binom{N+C}{n+C}
+  \frac{n x_{\yso, \ygo}+1}{N} \binom{N+C}{n+C}
   - \frac{1}{N}\binom{N+C-1}{n+C-1}.
 \end{equation}
 
 Simplifying we finally find
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_const_prior_final}
-  \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,N, \yIc\bigr)  =
-\frac{(N+C) n x_{\ysi{0}, \ygi{0}}+N-n}{N\,(n+C)}
+  \pf\bigl(\yso, \ygo \| \yf, n,N, \yIc\bigr)  =
+\frac{(N+C) n x_{\yso, \ygo}+N-n}{N\,(n+C)}
 \end{equation}
 
 For large $C$ this is approximately
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_const_prior_final_approx_C}
-    \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,N, \yIc\bigr)  \approx
-    \frac{n x_{\ysi{0}, \ygi{0}}}{N} +
-    \frac{(N-n)\,(n x_{\ysi{0}, \ygi{0}} +1)}{N C}
+    \pf\bigl(\yso, \ygo \| \yf, n,N, \yIc\bigr)  \approx
+    \frac{n x_{\yso, \ygo}}{N} +
+    \frac{(N-n)\,(n x_{\yso, \ygo} +1)}{N C}
 \end{equation}
 and for large $N$
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_const_prior_final_approx_N}
-    \pf\bigl(\ysi{0}, \ygi{0} \| \yf, n,N, \yIc\bigr)  \approx
-    \frac{n x_{\ysi{0}, \ygi{0}} +1}{n + C}.
+    \pf\bigl(\yso, \ygo \| \yf, n,N, \yIc\bigr)  \approx
+    \frac{n x_{\yso, \ygo} +1}{n + C}.
 \end{equation}
 
 For the marginal distributions we obtain, by summation,
 \begin{gather}
   \label{eq:marginals_final_const_prior}
-    \pf\bigl(\ysi{0} \| \yf, n,N, \yIc\bigr)  =
-\frac{(N+C) n s_{\ysi{0}}+(N-n)\yCg}{N\,(n+C)},
+    \pf\bigl(\yso \| \yf, n,N, \yIc\bigr)  =
+\frac{(N+C) n s_{\yso}+(N-n)\yCg}{N\,(n+C)},
 \\
-    \pf\bigl(\ygi{0} \| \yf, n,N, \yIc\bigr)  =
-\frac{(N+C) n g_{\ygi{0}}+(N-n)\yCs}{N\,(n+C)}.
+    \pf\bigl(\ygo \| \yf, n,N, \yIc\bigr)  =
+\frac{(N+C) n g_{\ygo}+(N-n)\yCs}{N\,(n+C)}.
 \end{gather}
-Note that if the initial probability distribution for $(\ysi{0}, \ygi{0})$
-is constant, then the corresponding marginals for $\ysi{0}$ and $\ygi{0}$
+Note that if the initial probability distribution for $(\yso, \ygo)$
+is constant, then the corresponding marginals for $\yso$ and $\ygo$
 are \emph{not} constant.
 
 Using the
@@ -1363,49 +1380,47 @@ and~\eqref{eq:marginals_final_const_prior} in the formula for the mutual
 information~\eqref{eq:mutual_info_new_ind} and simplifying we find
 \begin{multline}
   \label{eq:mutual_info_final}
-  \mI\bigl( \ysi{0} : \ygi{0} \| \yD,\yIc \bigr) =
+  \mI\bigl( \yso : \ygo \| \yD,\yIc \bigr) =
   \ln[N\,(n+C)] +
-  \sum_{\mathclap{\ysi{0},\ygi{0}}}
-  \frac{(N+C) n x_{\ysi{0}, \ygi{0}}+N-n}{N\,(n+C)}\times{}\\
-  \ln\frac{(N+C) n x_{\ysi{0}, \ygi{0}}+N-n}{
-    [(N+C) n s_{\ysi{0}}+(N-n)\yCg]\,
-    [(N+C) n g_{\ygi{0}}+(N-n)\yCs]
+  \sum_{\mathclap{\yso,\ygo}}
+  \frac{(N+C) n x_{\yso, \ygo}+N-n}{N\,(n+C)}\times{}\\
+  \ln\frac{(N+C) n x_{\yso, \ygo}+N-n}{
+    [(N+C) n s_{\yso}+(N-n)\yCg]\,
+    [(N+C) n g_{\ygo}+(N-n)\yCs]
   }
 \end{multline}
 
-We can divide this sum into three: one sum over the pairs $(\ysi{0},
-\ygi{0})$ which appear in our data, for which $x_{\ysi{0}, \ygi{0}}>0$; one
-sum over the remaining $\ysi{0}$; one over the remaining $\ygi{0}$:
+We can divide this sum into three: one sum over the pairs $(\yso,
+\ygo)$ which appear in our data, for which $x_{\yso, \ygo}>0$; one
+sum over the remaining $\yso$; one over the remaining $\ygo$:
 \begin{multline}
   \label{eq:mutual_info_final_three}
-  \mI\bigl( \ysi{0} : \ygi{0} \| \yD,\yIc \bigr) =
+  \mI\bigl( \yso : \ygo \| \yD,\yIc \bigr) =
   \ln[N\,(n+C)] \\
   \begin{aligned}[b]
   &+
     \!\begin{multlined}[t][0.92\linewidth]
-\sum_{\mathclap{(\ysi{0},\ygi{0}) \in \yD}}
-  \frac{(N+C) n x_{\ysi{0}, \ygi{0}}+N-n}{N\,(n+C)}\times{}\\
-  \ln\frac{(N+C) n x_{\ysi{0}, \ygi{0}}+N-n}{
-    [(N+C) n s_{\ysi{0}}+(N-n)\yCg]\,
-    [(N+C) n g_{\ygi{0}}+(N-n)\yCs]
+\sum_{\mathclap{(\yso,\ygo) \in \yD}}
+  \frac{(N+C) n x_{\yso, \ygo}+N-n}{N\,(n+C)}\times{}\\
+  \ln\frac{(N+C) n x_{\yso, \ygo}+N-n}{
+    [(N+C) n s_{\yso}+(N-n)\yCg]\,
+    [(N+C) n g_{\ygo}+(N-n)\yCs]
   } 
 \end{multlined}
   \\
-&+\widebar{C}\,
+&+\yCn\,
   \frac{N-n}{N\,(n+C)}
   \ln(N-n)
   \\
-  &-\sum_{\mathclap{\ysi{0} \text{ remaining}}}
-  \frac{N-n}{N\,(n+C)}\,
-  \ln [(N+C) n s_{\ysi{0}}+(N-n)\yCg]
+  &-\yCn
+  \frac{N-n}{N\,(n+C)}\sum_{\mathclap{\yso}}
+  \ln [(N+C) n s_{\yso}+(N-n)\yCg]
   \\
-  &-\sum_{\mathclap{\ygi{0} \text{ remaining}}}
-  \frac{N-n}{N\,(n+C)}\,
-  \ln [(N+C) n s_{\ygi{0}}+(N-n)\yCs],
+  &-\yCn
+  \frac{N-n}{N\,(n+C)}\sum_{\mathclap{\ygo}}
+  \ln [(N+C) n s_{\ygo}+(N-n)\yCs].
   \end{aligned}
 \end{multline}
-where $\widebar{C}$ is the number of pairs \emph{not} present in the data,
-that is, those for which $x_{\ysi{0}, \ygi{0}}=0$.
 
 \iffalse
 Our initial information is that each individual is characterized by an
