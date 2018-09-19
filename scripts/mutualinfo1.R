@@ -40,9 +40,10 @@ calculatemutualinfo <- function(whichgenes){
     ## insomnia symptoms = col 6
     ## gene data = cols 8:102
     ## genes can be any subset of {1,...,95}
-    genes <- whichgenes
+    genes <- c(whichgenes)
     ngenes <- length(genes)
     data <- d[,c(6,7+genes)]
+    print(dim(data))
     l <- length(data[1,])
     n <- length(data[,1])
     nn <- 5.3e6L
@@ -57,10 +58,13 @@ calculatemutualinfo <- function(whichgenes){
 
     ## data frequencies for symptoms
     fs <- data.matrix(tally(group_by_at(data,.vars=c(1))))
+    #print(dim(fs))
     ## data frequencies for genes
-    fg <- data.matrix(tally(group_by_at(data,.vars=c(genes+1))))
+    fg <- data.matrix(tally(group_by_at(data,.vars=c(2:(1+ngenes)))))
+    #print(dim(fg))
     ## data frequencies for both
-    fx <- data.matrix(tally(group_by_at(data,.vars=c(1,genes+1))))
+    fx <- data.matrix(tally(group_by_at(data,.vars=c(1:(ngenes+1)))))
+    #print(dim(fx))
 
     cgminus <- cg-dim(fg)[1]
 
@@ -71,7 +75,7 @@ calculatemutualinfo <- function(whichgenes){
             ns <- fs[sig,2]
             ng <- gam[ngenes+1]
             ## frequency of pair
-            nx <- sum(apply(fx,1,function(i){all(i[c(1,genes+1)]==c(sig,gam[genes]))*i[ngenes+2]}))
+            nx <- sum(apply(fx,1,function(i){all(i[1:(ngenes+1)]==c(sig,gam[1:ngenes]))*i[ngenes+2]}))
             numer <- nnc*nx+dn
             
             numer/ncnn*(log(numer)-log(nnc*ns+dn*cg)-log(nnc*ng+dn*cs))})})) -
