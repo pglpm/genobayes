@@ -30,9 +30,9 @@ plotsdir <- './'
 ## The script calculates the mutual information as in the genobayes.pdf notes, by calculating the frequencies for the combined variate and for the two variates separately in the data. Here we do this simply by counting. We choose a subset of genetic variations to check for calculation speed
 
 ## load all data
-dpath = "./"
-fs = dir(path = dpath,pattern = "dataset1")
-d <- read.csv(paste0(dpath,fs[1]),sep=";")
+dpath  <-  "./"
+nfile  <-  dir(path = dpath,pattern = "datatest2")
+d <- read.csv(paste0(dpath,nfile[1]),sep=";")
 
 ## this function takes the ID of the genes we want to check, between 1 and 95, and returns the mutual info, its max value, and its normalized value
 calculatemutualinfo <- function(whichgenes){
@@ -46,9 +46,9 @@ calculatemutualinfo <- function(whichgenes){
        ,c(6,7+genes)]
     #print(dim(data))
     l <- length(data[1,])
-    n <- 0 #length(data[,1])
+    n <- length(data[,1])
     nn <- 5.3e6L
-    cs <- 8
+    cs <- max(data[,1])
     cg <- 2^ngenes
     cx <- cs*cg
 
@@ -70,29 +70,29 @@ calculatemutualinfo <- function(whichgenes){
     cgminus <- cg-dim(fg)[1]
 
     
-    minfo <- log(ncnn) + sum(apply(fs,1,function(sig){
-        apply(fg,1,function(gam){
-            ## marginal freqs
-            ns <- 0*sig[2]
-            ng <- 0*gam[ngenes+1]
-            ## frequency of pair
-            nx <- 0*sum(apply(fx,1,function(i){all(i[1:(ngenes+1)]==c(sig[1],gam[1:ngenes]))*i[ngenes+2]}))
-            numer <- nnc*nx+dn
+    ## minfo <- log(ncnn) + sum(apply(fs,1,function(sig){
+    ##     apply(fg,1,function(gam){
+    ##         ## marginal freqs
+    ##         ns <- sig[2]
+    ##         ng <- gam[ngenes+1]
+    ##         ## frequency of pair
+    ##         nx <- sum(apply(fx,1,function(i){all(i[1:(ngenes+1)]==c(sig[1],gam[1:ngenes]))*i[ngenes+2]}))
+    ##         numer <- nnc*nx+dn
             
-            numer/ncnn*(log(numer)-log(nnc*ns+dn*cg)-log(nnc*ng+dn*cs))})})) -
-        cgminus*dn/ncnn*sum(log(cs*(nnc*0*fs[,2]+dn*cg)))
+    ##         numer/ncnn*(log(numer)-log(nnc*ns+dn*cg)-log(nnc*ng+dn*cs))})})) -
+    ##     cgminus*dn/ncnn*sum(log(cs*(nnc*fs[,2]+dn*cg)))
 
         minfo2 <- log(ncnn) + sum(apply(fs,1,function(sig){
         apply(fg,1,function(gam){
             ## marginal freqs
-            ns <- 0*sig[2]
-            ng <- 0*gam[ngenes+1]
+            ns <- sig[2]
+            ng <- gam[ngenes+1]
             ## frequency of pair
-            nx <- 0*sum(apply(fx,1,function(i){all(i[1:(ngenes+1)]==c(sig[1],gam[1:ngenes]))*i[ngenes+2]}))
+            nx <- sum(apply(fx,1,function(i){all(i[1:(ngenes+1)]==c(sig[1],gam[1:ngenes]))*i[ngenes+2]}))
             numer <- nnc*nx+dn
             
             numer/ncnn*log(numer/((nnc*ns+dn*cg)*(nnc*ng+dn*cs)))})})) -
-        cgminus*dn/ncnn*sum(log(cs*(nnc*0*fs[,2]+dn*cg)))
+        cgminus*dn/ncnn*sum(log(cs*(nnc*fs[,2]+dn*cg)))
 
     
     
