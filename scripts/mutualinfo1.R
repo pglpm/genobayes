@@ -36,7 +36,7 @@ d <- read.csv(paste0(dpath,fs[1]),sep=";")
 
 ## insomnia symptoms = col 6
 ## gene data = cols 8:102
-genes <- 1:10
+genes <- 1:3
 ngenes <- length(genes)
 data <- d[,c(6,7+genes)]
 l <- length(data[1,])
@@ -60,6 +60,7 @@ fg <- data.matrix(tally(group_by_at(data,.vars=c(genes+1))))
 fx <- data.matrix(tally(group_by_at(data,.vars=c(1,genes+1))))
 
 notc <- cx-dim(fx)[1]
+outc <- cg-dim(fg)[1]
 
 
 a <- log(ncnn) + sum(apply(fx,1,function(i){
@@ -73,4 +74,9 @@ a <- log(ncnn) + sum(apply(fx,1,function(i){
 
     numer/ncnn*(log(numer)-log(nnc*ns+dn*cg)-log(nnc*ng+dn*cs))
 })) +
-    notc*dn/ncnn*log(dn)
+    notc*dn/ncnn*(
+        log(dn) +
+        sum(log(nnc*fs[,2]+dn*cg)) +
+        sum(log(nnc*fg[,ngenes+1]+dn*cs)) +
+        outc*log(dn*cs))
+        
