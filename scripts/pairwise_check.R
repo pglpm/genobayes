@@ -9,4 +9,5 @@ res <- do.call(cbind,sapply(1:93,function(i){    setTxtProgressBar(pb, i)
     })}))
 close(pb)
 
+
 saveRDS(res,'results_pairs.rds')
