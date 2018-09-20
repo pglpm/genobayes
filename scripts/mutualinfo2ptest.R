@@ -33,6 +33,7 @@ plotsdir <- './'
 ## this function takes the ID of the genes we want to check, between 1 and 95, and returns the mutual info, its max value, and its normalized value
 calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',nn=5.3e6L){
 
+    if(any(whichgenes<1) | any(whichgenes>94)){print('Error: allowed genes within [1,94]')}
     ## load all data
     dpath  <-  "./"
     nfile  <-  dir(path = dpath,pattern = datafile)
