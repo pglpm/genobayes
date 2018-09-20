@@ -31,7 +31,7 @@ plotsdir <- './'
 
 
 ## this function takes the ID of the genes we want to check, between 1 and 95, and returns the mutual info, its max value, and its normalized value
-calculatemutualinfo <- function(whichgenes,datafile='dataset1',nn=5.3e6L){
+calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',nn=5.3e6L){
 
     ## load all data
     dpath  <-  "./"
@@ -96,9 +96,13 @@ calculatemutualinfo <- function(whichgenes,datafile='dataset1',nn=5.3e6L){
         ##     numer/ncnn*log(numer/((nnc*ns+dn*cg)*(nnc*ng+dn*cs)))})})) -
         ## cgminus*dn/ncnn*sum(log(cs*(nnc*fs[,2]+dn*cg)))
 
-    
-        minfo <- sum(apply(fs,1,function(sig){
-        apply(fg,1,function(gam){
+    cl <- makeCluster(cores)
+    registerDoParallel(cl)
+    minfo <- sum(apply(fs,1,function(sig){
+        foreach(i=1:(cg-cgminus), .combine=cbind,
+                .export=c('fg','fx','sig','ngenes','ncnn','nnc','dn','cg','cs')
+                ) %dopar% {
+            gam <- fg[i,]
             ## marginal freqs
             ns <- sig[2]
             ng <- gam[ngenes+1]
@@ -109,10 +113,9 @@ calculatemutualinfo <- function(whichgenes,datafile='dataset1',nn=5.3e6L){
             probs <- (nnc*ns+dn*cg)
             probg <- (nnc*ng+dn*cs)
 
-            probx/ncnn*log(probx*ncnn/(probs*probg))
-            })})) -
+            probx/ncnn*log(probx*ncnn/(probs*probg))}})) -
         cgminus*sum(dn/ncnn*log((nnc*fs[,2]+dn*cg)*cs/ncnn))
-
+stopCluster(cl)
     
     
     sentropy <- -sum(apply(fs,1,function(sig){
