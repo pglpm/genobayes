@@ -18,7 +18,7 @@
 # Specify the number of tasks (processes)
 #SBATCH --ntasks 1
 # Our job is multithreaded, so we ask 4 CPUs per process
-#SBATCH --cpus-per-task=21
+#SBATCH --cpus-per-task=31
 # So, in total we will have 4x8 CPUs for us
 ## module load nest/2.10.0
 ##################################################################
