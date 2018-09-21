@@ -1,4 +1,4 @@
-source('mutualinfo2.R')
+source('mutualinfo2shuffle.R')
 
 npairs <- 94*93/2
 
@@ -8,5 +8,5 @@ res <- sapply(1:94,function(i){setTxtProgressBar(pb, i)
 close(pb)
 
 
-saveRDS(res,'results_single.rds')
-write.table(res,paste0('results_single.csv'),sep=',',row.names=F,col.names=F,na='Infinity') 
+saveRDS(res,'results_single_shuffle.rds')
+write.table(res,paste0('results_single_shuffle.csv'),sep=',',row.names=F,col.names=F,na='Infinity') 
