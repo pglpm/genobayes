@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-22T15:30:10+0200
+%% Last-Updated: 2018-09-22T18:01:20+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -232,7 +232,7 @@ british%
 % %
 % \DeclareMathSymbol{\Alpha}{\mathalpha}{egreekr}{"41}
 % \DeclareMathSymbol{\Beta}{\mathalpha}{egreekr}{"42}
-% \DeclareMathSymbol{\Gamma}{\mathalpha}{egreekr}{"00}
+ \DeclareMathSymbol{\Gamma}{\mathalpha}{egreekr}{"00}
 % \DeclareMathSymbol{\Delta}{\mathalpha}{egreekr}{"01}
 % \DeclareMathSymbol{\Epsilon}{\mathalpha}{egreekr}{"45}
 % \DeclareMathSymbol{\Zeta}{\mathalpha}{egreekr}{"5A}
@@ -771,13 +771,14 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yF}{\bm{X}}
 \newcommand*{\yf}{\bm{x}}
 \newcommand*{\ye}{\bm{e}}
-\newcommand*{\yIc}{I_{0}}
 \newcommand*{\yCs}{C_{\sigma}}
 \newcommand*{\yCg}{C_{\gamma}}
+\newcommand*{\yIc}{I_{\yCs}}
 \newcommand*{\yCgd}{\yCg^{+}}
 \newcommand*{\yCgn}{\yCg^{-}}
 \newcommand*{\yCd}{C^{+}}
 \newcommand*{\yCn}{C^{-}}
+\newcommand*{\yIo}{I_{0}}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \firmlists
@@ -1457,7 +1458,55 @@ a prior probability distribution for the frequency distributions that is
 concentrated on the edges of the simplex.
 \fi
 
- \citep{ferguson1973,ferguson1974}
+\subsection{Second calculation: uniform marginals}
+\label{sec:2nd_calculation_unif_marginals}
+
+The initial state of knowledge $\yIc$ used in the previous section was
+denoted with \enquote{$\yCg$} because it depends on the number of gene
+variations we consider. Two different values $\yCg'$ and $\yCg''$
+correspond to two different states of knowledge,
+$\yI_{\yCg'} \ne \yI_{\yCg''}$, which yield different initial probabilities
+for the marginal frequency distribution of a single gene. For example, for
+very large $N$, if we consider a single gene, $\yCg=2$, the probability
+density for its marginal frequency $f$ is constant in $\di f$. If we
+consider an additional gene, $\yCg=4$, the probability density for the
+marginal frequency of the previous gene becomes $6 f\, (1-f)\,\di f$. If we
+consider an additional third gene, this probability density will be again
+different.
+
+The disadvantage of this approach is this: if we decide to consider
+additional genes we cannot compare our inference with the ones previously
+made, because they come from contradictory initial states of knowledge.
+It would be advantageous to consider an initial state of knowledge that
+doesn't lead to different marginal probability distributions for the
+frequencies when we want to consider an additional gene variation.
+
+One such a state of knowledge $\yIo$ exists (perhaps it isn't unique) and
+is characterized by a Dirichlet probability distribution for $\yF$ in the
+$N \to \infty$ limit:
+\begin{equation}
+  \label{eq:dirichlet_prior}
+  \pf(\yF \| \yIo)\,\di\yF = \frac{1}{\yprod\Gamma\bigl( \frac{2}{C} \bigr)}
+  \yprod \yF^{\frac{2}{C}-1}\,\delt(\ysum\yF-1)\, \di\yF
+\end{equation}
+This distribution has the property of leaving the probability distribution
+for the marginal frequencies of any number of gene variations invariant if
+we consider one more gene, thanks to the marginalization properties of the
+Dirichlet distribution \citep[\sect~2, p.~211]{ferguson1973}. It moreover
+assigns a uniform distribution to the frequency of each gene variation. It
+doesn't assign equal probabilities to the possible frequency distributions
+for the $\yCs\equiv 8$ symptom combinations, but rather
+\begin{multline}
+  \label{eq:dirichlet_prior_symptoms}
+  \pf(\yFs \| \yIo)\,\di\yFs = \frac{1}{\yprod\Gamma\bigl( \frac{2}{\yCs} \bigr)}
+  \yprod \yFs^{\frac{2}{\yCs}-1}\,\delt(\ysum\yFs-1)\,\di\yFs ={}\\
+  \frac{1}{8\Gamma\bigl( \frac{1}{4} \bigr)}
+  \yprod \yFs^{-3/4}\,\delt(\ysum\yFs-1)\,\di\yFs.
+\end{multline}
+Note, however, that the probability density for the frequency of controls
+vs cases is uniform.
+% \citep{ferguson1973,ferguson1974}
+
 
 \bigskip
 \hrule
