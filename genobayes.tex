@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-22T18:45:48+0200
+%% Last-Updated: 2018-09-23T00:16:24+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1472,14 +1472,20 @@ density for its marginal frequency $f$ is constant in $\di f$. If we
 consider an additional gene, $\yCg=4$, the probability density for the
 marginal frequency of the previous gene becomes $6 f\, (1-f)\,\di f$. If we
 consider an additional third gene, this probability density will be again
-different.
+different. As a consequence, if we decide to consider additional genes we cannot
+compare our inference with the ones previously made, because they come from
+contradictory initial states of knowledge.
 
-The disadvantage of this approach is this: if we decide to consider
-additional genes we cannot compare our inference with the ones previously
-made, because they come from contradictory initial states of knowledge.
+Another bothering feature of the state of knowledge $\yIc$ is that the
+marginal probability for the insomnia symptoms alone given the full set of
+data, \eqn~\eqref{eq:marginals_final_const_prior}, depends on the number of
+gene variations considered in the data. Likewise, the probability for the
+gene variations depend on the number of insomnia symptoms.
+
 It would be advantageous to consider an initial state of knowledge that
 doesn't lead to different marginal probability distributions for the
-frequencies when we want to consider an additional gene variation.
+frequencies when we want to consider an additional gene variation, and that
+doesn't present the counter-intuitive features above.
 
 One such a state of knowledge $\yIo$ exists (perhaps it isn't unique) and
 is characterized by a Dirichlet probability distribution for $\yF$ in the
@@ -1492,7 +1498,7 @@ $N \to \infty$ limit:
 This distribution has the property of leaving the probability distribution
 for the marginal frequencies of any number of gene variations invariant if
 we consider one more gene, thanks to the marginalization properties of the
-Dirichlet distribution \citep[\sect~2, p.~211]{ferguson1973}. It moreover
+Dirichlet distribution \citep[\sect~2 p.~211]{ferguson1973}. It moreover
 assigns a uniform distribution to the frequency of each gene variation. It
 doesn't assign equal probabilities to the possible frequency distributions
 for the $\yCs\equiv 8$ symptom combinations, but rather
@@ -1515,6 +1521,15 @@ gene variations), the possible frequencies lie on the faces of the
 $(C-1)$-dimensional simplex; but the density~\eqref{eq:dirichlet_prior} is
 concentrated in regions at the boundary of the simplex, and thus the
 approximation may still be reasonable.
+
+
+
+Result:
+\begin{equation}
+    \label{eq:joint_prob_new_ind_full_dirichlet_prior_final}
+  \pf(\yso, \ygo \| \yf, n \yIo)  =
+\frac{n x_{\yso, \ygo}+2/C}{n+2}
+\end{equation}
 
 
 \bigskip
