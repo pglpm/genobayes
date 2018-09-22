@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-21T12:21:56+0200
+%% Last-Updated: 2018-09-22T15:30:10+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1308,8 +1308,21 @@ $\yF$ \citep[\sect~2.1]{csiszaretal2004b}; hence
   \label{eq:constant_prior}
   \pf(\yF \| N,\yIc) = \binom{N+C-1}{C-1}^{-1}.
 \end{equation}
-With this constant value, \eqn~\eqref{eq:joint_prob_new_ind_full}
-simplifies to
+This yields a constant  initial probability distribution for $(\yso,\ygo)$:
+\begin{multline}
+  \label{eq:joint_prob_initial_F_unknown}
+  \pf\bigl(\yso, \ygo \| N,\yIc\bigr)  =
+  \sum_{\yF}  \pf\bigl(\yso, \ygo \| \yF,N, \yIc\bigr) \;
+  \pf( \yF \| N, \yIc) ={}\\
+  \sum_{\yF}  X_{\yso, \ygo} \binom{N+C-1}{C-1}^{-1}
+  = 1/C,
+\end{multline}
+because the last sum is a convex combination, with equal weights, of all
+points in a simplex of dimension $C-1$, giving its centre of mass
+$(1/C, 1/C, \dotso)$.
+
+With the initial knowledge $\yIc$,
+\eqn~\eqref{eq:joint_prob_new_ind_full} simplifies to
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_simplified}
   \pf\bigl(\yso, \ygo \| \yf, n,N, \yIc\bigr)  =
@@ -1346,8 +1359,22 @@ Simplifying we finally find
   \pf\bigl(\yso, \ygo \| \yf, n,N, \yIc\bigr)  =
 \frac{(N+C) n x_{\yso, \ygo}+N-n}{N\,(n+C)}
 \end{equation}
+This expression can be interpreted as a weighted sum of the observed
+frequency $x_{\yso,\ygo}$ in the data and the initial probability $1/C$,
+\eqn~\eqref{eq:joint_prob_initial_F_unknown}:
+\begin{equation}
+    \label{eq:joint_prob_new_ind_full_const_prior_final_reinterpret}
+  \pf\bigl(\yso, \ygo \| \yf, n,N, \yIc\bigr)  \propto
+x_{\yso, \ygo}+ \frac{N-n}{n}\frac{C}{N+C}\,\frac{1}{C},
+\end{equation}
+the ratio of the second to the first weight being
+$(N-n)/n\times C/(N+C)$\mynote{Luca: I don't find this intuitively
+  satisfying, though I don't know why. It'd be good to try another initial
+  state of knowledge}. When $n=N$, that is, when we've sampled the full
+population, the second weight is zero and we're left with $x_{\yso,\ygo}$,
+as intuition demands.
 
-For large $C$ this is approximately
+\iffalse For large $C$ this is approximately
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_const_prior_final_approx_C}
     \pf\bigl(\yso, \ygo \| \yf, n,N, \yIc\bigr)  \approx
@@ -1360,6 +1387,7 @@ and for large $N$
     \pf\bigl(\yso, \ygo \| \yf, n,N, \yIc\bigr)  \approx
     \frac{n x_{\yso, \ygo} +1}{n + C}.
 \end{equation}
+\fi
 
 For the marginal distributions we obtain, by summation,
 \begin{gather}
