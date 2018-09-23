@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-23T13:57:12+0200
+%% Last-Updated: 2018-09-23T17:08:35+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1245,6 +1245,12 @@ inferences about two connected unknowns:
   \end{equation}
 \end{enumerate}
 
+
+
+% In the rest of this section we'll denote $\ysi{0}$, $\ygi{0}$ simply by
+% $\yso$, $\ygo$ for brevity.
+
+
 These two kinds of degree of belief are mathematically connected: If we
 knew the joint frequency distribution $\yF$ in the full population, then
 our degree of belief that individual $0$ have variates $\bigl( \yso,\ygo
@@ -1269,56 +1275,72 @@ If $\yF$ is unknown, then by the theorem of total \dob\ we have
   \pf( \yF \| \yD, \yI) \equiv{}\\
   \sum_{\yF}  X_{\yso, \ygo}\,  \pf( \yF \| \yD, \yI),
 \end{multline}
-and analogous equations hold for the marginal frequency distributions $\yFs$,
-$\yFg$ and the variates $\yso$, $\ygo$.
+which says that our \dob\ in the individual's variates equals our
+expectation of the frequency of those variates.
 Formula~\eqref{eq:joint_prob_new_ind_F_unknown} thus connects the degrees
-of belief~\eqref{eq:goal_plausibilities} and \eqref{eq:goal_ind_plausibilities}.
+of belief~\eqref{eq:goal_plausibilities} and
+\eqref{eq:goal_ind_plausibilities}. Analogous equations hold for the
+marginal frequency distributions $\yFs$, $\yFg$ and the variates $\yso$,
+$\ygo$.
 
 
-The $\yCg$ possible gene variations are much more numerous than the data
-$n$; not all of them can therefore appear in the data, that is, have
-frequencies $g_\ygi{0}>0$. Denote by $\yCgd$ the number of distinct
+If the number of alleles considered $\gn>20$, the $C$ possible joint
+variate values are much more numerous than the data $n$; not all of them
+can therefore appear in the data, that is, have frequencies $g_{\yg}>0$ and
+consequently $x_{\ys,\yg}>0$. Denote by $\yCgd$ the number of distinct
 variations present in the data, and by $\yCgn$ the number of those not
 present. Let $\yCd$ and $\yCn$ have the same meaning regarding the joint
 variate $\bigl( \ysi{0}, \ygi{0} \bigr)$. Obviously $\yCg = \yCgd+\yCgn$,
 $C=\yCd+\yCn$, and $\yCd \le \yCgd$.
 
-We assess the mutual relevance of insomnia symptoms and genetic data by
-considering our \dob\ in their joint values for an individual \enquote{$0$}
-chosen at random from the full population, given our data:
-\begin{equation}
-  \label{eq:joint_prob_new_ind}
-  \pf\bigl(\ysi{0}, \ygi{0} \| \yD, \yI\bigr),
-\end{equation}
-and the marginal \dobs\
-\begin{equation}
-  \label{eq:marginals_new_ind}
-  \pf\bigl( \ygi{0} \| \yD, \yI\bigr),
-  \qquad
-    \pf\bigl(\ysi{0} \| \yD, \yI\bigr).
-\end{equation}
-From these we compute the mutual information \citep[in these called
+As explained in \sect~\ref{sec:what_question}, the relevance of our
+knowledge of an individual's genetic data for our \dob\ about his or her
+insomnia symptoms resides in the difference between the distributions
+$\pf\bigl(\yso\| \ygo, \yD, \yI\bigr)$ and
+$\pf\bigl(\yso \| \yD, \yI\bigr)$. This can be quantified as the difference
+in the corresponding entropy $\sH\bigl(\yso \| \yD,\yI\bigr)$
+and conditional entropy
+$\sH\bigl(\yso \| \ygo; \yD,\yI)$, which is the
+mutual information \citep[in these called
 \enquote{rate of
   transmission}]{shannon1948,kelly1956}[\sect~14.7]{pressetal1988_r2007}[\chap~2]{coveretal1991_r2006}:
 \begin{equation}
   \label{eq:mutual_info_new_ind}
-  \mI\bigl( \ysi{0} : \ygi{0} \| \yD,\yI \bigr) \defd
+  \begin{split}
+  \mI\bigl( \ysi{0} : \ygi{0} \| \yD,\yI \bigr) &\defd
+  \sH\bigl(\yso \| \yD,\yI\bigr) -
+  \sH\bigl(\yso \| \ygo; \yD,\yI)
+  \\
+  &\equiv
   \sum_{\mathclap{\ysi{0},\ygi{0}}} \pf\bigl(\ysi{0}, \ygi{0} \| \yD, \yI\bigr)
  \, \ln\frac{\pf(\ysi{0}, \ygi{0} \| \yD, \yI)}{
     \pf(\ysi{0} \| \yD, \yI)\;
     \pf(\ygi{0} \| \yD, \yI)}.
+\end{split}
 \end{equation}
-The mutual information vanishes if the symptoms and genetic variations are
-completely irrelevant to one another, and is equal to the least of the
-entropies of either marginal  distribution of \dobs\ if they are
-deterministically related. Thus, instead of asking whether they are
-\enquote{uncorrelated} or \enquote{correlated}, we're quantifying their
-mutual relevance.
+The second expression shows that the mutual information also measures the
+discrepancy between our \dob\ about the variates jointly and the product of
+our \dobs\ about them separately. The mutual information vanishes if the
+symptoms and genetic variations are completely irrelevant to one another,
+and is equal to the least of the entropies
+$\sH\bigl(\yso \| \yD,\yI\bigr)$, $\sH\bigl(\ygo \| \yD,\yI\bigr)$ if one
+variate gives us complete certainty about the other.
 
-% In the rest of this section we'll denote $\ysi{0}$, $\ygi{0}$ simply by
-% $\yso$, $\ygo$ for brevity.
 
-\medskip
+The mutual information depends on the knowledge on which our \dob\ is
+based, in this case the data and initial knowledge $\yD\yI$. We'll
+obviously consider initial states of knowledge such that
+\begin{equation}
+\mI\bigl( \ysi{0} : \ygi{0} \| \yI \bigr) =0,
+\end{equation}
+that is, we assume no a priori relevance of one variate upon the other.
+This kind of initial information $\yI$ can still strongly emphasize or
+de-emphasize the effect of the data on our knowledge when the latter are
+few compared to the range of the variates.
+
+
+
+
 
 Our first step is to calculate the joint
 distribution~\eqref{eq:joint_prob_new_ind}. It can be calculated if we know
