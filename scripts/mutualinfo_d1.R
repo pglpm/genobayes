@@ -95,7 +95,7 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',messages
     cl <- makeCluster(cores)
     registerDoParallel(cl)
     minfo <- sum(apply(fs,1,function(sig){
-        print(sig[1])
+if(messages==TRUE){print(sig[1])}
         foreach(i=1:(cg-cgminus), .combine=cbind,
                 .export=c('fg','fx','sig','ngenes','cg','cs','cx','n','n2')
                 ) %dopar% {
