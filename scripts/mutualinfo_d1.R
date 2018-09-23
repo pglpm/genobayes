@@ -31,7 +31,7 @@ plotsdir <- './'
 
 
 ## this function takes the ID of the genes we want to check, between 1 and 95, and returns the mutual info, its max value, and its normalized value
-calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1'){
+calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',messages=TRUE){
 
     if(any(whichgenes<1) | any(whichgenes>94)){print('Error: allowed genes within [1,94]')}
     ## load all data
@@ -118,10 +118,10 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1'){
     sentropy <- -sum(apply(fs,1,function(sig){
         prob <- (sig[2]+2/cs)/n2
         prob*log(prob)}))
-
+if(messages==TRUE){
     print(paste0('max value = ',sentropy))
     print(paste0('mutual information = ',minfo))
-    print(paste0('normalized value = ',minfo/sentropy))
+    print(paste0('normalized value = ',minfo/sentropy))}
     c(minfo,sentropy)}
 
 ## with genes 6, 9, 21, 31, 32, 34, 46, 53, 57, 58, 59, 61, 64, 66, 68, 69, 72, 88, 89, 90 : info =  1.60235058302968 (92%)

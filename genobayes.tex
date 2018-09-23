@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-23T17:08:35+0200
+%% Last-Updated: 2018-09-23T17:17:33+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1322,9 +1322,11 @@ The second expression shows that the mutual information also measures the
 discrepancy between our \dob\ about the variates jointly and the product of
 our \dobs\ about them separately. The mutual information vanishes if the
 symptoms and genetic variations are completely irrelevant to one another,
-and is equal to the least of the entropies
-$\sH\bigl(\yso \| \yD,\yI\bigr)$, $\sH\bigl(\ygo \| \yD,\yI\bigr)$ if one
-variate gives us complete certainty about the other.
+and is equal to the entropy $\sH\bigl(\yso \|
+\yD,\yI\bigr)$ %, $\sH\bigl(\ygo \| \yD,\yI\bigr)$
+if knowledge of the gene variate gives us complete certainty about the
+insomnia symptoms, since $\sH\bigl(\yso \| \ygo; \yD,\yI)$ vanishes in this
+case.
 
 
 The mutual information depends on the knowledge on which our \dob\ is
