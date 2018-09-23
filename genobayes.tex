@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-23T00:16:24+0200
+%% Last-Updated: 2018-09-23T13:57:12+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -741,6 +741,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\widebar}[1]{{\mkern1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
 
 %\DeclareMathOperator*{\argsup}{arg\,sup}
+\newcommand*{\dob}{degree of belief}
+\newcommand*{\dobs}{degrees of belief}
 \newcommand*{\yD}{D}
 \newcommand*{\yG}{G}
 \newcommand*{\yS}{S}
@@ -757,10 +759,11 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yprod}{\tprod}
 \newcommand*{\ys}{\sigma}
 \newcommand*{\yg}{\gamma}
+\newcommand*{\gn}{l}
 \newcommand*{\ysi}[1]{\ys^{(#1)}}
 \newcommand*{\ygi}[1]{\yg^{(#1)}}
-\newcommand*{\yso}{\ys}
-\newcommand*{\ygo}{\yg}
+\newcommand*{\yso}{\ysi{0}}
+\newcommand*{\ygo}{\ygi{0}}
 \newcommand*{\yFs}{\bm{S}}
 \newcommand*{\yfs}{\bm{s}}
 \newcommand*{\yFg}{\bm{G}}
@@ -828,25 +831,25 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 
 
 
-\subsection{Preliminary remarks about Bayesian probability theory}
+\subsection{Preliminary remarks about Bayesian  theory}
 \label{sec:prelim_remarks}
 
-Bayesian probability theory is not just a set of new, better recipes meant
+Bayesian  theory is not just a set of new, better recipes meant
 to replace old ones. It also requires a different -- and simpler -- mindset
 about problems of inference. Three points are especially important:
 
-1. The only purpose of Bayesian theory is to give the probability of some
+1. The only purpose of Bayesian theory is to give the \dob\ in some
 statements -- more exactly, \enquote{propositions}
 \citep{copietal1953_r2014,barwiseetal1999_r2003} -- given other statements
 that may concern data, facts, hypotheses. For example, Bayesian theory can
-tell us that hypothesis $A$ has probability $x$ given some data $C$ and
-initial information $I$, while hypothesis $B$ has probability $y$ given the
-same conditions:
+tell us that we have a \dob\ $x$ in hypothesis $A$, given some data $C$ and
+initial information $I$, and a \dob\ $y$ in hypothesis $B$ given the same
+conditions:
 \begin{equation*}
   \p(A \| C, I ) = x, \qquad   \p(B \| C, I ) = y.
 \end{equation*}
-That's all there is to it. We can then use these probabilities as we like;
-in particular, we can use them within decision theory to choose courses of
+That's all there is to it. We can then use these \dobs\ as we like; in
+particular, we can use them within decision theory to choose courses of
 action \citep{raiffaetal1961_r2000,prattetal1995_r1996,soxetal1988_r2013}.
 But notions like \enquote{statistical significance}, \enquote{acceptance
   level}, \enquote{confidence}, and similar are foreign to Bayesian theory;
@@ -855,7 +858,7 @@ or at best they're just secondary notions.
 \medskip
 
 2. Bayesian theory is an extension of formal logic, the truth calculus. In
-fact we'll call it \emph{probability calculus} from now on.
+fact we'll call it \emph{plausibility calculus} from now on.
 
 In formal logic, to prove a theorem we need some axioms to start from.
 These may partly include experimental facts or data, but they always also
@@ -886,10 +889,10 @@ this conjectural element \citep[see for example][]{harding1976}.
   \citey{medawar1963}: \enquote{the starting point of induction, naive
     observation, innocent observation, is a mere philosophic fiction. There
     is no such thing as unprejudiced observation} Jeffreys [quote][ref].}
-Likewise, in the probability calculus we need to specify initial
-probabilities. These may originate in data, but they always also include
-additional assumptions. The motto \enquote{let the data speak for
-  themselves} is simply impossible.
+Likewise, in the plausibility calculus we need to specify initial \dobs.
+These may originate in data, but they always also include additional
+assumptions. The motto \enquote{let the data speak for themselves} is
+simply impossible.
 
 The difference between Bayesian methods and traditional methods is
 \emph{not} that the former need additional assumptions while the latter
@@ -899,10 +902,10 @@ results can be obtained as special cases of Bayesian ones.
 
 \medskip
 
-3. Conditional probabilities like $P(A \| B)$ do not express a causal
-connection between $A$ and $B$, but an \emph{informational} connection. In
-that conditional probability, $A$ could be the cause of $B$, or $B$ of $A$,
-or neither could be the cause of the other. The classical example of this is
+3. Conditional \dobs\ like $P(A \| B)$ do not express a causal connection
+between $A$ and $B$, but an \emph{informational} connection. In that
+conditional \dob, $A$ could be the cause of $B$, or $B$ of $A$, or neither
+could be the cause of the other. The classical example of this is
 \begin{equation}
   \label{eq:rain_clouds}
   \p(\text{\small clouds in the sky} \| \text{\small rain on the pavement}, I) > 0.5,
@@ -941,11 +944,11 @@ quantity is to make inferences about the other quantity.\mynote{check
 \emph{informationally} relevant when the knowledge of its value leads us to
 have a different degree of belief regarding the value of the other, for
 example $\yS$, compared to when we don't know its value. In other words,
-the probabilities $\p(\yS \| \yG \,\yD \yI)$ and $\p(\yS \| \yD \yI)$ are
-numerically different. If these two probabilities are approximately equal
+the \dobs\ $\p(\yS \| \yG \,\yD \yI)$ and $\p(\yS \| \yD \yI)$ are
+numerically different. If these two \dobs\ are approximately equal
 then the particular genetic variation $\yG$ are \emph{ir}relevant for our
 prediction of the insomnia symptom $\yS$. The same conclusion holds with
-$\yG$ and $\yS$ exchanged: the probability calculus says that
+$\yG$ and $\yS$ exchanged: the plausibility calculus says that
 \begin{equation}
   \label{eq:exchange_irrelevance}
   \p(\yS \| \yG \,\yD \yI) = \p(\yS \| \yD \yI)
@@ -981,13 +984,12 @@ variations and insomnia symptoms, we can conclude from biologic reasons
 that those variations must have a direct or indirect influence on the
 symptoms, for example they may give susceptibility to insomnia.
 
-There are three main ways to calculate the conditional probabilities of
-above: By calculating first $\p(\yS\yG \|\yD\yI)$,
-or $\p(\yS \|\yG\,\yD\yI)$, or $\p(\yG \|\yS\,\yD\yI)$. Also, we can
-consider all possible combinations of genetic variations from the outset,
-or consider combination of few variations, gradually increasing the
-numbers. We shall try all these approaches and see whether their results
-are mutually consistent.
+There are three main ways to calculate the conditional \dobs: By
+calculating first $\p(\yS\yG \|\yD\yI)$, or $\p(\yS \|\yG\,\yD\yI)$, or
+$\p(\yG \|\yS\,\yD\yI)$. Also, we can consider all possible combinations of
+genetic variations from the outset, or consider combination of few
+variations, gradually increasing the numbers. We shall try all these
+approaches and see whether their results are mutually consistent.
 
 
 \subsection{Why exchangeability}
@@ -995,16 +997,16 @@ are mutually consistent.
 
 
 
-The sentence \enquote{the probability for an insomnia symptom given a
-  genetic variation} is vague. What we mean is our guess that a given
-individual with that variation presents that symptom. Our guess about a
-particular individuals in the full population is updated from our knowledge
-about individuals we have sampled. Our guess about a new individual is
-affected by the sample data only insofar we believe those data to be
-representative for that individual.
+The sentence \enquote{the \dob\ in an insomnia symptom given a genetic
+  variation} is vague. What we mean is our guess that a given individual
+with that variation presents that symptom. Our guess about a particular
+individuals in the full population is updated from our knowledge about
+individuals we have sampled. Our guess about a new individual is affected
+by the sample data only insofar we believe those data to be representative
+for that individual.
 
 The notion of exchangeability expresses this representativeness in
-probabilistic terms, as explained at length by de~Finetti
+ terms of \dobs, as explained at length by de~Finetti
 \citey{definetti1931,definetti1937,definetti1938}. Denote by $\ySi{i}_s$
 the statement that individual $i$ has symptom $\yS_s$, and likewise with
 $\yGi{i}_g$ for the combination of genetic variations $g$. The fact that we
@@ -1040,11 +1042,11 @@ exchangeability; letting this number increase indefinitely we reach
 
 Assuming exchangeability for each group of individuals sharing the same
 genetic variation, the mathematical relations above generalize as follows.
-Our probability assignment is the same if we exchange symptom labels
-among individuals \emph{having the same genetic variation}; but it may be
-different if we exchange symptom labels among individuals with different
-genetic variations. The exact mathematical expression may look complicated;
-a concrete example is
+Our \dob\ is the same if we exchange symptom labels among individuals
+\emph{having the same genetic variation}; but it may be different if we
+exchange symptom labels among individuals with different genetic
+variations. The exact mathematical expression may look complicated; a
+concrete example is
 \begin{multline}
   \label{eq:example_partial_exch}
   \p(\ySi{1}_{\text{a}}\, \ySi{2}_{\text{c}}\, \ySi{3}_{\text{d}}\,
@@ -1059,7 +1061,7 @@ a concrete example is
   \yGi{4}_{\gammaup}\, \yGi{5}_{\alphaup}\, \yGi{6}_{\gammaup}\,\dotso
   \;\yI)
 \end{multline}
-where the probability remains the same as we exchange symptoms $\text{a}$
+where our \dob\ remains the same as we exchange symptoms $\text{a}$
 and $\text{b}$ between individuals $1$ and $5$, both having genetic
 variation $\alphaup$; symptoms $\text{c}$ and $\text{d}$ between
 individuals $2$ and $3$, both having genetic variation $\betaup$; symptoms
@@ -1072,15 +1074,15 @@ sampling theory see][]{sugden1982,sugden1993}.
 
 Note that the property exemplified by \eqn~\eqref{eq:example_partial_exch}
 is more general than just separately stating exchangeability for the
-probability distributions for the individuals sharing the same genetic
+distributions of \dobs\ in the individuals' sharing the same genetic
 variations. Property~\eqref{eq:example_partial_exch} allows data about
 individuals with a genetic variation to be \emph{relevant} for prediction
 of data about individuals with \emph{another} genetic variation, as we'll
 see shortly.
 
 
-\mynote{add: de Finetti's representation theorem for probability
-  distributions with the property above}
+\mynote{add: de Finetti's representation theorem for distributions of
+  \dobs\ with the property above}
 
 \subsection{Selection of variables and robustness}
 \label{sec:variable_selection_robustness}
@@ -1097,16 +1099,16 @@ or of the combination of any number of variations, say
   \label{eq:example_relevance_manyvariations}
   \p(\yS \|\yGv_1 \lnot\yGv_2 \lnot\yGv_3 \yGv_4 \,\yD \yI).
 \end{equation}
-The probability calculus allows us to assign all these probabilities for
-any amount of data $\yD$ -- since they represent beliefs. If the number of
-combinations is high compared with the number of data, however, these
-probabilities will usually change noticeably when updated with new data; we
-can say that they are less \enquote{robust} to the acquisition of new data.
-This robustness can be quantified in various ways to be discussed later.
+The plausibility calculus allows us to assign all these \dobs\ for any
+amount of data $\yD$ -- since they represent beliefs. If the number of
+combinations is high compared with the number of data, however, our \dobs\
+will usually change noticeably when updated with new data; we can say that
+they are less \enquote{robust} to the acquisition of new data. This
+robustness can be quantified in various ways to be discussed later.
 
 From this point of view it makes sense to first consider each genetic
 variation individually and then larger and larger combinations of
-variations, as long as we see that our probabilities conditional on data
+variations, as long as we see that our \dobs\ conditional on data
 $\yD$ are robust.
 
 
@@ -1114,7 +1116,7 @@ $\yD$ are robust.
   to our problem! Also Broad \citey{broad1918}}
 
 \mynote{See Jeffreys \citey[\sect~3.1, p.~124]{jeffreys1939_r1983} on the
-  probability to be given to the ratio values $\set{0,1}$: \enquote{In
+  \dob\ to be given to the ratio values $\set{0,1}$: \enquote{In
     genetics the suggested values are usually intermediate, such as 1/2,
     1/4, and 3/8}. Also, \enquote{we cannot give a universal rule for them
     beyond the common-sense one, that if anybody does not know what his
@@ -1124,7 +1126,7 @@ $\yD$ are robust.
 
 
 
-\section{First approach: joint probability and mutual information}
+\section{First approach: joint \dob\ and mutual information}
 \label{sec:joint_prob}
 
 \subsection{Notation}\label{sec:notation}
@@ -1173,24 +1175,105 @@ approach. We'll see later if these calculations are practically feasible.
 
 Denote by $N$ the amount of Norwegian or European population, roughly equal
 to $5.3 \times 10^6$ or $740 \times 10^6$. Our initial information $\yI$
-says that each individual is characterized by an insomnia parameter
-$\ys \in \set{1,\dotsc,8}$ with $\yCs\defd 8$ possible values, and by a
-combination of $94$ gene allele pairs, denoted by
-$\yg \defd (g_1,\dotsc,g_{94})\in \set{0,1}^{94}$, with $\yCg \defd 2^{94}$
-possible values. The combined variate $\yv \defd (\ys,\yg)$ can thus assume
-$C\defd \yCs\times\yCg \approx 1.6 \times 10^{29}$ possible values.
+says that each individual is characterized by two groups of quantities or
+variates:
+\begin{enumerate}
+\item An insomnia variate $\ys \defd (\ys_1,\ys_2,\ys_3)\in \set{0,1}^3$
+  with $\yCs\defd 8$ possible values. This variate consists of three
+  binary variates representing the presence or absence of three insomnia
+  symptoms. An individual with no insomnia symptoms (\enquote{control}) has
+  therefore $\ys=(0,0,0)$. When convenient we shall use a binary-digit
+  notation like $\ys=2\equiv (0,1,0)$ or $\ys=5\equiv(1,0,1)$.
+\item A genetic variate
+  $\yg \defd (\yg_1,\dotsc,\yg_{\gn})\in \set{0,1}^{\gn}$ with
+  $\yCg \defd 2^{\gn}$ possible values. This variate consists of $\gn$
+  binary variates, each representing the presence of either of two variants
+  of a particular gene allele. We have data for $\gn=94$ allele pairs, but
+  we'll often consider a smaller subset of pairs. When convenient we shall
+  use a binary-digit notation also for this variate.
+\end{enumerate}
+The combined variate $\yv \defd (\ys,\yg)$ can thus assume
+$C\defd \yCs\times\yCg \approx 1.6 \times 10^{29}$ possible values at most,
+depending on how many gene alleles we consider.
 
-We have data $\yD$ consisting in the values of the variate for a sample of
-$n\defd 6029$ individuals: $\yvi{i} \defd \bigl( \ysi{i}, \ygi{i} \bigr)$,
-$i \in \set{1,\dotsc,n}$.
+We have data $\yD$ consisting of the values of these variates for a sample
+of $n\defd 6029$ individuals. The values for individual $i$ are denoted
+$\yvi{i} \defd \bigl( \ysi{i}, \ygi{i} \bigr)$, $i \in \set{1,\dotsc,n}$.
 
-Denote the relative frequency for $\ys$ in the full population by $\yFs$,
-that for $\yg$ by $\yFg$, and their joint frequency distribution by $\yF$.
-Note that $\ysum\yF=1$ and so on for the other frequency distributions, and
-that $S_{\ys}=\sum_{\yg}X_{\ys,\yg}$ and
-$G_{\yg}=\sum_{\ys}X_{\ys,\yg}$. Denote the corresponding
-relative-frequency distributions in the sampled population by $\yfs$,
-$\yfg$, and $\yf$; analogous equalities hold for them.
+Denote the relative frequency of the insomnia-variate value $\ys$ in our
+data by $s_{\ys}$, and the frequency distribution of all values by
+$\yfs\defd(s_0,\dotsc,s_7)$. The frequency distribution is normalized,
+$\ysum\yfs=1$. The relative frequency for the gene-variate value $\yg$ is
+denoted $g_{\yg}$, and the frequency distribution
+$\yfg \defd (g_0,\dotsc,g_{2^{\gn}})$. The relative frequency for the joint
+variate value $(\ys,\yg)$ is $x_{\ys,\yg}$, and the frequency distribution
+$\yf \defd (x_{0,0},\dotsc, x_{7,2^{\gn}})$. By marginalization we must
+have $\sum_{\yg} x_{\ys,\yg} = s_{\ys}$ and
+$\sum_{\ys} x_{\ys,\yg} = g_{\yg}$. We can also consider the relative
+frequency of a particular gene allele, say the $j$th one; we'll denote it
+by $g_{\yg_j}$.
+
+\medskip
+
+From our data $\yD$ and from some initial knowledge $\yI$ we want to make
+inferences about two connected unknowns:
+\begin{enumerate}[label=(\alph*)]
+\item the frequency distributions of insomnia symptoms, of gene variations,
+  and of both jointly in the full population of $N$ individuals. In other
+  words, we must guess what these frequency distributions are, and
+  therefore quantify our \dobs\ in their
+  possible values. Let's denote these frequency distributions with the same
+  symbols as for our data, but with capital letters: $\yFs$ is the
+  frequency distribution of insomnia symptoms, $\yFg$ of gene variations,
+  and $\yF$ the joint distribution of both. In formulae we want to assign
+  values to
+  \begin{equation}
+    \label{eq:goal_plausibilities}
+    \pf(\yF \| \yD,\yI),\qquad
+    \pf(\yFs \| \yD,\yI),\qquad
+    \pf(\yFg \| \yD,\yI).
+  \end{equation}
+\item The symptoms and gene variations of an individual \enquote{$0$}
+  chosen at random from the full population. That is, we want to quantify
+  our degrees of belief in joint and separate possible values of these
+  variates for this individual:
+  \begin{equation}
+    \label{eq:goal_ind_plausibilities}
+    \pf\bigl( \ysi{0}, \ygi{0} \| \yD, \yI \bigr),\qquad
+    \pf\bigl( \ysi{0} \| \yD, \yI \bigr),\qquad
+    \pf\bigl(  \ygi{0} \| \yD, \yI \bigr).
+  \end{equation}
+\end{enumerate}
+
+These two kinds of degree of belief are mathematically connected: If we
+knew the joint frequency distribution $\yF$ in the full population, then
+our degree of belief that individual $0$ have variates $\bigl( \yso,\ygo
+\bigr)$ must be, by symmetry,
+\begin{equation}
+  \label{eq:joint_prob_new_ind_F_known}
+  \pf\bigl(\yso, \ygo \| \yF, \yI\bigr)  =
+  \pf\bigl(\yso, \ygo \| \yF, \yD, \yI\bigr)  =
+  X_{\yso, \ygo},
+\end{equation}
+which is a special case of a multivariate hypergeometric distribution --
+\enquote{drawing from an urn without replacement}\mynote{add refs}. The
+conditional in the \dob\ indicates that we know $\yF$ and $N$ besides
+our initial knowledge $\yI$, and the first equality says that the data
+$\yD$ would be irrelevant if we knew $\yF$.
+
+If $\yF$ is unknown, then by the theorem of total \dob\ we have
+\begin{multline}
+  \label{eq:joint_prob_new_ind_F_unknown}
+  \pf\bigl(\yso, \ygo \| \yD, \yI\bigr)  =
+  \sum_{\yF}  \pf\bigl(\yso, \ygo \| \yF, \yD, \yI\bigr) \;
+  \pf( \yF \| \yD, \yI) \equiv{}\\
+  \sum_{\yF}  X_{\yso, \ygo}\,  \pf( \yF \| \yD, \yI),
+\end{multline}
+and analogous equations hold for the marginal frequency distributions $\yFs$,
+$\yFg$ and the variates $\yso$, $\ygo$.
+Formula~\eqref{eq:joint_prob_new_ind_F_unknown} thus connects the degrees
+of belief~\eqref{eq:goal_plausibilities} and \eqref{eq:goal_ind_plausibilities}.
+
 
 The $\yCg$ possible gene variations are much more numerous than the data
 $n$; not all of them can therefore appear in the data, that is, have
@@ -1201,13 +1284,13 @@ variate $\bigl( \ysi{0}, \ygi{0} \bigr)$. Obviously $\yCg = \yCgd+\yCgn$,
 $C=\yCd+\yCn$, and $\yCd \le \yCgd$.
 
 We assess the mutual relevance of insomnia symptoms and genetic data by
-considering their joint probability for an individual \enquote{$0$} chosen
-at random from the full population, given our data:
+considering our \dob\ in their joint values for an individual \enquote{$0$}
+chosen at random from the full population, given our data:
 \begin{equation}
   \label{eq:joint_prob_new_ind}
   \pf\bigl(\ysi{0}, \ygi{0} \| \yD, \yI\bigr),
 \end{equation}
-and the marginal probabilities
+and the marginal \dobs\
 \begin{equation}
   \label{eq:marginals_new_ind}
   \pf\bigl( \ygi{0} \| \yD, \yI\bigr),
@@ -1227,39 +1310,25 @@ From these we compute the mutual information \citep[in these called
 \end{equation}
 The mutual information vanishes if the symptoms and genetic variations are
 completely irrelevant to one another, and is equal to the least of the
-entropies of either marginal probability distribution if they are
+entropies of either marginal  distribution of \dobs\ if they are
 deterministically related. Thus, instead of asking whether they are
 \enquote{uncorrelated} or \enquote{correlated}, we're quantifying their
 mutual relevance.
 
-In the rest of this section we'll denote $\ysi{0}$, $\ygi{0}$ simply by
-$\yso$, $\ygo$ for brevity.
+% In the rest of this section we'll denote $\ysi{0}$, $\ygi{0}$ simply by
+% $\yso$, $\ygo$ for brevity.
 
 \medskip
 
-Our first step is to calculate the joint probability
+Our first step is to calculate the joint
 distribution~\eqref{eq:joint_prob_new_ind}. It can be calculated if we know
 the joint relative-frequency distribution $\yF$ of the variates in the full
-population. The joint probability~\eqref{eq:joint_prob_new_ind} \emph{when
-  $\yF$ is known} is given as a special case of the multivariate
-hypergeometric distribution:
-\begin{equation}
-  \label{eq:joint_prob_new_ind_hyperg}
-  \pf\bigl(\yso, \ygo \| \yf, n,\yF,N, \yI\bigr) \equiv
-  \pf\bigl(\yso, \ygo \| \yF,N, \yI\bigr) 
-  =X_{\yso, \ygo}.
-\end{equation}
-If the frequency distribution $\yF$ isn't known, from the theorem of total
-probability we obtain
-\begin{multline}
-  \label{eq:joint_prob_new_ind_F_unknown}
-  \pf\bigl(\yso, \ygo \| \yf, n,N, \yI\bigr)  =
-  \sum_{\yF}  \pf\bigl(\yso, \ygo \| \yf, n,\yF,N, \yI\bigr) \;
-  \pf( \yF \| \yf, n,N, \yI) \equiv{}\\
-  \sum_{\yF}  X_{\yso, \ygo}\,  \pf( \yF \| \yf, n,N, \yI).
-\end{multline}
-We must therefore find the probability for $\yF$ given the data. It can
-be found using Bayes's theorem:
+population. The joint \dob\ \emph{when $\yF$ is known} is given as a
+special case of the multivariate hypergeometric distribution
+\eqref{eq:joint_prob_new_ind_F_known}. If the frequency distribution $\yF$
+isn't known, from the theorem of total \dob\ we obtain
+\eqn~\eqref{eq:joint_prob_new_ind_F_unknown}. We must therefore find our \dob\ in $\yF$ given the data. It can be found using Bayes's
+theorem:
 \begin{equation}
   \label{eq:F_from_f_generic}
   \pf(\yF \| \yf, n, N,\yI) =
@@ -1267,9 +1336,9 @@ be found using Bayes's theorem:
   \sum_{\yF}\pf(\yf \| n,\yF, N,\yI)\; \pf(\yF \| N,\yI)}.
 \end{equation}
 
-Bayes's theorem requires two probabilities: the probability for the
+Bayes's theorem requires two \dobs: the one for the
 frequency distribution $\yf$ of the sampled population, given $\yF$; and
-our initial probability for $\yF$. The first is given by the multivariate
+our initial one for $\yF$. The first is given by the multivariate
 hypergeometric distribution\mynote{add refs}:
 \begin{equation}
   \label{eq:multivariate_hyperg}
@@ -1300,16 +1369,16 @@ mutual information~\eqref{eq:mutual_info_new_ind}.
 \subsection{First calculation: constant initial proability}
 \label{sec:first_calc_const_prior}
 
-We need to assess our initial probability for $\yF$ according to some
+We need to assess our initial \dob\ for $\yF$ according to some
 background knowledge. As a first tentative let's consider background
-knowledge $\yIc$ such that the probability is constant for all possible
+knowledge $\yIc$ such that the \dob\ is constant for all possible
 distributions $\yF$. There are $\binom{N+C-1}{C-1}$ possible distributions
 $\yF$ \citep[\sect~2.1]{csiszaretal2004b}; hence
 \begin{equation}
   \label{eq:constant_prior}
   \pf(\yF \| N,\yIc) = \binom{N+C-1}{C-1}^{-1}.
 \end{equation}
-This yields a constant  initial probability distribution for $(\yso,\ygo)$:
+This yields a constant  initial  distribution of \dob\ for $(\yso,\ygo)$:
 \begin{multline}
   \label{eq:joint_prob_initial_F_unknown}
   \pf\bigl(\yso, \ygo \| N,\yIc\bigr)  =
@@ -1361,7 +1430,7 @@ Simplifying we finally find
 \frac{(N+C) n x_{\yso, \ygo}+N-n}{N\,(n+C)}
 \end{equation}
 This expression can be interpreted as a weighted sum of the observed
-frequency $x_{\yso,\ygo}$ in the data and the initial probability $1/C$,
+frequency $x_{\yso,\ygo}$ in the data and the initial \dob\ $1/C$,
 \eqn~\eqref{eq:joint_prob_initial_F_unknown}:
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_const_prior_final_reinterpret}
@@ -1399,7 +1468,7 @@ For the marginal distributions we obtain, by summation,
     \pf\bigl(\ygo \| \yf, n,N, \yIc\bigr)  =
 \frac{(N+C) n g_{\ygo}+(N-n)\yCs}{N\,(n+C)}.
 \end{gather}
-Note that if the initial probability distribution for $(\yso, \ygo)$
+Note that if the initial  distribution of \dob\ for $(\yso, \ygo)$
 is constant, then the corresponding marginals for $\yso$ and $\ygo$
 are \emph{not} constant.
 
@@ -1454,7 +1523,7 @@ of possible frequency distributions of the values reside in a
 $10^6$--$10^8$-dimensional subspace at the edges of the
 $10^{29}$-dimensional simplex of frequency distributions. From this point
 of view the limit $N\to \infty$ does not make much sense. Unless we choose
-a prior probability distribution for the frequency distributions that is
+a prior  distribution of \dob\ for the frequency distributions that is
 concentrated on the edges of the simplex.
 \fi
 
@@ -1465,42 +1534,42 @@ The initial state of knowledge $\yIc$ used in the previous section was
 denoted with \enquote{$\yCg$} because it depends on the number of gene
 variations we consider. Two different values $\yCg'$ and $\yCg''$
 correspond to two different states of knowledge,
-$\yI_{\yCg'} \ne \yI_{\yCg''}$, which yield different initial probabilities
+$\yI_{\yCg'} \ne \yI_{\yCg''}$, which yield different initial \dobs\
 for the marginal frequency distribution of a single gene. For example, for
-very large $N$, if we consider a single gene, $\yCg=2$, the probability
-density for its marginal frequency $f$ is constant in $\di f$. If we
-consider an additional gene, $\yCg=4$, the probability density for the
+very large $N$, if we consider a single gene, $\yCg=2$, the 
+density of \dob\ for its marginal frequency $f$ is constant in $\di f$. If we
+consider an additional gene, $\yCg=4$, the  density of \dob\ for the
 marginal frequency of the previous gene becomes $6 f\, (1-f)\,\di f$. If we
-consider an additional third gene, this probability density will be again
+consider an additional third gene, this  density will be again
 different. As a consequence, if we decide to consider additional genes we cannot
 compare our inference with the ones previously made, because they come from
 contradictory initial states of knowledge.
 
 Another bothering feature of the state of knowledge $\yIc$ is that the
-marginal probability for the insomnia symptoms alone given the full set of
+marginal \dob\ in the insomnia symptoms alone given the full set of
 data, \eqn~\eqref{eq:marginals_final_const_prior}, depends on the number of
-gene variations considered in the data. Likewise, the probability for the
+gene variations considered in the data. Likewise, the \dob\ in the
 gene variations depend on the number of insomnia symptoms.
 
 It would be advantageous to consider an initial state of knowledge that
-doesn't lead to different marginal probability distributions for the
+doesn't lead to different marginal  distributions of \dobs\ in the
 frequencies when we want to consider an additional gene variation, and that
 doesn't present the counter-intuitive features above.
 
 One such a state of knowledge $\yIo$ exists (perhaps it isn't unique) and
-is characterized by a Dirichlet probability distribution for $\yF$ in the
+is characterized by a Dirichlet  distribution for $\yF$ in the
 $N \to \infty$ limit:
 \begin{equation}
   \label{eq:dirichlet_prior}
   \pf(\yF \| \yIo)\,\di\yF = \frac{1}{\yprod\Gamma\bigl( \frac{2}{C} \bigr)}
   \yprod \yF^{\frac{2}{C}-1}\,\delt(\ysum\yF-1)\, \di\yF
 \end{equation}
-This distribution has the property of leaving the probability distribution
+This distribution has the property of leaving the  distribution of \dob\
 for the marginal frequencies of any number of gene variations invariant if
 we consider one more gene, thanks to the marginalization properties of the
 Dirichlet distribution \citep[\sect~2 p.~211]{ferguson1973}. It moreover
 assigns a uniform distribution to the frequency of each gene variation. It
-doesn't assign equal probabilities to the possible frequency distributions
+doesn't assign equal \dobs\ to the possible frequency distributions
 for the $\yCs\equiv 8$ symptom combinations, but rather
 \begin{multline}
   \label{eq:dirichlet_prior_symptoms}
@@ -1509,7 +1578,7 @@ for the $\yCs\equiv 8$ symptom combinations, but rather
   \frac{1}{8\Gamma\bigl( \frac{1}{4} \bigr)}
   \yprod \yFs^{-3/4}\,\delt(\ysum\yFs-1)\,\di\yFs.
 \end{multline}
-Note, however, that the probability density for the frequency of controls
+Note, however, that the  density of \dob\ for the frequency of controls
 vs cases is uniform.
 % \citep{ferguson1973,ferguson1974}
 
