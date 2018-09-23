@@ -95,6 +95,7 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1'){
     cl <- makeCluster(cores)
     registerDoParallel(cl)
     minfo <- sum(apply(fs,1,function(sig){
+        print(sig[1])
         foreach(i=1:(cg-cgminus), .combine=cbind,
                 .export=c('fg','fx','sig','ngenes','cg','cs','cx','n','n2')
                 ) %dopar% {
@@ -111,7 +112,7 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1'){
 
             probx/n2*log(probx*n2/(probs*probg))}})) -
         cgminus*2/(n2*cx)*sum(log((fs[,2]+2/cs)*cx/cg))
-stopCluster(cl)
+    stopCluster(cl)
     
     
     sentropy <- -sum(apply(fs,1,function(sig){
