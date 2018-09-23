@@ -111,7 +111,7 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1'){
             probg <- (ng+2/cg)
 
             probx/n2*log(probx*n2/(probs*probg))}})) -
-        cgminus*2/(n2*cx)*sum(log((fs[,2]+2/cs)*cx/cg))
+        cgminus*2/(n2*cx)*sum(log((fs[,2]+2/cs)*cx/cg/n2))
     stopCluster(cl)
     
     
