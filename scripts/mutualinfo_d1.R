@@ -123,3 +123,12 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1'){
     print(paste0('mutual information = ',minfo))
     print(paste0('normalized value = ',minfo/sentropy))
     c(minfo,sentropy)}
+
+## with genes 6, 9, 21, 31, 32, 34, 46, 53, 57, 58, 59, 61, 64, 66, 68, 69, 72, 88, 89, 90 : info =  1.60235058302968 (92%)
+
+## with 59, 68, 88, 89, 90 : info = 0.0704646052867898 (4%)
+
+## with 6, 32, 57, 59, 64, 68, 72, 88, 89, 90 : info = 0.598136429089636 (34%)
+
+## with 1:10 : info = 0.0305630433841963 (1.8%)
+
