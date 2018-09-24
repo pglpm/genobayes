@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-24T15:00:35+0200
+%% Last-Updated: 2018-09-24T15:18:54+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1283,12 +1283,12 @@ $\ygo$.
 
 If the number of alleles considered $\gn>20$, the $C$ possible joint
 variate values are much more numerous than the data $n$; not all of them
-can therefore appear in the data, that is, have frequencies $g_{\yg}>0$ and
-consequently $x_{\ys,\yg}>0$. Denote by $\yCgd$ the number of distinct
-variations present in the data, and by $\yCgn$ the number of those not
-present. Let $\yCd$ and $\yCn$ have the same meaning regarding the joint
-variate $\bigl( \ysi{0}, \ygi{0} \bigr)$. Obviously $\yCg = \yCgd+\yCgn$,
-$C=\yCd+\yCn$, and $\yCd \le \yCgd$.
+can therefore appear in the data. Hence many of these gene variate values
+have frequencies $g_{\yg}=0$ and consequently $x_{\ys,\yg}=0$. Denote by
+$\yCgd$ the number of distinct gene variations present in the data, and by
+$\yCgn$ the number of those absent. Let $\yCd$ and $\yCn$ have the same
+meaning regarding the joint variate $\bigl( \ysi{0}, \ygi{0} \bigr)$.
+Obviously $\yCg = \yCgd+\yCgn$, $C=\yCd+\yCn$, and $\yCd \le \yCgd$.
 
 As explained in \sect~\ref{sec:what_question}, the relevance of our
 knowledge of an individual's genetic data for our \dob\ about his or her
@@ -1348,37 +1348,41 @@ distribution~\eqref{eq:goal_plausibilities}. These can be calculated from
 our initial \dobs\ $\pf( \yF \| \yI)$ via Bayes's theorem:
 \begin{equation}
   \label{eq:F_from_f_generic}
-  \pf(\yF \| \yf, n, N,\yI) =
-  \frac{\pf(\yf \| n,\yF, N,\yI)\; \pf(\yF \| N,\yI)}{
-  \sum_{\yF}\pf(\yf \| n,\yF, N,\yI)\; \pf(\yF \| N,\yI)}.
+  \pf(\yF \| \yf, n, \yI) =
+  \frac{\pf(\yf \| n,\yF, \yI)\; \pf(\yF \| \yI)}{
+  \sum_{\yF}\pf(\yf \| n,\yF, \yI)\; \pf(\yF \| \yI)}.
 \end{equation}
 
 Bayes's theorem requires our \dobs\ about the joint frequency distribution
 $\yf$ of the variates in the sampled population, given the distribution
 $\yF$ in the full population. This problem is similar to \enquote{drawing
   from an urn without replacement}, for which our \dobs\ are represented by
-the multivariate hypergeometric distribution\mynote{add refs}:
+the multivariate hypergeometric distribution:
 \begin{equation}
   \label{eq:multivariate_hyperg}
-  \pf(\yf \| n,\yF, N,\yI) =
-\binom{N}{n}^{-1}\,\yprod\binom{N\yF}{n\yf}.
+  \pf(\yf \| n,\yF, \yI) =
+\binom{N}{n}^{-1}\,\yprod\binom{N\yF}{n\yf}
 \end{equation}
+\citep{ghoshetal1997}[parts~I, VI]{freedmanetal1978_r2007}[summaries
+in][\chap~8]{gelmanetal1995_r2014}[\chap~3]{jaynes1994_r2003}[properties of
+this distribution are discussed
+in][\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}.
 
 Combining \eqns~\eqref{eq:joint_prob_new_ind_F_unknown},
 \eqref{eq:F_from_f_generic}, \eqref{eq:multivariate_hyperg}, and
 simplifying we obtain
 \begin{equation}
   \label{eq:joint_prob_new_ind_full}
-  \pf\bigl(\yso, \ygo \| \yf, n,N, \yI\bigr)  =
+  \pf\bigl(\yso, \ygo \| \yf, n,\yI\bigr)  =
   \frac{
     \sum_{\yF} X_{\yso, \ygo}\,
-    \yprod\binom{N\yF}{n\yf}\; \pf(\yF \| N,\yI)}{
-  \sum_{\yF} \yprod\binom{N\yF}{n\yf}\; \pf(\yF \| N,\yI)}.
+    \yprod\binom{N\yF}{n\yf}\; \pf(\yF \| \yI)}{
+  \sum_{\yF} \yprod\binom{N\yF}{n\yf}\; \pf(\yF \| \yI)}.
 \end{equation}
 
 With an analogous reasoning we find analogous formulae for
-$\pf\bigl(\yso \| \yf, n,N, \yI\bigr)$ by replacing $\yF$, $\yf$ with
-$\yFs$, $\yfs$; and for $\pf\bigl(\ygo \| \yf, n,N, \yI\bigr)$ by
+$\pf\bigl(\yso \| \yf, n,\yI\bigr)$ by replacing $\yF$, $\yf$ with
+$\yFs$, $\yfs$; and for $\pf\bigl(\ygo \| \yf, n,\yI\bigr)$ by
 replacing $\yF$, $\yf$ with $\yFg$, $\yfg$. From these we can calculate the
 mutual information~\eqref{eq:mutual_info_new_ind}.
 
@@ -1393,14 +1397,14 @@ distributions $\yF$. There are $\binom{N+C-1}{C-1}$ possible distributions
 $\yF$ \citep[\sect~2.1]{csiszaretal2004b}; hence
 \begin{equation}
   \label{eq:constant_prior}
-  \pf(\yF \| N,\yIc) = \binom{N+C-1}{C-1}^{-1}.
+  \pf(\yF \| \yIc) = \binom{N+C-1}{C-1}^{-1}.
 \end{equation}
 This yields a constant  initial  distribution of \dob\ for $(\yso,\ygo)$:
 \begin{multline}
   \label{eq:joint_prob_initial_F_unknown}
-  \pf\bigl(\yso, \ygo \| N,\yIc\bigr)  =
-  \sum_{\yF}  \pf\bigl(\yso, \ygo \| \yF,N, \yIc\bigr) \;
-  \pf( \yF \| N, \yIc) ={}\\
+  \pf\bigl(\yso, \ygo \| \yIc\bigr)  =
+  \sum_{\yF}  \pf\bigl(\yso, \ygo \| \yF,\yIc\bigr) \;
+  \pf( \yF \| \yIc) ={}\\
   \sum_{\yF}  X_{\yso, \ygo} \binom{N+C-1}{C-1}^{-1}
   = 1/C,
 \end{multline}
@@ -1412,7 +1416,7 @@ With the initial knowledge $\yIc$,
 \eqn~\eqref{eq:joint_prob_new_ind_full} simplifies to
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_simplified}
-  \pf\bigl(\yso, \ygo \| \yf, n,N, \yIc\bigr)  =
+  \pf\bigl(\yso, \ygo \| \yf, n,\yIc\bigr)  =
   \frac{
     \sum_{\yF} X_{\yso, \ygo}\,
     \yprod\binom{N\yF}{n\yf}}{
@@ -1428,7 +1432,7 @@ multinomial coefficients\mynote{add
 which leads also to
 \begin{equation}
   \label{eq:F_from_f_specific}
-  \pf(\yF \| \yf, n, N,\yIc) = \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
+  \pf(\yF \| \yf, n, \yIc) = \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
 \end{equation}
 
 The sum in the numerator can be rewritten\mynote{explain the steps} obtaining
@@ -1443,7 +1447,7 @@ The sum in the numerator can be rewritten\mynote{explain the steps} obtaining
 Simplifying we finally find
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_const_prior_final}
-  \pf\bigl(\yso, \ygo \| \yf, n,N, \yIc\bigr)  =
+  \pf\bigl(\yso, \ygo \| \yf, n,\yIc\bigr)  =
 \frac{(N+C) n x_{\yso, \ygo}+N-n}{N\,(n+C)}
 \end{equation}
 This expression can be interpreted as a weighted sum of the observed
@@ -1451,7 +1455,7 @@ frequency $x_{\yso,\ygo}$ in the data and the initial \dob\ $1/C$,
 \eqn~\eqref{eq:joint_prob_initial_F_unknown}:
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_const_prior_final_reinterpret}
-  \pf\bigl(\yso, \ygo \| \yf, n,N, \yIc\bigr)  \propto
+  \pf\bigl(\yso, \ygo \| \yf, n,\yIc\bigr)  \propto
 x_{\yso, \ygo}+ \frac{N-n}{n}\frac{C}{N+C}\,\frac{1}{C},
 \end{equation}
 the ratio of the second to the first weight being
@@ -1464,14 +1468,14 @@ as intuition demands.
 \iffalse For large $C$ this is approximately
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_const_prior_final_approx_C}
-    \pf\bigl(\yso, \ygo \| \yf, n,N, \yIc\bigr)  \approx
+    \pf\bigl(\yso, \ygo \| \yf, n,\yIc\bigr)  \approx
     \frac{n x_{\yso, \ygo}}{N} +
     \frac{(N-n)\,(n x_{\yso, \ygo} +1)}{N C}
 \end{equation}
 and for large $N$
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_const_prior_final_approx_N}
-    \pf\bigl(\yso, \ygo \| \yf, n,N, \yIc\bigr)  \approx
+    \pf\bigl(\yso, \ygo \| \yf, n,\yIc\bigr)  \approx
     \frac{n x_{\yso, \ygo} +1}{n + C}.
 \end{equation}
 \fi
@@ -1479,10 +1483,10 @@ and for large $N$
 For the marginal distributions we obtain, by summation,
 \begin{gather}
   \label{eq:marginals_final_const_prior}
-    \pf\bigl(\yso \| \yf, n,N, \yIc\bigr)  =
+    \pf\bigl(\yso \| \yf, n,\yIc\bigr)  =
 \frac{(N+C) n s_{\yso}+(N-n)\yCg}{N\,(n+C)},
 \\
-    \pf\bigl(\ygo \| \yf, n,N, \yIc\bigr)  =
+    \pf\bigl(\ygo \| \yf, n,\yIc\bigr)  =
 \frac{(N+C) n g_{\ygo}+(N-n)\yCs}{N\,(n+C)}.
 \end{gather}
 Note that if the initial  distribution of \dob\ for $(\yso, \ygo)$
