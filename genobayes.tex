@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-24T14:57:06+0200
+%% Last-Updated: 2018-09-24T15:00:35+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1254,20 +1254,17 @@ inferences about two connected unknowns:
 These two kinds of degree of belief are mathematically connected: If we
 knew the joint frequency distribution $\yF$ in the full population, then
 our degree of belief that individual $0$ have variates $\bigl( \yso,\ygo
-\bigr)$ must be, by symmetry,
+\bigr)$ would be, by symmetry,
 \begin{equation}
   \label{eq:joint_prob_new_ind_F_known}
   \pf\bigl(\yso, \ygo \| \yF, \yI\bigr)  =
   \pf\bigl(\yso, \ygo \| \yF, \yD, \yI\bigr)  =
-  X_{\yso, \ygo},
+  X_{\yso, \ygo}.
 \end{equation}
-which is a special case of a multivariate hypergeometric distribution --
-\enquote{drawing from an urn without replacement}\mynote{add refs}. The
-conditional in the \dob\ indicates that we know $\yF$ and $N$ besides
-our initial knowledge $\yI$, and the first equality says that the data
-$\yD$ would be irrelevant if we knew $\yF$.
-
-If $\yF$ is unknown, then by the theorem of total \dob\ we have
+The conditionals in these \dobs\ indicate that we know $\yF$ besides our
+initial knowledge $\yI$, and the first equality says that the data $\yD$
+would be irrelevant if we knew $\yF$. If $\yF$ is unknown, then by the
+theorem of total \dob\ we have
 \begin{multline}
   \label{eq:joint_prob_new_ind_F_unknown}
   \pf\bigl(\yso, \ygo \| \yD, \yI\bigr)  =
