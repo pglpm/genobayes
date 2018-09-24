@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-24T15:18:54+0200
+%% Last-Updated: 2018-09-24T15:43:33+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -776,7 +776,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\ye}{\bm{e}}
 \newcommand*{\yCs}{C_{\sigma}}
 \newcommand*{\yCg}{C_{\gamma}}
-\newcommand*{\yIc}{I_{\yCs}}
+\newcommand*{\yIc}{I_{\gn}}
 \newcommand*{\yCgd}{\yCg^{+}}
 \newcommand*{\yCgn}{\yCg^{-}}
 \newcommand*{\yCd}{C^{+}}
@@ -1429,13 +1429,15 @@ multinomial coefficients\mynote{add
   \label{eq:multinomial_sum_identity}
   \sum_{\yF} \yprod\binom{N\yF}{n\yf} = \binom{N+C-1}{n+C-1},
 \end{equation}
-which leads also to
+which, substituted in \eqn~\eqref{eq:F_from_f_generic}, also leads to
 \begin{equation}
   \label{eq:F_from_f_specific}
   \pf(\yF \| \yf, n, \yIc) = \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
 \end{equation}
 
-The sum in the numerator can be rewritten\mynote{explain the steps} obtaining
+The sum in the numerator of
+\eqn~\eqref{eq:joint_prob_new_ind_full_simplified} can be
+rewritten\mynote{explain the steps} obtaining
 \begin{equation}
   \label{eq:numerator_constant_prior}
   \sum_{\yF} X_{\yso, \ygo}\, \yprod\binom{N\yF}{n\yf}
@@ -1463,7 +1465,8 @@ $(N-n)/n\times C/(N+C)$\mynote{Luca: I don't find this intuitively
   satisfying, though I don't know why. It'd be good to try another initial
   state of knowledge}. When $n=N$, that is, when we've sampled the full
 population, the second weight is zero and we're left with $x_{\yso,\ygo}$,
-as intuition demands.
+which is also equal to $X_{\yso,\ygo}$, consistent with
+\eqn~\eqref{eq:joint_prob_new_ind_F_known}.
 
 \iffalse For large $C$ this is approximately
 \begin{equation}
@@ -1489,9 +1492,9 @@ For the marginal distributions we obtain, by summation,
     \pf\bigl(\ygo \| \yf, n,\yIc\bigr)  =
 \frac{(N+C) n g_{\ygo}+(N-n)\yCs}{N\,(n+C)}.
 \end{gather}
-Note that if the initial  distribution of \dob\ for $(\yso, \ygo)$
-is constant, then the corresponding marginals for $\yso$ and $\ygo$
-are \emph{not} constant.
+Note that if the initial distribution of \dob\ about the joint frequencies
+$\yF$ is uniform, then the \dobs\ for the marginal frequencies $\yFs$ and
+$\yFg$ are \emph{not} uniform.
 
 Using the
 distributions~\eqref{eq:joint_prob_new_ind_full_const_prior_final}
@@ -1551,20 +1554,22 @@ concentrated on the edges of the simplex.
 \subsection{Second calculation: uniform marginals}
 \label{sec:2nd_calculation_unif_marginals}
 
+\mynote{\textbf{IMPORTANT: check \citep{zhangetal2012b} and its refs in \sect~2}}
+
 The initial state of knowledge $\yIc$ used in the previous section was
-denoted with \enquote{$\yCg$} because it depends on the number of gene
-variations we consider. Two different values $\yCg'$ and $\yCg''$
-correspond to two different states of knowledge,
-$\yI_{\yCg'} \ne \yI_{\yCg''}$, which yield different initial \dobs\
-for the marginal frequency distribution of a single gene. For example, for
-very large $N$, if we consider a single gene, $\yCg=2$, the 
-density of \dob\ for its marginal frequency $f$ is constant in $\di f$. If we
-consider an additional gene, $\yCg=4$, the  density of \dob\ for the
-marginal frequency of the previous gene becomes $6 f\, (1-f)\,\di f$. If we
-consider an additional third gene, this  density will be again
-different. As a consequence, if we decide to consider additional genes we cannot
-compare our inference with the ones previously made, because they come from
-contradictory initial states of knowledge.
+denoted with \enquote{$\gn$} because it depends on the number of gene
+variations we consider. Two different values $\gn'$ and $\gn''$ correspond
+to two different states of knowledge, $\yI_{\gn'} \ne \yI_{\gn''}$, which
+yield different initial \dobs\ for the marginal frequency distribution of a
+single gene. For example, for very large $N$, if we consider a single gene,
+$\ng=1$, the density of \dob\ for its marginal frequency $f$ is constant in
+$\di f$. If we consider an additional gene, $\gn=2$, the density of \dob\
+for the marginal frequency of the previous gene becomes
+$6 f\, (1-f)\,\di f$. If we consider an additional third gene, this density
+will be again different. As a consequence, if we decide to consider
+additional genes we cannot compare our inference with the ones previously
+made, because they come from \emph{incompatible} initial states of
+knowledge.
 
 Another bothering feature of the state of knowledge $\yIc$ is that the
 marginal \dob\ in the insomnia symptoms alone given the full set of
@@ -1572,10 +1577,10 @@ data, \eqn~\eqref{eq:marginals_final_const_prior}, depends on the number of
 gene variations considered in the data. Likewise, the \dob\ in the
 gene variations depend on the number of insomnia symptoms.
 
-It would be advantageous to consider an initial state of knowledge that
-doesn't lead to different marginal  distributions of \dobs\ in the
-frequencies when we want to consider an additional gene variation, and that
-doesn't present the counter-intuitive features above.
+It seems reasonable to consider an initial state of knowledge that doesn't
+lead to different marginal distributions of \dobs\ in the frequencies when
+we want to consider an additional gene variation, and that doesn't have
+the counter-intuitive features above.
 
 One such a state of knowledge $\yIo$ exists (perhaps it isn't unique) and
 is characterized by a Dirichlet  distribution for $\yF$ in the
