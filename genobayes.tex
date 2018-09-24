@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-24T01:24:45+0200
+%% Last-Updated: 2018-09-24T14:57:06+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1341,18 +1341,14 @@ de-emphasize the effect of the data on our knowledge when the latter are
 few compared to the range of the variates.
 
 
+\medskip
 
-
-
-Our first step is to calculate the joint
-distribution~\eqref{eq:joint_prob_new_ind}. It can be calculated if we know
-the joint relative-frequency distribution $\yF$ of the variates in the full
-population. The joint \dob\ \emph{when $\yF$ is known} is given as a
-special case of the multivariate hypergeometric distribution
-\eqref{eq:joint_prob_new_ind_F_known}. If the frequency distribution $\yF$
-isn't known, from the theorem of total \dob\ we obtain
-\eqn~\eqref{eq:joint_prob_new_ind_F_unknown}. We must therefore find our \dob\ in $\yF$ given the data. It can be found using Bayes's
-theorem:
+To calculate the mutual information~\eqref{eq:mutual_info_new_ind} given
+the data we need the joint \dobs~\eqref{eq:goal_ind_plausibilities}. To
+calculate the latter we use \eqn~\eqref{eq:joint_prob_new_ind_F_unknown},
+which needs our \dobs\ about the joint frequency
+distribution~\eqref{eq:goal_plausibilities}. These can be calculated from
+our initial \dobs\ $\pf( \yF \| \yI)$ via Bayes's theorem:
 \begin{equation}
   \label{eq:F_from_f_generic}
   \pf(\yF \| \yf, n, N,\yI) =
@@ -1360,16 +1356,16 @@ theorem:
   \sum_{\yF}\pf(\yf \| n,\yF, N,\yI)\; \pf(\yF \| N,\yI)}.
 \end{equation}
 
-Bayes's theorem requires two \dobs: the one for the
-frequency distribution $\yf$ of the sampled population, given $\yF$; and
-our initial one for $\yF$. The first is given by the multivariate
-hypergeometric distribution\mynote{add refs}:
+Bayes's theorem requires our \dobs\ about the joint frequency distribution
+$\yf$ of the variates in the sampled population, given the distribution
+$\yF$ in the full population. This problem is similar to \enquote{drawing
+  from an urn without replacement}, for which our \dobs\ are represented by
+the multivariate hypergeometric distribution\mynote{add refs}:
 \begin{equation}
   \label{eq:multivariate_hyperg}
   \pf(\yf \| n,\yF, N,\yI) =
 \binom{N}{n}^{-1}\,\yprod\binom{N\yF}{n\yf}.
 \end{equation}
-The second will be discussed later.
 
 Combining \eqns~\eqref{eq:joint_prob_new_ind_F_unknown},
 \eqref{eq:F_from_f_generic}, \eqref{eq:multivariate_hyperg}, and
@@ -1390,7 +1386,7 @@ replacing $\yF$, $\yf$ with $\yFg$, $\yfg$. From these we can calculate the
 mutual information~\eqref{eq:mutual_info_new_ind}.
 
 
-\subsection{First calculation: constant initial proability}
+\subsection{First calculation: constant initial \dob}
 \label{sec:first_calc_const_prior}
 
 We need to assess our initial \dob\ for $\yF$ according to some
