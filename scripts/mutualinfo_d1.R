@@ -97,7 +97,7 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',messages
     minfo <- sum(apply(fs,1,function(sig){
 if(messages==TRUE){print(sig[1])}
         foreach(i=1:(cg-cgminus), .combine=cbind,
-                .export=c('fg','fx','sig','ngenes','cg','cs','cx','n','n2')
+                .export=c('fg','fx','ngenes','cg','cs','cx','n','n2')
                 ) %dopar% {
             gam <- fg[i,]
             ## marginal freqs
