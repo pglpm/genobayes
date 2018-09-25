@@ -47,6 +47,7 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',messages
     ngenes <- length(genes)
     data <- d[#sample(1:dim(d)[1],4000)
        ,c(6,7+genes)]
+    data[,2:dim(data)[2]] <- (data[,2:dim(data)[2]]>0)*1
     ## uncomment this to shuffle the symptom data
     ##    data[,1] <- sample(data[,1])
     l <- length(data[1,])
@@ -67,6 +68,7 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',messages
     #print(dim(fx))
 
     cgminus <- cg-dim(fg)[1]
+    cgplus <- dim(fg)[1]
 
     n2 <- n+2
     dnna <- (nn-n)/(nn*(n+2))
@@ -98,7 +100,7 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',messages
     registerDoParallel(cl)
     minfo <- sum(apply(fs,1,function(sig){
 if(messages==TRUE){print(sig[1])}
-        foreach(i=1:(cg-cgminus), .combine=cbind,
+        foreach(i=1:cgplus, .combine=cbind,
                 .export=c('fg','fx','ngenes','cg','cs','cx','nn','n','n2','dnna','xlogy')
                 ) %dopar% {
             gam <- fg[i,]
