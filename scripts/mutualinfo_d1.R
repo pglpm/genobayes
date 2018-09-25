@@ -32,7 +32,7 @@ xlogy <- function(x,y){if(x==0){0}else{x*log(y)}}
 
 
 ## this function takes the ID of the genes we want to check, between 1 and 95, and returns the mutual info, its max value, and its normalized value
-calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',messages=TRUE){
+calculatemutualinfo <- function(whichgenes,a=2,cores=20,datafile='dataset1',messages=TRUE){
 
     if(any(whichgenes<1) | any(whichgenes>94)){print('Error: allowed genes within [1,94]')}
     ## load all data
@@ -57,6 +57,8 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',messages
     cg <- 2^ngenes
     cx <- cs*cg
 
+    if(a==0){aa  <- cx}else if(a==-2){aa <- sqrt(2*cx)}else{aa <- a}
+
     ## data frequencies for symptoms
     fs <- data.matrix(tally(group_by_at(data,.vars=c(1))))
     #print(dim(fs))
@@ -70,8 +72,8 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',messages
     cgminus <- cg-dim(fg)[1]
     cgplus <- dim(fg)[1]
 
-    n2 <- n+2
-    dnna <- (nn-n)/(nn*(n+2))
+    n2 <- n+aa
+    dnna <- (nn-n)/(nn*n2)
     ## minfo <- log(ncnn) + sum(apply(fs,1,function(sig){
     ##     apply(fg,1,function(gam){
     ##         ## marginal freqs
@@ -101,7 +103,7 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',messages
     minfo <- sum(apply(fs,1,function(sig){
 if(messages==TRUE){print(sig[1])}
         foreach(i=1:cgplus, .combine=cbind,
-                .export=c('fg','fx','ngenes','cg','cs','cx','nn','n','n2','dnna','xlogy')
+                .export=c('fg','fx','ngenes','cg','cs','cx','nn','n','n2','dnna','xlogy','aa')
                 ) %dopar% {
             gam <- fg[i,]
             ## marginal freqs
@@ -110,12 +112,12 @@ if(messages==TRUE){print(sig[1])}
             ## frequency of pair
             nx <- sum(apply(fx,1,function(i){all(i[1:(ngenes+1)]==c(sig[1],gam[1:ngenes]))*i[ngenes+2]}))
 
-            probx <- nx/nn+dnna*(nx+2/cx)
-            probs <- ns/nn+dnna*(ns+2/cs)
-            probg <- ng/nn+dnna*(ng+2/cg)
+            probx <- nx/nn+dnna*(nx+aa/cx)
+            probs <- ns/nn+dnna*(ns+aa/cs)
+            probg <- ng/nn+dnna*(ng+aa/cg)
 
             xlogy(probx,probx/(probs*probg))}})) -
-        cgminus*2*dnna/cx*sum(log((fs[,2]/nn+dnna*(fs[,2]+2/cs))*cx/cg))
+        cgminus*2*dnna/cx*sum(log((fs[,2]/nn+dnna*(fs[,2]+aa/cs))*cx/cg))
     stopCluster(cl)
     
     
@@ -128,11 +130,9 @@ if(messages==TRUE){
     print(paste0('normalized value = ',minfo/sentropy))}
     c(minfo,sentropy)}
 
-## with genes 6, 9, 21, 31, 32, 34, 46, 53, 57, 58, 59, 61, 64, 66, 68, 69, 72, 88, 89, 90 : info =  1.60235058302968 (92%)
+## all genes:
 
-## with 59, 68, 88, 89, 90 : info = 0.0704646052867898 (4%)
-
-## with 6, 32, 57, 59, 64, 68, 72, 88, 89, 90 : info = 0.598136429089636 (34%)
-
-## with 1:10 : info = 0.0305630433841963 (1.8%)
-
+## [1] "max value = 1.73891986550377"
+## [1] "mutual information = 1.73823079314495"
+## [1] "normalized value = 0.999603735415018"
+## There were 20 warnings (use warnings() to see them)
