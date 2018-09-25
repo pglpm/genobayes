@@ -6,7 +6,7 @@
 %% Home page: http://magnaspesmeretrix.org/
 %% Email (remove ZZ): pglpm0ZZ[at]gmail.com
 %% Created: 2000-08-23T16:53:30+0200
-%% Last-Updated: 2018-09-24T15:47:39+0200
+%% Last-Updated: 2018-09-25T11:16:36+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % NB: This database contains also items whose content's validity I
@@ -376,6 +376,7 @@
 @String{ftcit = {Foundations and Trends in Communications and Information Theory}}
 @String{gapfd = {Geophys.\ Astrophys.\ Fluid Dynam.}}
 @String{gd = {\langlatin{Geometriae Dedicata}}}
+@String{ge = {Genet.\ Epidemiol.}}
 @String{giia = {\langitalian{Giorn.\ Ist.\ Ital.\ Att.}}}
 @String{gm = {Granular Matter}}
 @String{gn = {Ges.\ d.\ Wiss.\ Nachrichten (G{\"o}tt.) Math.-Phys.\ Kl.}}
@@ -8106,6 +8107,17 @@ volume =       {20},
 number =       {3/4},
 pages =	       {287--294},
 keywords =     {Bayesian probability theory, finite exchangeability, survey sampling}
+}
+
+@Article{basuetal1982,
+author =       {Debabrata Basu and de Bragan{\c{c}}a Pereira, Carlos Alberto},
+title =	       {On the {Bayesian} analysis of categorical data: the problem of nonresponse},
+journal =      jspi,
+year =	       {1982},
+volume =       {6},
+number =       {4},
+pages =	       {345--362},
+keywords =     {hypergeometric distribution, Dirichlet-multinomial prior}
 }
 
 @Article{basuetal1997,
@@ -24788,6 +24800,17 @@ number =       {3},
 pages =	       {723--731},
 origdate =     {1993},
 keywords =     {general relativity}
+}
+
+@Article{corrado2011,
+author =       {Charles J. Corrado},
+title =	       {The exact distribution of the maximum, minimum and the range of Multinomial/{Dirichlet} and Multivariate Hypergeometric frequencies},
+journal =      sc,
+year =	       {2011},
+volume =       {21},
+number =       {3},
+pages =	       {349--359},
+keywords =     {Dirichlet-multinomial, Markov chain}
 }
 
 @Book{corson1953_r1955,
@@ -50001,7 +50024,19 @@ year =	       {1948},
 volume =       {35},
 number =       {3/4},
 pages =	       {297--300},
+note = 	       {See also \citebi{pearson1948}},
 keywords =     {probability theory, Haldane prior}
+}
+
+@Article{haldane1948b,
+author =       {J. B. S. Haldane},
+title =	       {Note on the median of a multivariate distribution},
+journal =      bm,
+year =	       {1948},
+volume =       {35},
+number =       {3/4},
+pages =	       {414--417},
+keywords =     {probability theory}
 }
 
 @Article{hall1928,
@@ -72193,6 +72228,18 @@ number =       {6664},
 pages =	       {268--270}
 }
 
+@Article{lockwoodetal2001,
+author =       {John R. Lockwood and Kathryn Roeder and B. Devlin},
+title =	       {A {Bayesian} hierarchical model for allele frequencies},
+journal =      ge,
+year =	       {2001},
+volume =       {20},
+number =       {1},
+pages =	       {17--33},
+keywords =     {Dirichlet distribution},
+note = 	       {\url{http://www.stat.cmu.edu/~roeder/publications/lrd2001.pdf}}
+}
+
 @Article{lodge1951,
 author =       {Arthur S. Lodge},
 title =	       {On the use of convected coordinate systems in the mechanics of continuous media},
@@ -79579,14 +79626,24 @@ pages =	       {1117--1121}
 }
 
 @TechReport{minka1998_r2001,
-author =       {Thomas Minka},
+author =       {Thomas P. Minka},
 title =	       {Inferring a {Gaussian} distribution},
 institution =  {MIT media Lab},
 year =	       {2001},
 address =      {Cambridge, USA},
 keywords =     {Bayesian probability theory, improper prior, Jeffreys prior},
 origdate =     {1998},
-note =	       {\url{http://research.microsoft.com/en-us/um/people/minka/papers/}. First publ.\ 1998}
+note =	       {\url{https://tminka.github.io/papers/gaussian.html}. First publ.\ 1998}
+}
+
+@Misc{minka2000_r2012,
+author =       {Thomas P. Minka},
+title =	       {Estimating a {Dirichlet} distribution},
+howpublished = {\url{https://tminka.github.io/papers/dirichlet/}},
+year =	       {2012},
+note =	       {First publ.\ 2000},
+keywords =     {Dirichlet-multinomial distribution, Bayesian probability theory},
+origdate =     {2000}
 }
 
 @Article{minkowski1897,
@@ -86988,6 +87045,17 @@ year =	       {1950},
 note =	       {With illustrations by Roger Hayward}
 }
 
+@Article{paulinoetal1995,
+author =       {Carlos Daniel Mimoso Paulino and de Bragan{\c{c}}a Pereira, Carlos Alberto},
+title =	       {Bayesian methods for categorical data under informative general censoring},
+journal =      bm,
+year =	       {1995},
+volume =       {82},
+number =       {2},
+pages =	       {439--446},
+keywords =     {hypergeometric distribution, Dirichlet-multinomial prior}
+}
+
 @Article{pavelkaetal2014,
 author =       {Michal Pavelka and V{\'a}clav Klika and and Miroslav Grmela},
 title =	       {Time reversal in nonequilibrium thermodynamics},
@@ -87184,6 +87252,18 @@ volume =       {13},
 number =       {1},
 pages =	       {1--16},
 keywords =     {de Finetti's theorem, probability of a probability}
+}
+
+@Article{pearson1948,
+author =       {E. S. Pearson},
+title =	       {Note on {Professor Haldane's} paper regarding the treatment of rare events},
+journal =      bm,
+year =	       {1948},
+volume =       {35},
+number =       {3/4},
+pages =	       {301--303},
+note =	       {See \citebi{haldane1948}},
+keywords =     {probability theory, Haldane prior}
 }
 
 @Article{peccei1974,
@@ -109165,6 +109245,16 @@ publisher =    {Cambridge University Press},
 year =	       {2007},
 address =      {Cambridge},
 note =	       {\url{http://ocean.phys.msu.ru/courses/stathyd/}}
+}
+
+@MastersThesis{thorsen2014,
+author =       {Erik Thors{\'e}n},
+title =	       {Multinomial and {Dirichlet}-multinomial modeling of categorical time series},
+school =       {Stockholm University},
+year =	       {2014},
+address =      {Stockholm},
+note =	       {\url{https://www2.math.su.se/matstat/reports/seriec/2014/rep6/report.pdf}},
+keywords =     {hypergeometric distribution}
 }
 
 @Article{thoulessetal1977,

@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-24T15:46:30+0200
+%% Last-Updated: 2018-09-25T12:09:43+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1361,7 +1361,8 @@ the multivariate hypergeometric distribution:
 \begin{equation}
   \label{eq:multivariate_hyperg}
   \pf(\yf \| n,\yF, \yI) =
-\binom{N}{n}^{-1}\,\yprod\binom{N\yF}{n\yf}
+  \binom{N}{n}^{-1}\,\yprod\binom{N\yF}{n\yf}
+  \equiv \binom{N}{N\yF}^{-1}\,\binom{n}{n\yf}\,\binom{N-n}{N\yF-n\yf}
 \end{equation}
 \citep{ghoshetal1997}[parts~I, VI]{freedmanetal1978_r2007}[summaries
 in][\chap~8]{gelmanetal1995_r2014}[\chap~3]{jaynes1994_r2003}[properties of
@@ -1375,9 +1376,9 @@ simplifying we obtain
   \label{eq:joint_prob_new_ind_full}
   \pf\bigl(\yso, \ygo \| \yf, n,\yI\bigr)  =
   \frac{
-    \sum_{\yF} X_{\yso, \ygo}\,
-    \yprod\binom{N\yF}{n\yf}\; \pf(\yF \| \yI)}{
-  \sum_{\yF} \yprod\binom{N\yF}{n\yf}\; \pf(\yF \| \yI)}.
+    \sum_{\yF} X_{\yso, \ygo}\;
+    \pf(\yF \| \yI)\;\yprod\binom{N\yF}{n\yf}}{
+  \sum_{\yF} \pf(\yF \| \yI)\;\yprod\binom{N\yF}{n\yf}}.
 \end{equation}
 
 With an analogous reasoning we find analogous formulae for
@@ -1554,7 +1555,10 @@ concentrated on the edges of the simplex.
 \subsection{Second calculation: uniform marginals}
 \label{sec:2nd_calculation_unif_marginals}
 
-\mynote{\textbf{IMPORTANT: check \citep{zhangetal2012b} and its refs in \sect~2}}
+\mynote{To be changed: we'll use the Dirichlet-multinomial distribution,
+  see \citep[especially \sects~3--4]{basuetal1982}}
+
+%\mynote{\textbf{IMPORTANT: check \citep{zhangetal2012b} and its refs in \sect~2}}
 
 The initial state of knowledge $\yIc$ used in the previous section was
 denoted with \enquote{$\gn$} because it depends on the number of gene

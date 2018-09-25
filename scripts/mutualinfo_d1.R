@@ -26,6 +26,7 @@ dev.off()
 mmtoin <- 0.0393701
 plotsdir <- './'
 
+xlogy <- function(x,y){if(x==0){0}else{x*log(y)}}
 
 ## The script calculates the mutual information as in the genobayes.pdf notes, by calculating the frequencies for the combined variate and for the two variates separately in the data. Here we do this simply by counting. We choose a subset of genetic variations to check for calculation speed
 
