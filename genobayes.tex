@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-25T12:09:43+0200
+%% Last-Updated: 2018-09-25T13:37:43+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -173,7 +173,7 @@ british%
 % Greek letters not usually given in LaTeX. Comment the unneeded ones
 % \DeclareMathSymbol{\varpartial}{\mathalpha}{egreeki}{"40}
  \DeclareMathSymbol{\partialup}{\mathalpha}{egreekr}{"40}
-% \DeclareMathSymbol{\alpha}{\mathalpha}{egreeki}{"0B}
+ \DeclareMathSymbol{\alpha}{\mathalpha}{egreeki}{"0B}
 % \DeclareMathSymbol{\beta}{\mathalpha}{egreeki}{"0C}
  \DeclareMathSymbol{\gamma}{\mathalpha}{egreeki}{"0D}
 % \DeclareMathSymbol{\delta}{\mathalpha}{egreeki}{"0E}
@@ -205,7 +205,7 @@ british%
  \let\varkappa\kappa
 % \DeclareMathSymbol{\varphi}{\mathalpha}{egreeki}{"27}
 % %
-% \DeclareMathSymbol{\varAlpha}{\mathalpha}{egreeki}{"41}
+ \DeclareMathSymbol{\varAlpha}{\mathalpha}{egreeki}{"41}
 % \DeclareMathSymbol{\varBeta}{\mathalpha}{egreeki}{"42}
 % \DeclareMathSymbol{\varGamma}{\mathalpha}{egreeki}{"00}
  \DeclareMathSymbol{\varDelta}{\mathalpha}{egreeki}{"01}
@@ -782,6 +782,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yCd}{C^{+}}
 \newcommand*{\yCn}{C^{-}}
 \newcommand*{\yIo}{I_{0}}
+\newcommand*{\yA}{\varAlpha}
+\newcommand*{\ya}{\bm{\alpha}}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \firmlists
@@ -1555,9 +1557,6 @@ concentrated on the edges of the simplex.
 \subsection{Second calculation: uniform marginals}
 \label{sec:2nd_calculation_unif_marginals}
 
-\mynote{To be changed: we'll use the Dirichlet-multinomial distribution,
-  see \citep[especially \sects~3--4]{basuetal1982}}
-
 %\mynote{\textbf{IMPORTANT: check \citep{zhangetal2012b} and its refs in \sect~2}}
 
 The initial state of knowledge $\yIc$ used in the previous section was
@@ -1587,47 +1586,52 @@ we want to consider an additional gene variation, and that doesn't have
 the counter-intuitive features above.
 
 One such a state of knowledge $\yIo$ exists (perhaps it isn't unique) and
-is characterized by a Dirichlet  distribution for $\yF$ in the
-$N \to \infty$ limit:
-\begin{equation}
-  \label{eq:dirichlet_prior}
-  \pf(\yF \| \yIo)\,\di\yF = \frac{1}{\yprod\Gamma\bigl( \frac{2}{C} \bigr)}
-  \yprod \yF^{\frac{2}{C}-1}\,\delt(\ysum\yF-1)\, \di\yF
-\end{equation}
-This distribution has the property of leaving the  distribution of \dob\
-for the marginal frequencies of any number of gene variations invariant if
-we consider one more gene, thanks to the marginalization properties of the
-Dirichlet distribution \citep[\sect~2 p.~211]{ferguson1973}. It moreover
-assigns a uniform distribution to the frequency of each gene variation. It
-doesn't assign equal \dobs\ to the possible frequency distributions
-for the $\yCs\equiv 8$ symptom combinations, but rather
+is characterized by a Dirichlet-multinomial distribution for $\yF$, which
+depends on a positive parameter $\yA$ and a non-negative $C$-tuple $\ya$
+such that $\ysum\ya=1$, which we take equal to $(1/C,\dotsc,1/C)$:
 \begin{multline}
-  \label{eq:dirichlet_prior_symptoms}
-  \pf(\yFs \| \yIo)\,\di\yFs = \frac{1}{\yprod\Gamma\bigl( \frac{2}{\yCs} \bigr)}
-  \yprod \yFs^{\frac{2}{\yCs}-1}\,\delt(\ysum\yFs-1)\,\di\yFs ={}\\
-  \frac{1}{8\Gamma\bigl( \frac{1}{4} \bigr)}
-  \yprod \yFs^{-3/4}\,\delt(\ysum\yFs-1)\,\di\yFs.
+  \label{eq:dirichlet_prior}
+  \pf(\yF \| \yA, \ya,\yIo) =
+  \binom{N+\yA-1}{N}^{-1} \yprod\binom{N\yF+\yA\ya-1}{N\yF},\\
+  \ya \defd (\underbrace{1/C,\dotsc,1/C}_{\text{$C$ elements}})
 \end{multline}
-Note, however, that the  density of \dob\ for the frequency of controls
-vs cases is uniform.
+\citep[\sect~13.1]{johnsonetal1969_r1996}[\sect~3]{minka2000_r2012}[and
+especially][\sects~3--4]{basuetal1982}.
+
+This distribution has the property of leaving the distribution of \dob\ for
+the marginal frequencies of any number of gene variations invariant if we
+consider one more gene, if we choose $\yA$ as an appropriate function of
+$C$ and hence of $\gn$ \citep[\sects~3--4]{basuetal1982}. It moreover
+assigns a uniform \dob\ about the frequency of each gene variation if we
+choose $\yA=2$. It doesn't assign equal \dobs\ to the possible frequency
+distributions for the $\yCs\equiv 8$ symptom combinations;% but rather
+% \begin{multline}
+%   \label{eq:dirichlet_prior_symptoms}
+%   \pf(\yFs \| \yIo)\,\di\yFs = \frac{1}{\yprod\Gamma\bigl( \frac{2}{\yCs} \bigr)}
+%   \yprod \yFs^{\frac{2}{\yCs}-1}\,\delt(\ysum\yFs-1)\,\di\yFs ={}\\
+%   \frac{1}{8\Gamma\bigl( \frac{1}{4} \bigr)}
+%   \yprod \yFs^{-3/4}\,\delt(\ysum\yFs-1)\,\di\yFs.
+% \end{multline}
+but the density of \dob\ for the frequency of controls vs cases is uniform.
 % \citep{ferguson1973,ferguson1974}
 
-The approximation $N \to \infty$ needs to be justified. If we consider a
-limited amount of gene variations, so that $N/C$ is large (say, less than
-12 gene variations), this approximation should be valid. If we consider a
-large amount of gene variations, so that $C/N$ is large (say, more than 25
-gene variations), the possible frequencies lie on the faces of the
-$(C-1)$-dimensional simplex; but the density~\eqref{eq:dirichlet_prior} is
-concentrated in regions at the boundary of the simplex, and thus the
-approximation may still be reasonable.
+% The approximation $N \to \infty$ needs to be justified. If we consider a
+% limited amount of gene variations, so that $N/C$ is large (say, less than
+% 12 gene variations), this approximation should be valid. If we consider a
+% large amount of gene variations, so that $C/N$ is large (say, more than 25
+% gene variations), the possible frequencies lie on the faces of the
+% $(C-1)$-dimensional simplex; but the density~\eqref{eq:dirichlet_prior} is
+% concentrated in regions at the boundary of the simplex, and thus the
+% approximation may still be reasonable.
 
 
 
-Result:
+Preliminary esult:
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_dirichlet_prior_final}
-  \pf(\yso, \ygo \| \yf, n \yIo)  =
-\frac{n x_{\yso, \ygo}+2/C}{n+2}
+    \pf(\yso, \ygo \| \yf, n,\yA,\ya, \yIo)  =
+    \frac{n}{N}x_{\yso, \ygo} + \frac{N-n}{N}
+\frac{n x_{\yso, \ygo}+\yA/C}{n+\yA}
 \end{equation}
 
 
