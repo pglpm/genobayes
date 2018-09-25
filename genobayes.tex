@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-25T16:13:23+0200
+%% Last-Updated: 2018-09-25T20:14:02+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1607,11 +1607,20 @@ especially][\sects~3--4]{basuetal1982}.
 
 This distribution has the property of leaving the distribution of \dob\ for
 the marginal frequencies of any number of gene variations invariant if we
-consider one more gene, if we choose $\yA$ as an appropriate function of
-$C$ and hence of $\gn$ \citep[\sects~3--4]{basuetal1982}. It moreover
-assigns a uniform \dob\ about the frequency of each gene variation if we
-choose $\yA=2$. It doesn't assign equal \dobs\ to the possible frequency
-distributions for the $\yCs\equiv 8$ symptom combinations;% but rather
+consider more genes \citep[\sects~3--4]{basuetal1982}. The parameter $\yA$
+determines our \dob\ about the frequency of single gene variations, for
+example for the first gene allele, $G_{\yg_0}$: it is a
+beta-binomial distribution
+\begin{equation}
+  \label{eq:dirichlet_prior_marginal_beta-binomial}
+  \pf(G_{\yg_0} \| \yA, \ya,\yIo) =
+  \binom{N+\yA-1}{N}^{-1} \yprod\binom{N G_{\yg_0}+\yA/2-1}{N G_{\yg_0}}.
+\end{equation}
+
+We can consider two particular values of $\yA$. If $\yA=2$ then our \dob\
+about the frequency of each gene allele is uniform; it doesn't assign equal
+\dobs\ to the possible frequency distributions for the $\yCs\equiv 8$
+symptom combinations;% but rather
 % \begin{multline}
 %   \label{eq:dirichlet_prior_symptoms}
 %   \pf(\yFs \| \yIo)\,\di\yFs = \frac{1}{\yprod\Gamma\bigl( \frac{2}{\yCs} \bigr)}
@@ -1620,7 +1629,9 @@ distributions for the $\yCs\equiv 8$ symptom combinations;% but rather
 %   \yprod \yFs^{-3/4}\,\delt(\ysum\yFs-1)\,\di\yFs.
 % \end{multline}
 but the density of \dob\ for the frequency of controls vs cases is uniform.
-% \citep{ferguson1973,ferguson1974}
+If $\yA=C$ then our \dob\ about the joint frequency distribution $\yF$ of
+all variates is uniform -- but no longer uniform for the marginal
+frequencies.
 
 % The approximation $N \to \infty$ needs to be justified. If we consider a
 % limited amount of gene variations, so that $N/C$ is large (say, less than
@@ -1632,7 +1643,7 @@ but the density of \dob\ for the frequency of controls vs cases is uniform.
 % approximation may still be reasonable.
 
 As shown by Basu \amp\ de Bragan\c{c}a Pereira \citey[\sect~4,
-Theorem~2]{basuetal1982}, this initial \dob\ leads to a \dob\ for
+Theorem~2]{basuetal1982}, the initial \dob\ $\yIo$ leads to a \dob\ for
 $N\yF-n\yf$ conditional on our data $\yD$ that has the same form, but with
 new parameters $n+\yA$ and $(n\yf+\yA\ya)/(n+\yA)$:
 \begin{equation}
