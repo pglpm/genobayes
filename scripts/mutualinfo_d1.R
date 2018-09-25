@@ -51,7 +51,7 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',messages
     ##    data[,1] <- sample(data[,1])
     l <- length(data[1,])
     n <- length(data[,1])
-    #nn <- 5.3e6L
+    nn <- 5.3e6L
     cs <- length(unique(data[,1]))
     cg <- 2^ngenes
     cx <- cs*cg
@@ -69,6 +69,7 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',messages
     cgminus <- cg-dim(fg)[1]
 
     n2 <- n+2
+    dnna <- (nn-n)/(nn*(n+2))
     ## minfo <- log(ncnn) + sum(apply(fs,1,function(sig){
     ##     apply(fg,1,function(gam){
     ##         ## marginal freqs
@@ -98,7 +99,7 @@ calculatemutualinfo <- function(whichgenes,cores=20,datafile='dataset1',messages
     minfo <- sum(apply(fs,1,function(sig){
 if(messages==TRUE){print(sig[1])}
         foreach(i=1:(cg-cgminus), .combine=cbind,
-                .export=c('fg','fx','ngenes','cg','cs','cx','n','n2')
+                .export=c('fg','fx','ngenes','cg','cs','cx','nn','n','n2','dnna','xlogy')
                 ) %dopar% {
             gam <- fg[i,]
             ## marginal freqs
@@ -107,12 +108,12 @@ if(messages==TRUE){print(sig[1])}
             ## frequency of pair
             nx <- sum(apply(fx,1,function(i){all(i[1:(ngenes+1)]==c(sig[1],gam[1:ngenes]))*i[ngenes+2]}))
 
-            probx <- (nx+2/cx)
-            probs <- (ns+2/cs)
-            probg <- (ng+2/cg)
+            probx <- nx/nn+dnna*(nx+2/cx)
+            probs <- ns/nn+dnna*(ns+2/cs)
+            probg <- ng/nn+dnna*(ng+2/cg)
 
-            probx/n2*log(probx*n2/(probs*probg))}})) -
-        cgminus*2/(n2*cx)*sum(log((fs[,2]+2/cs)*cx/cg/n2))
+            xlogy(probx,probx/(probs*probg))}})) -
+        cgminus*2*dnna/cx*sum(log((fs[,2]/nn+dnna*(fs[,2]+2/cs))*cx/cg))
     stopCluster(cl)
     
     
