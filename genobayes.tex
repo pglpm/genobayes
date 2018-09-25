@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-25T14:10:03+0200
+%% Last-Updated: 2018-09-25T16:13:23+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1314,15 +1314,22 @@ mutual information \citep[in these called
   \sum_{\mathclap{\ysi{0},\ygi{0}}} \pf\bigl(\ysi{0}, \ygi{0} \| \yD, \yI\bigr)
  \, \ln\frac{\pf(\ysi{0}, \ygi{0} \| \yD, \yI)}{
     \pf(\ysi{0} \| \yD, \yI)\;
-    \pf(\ygi{0} \| \yD, \yI)}.
+    \pf(\ygi{0} \| \yD, \yI)}
+  \\
+  &\equiv
+  \sum_{\mathclap{\ysi{0},\ygi{0}}} \pf\bigl(\ysi{0}, \ygi{0} \| \yD, \yI\bigr)
+ \, \ln\frac{\pf(\ysi{0}\| \ygi{0}, \yD, \yI)}{
+    \pf(\ysi{0} \| \yD, \yI)}.
 \end{split}
 \end{equation}
 The second expression shows that the mutual information also measures the
 discrepancy between our \dob\ about the variates jointly and the product of
-our \dobs\ about them separately. The mutual information vanishes if the
-symptoms and genetic variations are completely irrelevant to one another,
-and is equal to the entropy $\sH\bigl(\yso \|
-\yD,\yI\bigr)$ %, $\sH\bigl(\ygo \| \yD,\yI\bigr)$
+our \dobs\ about them separately; the third expression shows that it is an
+average value of the log-ratio between our \dobs\ about the insomnia
+symptoms conditioned and unconditioned on the genetic data. The mutual
+information vanishes if the symptoms and genetic variations are completely
+irrelevant to one another, and is equal to the entropy
+$\sH\bigl(\yso \| \yD,\yI\bigr)$ %, $\sH\bigl(\ygo \| \yD,\yI\bigr)$
 if knowledge of the gene variate gives us complete certainty about the
 insomnia symptoms, since $\sH\bigl(\yso \| \ygo; \yD,\yI)$ vanishes in this
 case.
