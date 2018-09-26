@@ -1,5 +1,5 @@
 ## Calculation of mutual information from sampled data
-## test 1
+## N finite, Dirichlet-multinomial prior
 
 ## libraries and colour-blind palette from http://www.sron.nl/~pault/
 library('ggplot2')
