@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-26T10:58:09+0200
+%% Last-Updated: 2018-09-26T13:57:53+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -107,9 +107,9 @@ british%
 % \begin{asparaenum} = \begin{enumerate}[para]
 % \begin{inparaenum} = \begin{enumerate*}
 \setlist[enumerate,2]{label=\alph*.}
-\setlist[enumerate]{leftmargin=\parindent}
-\setlist[itemize]{leftmargin=\parindent}
-\setlist[description]{leftmargin=\parindent}
+\setlist[enumerate]{label=\arabic*.,leftmargin=1.5\parindent}
+\setlist[itemize]{leftmargin=1.5\parindent}
+\setlist[description]{leftmargin=1.5\parindent}
 
 \usepackage[babel,theoremfont]{newpxtext}
 \usepackage[bigdelims,nosymbolsc%,smallerops % probably arXiv doesn't have it
@@ -742,6 +742,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 
 %\DeclareMathOperator*{\argsup}{arg\,sup}
 \DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\var}{var}
 \DeclareMathOperator{\diag}{diag}
 \newcommand*{\dob}{degree of belief}
 \newcommand*{\dobs}{degrees of belief}
@@ -1334,10 +1335,14 @@ The second expression shows that the mutual information also measures the
 discrepancy between our \dob\ about the variates jointly and the product of
 our \dobs\ about them separately; the third expression shows that it is an
 average value of the log-ratio between our \dobs\ about the insomnia
-symptoms conditioned and unconditioned on the genetic data. The mutual
-information vanishes if the symptoms and genetic variations are completely
-irrelevant to one another, and is equal to the entropy
-$\sH\bigl(\yso \| \yD,\yI\bigr)$ %, $\sH\bigl(\ygo \| \yD,\yI\bigr)$
+symptoms conditioned and unconditioned on the genetic data. A mutual
+information of around $0.1\;\textrm{nats}$ means that the two \dobs\
+roughly differ in their second significant digit; generally
+$10^{-d}\;\textrm{nats}$ means a difference in the $(d+1)$th significant
+digit. The mutual information vanishes if the symptoms and genetic
+variations are completely irrelevant to one another, and is equal to the
+entropy $\sH\bigl(\yso \|
+\yD,\yI\bigr)$ %, $\sH\bigl(\ygo \| \yD,\yI\bigr)$
 if knowledge of the gene variate gives us complete certainty about the
 insomnia symptoms, since $\sH\bigl(\yso \| \ygo; \yD,\yI)$ vanishes in this
 case.
@@ -1614,11 +1619,11 @@ such that $\ysum\ya=1$, which we take equal to $(1/C,\dotsc,1/C)$:
 especially][\sects~3--4]{basuetal1982}.
 
 This distribution has mean and covariance matrix
-\begin{align}
-  \E(\yF \| \yA, \ya,\yIo) &= \ya\\
-  \cov(\yF \| \yA, \ya,\yIo) &=
+\begin{equation}\label{eq:mean_covariance_dirichlet}
+  \E(\yF \| \yA, \ya,\yIo) = \ya, \qquad
+  \cov(\yF \| \yA, \ya,\yIo) =
   \frac{\yA+N}{N\,(\yA+1)}(\diag\ya -\ya\otimes\ya).
-\end{align}
+\end{equation}
 It also has the property of leaving the distribution of \dob\ for the
 marginal frequencies of any number of gene variations invariant if we
 consider more genes \citep[\sects~3--4]{basuetal1982}, provided $\yA$ is
@@ -1635,7 +1640,8 @@ distribution
 The parameter $\yA$ represents the strength of our belief that $\yF$ is a
 uniform distribution. It can be considered as a prior number of
 observations in which we found that the $C$ values of the joint variate
-came all in equal proportions. Its value therefore can greatly influence
+came all in equal proportions. Its value -- in particularly in comparison
+with the sample size $n$ -- can therefore greatly influence
 our inferences. We consider two particular values:
 \begin{itemize}[label=--]
 \item If $\yA=2$ then our \dob\ about the frequency of each gene allele is
@@ -1651,7 +1657,7 @@ our inferences. We consider two particular values:
   % \end{multline}
   but the density of \dob\ for the frequency of controls vs cases is
   uniform.
-\item If $\yA$ is large, of the order of millions or more then our \dob\
+\item If $\yA$ is large, of the order of millions or more, then our \dob\
   about the joint frequency distribution $\yF$ of all variates is uniform
   -- but no longer uniform for the marginal frequencies.
 \end{itemize}
@@ -1681,17 +1687,33 @@ from which we can deduce the \dob~\eqref{eq:F_from_f_generic}, using
 \begin{equation}
   \label{eq:dirichlet_posterior_expectation}
   \E(N\yF -n\yf \| \yf, n, \yA, \ya,\yIo) =
-  (N-n) \frac{n\yf+\yA\ya}{n+\yA}.
+  (N-n) \frac{n\yf+\yA\ya}{n+\yA},
+\end{equation}
+from which we find
+\begin{equation}
+    \label{eq:expect_freq_dirichlet_prior_final}
+    \E(\yF \| \yf, n,\yA,\ya, \yIo)  =
+    \frac{n}{N}x_{\yso, \ygo} + \frac{N-n}{N}
+\frac{n x_{\yso, \ygo}+\yA/C}{n+\yA}.
 \end{equation}
 This expression can be combined with
-\eqn~\eqref{eq:joint_prob_new_ind_F_unknown}, using the linearity of the
-expectation, to finally find
+\eqn~\eqref{eq:joint_prob_new_ind_F_unknown} to finally find
 \begin{equation}
     \label{eq:joint_prob_new_ind_full_dirichlet_prior_final}
     \pf(\yso, \ygo \| \yf, n,\yA,\ya, \yIo)  =
     \frac{n}{N}x_{\yso, \ygo} + \frac{N-n}{N}
 \frac{n x_{\yso, \ygo}+\yA/C}{n+\yA}.
 \end{equation}
+
+From equation~\eqref{eq:mean_covariance_dirichlet} we can calculate the
+variance of our \dob\ in the frequency of a particular variate value:
+\begin{multline}
+  \label{eq:variance_single_gene_dirichlet}
+  \var(X_{\ys,\yg} \| \yf, n,\yA,\ya, \yIo)  ={}\\
+  \frac{N+n+\yA}{N\,(n+\yA+1)}
+  \frac{n x_{\yso, \ygo}+\yA/C}{n+\yA}
+  \Biggl(1- \frac{n x_{\yso, \ygo}+\yA/C}{n+\yA} \Biggr).
+\end{multline}
 
 
 \bigskip
