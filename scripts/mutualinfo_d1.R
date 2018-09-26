@@ -122,8 +122,8 @@ if(messages==TRUE){print(sig[1])}
     
     
     sentropy <- -sum(apply(fs,1,function(sig){
-        prob <- (sig[2]+2/cs)/n2
-        prob*log(prob)}))
+        prob <- (sig[2]/nn+dnna*(sig[2]+aa/cs))
+        xlogy(prob,prob)}))
 if(messages==TRUE){
     print(paste0('max value = ',sentropy))
     print(paste0('mutual information = ',minfo))
