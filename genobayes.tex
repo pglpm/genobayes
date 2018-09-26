@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-25T20:14:02+0200
+%% Last-Updated: 2018-09-26T10:58:09+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -725,7 +725,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %\newcommand*{\sint}{\begingroup\textstyle\int\endgroup}
 %\newcommand*{\sland}{\mathop{\textstyle\bigwedge}}
 %\newcommand*{\slor}{\mathop{\textstyle\bigvee}}
-%\newcommand*{\T}{^\intercal}%transpose
+\newcommand*{\T}{^\intercal}%transpose
 \newcommand*{\E}{\mathrm{E}}
 \DeclarePairedDelimiter\expp{(}{)}
 \newcommand*{\expe}{\E\expp}%round
@@ -741,6 +741,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\widebar}[1]{{\mkern1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
 
 %\DeclareMathOperator*{\argsup}{arg\,sup}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\diag}{diag}
 \newcommand*{\dob}{degree of belief}
 \newcommand*{\dobs}{degrees of belief}
 \newcommand*{\yD}{D}
@@ -1235,6 +1237,10 @@ inferences about two connected unknowns:
     \pf(\yFs \| \yD,\yI),\qquad
     \pf(\yFg \| \yD,\yI).
   \end{equation}
+  With $N$ individuals, there are $\binom{N+C-1}{C-1}$ possible
+  distributions $\yF$; also $\binom{N+\yCs-1}{\yCs-1}$ possible
+  distributions $\yFs$  and $\binom{N+\yCg-1}{\yCg-1}$ possible
+  distributions $\yFg$ \citep[\sect~2.1]{csiszaretal2004b}.
 \item The symptoms and gene variations of an individual \enquote{$0$}
   chosen at random from the full population. That is, we want to quantify
   our degrees of belief in joint and separate possible values of these
@@ -1261,12 +1267,13 @@ our degree of belief that individual $0$ have variates $\bigl( \yso,\ygo
   \label{eq:joint_prob_new_ind_F_known}
   \pf\bigl(\yso, \ygo \| \yF, \yI\bigr)  =
   \pf\bigl(\yso, \ygo \| \yF, \yD, \yI\bigr)  =
-  X_{\yso, \ygo}.
+  X_{\yso, \ygo},
 \end{equation}
-The conditionals in these \dobs\ indicate that we know $\yF$ besides our
-initial knowledge $\yI$, and the first equality says that the data $\yD$
-would be irrelevant if we knew $\yF$. If $\yF$ is unknown, then by the
-theorem of total \dob\ we have
+that is, the frequency by which the value $\bigl(\yso, \ygo\bigr)$ appears
+in the population. The conditionals in these \dobs\ indicate that we know
+$\yF$ besides our initial knowledge $\yI$, and the first equality says that
+the data $\yD$ would be irrelevant if we knew $\yF$. If $\yF$ is unknown,
+then by the theorem of total \dob\ we have
 \begin{multline}
   \label{eq:joint_prob_new_ind_F_unknown}
   \pf\bigl(\yso, \ygo \| \yD, \yI\bigr)  =
@@ -1274,8 +1281,9 @@ theorem of total \dob\ we have
   \pf( \yF \| \yD, \yI) \equiv{}\\
   \sum_{\yF}  X_{\yso, \ygo}\,  \pf( \yF \| \yD, \yI),
 \end{multline}
-which says that our \dob\ in the individual's variates equals our
-expectation of the frequency of those variates.
+where the sum comprises $\binom{N+C-1}{C-1}$ terms. This formula says that
+our \dob\ in the individual's variates equals our expectation of the
+frequency of those variates.
 Formula~\eqref{eq:joint_prob_new_ind_F_unknown} thus connects the degrees
 of belief~\eqref{eq:goal_plausibilities} and
 \eqref{eq:goal_ind_plausibilities}. Analogous equations hold for the
@@ -1404,7 +1412,7 @@ We need to assess our initial \dob\ for $\yF$ according to some
 background knowledge. As a first tentative let's consider background
 knowledge $\yIc$ such that the \dob\ is constant for all possible
 distributions $\yF$. There are $\binom{N+C-1}{C-1}$ possible distributions
-$\yF$ \citep[\sect~2.1]{csiszaretal2004b}; hence
+$\yF$; hence
 \begin{equation}
   \label{eq:constant_prior}
   \pf(\yF \| \yIc) = \binom{N+C-1}{C-1}^{-1}.
@@ -1605,33 +1613,49 @@ such that $\ysum\ya=1$, which we take equal to $(1/C,\dotsc,1/C)$:
 \citep[\sect~13.1]{johnsonetal1969_r1996}[\sect~3]{minka2000_r2012}[and
 especially][\sects~3--4]{basuetal1982}.
 
-This distribution has the property of leaving the distribution of \dob\ for
-the marginal frequencies of any number of gene variations invariant if we
-consider more genes \citep[\sects~3--4]{basuetal1982}. The parameter $\yA$
+This distribution has mean and covariance matrix
+\begin{align}
+  \E(\yF \| \yA, \ya,\yIo) &= \ya\\
+  \cov(\yF \| \yA, \ya,\yIo) &=
+  \frac{\yA+N}{N\,(\yA+1)}(\diag\ya -\ya\otimes\ya).
+\end{align}
+It also has the property of leaving the distribution of \dob\ for the
+marginal frequencies of any number of gene variations invariant if we
+consider more genes \citep[\sects~3--4]{basuetal1982}, provided $\yA$ is
+kept fixed, with no dependence on $C$ for example. This parameter
 determines our \dob\ about the frequency of single gene variations, for
-example for the first gene allele, $G_{\yg_0}$: it is a
-beta-binomial distribution
+example for the first gene allele, $G_{\yg_0}$: it is a beta-binomial
+distribution
 \begin{equation}
   \label{eq:dirichlet_prior_marginal_beta-binomial}
   \pf(G_{\yg_0} \| \yA, \ya,\yIo) =
   \binom{N+\yA-1}{N}^{-1} \yprod\binom{N G_{\yg_0}+\yA/2-1}{N G_{\yg_0}}.
 \end{equation}
 
-We can consider two particular values of $\yA$. If $\yA=2$ then our \dob\
-about the frequency of each gene allele is uniform; it doesn't assign equal
-\dobs\ to the possible frequency distributions for the $\yCs\equiv 8$
-symptom combinations;% but rather
-% \begin{multline}
-%   \label{eq:dirichlet_prior_symptoms}
-%   \pf(\yFs \| \yIo)\,\di\yFs = \frac{1}{\yprod\Gamma\bigl( \frac{2}{\yCs} \bigr)}
-%   \yprod \yFs^{\frac{2}{\yCs}-1}\,\delt(\ysum\yFs-1)\,\di\yFs ={}\\
-%   \frac{1}{8\Gamma\bigl( \frac{1}{4} \bigr)}
-%   \yprod \yFs^{-3/4}\,\delt(\ysum\yFs-1)\,\di\yFs.
-% \end{multline}
-but the density of \dob\ for the frequency of controls vs cases is uniform.
-If $\yA=C$ then our \dob\ about the joint frequency distribution $\yF$ of
-all variates is uniform -- but no longer uniform for the marginal
-frequencies.
+The parameter $\yA$ represents the strength of our belief that $\yF$ is a
+uniform distribution. It can be considered as a prior number of
+observations in which we found that the $C$ values of the joint variate
+came all in equal proportions. Its value therefore can greatly influence
+our inferences. We consider two particular values:
+\begin{itemize}[label=--]
+\item If $\yA=2$ then our \dob\ about the frequency of each gene allele is
+  uniform; it doesn't assign equal \dobs\ to the possible frequency
+  distributions for the $\yCs\equiv 8$ symptom combinations; % but rather
+  % \begin{multline}
+  %   \label{eq:dirichlet_prior_symptoms}
+  %   \pf(\yFs \| \yIo)\,\di\yFs = \frac{1}{\yprod\Gamma\bigl(
+  %   \frac{2}{\yCs} \bigr)}
+  %   \yprod \yFs^{\frac{2}{\yCs}-1}\,\delt(\ysum\yFs-1)\,\di\yFs ={}\\
+  %   \frac{1}{8\Gamma\bigl( \frac{1}{4} \bigr)} \yprod
+  %   \yFs^{-3/4}\,\delt(\ysum\yFs-1)\,\di\yFs.
+  % \end{multline}
+  but the density of \dob\ for the frequency of controls vs cases is
+  uniform.
+\item If $\yA$ is large, of the order of millions or more then our \dob\
+  about the joint frequency distribution $\yF$ of all variates is uniform
+  -- but no longer uniform for the marginal frequencies.
+\end{itemize}
+
 
 % The approximation $N \to \infty$ needs to be justified. If we consider a
 % limited amount of gene variations, so that $N/C$ is large (say, less than

@@ -132,9 +132,15 @@ if(messages==TRUE){
 
 ## all genes:
 
+## A = 2:
 ## [1] "max value = 1.73891986550377"
-## [1] "mutual information = 1.73823079314495"
-## [1] "normalized value = 0.999603735415018"
-## There were 20 warnings (use warnings() to see them)
+## [1] "mutual information = 1.73823028117557"
+## [1] "normalized value = 0.999603440996979"
+
+## A = 5e6
+## [1] "max value = 2.07944093871207"
+## [1] "mutual information = 0.00250316599469759"
+## [1] "normalized value = 0.00120376873807628"
+
 
 ## "best genes" from pairwise analysis: {{32, 2}, {66, 2}, {6, 4}, {57, 1}, {75, 3}, {9, 1}, {58, 1}, {89, 1}, {53, 1}, {21, 1}, {56, 1}, {42, 1}, {68, 1}}
