@@ -1,5 +1,5 @@
 ## Calculation of mutual information from sampled data
-## test 1
+## N = infinity, Dirichlet prior
 
 ## libraries and colour-blind palette from http://www.sron.nl/~pault/
 library('ggplot2')
@@ -52,7 +52,7 @@ calculatemutualinfo <- function(whichgenes,a=2,cores=20,datafile='dataset1',mess
     ##    data[,1] <- sample(data[,1])
     l <- length(data[1,])
     n <- length(data[,1])
-    nn <- 5.3e6L
+    ## nn <- 5.3e6L ## N is infinity
     cs <- length(unique(data[,1]))
     cg <- 2^ngenes
     cx <- cs*cg
@@ -73,7 +73,7 @@ calculatemutualinfo <- function(whichgenes,a=2,cores=20,datafile='dataset1',mess
     cgplus <- dim(fg)[1]
 
     n2 <- n+aa
-    dnna <- (nn-n)/(nn*n2)
+    dnna <- 1/n2
     ## minfo <- log(ncnn) + sum(apply(fs,1,function(sig){
     ##     apply(fg,1,function(gam){
     ##         ## marginal freqs
@@ -103,7 +103,7 @@ calculatemutualinfo <- function(whichgenes,a=2,cores=20,datafile='dataset1',mess
     minfo <- sum(apply(fs,1,function(sig){
 if(messages==TRUE){print(sig[1])}
         foreach(i=1:cgplus, .combine=cbind,
-                .export=c('fg','fx','ngenes','cg','cs','cx','nn','n','n2','dnna','xlogy','aa')
+                .export=c('fg','fx','ngenes','cg','cs','cx','n','n2','dnna','xlogy','aa')
                 ) %dopar% {
             gam <- fg[i,]
             ## marginal freqs
@@ -112,18 +112,18 @@ if(messages==TRUE){print(sig[1])}
             ## frequency of pair
             nx <- sum(apply(fx,1,function(i){all(i[1:(ngenes+1)]==c(sig[1],gam[1:ngenes]))*i[ngenes+2]}))
 
-            probx <- nx/nn+dnna*(nx+aa/cx)
-            probs <- ns/nn+dnna*(ns+aa/cs)
-            probg <- ng/nn+dnna*(ng+aa/cg)
+            probx <- dnna*(nx+aa/cx)
+            probs <- dnna*(ns+aa/cs)
+            probg <- dnna*(ng+aa/cg)
 
             xlogy(probx,probx/(probs*probg))}})) -
-        cgminus*2*dnna/cx*sum(log((fs[,2]/nn+dnna*(fs[,2]+aa/cs))*cx/cg))
+        cgminus*2*dnna/cx*sum(log((dnna*(fs[,2]+aa/cs))*cx/cg))
     stopCluster(cl)
     
     
     sentropy <- -sum(apply(fs,1,function(sig){
-        prob <- (sig[2]+2/cs)/n2
-        prob*log(prob)}))
+        prob <- dnna*(sig[2]+aa/cs)
+        xlogy(prob,prob)}))
 if(messages==TRUE){
     print(paste0('max value = ',sentropy))
     print(paste0('mutual information = ',minfo))
