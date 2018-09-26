@@ -57,7 +57,7 @@ calculatemutualinfo <- function(whichgenes,a=2,cores=20,datafile='dataset1',mess
     cg <- 2^ngenes
     cx <- cs*cg
 
-    if(a==0){aa  <- cx}else if(a==-2){aa <- sqrt(2*cx)}else if(aa==-10){aa <- nn}else{aa <- a}
+    if(a==0){aa  <- cx}else if(a==-2){aa <- sqrt(2*cx)}else if(a==-10){aa <- nn}else{aa <- a}
 
     ## data frequencies for symptoms
     fs <- data.matrix(tally(group_by_at(data,.vars=c(1))))
