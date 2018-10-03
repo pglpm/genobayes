@@ -147,4 +147,16 @@ if(messages==TRUE){
 ## [1] "mutual information = 1.24131580426762e-26"
 ## [1] "normalized value = 5.96946718331329e-27"
 
+## A = 1000
+## [1] "max value = 1.83011962641293"
+## [1] "mutual information = 1.49955896620217"
+## [1] "normalized value = 0.819377566668324"
+
+## A = 5000
+## [1] "max value = 1.97481642240801"
+## [1] "mutual information = 0.989254161602272"
+## [1] "normalized value = 0.500934745314714"
+
+
+
 ## "best genes" from pairwise analysis: {{32, 2}, {66, 2}, {6, 4}, {57, 1}, {75, 3}, {9, 1}, {58, 1}, {89, 1}, {53, 1}, {21, 1}, {56, 1}, {42, 1}, {68, 1}}
