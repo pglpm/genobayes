@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-09-25T20:14:02+0200
+%% Last-Updated: 2018-10-06T17:41:48+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -107,9 +107,9 @@ british%
 % \begin{asparaenum} = \begin{enumerate}[para]
 % \begin{inparaenum} = \begin{enumerate*}
 \setlist[enumerate,2]{label=\alph*.}
-\setlist[enumerate]{leftmargin=\parindent}
-\setlist[itemize]{leftmargin=\parindent}
-\setlist[description]{leftmargin=\parindent}
+\setlist[enumerate]{label=\arabic*.,leftmargin=1.5\parindent}
+\setlist[itemize]{leftmargin=1.5\parindent}
+\setlist[description]{leftmargin=1.5\parindent}
 
 \usepackage[babel,theoremfont]{newpxtext}
 \usepackage[bigdelims,nosymbolsc%,smallerops % probably arXiv doesn't have it
@@ -725,7 +725,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %\newcommand*{\sint}{\begingroup\textstyle\int\endgroup}
 %\newcommand*{\sland}{\mathop{\textstyle\bigwedge}}
 %\newcommand*{\slor}{\mathop{\textstyle\bigvee}}
-%\newcommand*{\T}{^\intercal}%transpose
+\newcommand*{\T}{^\intercal}%transpose
 \newcommand*{\E}{\mathrm{E}}
 \DeclarePairedDelimiter\expp{(}{)}
 \newcommand*{\expe}{\E\expp}%round
@@ -741,6 +741,9 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\widebar}[1]{{\mkern1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
 
 %\DeclareMathOperator*{\argsup}{arg\,sup}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\diag}{diag}
 \newcommand*{\dob}{degree of belief}
 \newcommand*{\dobs}{degrees of belief}
 \newcommand*{\yD}{D}
@@ -1235,6 +1238,10 @@ inferences about two connected unknowns:
     \pf(\yFs \| \yD,\yI),\qquad
     \pf(\yFg \| \yD,\yI).
   \end{equation}
+  With $N$ individuals, there are $\binom{N+C-1}{C-1}$ possible
+  distributions $\yF$; also $\binom{N+\yCs-1}{\yCs-1}$ possible
+  distributions $\yFs$  and $\binom{N+\yCg-1}{\yCg-1}$ possible
+  distributions $\yFg$ \citep[\sect~2.1]{csiszaretal2004b}.
 \item The symptoms and gene variations of an individual \enquote{$0$}
   chosen at random from the full population. That is, we want to quantify
   our degrees of belief in joint and separate possible values of these
@@ -1253,20 +1260,21 @@ inferences about two connected unknowns:
 % $\yso$, $\ygo$ for brevity.
 
 
-These two kinds of degree of belief are mathematically connected: If we
-knew the joint frequency distribution $\yF$ in the full population, then
-our degree of belief that individual $0$ have variates $\bigl( \yso,\ygo
-\bigr)$ would be, by symmetry,
+These two kinds of \dob\ are mathematically connected: If we knew the joint
+frequency distribution $\yF$ in the full population, then our degree of
+belief that individual $0$ have variates $\bigl( \yso,\ygo \bigr)$ would
+be, by symmetry,
 \begin{equation}
   \label{eq:joint_prob_new_ind_F_known}
   \pf\bigl(\yso, \ygo \| \yF, \yI\bigr)  =
   \pf\bigl(\yso, \ygo \| \yF, \yD, \yI\bigr)  =
-  X_{\yso, \ygo}.
+  X_{\yso, \ygo},
 \end{equation}
-The conditionals in these \dobs\ indicate that we know $\yF$ besides our
-initial knowledge $\yI$, and the first equality says that the data $\yD$
-would be irrelevant if we knew $\yF$. If $\yF$ is unknown, then by the
-theorem of total \dob\ we have
+that is, the frequency by which the value $\bigl(\yso, \ygo\bigr)$ appears
+in the population. The conditionals in these \dobs\ indicate that we know
+$\yF$ besides our initial knowledge $\yI$, and the first equality says that
+the data $\yD$ would be irrelevant if we knew $\yF$. If $\yF$ is unknown,
+then by the theorem of total \dob\ we have
 \begin{multline}
   \label{eq:joint_prob_new_ind_F_unknown}
   \pf\bigl(\yso, \ygo \| \yD, \yI\bigr)  =
@@ -1274,8 +1282,9 @@ theorem of total \dob\ we have
   \pf( \yF \| \yD, \yI) \equiv{}\\
   \sum_{\yF}  X_{\yso, \ygo}\,  \pf( \yF \| \yD, \yI),
 \end{multline}
-which says that our \dob\ in the individual's variates equals our
-expectation of the frequency of those variates.
+where the sum comprises $\binom{N+C-1}{C-1}$ terms. This formula says that
+our \dob\ in the individual's variates equals our expectation of the
+frequency of those variates.
 Formula~\eqref{eq:joint_prob_new_ind_F_unknown} thus connects the degrees
 of belief~\eqref{eq:goal_plausibilities} and
 \eqref{eq:goal_ind_plausibilities}. Analogous equations hold for the
@@ -1326,10 +1335,14 @@ The second expression shows that the mutual information also measures the
 discrepancy between our \dob\ about the variates jointly and the product of
 our \dobs\ about them separately; the third expression shows that it is an
 average value of the log-ratio between our \dobs\ about the insomnia
-symptoms conditioned and unconditioned on the genetic data. The mutual
-information vanishes if the symptoms and genetic variations are completely
-irrelevant to one another, and is equal to the entropy
-$\sH\bigl(\yso \| \yD,\yI\bigr)$ %, $\sH\bigl(\ygo \| \yD,\yI\bigr)$
+symptoms conditioned and unconditioned on the genetic data. A mutual
+information of around $0.1\;\textrm{nats}$ means that the two \dobs\
+roughly differ in their second significant digit; generally
+$10^{-d}\;\textrm{nats}$ means a difference in the $(d+1)$th significant
+digit. The mutual information vanishes if the symptoms and genetic
+variations are completely irrelevant to one another, and is equal to the
+entropy $\sH\bigl(\yso \|
+\yD,\yI\bigr)$ %, $\sH\bigl(\ygo \| \yD,\yI\bigr)$
 if knowledge of the gene variate gives us complete certainty about the
 insomnia symptoms, since $\sH\bigl(\yso \| \ygo; \yD,\yI)$ vanishes in this
 case.
@@ -1397,14 +1410,173 @@ replacing $\yF$, $\yf$ with $\yFg$, $\yfg$. From these we can calculate the
 mutual information~\eqref{eq:mutual_info_new_ind}.
 
 
-\subsection{First calculation: constant initial \dob}
+
+\subsection{Calculation: Dirichlet distributions}
+\label{sec:2nd_calculation_unif_marginals}
+
+\mynote{The results of this section will be improved using the analysis by
+  Good \citey[\chaps~4--5]{good1965}{good1980}}
+
+%\mynote{\textbf{IMPORTANT: check \citep{zhangetal2012b} and its refs in \sect~2}}
+
+We need to assess our initial \dob\ for $\yF$ according to some
+background knowledge. Let's preliminarily consider background
+knowledge $\yIc$ such that the \dob\ is constant for all possible
+distributions $\yF$. There are $\binom{N+C-1}{C-1}$ possible distributions
+$\yF$; hence
+\begin{equation}
+  \label{eq:constant_prior}
+  \pf(\yF \| \yIc) = \binom{N+C-1}{C-1}^{-1}.
+\end{equation}
+This yields a constant  initial  distribution of \dob\ for $(\yso,\ygo)$:
+\begin{multline}
+  \label{eq:joint_prob_initial_F_unknown}
+  \pf\bigl(\yso, \ygo \| \yIc\bigr)  =
+  \sum_{\yF}  \pf\bigl(\yso, \ygo \| \yF,\yIc\bigr) \;
+  \pf( \yF \| \yIc) ={}\\
+  \sum_{\yF}  X_{\yso, \ygo} \binom{N+C-1}{C-1}^{-1}
+  = 1/C,
+\end{multline}
+
+This state of knowledge is denoted with \enquote{$\gn$} because it depends
+on the number of gene variations we consider. Two different values $\gn'$
+and $\gn''$ correspond to two different states of knowledge,
+$\yI_{\gn'} \ne \yI_{\gn''}$. It's important to note that these states of
+knowledge yield different initial \dobs\ for the marginal frequency
+distribution of a single gene. As a consequence, if we suddenly decide to
+consider additional genes, or to neglect some, we cannot compare our
+inference with the ones previously made.
+
+Another bothering feature of the state of knowledge $\yIc$ is that the
+marginal \dob\ in the insomnia symptoms alone given the full set of
+data, \eqn~\eqref{eq:marginals_final_const_prior}, depends on the number of
+gene variations considered in the data. Likewise, the \dob\ in the
+gene variations depend on the number of insomnia symptoms.
+
+It seems reasonable to consider an initial state of knowledge that doesn't
+lead to different marginal distributions of \dobs\ in the frequencies when
+we want to consider an additional gene variation, and that doesn't have
+the counter-intuitive features above.
+
+One such state of knowledge $\yIo$ exists (perhaps it isn't unique) and is
+characterized by a Dirichlet-multinomial distribution for $\yF$, which
+depends on a positive parameter $\yA$ and a non-negative $C$-tuple $\ya$
+such that $\ysum\ya=1$, which we take equal to $(1/C,\dotsc,1/C)$:
+\begin{multline}
+  \label{eq:dirichlet_prior}
+  \pf(\yF \| \yA, \ya,\yIo) =
+  \binom{N+\yA-1}{N}^{-1} \yprod\binom{N\yF+\yA\ya-1}{N\yF},\\
+  \ya \defd (\underbrace{1/C,\dotsc,1/C}_{\text{$C$ elements}})
+\end{multline}
+\citep[\sect~13.1]{johnsonetal1969_r1996}[\sect~3]{minka2000_r2012}[and
+especially][\sects~3--4]{basuetal1982}.
+
+This distribution has mean and covariance matrix
+\begin{equation}\label{eq:mean_covariance_dirichlet}
+  \E(\yF \| \yA, \ya,\yIo) = \ya, \qquad
+  \cov(\yF \| \yA, \ya,\yIo) =
+  \frac{\yA+N}{N\,(\yA+1)}(\diag\ya -\ya\otimes\ya).
+\end{equation}
+It also has the property of leaving the distribution of \dob\ for the
+marginal frequencies of any number of gene variations invariant if we
+consider more genes \citep[\sects~3--4]{basuetal1982}, provided $\yA$ is
+kept fixed, with no dependence on $C$ for example. This parameter
+determines our \dob\ about the frequency of single gene variations, for
+example for the first gene allele, $G_{\yg_0}$: it is a beta-binomial
+distribution
+\begin{equation}
+  \label{eq:dirichlet_prior_marginal_beta-binomial}
+  \pf(G_{\yg_0} \| \yA, \ya,\yIo) =
+  \binom{N+\yA-1}{N}^{-1} \yprod\binom{N G_{\yg_0}+\yA/2-1}{N G_{\yg_0}}.
+\end{equation}
+
+The parameter $\yA$ represents the strength of our belief that $\yF$ is a
+uniform distribution. It can be considered as a prior number of
+observations in which we found that the $C$ values of the joint variate
+came all in equal proportions. Its value -- in particularly in comparison
+with the sample size $n$ -- can therefore greatly influence
+our inferences. We consider two particular values:
+\begin{itemize}[label=--]
+\item If $\yA=2$ then our \dob\ about the frequency of each gene allele is
+  uniform; it doesn't assign equal \dobs\ to the possible frequency
+  distributions for the $\yCs\equiv 8$ symptom combinations; % but rather
+  % \begin{multline}
+  %   \label{eq:dirichlet_prior_symptoms}
+  %   \pf(\yFs \| \yIo)\,\di\yFs = \frac{1}{\yprod\Gamma\bigl(
+  %   \frac{2}{\yCs} \bigr)}
+  %   \yprod \yFs^{\frac{2}{\yCs}-1}\,\delt(\ysum\yFs-1)\,\di\yFs ={}\\
+  %   \frac{1}{8\Gamma\bigl( \frac{1}{4} \bigr)} \yprod
+  %   \yFs^{-3/4}\,\delt(\ysum\yFs-1)\,\di\yFs.
+  % \end{multline}
+  but the density of \dob\ for the frequency of controls vs cases is
+  uniform.
+\item If $\yA$ is large, of the order of millions or more, then our \dob\
+  about the joint frequency distribution $\yF$ of all variates is uniform
+  -- but no longer uniform for the marginal frequencies.
+\end{itemize}
+
+
+% The approximation $N \to \infty$ needs to be justified. If we consider a
+% limited amount of gene variations, so that $N/C$ is large (say, less than
+% 12 gene variations), this approximation should be valid. If we consider a
+% large amount of gene variations, so that $C/N$ is large (say, more than 25
+% gene variations), the possible frequencies lie on the faces of the
+% $(C-1)$-dimensional simplex; but the density~\eqref{eq:dirichlet_prior} is
+% concentrated in regions at the boundary of the simplex, and thus the
+% approximation may still be reasonable.
+
+As shown by Basu \amp\ de Bragan\c{c}a Pereira \citey[\sect~4,
+Theorem~2]{basuetal1982}, the initial \dob\ $\yIo$ leads to a \dob\ for
+$N\yF-n\yf$ conditional on our data $\yD$ that has the same form, but with
+new parameters $n+\yA$ and $(n\yf+\yA\ya)/(n+\yA)$:
+\begin{equation}
+  \label{eq:dirichlet_posterior_X}
+  \pf(N\yF -n\yf \| \yf, n, \yA, \ya,\yIo) =
+  \binom{N+\yA-1}{N-n}^{-1} \yprod\binom{N\yF+\yA\ya-1}{N\yF-n\yf},
+\end{equation}
+from which we can deduce the \dob~\eqref{eq:F_from_f_generic}, using
+\eqref{eq:multivariate_hyperg}. Moreover, the expectation of $N\yF-n\yf$ is
+\citey[\sect~3]{basuetal1982}
+\begin{equation}
+  \label{eq:dirichlet_posterior_expectation}
+  \E(N\yF -n\yf \| \yf, n, \yA, \ya,\yIo) =
+  (N-n) \frac{n\yf+\yA\ya}{n+\yA},
+\end{equation}
+from which we find
+\begin{equation}
+    \label{eq:expect_freq_dirichlet_prior_final}
+    \E(\yF \| \yf, n,\yA,\ya, \yIo)  =
+    \frac{n}{N}x_{\yso, \ygo} + \frac{N-n}{N}
+\frac{n x_{\yso, \ygo}+\yA/C}{n+\yA}.
+\end{equation}
+This expression can be combined with
+\eqn~\eqref{eq:joint_prob_new_ind_F_unknown} to finally find
+\begin{equation}
+    \label{eq:joint_prob_new_ind_full_dirichlet_prior_final}
+    \pf(\yso, \ygo \| \yf, n,\yA,\ya, \yIo)  =
+    \frac{n}{N}x_{\yso, \ygo} + \frac{N-n}{N}
+\frac{n x_{\yso, \ygo}+\yA/C}{n+\yA}.
+\end{equation}
+
+From equation~\eqref{eq:mean_covariance_dirichlet} we can calculate the
+variance of our \dob\ in the frequency of a particular variate value:
+\begin{multline}
+  \label{eq:variance_single_gene_dirichlet}
+  \var(X_{\ys,\yg} \| \yf, n,\yA,\ya, \yIo)  ={}\\
+  \frac{N+n+\yA}{N\,(n+\yA+1)}
+  \frac{n x_{\yso, \ygo}+\yA/C}{n+\yA}
+  \Biggl(1- \frac{n x_{\yso, \ygo}+\yA/C}{n+\yA} \Biggr).
+\end{multline}
+
+\subsection*{Constant initial \dob}
 \label{sec:first_calc_const_prior}
+\mynote{This section has become irrelevant. Left here just for reference}
 
 We need to assess our initial \dob\ for $\yF$ according to some
 background knowledge. As a first tentative let's consider background
 knowledge $\yIc$ such that the \dob\ is constant for all possible
 distributions $\yF$. There are $\binom{N+C-1}{C-1}$ possible distributions
-$\yF$ \citep[\sect~2.1]{csiszaretal2004b}; hence
+$\yF$; hence
 \begin{equation}
   \label{eq:constant_prior}
   \pf(\yF \| \yIc) = \binom{N+C-1}{C-1}^{-1}.
@@ -1560,115 +1732,6 @@ of view the limit $N\to \infty$ does not make much sense. Unless we choose
 a prior  distribution of \dob\ for the frequency distributions that is
 concentrated on the edges of the simplex.
 \fi
-
-\subsection{Second calculation: uniform marginals}
-\label{sec:2nd_calculation_unif_marginals}
-
-%\mynote{\textbf{IMPORTANT: check \citep{zhangetal2012b} and its refs in \sect~2}}
-
-The initial state of knowledge $\yIc$ used in the previous section was
-denoted with \enquote{$\gn$} because it depends on the number of gene
-variations we consider. Two different values $\gn'$ and $\gn''$ correspond
-to two different states of knowledge, $\yI_{\gn'} \ne \yI_{\gn''}$, which
-yield different initial \dobs\ for the marginal frequency distribution of a
-single gene. For example, for very large $N$, if we consider a single gene,
-$\gn=1$, the density of \dob\ for its marginal frequency $f$ is constant in
-$\di f$. If we consider an additional gene, $\gn=2$, the density of \dob\
-for the marginal frequency of the previous gene becomes
-$6 f\, (1-f)\,\di f$. If we consider an additional third gene, this density
-will be again different. As a consequence, if we decide to consider
-additional genes we cannot compare our inference with the ones previously
-made, because they come from \emph{incompatible} initial states of
-knowledge.
-
-Another bothering feature of the state of knowledge $\yIc$ is that the
-marginal \dob\ in the insomnia symptoms alone given the full set of
-data, \eqn~\eqref{eq:marginals_final_const_prior}, depends on the number of
-gene variations considered in the data. Likewise, the \dob\ in the
-gene variations depend on the number of insomnia symptoms.
-
-It seems reasonable to consider an initial state of knowledge that doesn't
-lead to different marginal distributions of \dobs\ in the frequencies when
-we want to consider an additional gene variation, and that doesn't have
-the counter-intuitive features above.
-
-One such a state of knowledge $\yIo$ exists (perhaps it isn't unique) and
-is characterized by a Dirichlet-multinomial distribution for $\yF$, which
-depends on a positive parameter $\yA$ and a non-negative $C$-tuple $\ya$
-such that $\ysum\ya=1$, which we take equal to $(1/C,\dotsc,1/C)$:
-\begin{multline}
-  \label{eq:dirichlet_prior}
-  \pf(\yF \| \yA, \ya,\yIo) =
-  \binom{N+\yA-1}{N}^{-1} \yprod\binom{N\yF+\yA\ya-1}{N\yF},\\
-  \ya \defd (\underbrace{1/C,\dotsc,1/C}_{\text{$C$ elements}})
-\end{multline}
-\citep[\sect~13.1]{johnsonetal1969_r1996}[\sect~3]{minka2000_r2012}[and
-especially][\sects~3--4]{basuetal1982}.
-
-This distribution has the property of leaving the distribution of \dob\ for
-the marginal frequencies of any number of gene variations invariant if we
-consider more genes \citep[\sects~3--4]{basuetal1982}. The parameter $\yA$
-determines our \dob\ about the frequency of single gene variations, for
-example for the first gene allele, $G_{\yg_0}$: it is a
-beta-binomial distribution
-\begin{equation}
-  \label{eq:dirichlet_prior_marginal_beta-binomial}
-  \pf(G_{\yg_0} \| \yA, \ya,\yIo) =
-  \binom{N+\yA-1}{N}^{-1} \yprod\binom{N G_{\yg_0}+\yA/2-1}{N G_{\yg_0}}.
-\end{equation}
-
-We can consider two particular values of $\yA$. If $\yA=2$ then our \dob\
-about the frequency of each gene allele is uniform; it doesn't assign equal
-\dobs\ to the possible frequency distributions for the $\yCs\equiv 8$
-symptom combinations;% but rather
-% \begin{multline}
-%   \label{eq:dirichlet_prior_symptoms}
-%   \pf(\yFs \| \yIo)\,\di\yFs = \frac{1}{\yprod\Gamma\bigl( \frac{2}{\yCs} \bigr)}
-%   \yprod \yFs^{\frac{2}{\yCs}-1}\,\delt(\ysum\yFs-1)\,\di\yFs ={}\\
-%   \frac{1}{8\Gamma\bigl( \frac{1}{4} \bigr)}
-%   \yprod \yFs^{-3/4}\,\delt(\ysum\yFs-1)\,\di\yFs.
-% \end{multline}
-but the density of \dob\ for the frequency of controls vs cases is uniform.
-If $\yA=C$ then our \dob\ about the joint frequency distribution $\yF$ of
-all variates is uniform -- but no longer uniform for the marginal
-frequencies.
-
-% The approximation $N \to \infty$ needs to be justified. If we consider a
-% limited amount of gene variations, so that $N/C$ is large (say, less than
-% 12 gene variations), this approximation should be valid. If we consider a
-% large amount of gene variations, so that $C/N$ is large (say, more than 25
-% gene variations), the possible frequencies lie on the faces of the
-% $(C-1)$-dimensional simplex; but the density~\eqref{eq:dirichlet_prior} is
-% concentrated in regions at the boundary of the simplex, and thus the
-% approximation may still be reasonable.
-
-As shown by Basu \amp\ de Bragan\c{c}a Pereira \citey[\sect~4,
-Theorem~2]{basuetal1982}, the initial \dob\ $\yIo$ leads to a \dob\ for
-$N\yF-n\yf$ conditional on our data $\yD$ that has the same form, but with
-new parameters $n+\yA$ and $(n\yf+\yA\ya)/(n+\yA)$:
-\begin{equation}
-  \label{eq:dirichlet_posterior_X}
-  \pf(N\yF -n\yf \| \yf, n, \yA, \ya,\yIo) =
-  \binom{N+\yA-1}{N-n}^{-1} \yprod\binom{N\yF+\yA\ya-1}{N\yF-n\yf},
-\end{equation}
-from which we can deduce the \dob~\eqref{eq:F_from_f_generic}, using
-\eqref{eq:multivariate_hyperg}. Moreover, the expectation of $N\yF-n\yf$ is
-\citey[\sect~3]{basuetal1982}
-\begin{equation}
-  \label{eq:dirichlet_posterior_expectation}
-  \E(N\yF -n\yf \| \yf, n, \yA, \ya,\yIo) =
-  (N-n) \frac{n\yf+\yA\ya}{n+\yA}.
-\end{equation}
-This expression can be combined with
-\eqn~\eqref{eq:joint_prob_new_ind_F_unknown}, using the linearity of the
-expectation, to finally find
-\begin{equation}
-    \label{eq:joint_prob_new_ind_full_dirichlet_prior_final}
-    \pf(\yso, \ygo \| \yf, n,\yA,\ya, \yIo)  =
-    \frac{n}{N}x_{\yso, \ygo} + \frac{N-n}{N}
-\frac{n x_{\yso, \ygo}+\yA/C}{n+\yA}.
-\end{equation}
-
 
 \bigskip
 \hrule
