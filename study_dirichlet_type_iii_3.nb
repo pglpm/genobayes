@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1297358,      25204]
-NotebookOptionsPosition[   1291073,      25096]
-NotebookOutlinePosition[   1291419,      25111]
-CellTagsIndexPosition[   1291376,      25108]
+NotebookDataLength[   1293181,      25091]
+NotebookOptionsPosition[   1286896,      24983]
+NotebookOutlinePosition[   1287242,      24998]
+CellTagsIndexPosition[   1287199,      24995]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -14169,12 +14169,12 @@ Cell[BoxData[
    RowBox[{"ChartLayout", "\[Rule]", "\"\<Grouped\>\""}], ",", 
    RowBox[{"ChartStyle", "\[Rule]", 
     RowBox[{"{", 
-     RowBox[{"blue", ",", "red", ",", "green"}], "}"}]}], ",", 
+     RowBox[{"Black", ",", "blue", ",", "red"}], "}"}]}], ",", 
    RowBox[{"ChartLegends", "\[Rule]", 
     RowBox[{"mylegendsc", "[", 
      RowBox[{
       RowBox[{"{", 
-       RowBox[{"blue", ",", "red", ",", "green"}], "}"}], ",", 
+       RowBox[{"Black", ",", "blue", ",", "red"}], "}"}], ",", 
       RowBox[{"{", 
        RowBox[{"\"\<exact\>\"", ",", "\"\<max\>\"", ",", "\"\<C/2\>\""}], 
        "}"}], ",", "Bottom"}], "]"}]}]}], "]"}]], "Input",
@@ -14182,8 +14182,9 @@ Cell[BoxData[
   3.748201648810829*^9, 3.74820165500404*^9}, {3.748201816325924*^9, 
   3.748201861192602*^9}, {3.748201904810279*^9, 3.7482019260263166`*^9}, {
   3.7482020794067855`*^9, 3.748202136643286*^9}, {3.748202190634981*^9, 
-  3.7482021913525825`*^9}, {3.748202235141859*^9, 
-  3.7482022587135005`*^9}},ExpressionUUID->"0ab117bd-b301-4938-a88d-\
+  3.7482021913525825`*^9}, {3.748202235141859*^9, 3.7482022587135005`*^9}, {
+  3.7482027228767157`*^9, 
+  3.7482027335471344`*^9}},ExpressionUUID->"0ab117bd-b301-4938-a88d-\
 5dce15ec17a1"],
 
 Cell[BoxData[
@@ -14195,13 +14196,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14227,11 +14222,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14242,6 +14237,7 @@ Cell[BoxData[
                    GrayLevel[0.5], 
                    AbsoluteThickness[1.5], 
                    Opacity[0.66]}], {}, {}], 
+                
                 RectangleBox[{1.5, 0.}, {2.5, 0.24932699165423325`}, 
                  "RoundingRadius" -> 0]}], 
               StatusArea[#, 0.24932699165423325`]& , TagBoxNote -> 
@@ -14256,11 +14252,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14286,13 +14282,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14318,11 +14308,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14348,11 +14338,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14363,7 +14353,6 @@ Cell[BoxData[
                    GrayLevel[0.5], 
                    AbsoluteThickness[1.5], 
                    Opacity[0.66]}], {}, {}], 
-                
                 RectangleBox[{5.5, 0.}, {6.5, 0.15247639556070897`}, 
                  "RoundingRadius" -> 0]}], StatusArea[#, 
                Rational[1841, 12074]]& , TagBoxNote -> "1841/12074"], 
@@ -14378,13 +14367,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14410,11 +14393,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14440,11 +14423,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14470,13 +14453,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14502,11 +14479,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14532,11 +14509,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14562,13 +14539,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14594,11 +14565,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14624,11 +14595,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14654,13 +14625,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14686,11 +14651,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14716,11 +14681,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14746,13 +14711,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14778,11 +14737,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14808,11 +14767,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14838,13 +14797,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14870,11 +14823,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14900,11 +14853,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14930,13 +14883,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14962,11 +14909,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -14992,11 +14939,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15022,13 +14969,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15054,11 +14995,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15084,11 +15025,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15114,13 +15055,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15146,11 +15081,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15176,11 +15111,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15205,13 +15140,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15237,11 +15166,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15267,11 +15196,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15296,13 +15225,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15328,11 +15251,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15358,11 +15281,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15388,13 +15311,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15420,11 +15337,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15435,6 +15352,7 @@ Cell[BoxData[
                    GrayLevel[0.5], 
                    AbsoluteThickness[1.5], 
                    Opacity[0.66]}], {}, {}], 
+                
                 RectangleBox[{40.5, 0.}, {41.5, 0.025006489370501997`}, 
                  "RoundingRadius" -> 0]}], 
               StatusArea[#, 0.025006489370501997`]& , TagBoxNote -> 
@@ -15449,11 +15367,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15479,13 +15397,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15511,11 +15423,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15526,7 +15438,6 @@ Cell[BoxData[
                    GrayLevel[0.5], 
                    AbsoluteThickness[1.5], 
                    Opacity[0.66]}], {}, {}], 
-                
                 RectangleBox[{43.5, 0.}, {44.5, 0.0545962977041703}, 
                  "RoundingRadius" -> 0]}], 
               StatusArea[#, 0.0545962977041703]& , TagBoxNote -> 
@@ -15541,11 +15452,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15571,13 +15482,7 @@ Cell[BoxData[
              Directive[
               Thickness[Small], 
               Opacity[0.364]]], 
-            RGBColor[
-             NCache[
-              Rational[2, 5], 0.4], 
-             NCache[
-              Rational[4, 5], 0.8], 
-             NCache[
-              Rational[14, 15], 0.9333333333333333]]], 
+            GrayLevel[0]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15603,11 +15508,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -15633,11 +15538,11 @@ Cell[BoxData[
               Opacity[0.364]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16051,6 +15956,27 @@ Cell[BoxData[
                     GrayLevel[0]]], 
                     PointSize[0.5], 
                     AbsoluteThickness[1.6], 
+                    GrayLevel[0]], {
+                    LineBox[{{0, 10}, {20, 10}}]}}, {
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.5], 
+                    AbsoluteThickness[1.6], 
+                    GrayLevel[0]], {}}}, AspectRatio -> Full, 
+                    ImageSize -> {20, 10}, PlotRangePadding -> None, 
+                    ImagePadding -> Automatic, 
+                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #, 
+                   GraphicsBox[{{
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.5], 
+                    AbsoluteThickness[1.6], 
                     RGBColor[
                     NCache[
                     Rational[2, 5], 0.4], 
@@ -16075,7 +16001,7 @@ Cell[BoxData[
                     Rational[14, 15], 0.9333333333333333]]], {}}}, 
                     AspectRatio -> Full, ImageSize -> {20, 10}, 
                     PlotRangePadding -> None, ImagePadding -> Automatic, 
-                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #, 
+                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #2, 
                    GraphicsBox[{{
                     Directive[
                     EdgeForm[
@@ -16108,39 +16034,6 @@ Cell[BoxData[
                     Rational[7, 15], 0.4666666666666667]]], {}}}, AspectRatio -> 
                     Full, ImageSize -> {20, 10}, PlotRangePadding -> None, 
                     ImagePadding -> Automatic, 
-                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #2, 
-                   GraphicsBox[{{
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.5], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[
-                    NCache[
-                    Rational[2, 15], 0.13333333333333333`], 
-                    NCache[
-                    Rational[8, 15], 0.5333333333333333], 
-                    NCache[
-                    Rational[1, 5], 0.2]]], {
-                    LineBox[{{0, 10}, {20, 10}}]}}, {
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.5], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[
-                    NCache[
-                    Rational[2, 15], 0.13333333333333333`], 
-                    NCache[
-                    Rational[8, 15], 0.5333333333333333], 
-                    NCache[
-                    Rational[1, 5], 0.2]]], {}}}, AspectRatio -> Full, 
-                    ImageSize -> {20, 10}, PlotRangePadding -> None, 
-                    ImagePadding -> Automatic, 
                     BaselinePosition -> (Scaled[0.1] -> Baseline)], #3}}, 
                  GridBoxAlignment -> {
                   "Columns" -> {Center, Left}, "Rows" -> {{Baseline}}}, 
@@ -16163,6 +16056,44 @@ Cell[BoxData[
          RowBox[{
            RowBox[{"{", 
              RowBox[{
+               RowBox[{"Directive", "[", 
+                 InterpretationBox[
+                  ButtonBox[
+                   TooltipBox[
+                    GraphicsBox[{{
+                    GrayLevel[0], 
+                    RectangleBox[{0, 0}]}, {
+                    GrayLevel[0], 
+                    RectangleBox[{1, -1}]}, {
+                    GrayLevel[0], 
+                    RectangleBox[{0, -1}, {2, 1}]}}, DefaultBaseStyle -> 
+                    "ColorSwatchGraphics", AspectRatio -> 1, Frame -> True, 
+                    FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
+                    PlotRangePadding -> None, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification]}]], "GrayLevel[0]"], 
+                   Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
+                   Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
+                   With[{Typeset`box$ = EvaluationBox[]}, 
+                    If[
+                    Not[
+                    AbsoluteCurrentValue["Deployed"]], 
+                    SelectionMove[Typeset`box$, All, Expression]; 
+                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+                    FrontEnd`Private`$ColorSelectorInitialColor = 
+                    GrayLevel[0]; 
+                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+                    MathLink`CallFrontEnd[
+                    FrontEnd`AttachCell[Typeset`box$, 
+                    FrontEndResource["GrayLevelColorValueSelector"], {
+                    0, {Left, Bottom}}, {Left, Top}, 
+                    "ClosingActions" -> {
+                    "SelectionDeparture", "ParentChanged", 
+                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
+                   Automatic, Method -> "Preemptive"], 
+                  GrayLevel[0], Editable -> False, Selectable -> False], 
+                 "]"}], ",", 
                RowBox[{"Directive", "[", 
                  InterpretationBox[
                   ButtonBox[
@@ -16262,56 +16193,6 @@ Cell[BoxData[
                    Rational[14, 15], 
                    Rational[2, 5], 
                    Rational[7, 15]], Editable -> False, Selectable -> False], 
-                 "]"}], ",", 
-               RowBox[{"Directive", "[", 
-                 InterpretationBox[
-                  ButtonBox[
-                   TooltipBox[
-                    GraphicsBox[{{
-                    GrayLevel[0], 
-                    RectangleBox[{0, 0}]}, {
-                    GrayLevel[0], 
-                    RectangleBox[{1, -1}]}, {
-                    RGBColor[
-                    Rational[2, 15], 
-                    Rational[8, 15], 
-                    Rational[1, 5]], 
-                    RectangleBox[{0, -1}, {2, 1}]}}, DefaultBaseStyle -> 
-                    "ColorSwatchGraphics", AspectRatio -> 1, Frame -> True, 
-                    FrameStyle -> 
-                    RGBColor[
-                    0.08888888888888889, 0.35555555555555557`, 
-                    0.13333333333333333`], FrameTicks -> None, 
-                    PlotRangePadding -> None, ImageSize -> 
-                    Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[2/15, 8/15, 1/5]"], Appearance -> None, 
-                   BaseStyle -> {}, BaselinePosition -> Baseline, 
-                   DefaultBaseStyle -> {}, ButtonFunction :> 
-                   With[{Typeset`box$ = EvaluationBox[]}, 
-                    If[
-                    Not[
-                    AbsoluteCurrentValue["Deployed"]], 
-                    SelectionMove[Typeset`box$, All, Expression]; 
-                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
-                    FrontEnd`Private`$ColorSelectorInitialColor = RGBColor[
-                    Rational[2, 15], 
-                    Rational[8, 15], 
-                    Rational[1, 5]]; 
-                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
-                    MathLink`CallFrontEnd[
-                    FrontEnd`AttachCell[Typeset`box$, 
-                    FrontEndResource["RGBColorValueSelector"], {
-                    0, {Left, Bottom}}, {Left, Top}, 
-                    "ClosingActions" -> {
-                    "SelectionDeparture", "ParentChanged", 
-                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
-                   Automatic, Method -> "Preemptive"], 
-                  RGBColor[
-                   Rational[2, 15], 
-                   Rational[8, 15], 
-                   Rational[1, 5]], Editable -> False, Selectable -> False], 
                  "]"}]}], "}"}], ",", 
            RowBox[{"{", 
              RowBox[{#, ",", #2, ",", #3}], "}"}], ",", 
@@ -16344,9 +16225,9 @@ Cell[BoxData[
  CellChangeTimes->{
   3.7482015983603406`*^9, 3.7482016560180416`*^9, 3.7482018184943275`*^9, 
    3.748201927352319*^9, {3.748202117892053*^9, 3.7482021381408887`*^9}, 
-   3.7482021927253847`*^9, {3.7482022380122643`*^9, 
-   3.748202259945903*^9}},ExpressionUUID->"0e80e977-f2a8-4ac2-a69c-\
-19bfe7dc161c"]
+   3.7482021927253847`*^9, {3.7482022380122643`*^9, 3.748202259945903*^9}, 
+   3.7482027349355373`*^9},ExpressionUUID->"414b3403-0f97-4638-97e1-\
+782704f1c174"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -16359,8 +16240,9 @@ Cell[BoxData[
 52140c554f05"],
 
 Cell[BoxData["\<\"comparefinalfreqs_1.pdf\"\>"], "Output",
- CellChangeTimes->{
-  3.74820221859023*^9},ExpressionUUID->"3f33ae72-adc6-4a31-a8d2-e304042ca135"]
+ CellChangeTimes->{3.74820221859023*^9, 
+  3.748202738195943*^9},ExpressionUUID->"adf12647-9967-47db-8022-\
+799e50e6ccab"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -16378,22 +16260,24 @@ Cell[BoxData[
    RowBox[{"ChartLayout", "\[Rule]", "\"\<Grouped\>\""}], ",", 
    RowBox[{"ChartStyle", "\[Rule]", 
     RowBox[{"{", 
-     RowBox[{"red", ",", "green"}], "}"}]}], ",", 
+     RowBox[{"blue", ",", "red"}], "}"}]}], ",", 
    RowBox[{"ChartLegends", "\[Rule]", 
     RowBox[{"mylegendsc", "[", 
      RowBox[{
       RowBox[{"{", 
-       RowBox[{"red", ",", "green"}], "}"}], ",", 
+       RowBox[{"blue", ",", "red"}], "}"}], ",", 
       RowBox[{"{", 
-       RowBox[{"\"\<(max - exact) %\>\"", ",", "\"\<(C/2 - exact) %\>\""}], 
+       RowBox[{"\"\<max\>\"", ",", "\"\<C/2    (relative error %)\>\""}], 
        "}"}], ",", "Bottom"}], "]"}]}]}], "]"}]], "Input",
  CellChangeTimes->{{3.748201590107926*^9, 3.748201597330739*^9}, {
   3.748201648810829*^9, 3.74820165500404*^9}, {3.748201816325924*^9, 
   3.748201861192602*^9}, {3.748201904810279*^9, 3.7482019260263166`*^9}, {
   3.7482020794067855`*^9, 3.748202136643286*^9}, {3.748202190634981*^9, 
   3.7482021913525825`*^9}, {3.748202235141859*^9, 3.7482023422048473`*^9}, {
-  3.7482023736701026`*^9, 
-  3.7482024289254*^9}},ExpressionUUID->"9e857149-55fb-438a-920d-8e4d75902124"],
+  3.7482023736701026`*^9, 3.7482024289254*^9}, {3.748202668931821*^9, 
+  3.748202704437484*^9}, {3.7482027420959496`*^9, 
+  3.748202748616761*^9}},ExpressionUUID->"9e857149-55fb-438a-920d-\
+8e4d75902124"],
 
 Cell[BoxData[
  TemplateBox[{GraphicsBox[{{
@@ -16407,11 +16291,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16437,11 +16321,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16468,11 +16352,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16498,11 +16382,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16529,11 +16413,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16561,11 +16445,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16594,11 +16478,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16626,11 +16510,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16658,11 +16542,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16688,11 +16572,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16719,11 +16603,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16749,11 +16633,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16780,11 +16664,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16811,11 +16695,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16843,11 +16727,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16875,11 +16759,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16907,11 +16791,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16937,11 +16821,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16968,11 +16852,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -16983,6 +16867,7 @@ Cell[BoxData[
                    GrayLevel[0.5], 
                    AbsoluteThickness[1.5], 
                    Opacity[0.66]}], {}, {}], 
+                
                 RectangleBox[{37.978903603326145`, 0.}, {
                  38.31860178626424, -0.027293098644409756`}, "RoundingRadius" -> 
                  0]}], StatusArea[#, -0.027293098644409756`]& , TagBoxNote -> 
@@ -16998,11 +16883,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -17030,11 +16915,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -17062,11 +16947,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -17094,11 +16979,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -17125,11 +17010,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -17157,11 +17042,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -17189,11 +17074,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -17221,11 +17106,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -17252,11 +17137,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -17284,11 +17169,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -17315,11 +17200,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -17347,11 +17232,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[14, 15], 0.9333333333333333], 
-             NCache[
               Rational[2, 5], 0.4], 
              NCache[
-              Rational[7, 15], 0.4666666666666667]]], 
+              Rational[4, 5], 0.8], 
+             NCache[
+              Rational[14, 15], 0.9333333333333333]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -17378,11 +17263,11 @@ Cell[BoxData[
               Opacity[0.476]]], 
             RGBColor[
              NCache[
-              Rational[2, 15], 0.13333333333333333`], 
+              Rational[14, 15], 0.9333333333333333], 
              NCache[
-              Rational[8, 15], 0.5333333333333333], 
+              Rational[2, 5], 0.4], 
              NCache[
-              Rational[1, 5], 0.2]]], 
+              Rational[7, 15], 0.4666666666666667]]], 
            TagBox[
             TooltipBox[
              TagBox[
@@ -17451,10 +17336,10 @@ Cell[BoxData[
                Offset[{-1.102182119232618*^-15, -6.}, {
                 11.452263627964275`, -3.3995249353675483`}]}], 
              LineBox[{{14.093470896211887`, -3.3995249353675483`}, 
+               
                Offset[{-1.102182119232618*^-15, -6.}, {
                 14.093470896211887`, -3.3995249353675483`}]}], 
              LineBox[{{15.433169079149984`, -3.3995249353675483`}, 
-               
                Offset[{-1.102182119232618*^-15, -6.}, {
                 15.433169079149984`, -3.3995249353675483`}]}], 
              LineBox[{{18.0743763473976, -3.3995249353675483`}, 
@@ -17494,10 +17379,10 @@ Cell[BoxData[
                Offset[{-1.102182119232618*^-15, -6.}, {
                 33.99799815214043, -3.3995249353675483`}]}], 
              LineBox[{{35.33769633507852, -3.3995249353675483`}, 
+               
                Offset[{-1.102182119232618*^-15, -6.}, {
                 35.33769633507852, -3.3995249353675483`}]}], 
              LineBox[{{37.97890360332613, -3.3995249353675483`}, 
-               
                Offset[{-1.102182119232618*^-15, -6.}, {
                 37.97890360332613, -3.3995249353675483`}]}], 
              LineBox[{{39.318601786264225`, -3.3995249353675483`}, 
@@ -17537,10 +17422,10 @@ Cell[BoxData[
                Offset[{-1.102182119232618*^-15, -6.}, {
                 55.24222359100705, -3.3995249353675483`}]}], 
              LineBox[{{57.88343085925466, -3.3995249353675483`}, 
+               
                Offset[{-1.102182119232618*^-15, -6.}, {
                 57.88343085925466, -3.3995249353675483`}]}], 
              LineBox[{{59.22312904219275, -3.3995249353675483`}, 
-               
                Offset[{-1.102182119232618*^-15, -6.}, {
                 59.22312904219275, -3.3995249353675483`}]}], 
              LineBox[{{61.864336310440365`, -3.3995249353675483`}, 
@@ -17859,11 +17744,11 @@ Cell[BoxData[
         Scaled[0.02]}, {None, None}}, Ticks -> {None, Automatic}}],FormBox[
     FormBox[
      TemplateBox[{
-       StyleBox["\"(max - exact) %\"", 
+       StyleBox["\"max\"", 
         GrayLevel[0], 21, 
         Thickness[
          Rational[1, 50]], FontFamily -> Automatic, StripOnInput -> False], 
-       StyleBox["\"(C/2 - exact) %\"", 
+       StyleBox["\"C/2    (relative error %)\"", 
         GrayLevel[0], 21, 
         Thickness[
          Rational[1, 50]], FontFamily -> Automatic, StripOnInput -> False]}, 
@@ -17875,6 +17760,39 @@ Cell[BoxData[
             GridBox[{{
                TagBox[
                 GridBox[{{
+                   GraphicsBox[{{
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.5], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[
+                    NCache[
+                    Rational[2, 5], 0.4], 
+                    NCache[
+                    Rational[4, 5], 0.8], 
+                    NCache[
+                    Rational[14, 15], 0.9333333333333333]]], {
+                    LineBox[{{0, 10}, {20, 10}}]}}, {
+                    Directive[
+                    EdgeForm[
+                    Directive[
+                    Opacity[0.3], 
+                    GrayLevel[0]]], 
+                    PointSize[0.5], 
+                    AbsoluteThickness[1.6], 
+                    RGBColor[
+                    NCache[
+                    Rational[2, 5], 0.4], 
+                    NCache[
+                    Rational[4, 5], 0.8], 
+                    NCache[
+                    Rational[14, 15], 0.9333333333333333]]], {}}}, 
+                    AspectRatio -> Full, ImageSize -> {20, 10}, 
+                    PlotRangePadding -> None, ImagePadding -> Automatic, 
+                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #, 
                    GraphicsBox[{{
                     Directive[
                     EdgeForm[
@@ -17907,39 +17825,6 @@ Cell[BoxData[
                     Rational[7, 15], 0.4666666666666667]]], {}}}, AspectRatio -> 
                     Full, ImageSize -> {20, 10}, PlotRangePadding -> None, 
                     ImagePadding -> Automatic, 
-                    BaselinePosition -> (Scaled[0.1] -> Baseline)], #, 
-                   GraphicsBox[{{
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.5], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[
-                    NCache[
-                    Rational[2, 15], 0.13333333333333333`], 
-                    NCache[
-                    Rational[8, 15], 0.5333333333333333], 
-                    NCache[
-                    Rational[1, 5], 0.2]]], {
-                    LineBox[{{0, 10}, {20, 10}}]}}, {
-                    Directive[
-                    EdgeForm[
-                    Directive[
-                    Opacity[0.3], 
-                    GrayLevel[0]]], 
-                    PointSize[0.5], 
-                    AbsoluteThickness[1.6], 
-                    RGBColor[
-                    NCache[
-                    Rational[2, 15], 0.13333333333333333`], 
-                    NCache[
-                    Rational[8, 15], 0.5333333333333333], 
-                    NCache[
-                    Rational[1, 5], 0.2]]], {}}}, AspectRatio -> Full, 
-                    ImageSize -> {20, 10}, PlotRangePadding -> None, 
-                    ImagePadding -> Automatic, 
                     BaselinePosition -> (Scaled[0.1] -> Baseline)], #2}}, 
                  GridBoxAlignment -> {
                   "Columns" -> {Center, Left}, "Rows" -> {{Baseline}}}, 
@@ -17962,6 +17847,56 @@ Cell[BoxData[
          RowBox[{
            RowBox[{"{", 
              RowBox[{
+               RowBox[{"Directive", "[", 
+                 InterpretationBox[
+                  ButtonBox[
+                   TooltipBox[
+                    GraphicsBox[{{
+                    GrayLevel[0], 
+                    RectangleBox[{0, 0}]}, {
+                    GrayLevel[0], 
+                    RectangleBox[{1, -1}]}, {
+                    RGBColor[
+                    Rational[2, 5], 
+                    Rational[4, 5], 
+                    Rational[14, 15]], 
+                    RectangleBox[{0, -1}, {2, 1}]}}, DefaultBaseStyle -> 
+                    "ColorSwatchGraphics", AspectRatio -> 1, Frame -> True, 
+                    FrameStyle -> 
+                    RGBColor[
+                    0.26666666666666666`, 0.5333333333333333, 
+                    0.6222222222222222], FrameTicks -> None, PlotRangePadding -> 
+                    None, ImageSize -> 
+                    Dynamic[{
+                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
+                    AbsoluteCurrentValue[Magnification]}]], 
+                    "RGBColor[2/5, 4/5, 14/15]"], Appearance -> None, 
+                   BaseStyle -> {}, BaselinePosition -> Baseline, 
+                   DefaultBaseStyle -> {}, ButtonFunction :> 
+                   With[{Typeset`box$ = EvaluationBox[]}, 
+                    If[
+                    Not[
+                    AbsoluteCurrentValue["Deployed"]], 
+                    SelectionMove[Typeset`box$, All, Expression]; 
+                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+                    FrontEnd`Private`$ColorSelectorInitialColor = RGBColor[
+                    Rational[2, 5], 
+                    Rational[4, 5], 
+                    Rational[14, 15]]; 
+                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+                    MathLink`CallFrontEnd[
+                    FrontEnd`AttachCell[Typeset`box$, 
+                    FrontEndResource["RGBColorValueSelector"], {
+                    0, {Left, Bottom}}, {Left, Top}, 
+                    "ClosingActions" -> {
+                    "SelectionDeparture", "ParentChanged", 
+                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
+                   Automatic, Method -> "Preemptive"], 
+                  RGBColor[
+                   Rational[2, 5], 
+                   Rational[4, 5], 
+                   Rational[14, 15]], Editable -> False, Selectable -> False],
+                  "]"}], ",", 
                RowBox[{"Directive", "[", 
                  InterpretationBox[
                   ButtonBox[
@@ -18011,56 +17946,6 @@ Cell[BoxData[
                    Rational[14, 15], 
                    Rational[2, 5], 
                    Rational[7, 15]], Editable -> False, Selectable -> False], 
-                 "]"}], ",", 
-               RowBox[{"Directive", "[", 
-                 InterpretationBox[
-                  ButtonBox[
-                   TooltipBox[
-                    GraphicsBox[{{
-                    GrayLevel[0], 
-                    RectangleBox[{0, 0}]}, {
-                    GrayLevel[0], 
-                    RectangleBox[{1, -1}]}, {
-                    RGBColor[
-                    Rational[2, 15], 
-                    Rational[8, 15], 
-                    Rational[1, 5]], 
-                    RectangleBox[{0, -1}, {2, 1}]}}, DefaultBaseStyle -> 
-                    "ColorSwatchGraphics", AspectRatio -> 1, Frame -> True, 
-                    FrameStyle -> 
-                    RGBColor[
-                    0.08888888888888889, 0.35555555555555557`, 
-                    0.13333333333333333`], FrameTicks -> None, 
-                    PlotRangePadding -> None, ImageSize -> 
-                    Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[2/15, 8/15, 1/5]"], Appearance -> None, 
-                   BaseStyle -> {}, BaselinePosition -> Baseline, 
-                   DefaultBaseStyle -> {}, ButtonFunction :> 
-                   With[{Typeset`box$ = EvaluationBox[]}, 
-                    If[
-                    Not[
-                    AbsoluteCurrentValue["Deployed"]], 
-                    SelectionMove[Typeset`box$, All, Expression]; 
-                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
-                    FrontEnd`Private`$ColorSelectorInitialColor = RGBColor[
-                    Rational[2, 15], 
-                    Rational[8, 15], 
-                    Rational[1, 5]]; 
-                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
-                    MathLink`CallFrontEnd[
-                    FrontEnd`AttachCell[Typeset`box$, 
-                    FrontEndResource["RGBColorValueSelector"], {
-                    0, {Left, Bottom}}, {Left, Top}, 
-                    "ClosingActions" -> {
-                    "SelectionDeparture", "ParentChanged", 
-                    "EvaluatorQuit"}]]]], BaseStyle -> Inherited, Evaluator -> 
-                   Automatic, Method -> "Preemptive"], 
-                  RGBColor[
-                   Rational[2, 15], 
-                   Rational[8, 15], 
-                   Rational[1, 5]], Editable -> False, Selectable -> False], 
                  "]"}]}], "}"}], ",", 
            RowBox[{"{", 
              RowBox[{#, ",", #2}], "}"}], ",", 
@@ -18095,8 +17980,9 @@ Cell[BoxData[
    3.748201927352319*^9, {3.748202117892053*^9, 3.7482021381408887`*^9}, 
    3.7482021927253847`*^9, {3.7482022380122643`*^9, 3.748202259945903*^9}, {
    3.748202300755574*^9, 3.748202346136054*^9}, {3.7482023884433284`*^9, 
-   3.7482024300798016`*^9}},ExpressionUUID->"da2d452c-e098-4723-abf2-\
-28a01f1e9100"]
+   3.7482024300798016`*^9}, {3.7482026937982645`*^9, 3.7482027059506865`*^9}, 
+   3.748202749646363*^9},ExpressionUUID->"4813c455-873a-4e9d-96f3-\
+fa1de3851357"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -18110,9 +17996,10 @@ Cell[BoxData[
 31c004ce80ee"],
 
 Cell[BoxData["\<\"comparefinalfreqs_diff_1.pdf\"\>"], "Output",
- CellChangeTimes->{3.74820221859023*^9, 
-  3.7482024507810383`*^9},ExpressionUUID->"8de65afa-585e-44b2-aae4-\
-43ad28f9556c"]
+ CellChangeTimes->{3.74820221859023*^9, 3.7482024507810383`*^9, 
+  3.7482027110674953`*^9, 
+  3.748202756073574*^9},ExpressionUUID->"49b59908-0d60-4c7b-8796-\
+97afd6e81b86"]
 }, Open  ]],
 
 Cell[BoxData["Precision"], "Input",
@@ -25185,26 +25072,26 @@ Cell[780260, 14121, 408, 13, 31, "Input",ExpressionUUID->"50813934-e6a8-402e-b07
 Cell[780671, 14136, 764, 21, 92, "Output",ExpressionUUID->"b09e5b6d-f54b-4ec6-845e-38e0600bf074"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[781472, 14162, 1076, 24, 97, "Input",ExpressionUUID->"0ab117bd-b301-4938-a88d-5dce15ec17a1"],
-Cell[782551, 14188, 85249, 2160, 381, "Output",ExpressionUUID->"0e80e977-f2a8-4ac2-a69c-19bfe7dc161c"]
+Cell[781472, 14162, 1129, 25, 97, "Input",ExpressionUUID->"0ab117bd-b301-4938-a88d-5dce15ec17a1"],
+Cell[782604, 14189, 81069, 2040, 381, "Output",ExpressionUUID->"414b3403-0f97-4638-97e1-782704f1c174"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[867837, 16353, 235, 5, 31, "Input",ExpressionUUID->"db96e013-3712-4e03-91e5-52140c554f05"],
-Cell[868075, 16360, 157, 2, 32, "Output",ExpressionUUID->"3f33ae72-adc6-4a31-a8d2-e304042ca135"]
+Cell[863710, 16234, 235, 5, 31, "Input",ExpressionUUID->"db96e013-3712-4e03-91e5-52140c554f05"],
+Cell[863948, 16241, 181, 3, 32, "Output",ExpressionUUID->"adf12647-9967-47db-8022-799e50e6ccab"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[868269, 16367, 1206, 28, 97, "Input",ExpressionUUID->"9e857149-55fb-438a-920d-8e4d75902124"],
-Cell[869478, 16397, 68328, 1701, 381, "Output",ExpressionUUID->"da2d452c-e098-4723-abf2-28a01f1e9100"]
+Cell[864166, 16249, 1301, 30, 97, "Input",ExpressionUUID->"9e857149-55fb-438a-920d-8e4d75902124"],
+Cell[865470, 16281, 68110, 1703, 381, "Output",ExpressionUUID->"4813c455-873a-4e9d-96f3-fa1de3851357"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[937843, 18103, 291, 6, 31, "Input",ExpressionUUID->"3981573c-d6b6-460a-beda-31c004ce80ee"],
-Cell[938137, 18111, 188, 3, 32, "Output",ExpressionUUID->"8de65afa-585e-44b2-aae4-43ad28f9556c"]
+Cell[933617, 17989, 291, 6, 31, "Input",ExpressionUUID->"3981573c-d6b6-460a-beda-31c004ce80ee"],
+Cell[933911, 17997, 237, 4, 32, "Output",ExpressionUUID->"49b59908-0d60-4c7b-8796-97afd6e81b86"]
 }, Open  ]],
-Cell[938340, 18117, 162, 3, 28, "Input",ExpressionUUID->"5abcd489-3771-4d0b-af8c-c9437fcc6d3a"],
-Cell[938505, 18122, 2802, 65, 192, "Input",ExpressionUUID->"ec0ac9b8-eeb3-4641-aea4-a0afa8dc4698"],
+Cell[934163, 18004, 162, 3, 28, "Input",ExpressionUUID->"5abcd489-3771-4d0b-af8c-c9437fcc6d3a"],
+Cell[934328, 18009, 2802, 65, 192, "Input",ExpressionUUID->"ec0ac9b8-eeb3-4641-aea4-a0afa8dc4698"],
 Cell[CellGroupData[{
-Cell[941332, 18191, 182, 4, 28, "Input",ExpressionUUID->"4ba47229-fd9a-4b09-a5f7-cee4cdb104af"],
-Cell[941517, 18197, 349540, 6896, 4690, "Output",ExpressionUUID->"86a5b967-7e41-49b0-97f6-31a269bcad32"]
+Cell[937155, 18078, 182, 4, 28, "Input",ExpressionUUID->"4ba47229-fd9a-4b09-a5f7-cee4cdb104af"],
+Cell[937340, 18084, 349540, 6896, 4690, "Output",ExpressionUUID->"86a5b967-7e41-49b0-97f6-31a269bcad32"]
 }, Open  ]]
 }
 ]
