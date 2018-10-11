@@ -76,8 +76,9 @@ for(ngenes in totalgenes){
             fx <- data.matrix(tally(group_by_at(data,.vars=c(1:(ngenes+1)))))
 
             et <- dim(fx)[1]
-            logpost <- function(x){lgamma(x)-lgamma(n+x)+sum(lgamma(fx+x/cx))-et*lgamma(x/cx)-log(x)}
+            logpost <- function(x){lgamma(x)-lgamma(n+x)+sum(lgamma(fx[,ngenes+2]+x/cx))-et*lgamma(x/cx)-log(x)}
             aa <- optimize(f=logpost,interval=c(1,1e6),maximum=T)$maximum
+			##print(aa)
             n2 <- n+aa
             dnna <- 1/n2 #(nn-n)/(nn*n2)
             
@@ -121,7 +122,7 @@ for(ngenes in totalgenes){
             fx <- data.matrix(tally(group_by_at(data,.vars=c(1:(ngenes+1)))))
 
             et <- dim(fx)[1]
-            logpost <- function(x){lgamma(x)-lgamma(n+x)+sum(lgamma(fx+x/cx))-et*lgamma(x/cx)-log(x)}
+            logpost <- function(x){lgamma(x)-lgamma(n+x)+sum(lgamma(fx[,ngenes+2]+x/cx))-et*lgamma(x/cx)-log(x)}
             aa <- optimize(f=logpost,interval=c(1,1e6),maximum=T)$maximum
             n2 <- n+aa
             dnna <- 1/n2 #(nn-n)/(nn*n2)
@@ -152,13 +153,13 @@ for(ngenes in totalgenes){
     }
     
         
-    write.table(cbind(genegroup,allminfo),paste0(savedir,'iteration_afromcopt_',ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
+    write.table(cbind(genegroup,allminfo),paste0(savedir,'iteration_amax_',ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
     maxinfo <- max(allminfo)
     keptinfo <- c(keptinfo,maxinfo)
     maxgene <- genegroup[which.max(allminfo)]
     keptgenes <- c(keptgenes,maxgene)
     genegroup <- totalgenes[-keptgenes]
-    write.table(cbind(keptgenes,keptinfo),paste0(savedir,'infoseq_afromcopt_',ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
+    write.table(cbind(keptgenes,keptinfo),paste0(savedir,'infoseq_amax_',ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
 }
 stopCluster(cl)
 
