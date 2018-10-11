@@ -153,13 +153,13 @@ for(ngenes in totalgenes){
     }
     
         
-    write.table(cbind(genegroup,allminfo),paste0(savedir,'iteration_amax_',ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
+    write.table(cbind(genegroup,allminfo),paste0(savedir,'iteration_admax_',ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
     maxinfo <- max(allminfo)
     keptinfo <- c(keptinfo,maxinfo)
     maxgene <- genegroup[which.max(allminfo)]
     keptgenes <- c(keptgenes,maxgene)
     genegroup <- totalgenes[-keptgenes]
-    write.table(cbind(keptgenes,keptinfo),paste0(savedir,'infoseq_amax_',ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
+    write.table(cbind(keptgenes,keptinfo),paste0(savedir,'infoseq_admax_',ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
 }
 stopCluster(cl)
 
