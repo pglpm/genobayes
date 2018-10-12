@@ -52,7 +52,9 @@ keptinfo <- NULL
 ## this tuple contains the genes to be checked in 
 genegroup <- totalgenes
 
-cores <- 20
+rname <- 'admax_'
+probstring <- 'warn_'
+cores <- 30
 cl <- makeCluster(cores)
 registerDoParallel(cl)
 
@@ -78,7 +80,7 @@ for(ngenes in totalgenes){
             et <- dim(fx)[1]
             logpost <- function(x){lgamma(x)-lgamma(n+x)+sum(lgamma(fx[,ngenes+2]+x/cx))-et*lgamma(x/cx)-log(x)}
             aa <- optimize(f=logpost,interval=c(1,cx),maximum=T)$maximum
-            if(aa==cx){write.table(c(ngenes,i),paste0(savedir,'aproblem_',ngenes,'_',i,'.csv'),sep=',',row.names=F,col.names=F)}
+            if(aa==cx){write.table(c(ngenes,i),paste0(savedir,probstring,ngenes,'_',i,'.csv'),sep=',',row.names=F,col.names=F)}
 			##print(aa)
             n2 <- n+aa
             dnna <- 1/n2 #(nn-n)/(nn*n2)
@@ -125,7 +127,7 @@ for(ngenes in totalgenes){
             et <- dim(fx)[1]
             logpost <- function(x){lgamma(x)-lgamma(n+x)+sum(lgamma(fx[,ngenes+2]+x/cx))-et*lgamma(x/cx)-log(x)}
             aa <- optimize(f=logpost,interval=c(1,cx),maximum=T)$maximum
-            if(aa==cx){write.table(c(ngenes,i),paste0(savedir,'aproblem_',ngenes,'_',i,'.csv'),sep=',',row.names=F,col.names=F)}
+            if(aa==cx){write.table(c(ngenes,i),paste0(savedir,probstring,ngenes,'_',i,'.csv'),sep=',',row.names=F,col.names=F)}
 
             n2 <- n+aa
             dnna <- 1/n2 #(nn-n)/(nn*n2)
@@ -156,15 +158,15 @@ for(ngenes in totalgenes){
     }
     
         
-    write.table(cbind(genegroup,allminfo),paste0(savedir,'iteration_amax_',ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
-    print(allminfo)
+    write.table(cbind(genegroup,allminfo),paste0(savedir,'iteration_',rname,ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
+    ##print(allminfo)
     maxinfo <- max(allminfo[,1])
     keptinfo <- c(keptinfo,maxinfo)
     maxgene <- genegroup[which.max(allminfo[,1])]
     #maxaa <- allminfo[which.max(allminfo,1),2]
     keptgenes <- c(keptgenes,maxgene)
     genegroup <- totalgenes[-keptgenes]
-    write.table(cbind(keptgenes,keptinfo),paste0(savedir,'infoseq_amax_',ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
+    write.table(cbind(keptgenes,keptinfo),paste0(savedir,'infoseq_',rname,ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
 }
 stopCluster(cl)
 
