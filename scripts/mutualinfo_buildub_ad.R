@@ -78,6 +78,7 @@ for(ngenes in totalgenes){
             et <- dim(fx)[1]
             logpost <- function(x){lgamma(x)-lgamma(n+x)+sum(lgamma(fx[,ngenes+2]+x/cx))-et*lgamma(x/cx)-log(x)}
             aa <- optimize(f=logpost,interval=c(1,1e6),maximum=T)$maximum
+			if(aa==1e6){write.table(c(ngenes,i),paste0(savedir,'aproblem_',ngenes,'_',i,'.csv'),sep=',',row.names=F,col.names=F)}
 			##print(aa)
             n2 <- n+aa
             dnna <- 1/n2 #(nn-n)/(nn*n2)
@@ -124,6 +125,8 @@ for(ngenes in totalgenes){
             et <- dim(fx)[1]
             logpost <- function(x){lgamma(x)-lgamma(n+x)+sum(lgamma(fx[,ngenes+2]+x/cx))-et*lgamma(x/cx)-log(x)}
             aa <- optimize(f=logpost,interval=c(1,1e6),maximum=T)$maximum
+			if(aa==1e6){write.table(c(ngenes,i),paste0(savedir,'aproblem_',ngenes,'_',i,'.csv'),sep=',',row.names=F,col.names=F)}
+
             n2 <- n+aa
             dnna <- 1/n2 #(nn-n)/(nn*n2)
 
