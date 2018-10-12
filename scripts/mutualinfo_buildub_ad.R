@@ -10,7 +10,7 @@ library('cowplot')
 library('png')
 library('plot3D')
 library('doParallel')
-library('GA')
+#library('GA')
 library('dplyr')
 
 mypurpleblue <- '#4477AA'
@@ -52,7 +52,7 @@ keptinfo <- NULL
 ## this tuple contains the genes to be checked in 
 genegroup <- totalgenes
 
-cores <- 30
+cores <- 20
 cl <- makeCluster(cores)
 registerDoParallel(cl)
 
@@ -77,8 +77,8 @@ for(ngenes in totalgenes){
 
             et <- dim(fx)[1]
             logpost <- function(x){lgamma(x)-lgamma(n+x)+sum(lgamma(fx[,ngenes+2]+x/cx))-et*lgamma(x/cx)-log(x)}
-            aa <- optimize(f=logpost,interval=c(1,1e6),maximum=T)$maximum
-			if(aa==1e6){write.table(c(ngenes,i),paste0(savedir,'aproblem_',ngenes,'_',i,'.csv'),sep=',',row.names=F,col.names=F)}
+            aa <- optimize(f=logpost,interval=c(1,cx),maximum=T)$maximum
+            if(aa==cx){write.table(c(ngenes,i),paste0(savedir,'aproblem_',ngenes,'_',i,'.csv'),sep=',',row.names=F,col.names=F)}
 			##print(aa)
             n2 <- n+aa
             dnna <- 1/n2 #(nn-n)/(nn*n2)
@@ -105,7 +105,7 @@ for(ngenes in totalgenes){
                                         xlogy(probx,probx/(probs*probg))}
             })) -
     cgminus*2*dnna/cx*sum(log((dnna*(fs[,2]+aa/cs))*cx/cg))
-            minfo
+            c(minfo,aa)
         }
     } else {# parallelize inner loop
         allminfo <- foreach(i=genegroup, .combine=rbind #, .export=c('xlogy','keptgenes','ngenes','n','cs','fs','aa','n2','dnna'),
@@ -124,8 +124,8 @@ for(ngenes in totalgenes){
 
             et <- dim(fx)[1]
             logpost <- function(x){lgamma(x)-lgamma(n+x)+sum(lgamma(fx[,ngenes+2]+x/cx))-et*lgamma(x/cx)-log(x)}
-            aa <- optimize(f=logpost,interval=c(1,1e6),maximum=T)$maximum
-			if(aa==1e6){write.table(c(ngenes,i),paste0(savedir,'aproblem_',ngenes,'_',i,'.csv'),sep=',',row.names=F,col.names=F)}
+            aa <- optimize(f=logpost,interval=c(1,cx),maximum=T)$maximum
+            if(aa==cx){write.table(c(ngenes,i),paste0(savedir,'aproblem_',ngenes,'_',i,'.csv'),sep=',',row.names=F,col.names=F)}
 
             n2 <- n+aa
             dnna <- 1/n2 #(nn-n)/(nn*n2)
@@ -151,18 +151,20 @@ for(ngenes in totalgenes){
                                         xlogy(probx,probx/(probs*probg))}
             })) -
     cgminus*2*dnna/cx*sum(log((dnna*(fs[,2]+aa/cs))*cx/cg))
-            minfo
+            c(minfo,aa)
         }
     }
     
         
-    write.table(cbind(genegroup,allminfo),paste0(savedir,'iteration_admax_',ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
-    maxinfo <- max(allminfo)
+    write.table(cbind(genegroup,allminfo),paste0(savedir,'iteration_amax_',ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
+    print(allminfo)
+    maxinfo <- max(allminfo[,1])
     keptinfo <- c(keptinfo,maxinfo)
-    maxgene <- genegroup[which.max(allminfo)]
+    maxgene <- genegroup[which.max(allminfo[,1])]
+    #maxaa <- allminfo[which.max(allminfo,1),2]
     keptgenes <- c(keptgenes,maxgene)
     genegroup <- totalgenes[-keptgenes]
-    write.table(cbind(keptgenes,keptinfo),paste0(savedir,'infoseq_admax_',ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
+    write.table(cbind(keptgenes,keptinfo),paste0(savedir,'infoseq_amax_',ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
 }
 stopCluster(cl)
 
