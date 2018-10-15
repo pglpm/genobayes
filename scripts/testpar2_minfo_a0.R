@@ -46,7 +46,7 @@ nn <- 5.3e6L
 ## iteration at which to switch parallel loop
 changepar <- 15
 
-totalgenes <- 1:9
+totalgenes <- 1:94
 ## this tuple contains the genes kept so far
 keptgenes <- NULL
 keptinfo <- NULL
@@ -59,7 +59,7 @@ cores <- 20
 cl <- makeCluster(cores)
 registerDoParallel(cl)
 
-for(ngenes in totalgenes){
+for(ngenes in 1:15){
     message(paste0('iteration ',ngenes))
     ## "if" to choose whether to parallelize outer or inner loop
     if(ngenes<changepar){# parallelize outer loop
