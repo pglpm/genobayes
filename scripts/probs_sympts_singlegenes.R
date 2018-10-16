@@ -29,6 +29,7 @@ mmtoin <- 0.0393701
 savedir <- './'
 
 xlogy <- function(x,y){if(x==0){0}else{x*log(y)}}
+entropyf <- function(x){-sum(sapply(x,function(y){xlogy(y,y)}))}
 
 dpath  <-  "./"
 datafile <- 'dataset1_simple.csv'
@@ -41,31 +42,36 @@ aa <- 0
 
 n2 <- n+aa
 
-priorjfreq <- matrix(1/4,2,2)
-
-#fs <- foreach(symp=1:3, .combine=rbind) %do% {table[d[,symp]]/n}
 
 allgenes <- 1:94
-cores <- 30
+allsymptoms <- 1:3
+cores <- 1
+
+priorj <- matrix(1,2,2)/4
+priorj1 <- priorj[2,]
+priors <- matrix(1,2,3)/2
+
+sfreq <- foreach(symp=allsymptoms, .combine=cbind) %do% {table(d[,symp])}
+sprob <- (sfreq + aa*priors)/n2
+sprob1 <- sprob[2,]
+##sentropy <- apply(sprob,2,entropyf)
 
 cl <- makeCluster(cores)
 registerDoParallel(cl)
 
-result <- foreach(gene=allgenes, .combine=cbind,.export=c('xlogy','n','d','priorjfreq','allgenes','aa'), .packages=c('dplyr','doParallel')) %dopar% {
-
-    parres <- foreach(symp=1:3, .combine=rbind) %do% {
-        ## rows: symptom 0/1; columns: allele 0/1
+result <- foreach(gene=allgenes, .combine=cbind,.export=c('xlogy','n','d','priorj','allgenes','aa'), .packages=c('dplyr')) %do% {
+    conds <- sapply(1:3,function(symp){
         jfreq <- table(d[,c(symp,3+gene)])
-
-        jprob <- (jfreq + aa*priorjfreq)/n2
-        sprob <- apply(jprob,1,sum)
+        jprob <- (jfreq + aa*priorj)/n2
         gprob <- apply(jprob,2,sum)
-        cprob <- t(t(jprob)/gprob)
-        minfo <- sum(apply(cbind(c(jprob),c(jprob)/c(sprob %*% t(gprob))),1,function(x){xlogy(x[1],x[2])}))
-        cbind(c(gene,minfo),sprob,cprob)
-    }
-    parres}
+        jprob[2,]/gprob
+    })
+    -(sprob1-t(conds))/sprob1}
+dim(result) <- c(3,2,length(allgenes))
+
+
+inds <- sapply(allsymptoms,function(symp){arrayInd(which.max(abs(result[symp,,])), dim(result[symp,,]))})
+
+indspos <- sapply(allsymptoms,function(symp){arrayInd(which.max((result[symp,,])), dim(result[symp,,]))})
 
 stopCluster(cl)
-
-write.table(result,paste0(savedir,filename,'.csv'),sep=',',row.names=F,col.names=F)
