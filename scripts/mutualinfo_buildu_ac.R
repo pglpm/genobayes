@@ -1,6 +1,6 @@
 ## Calculation of mutual information from sampled data
 ## for 1 gene, 2 genes, etc, keeping at each step those with highest mutual info
-## parameter A = 2
+## parameter A = C
 
 ## libraries and colour-blind palette from http://www.sron.nl/~pault/
 ##runfunction <- function(aa=1e3L){
@@ -50,7 +50,7 @@ keptinfo <- NULL
 ## this tuple contains the genes to be checked in 
 genegroup <- totalgenes
 
-rname <- 'a2_'
+rname <- 'ac_'
 probstring <- 'warn1e3_'
 cores <- 30
 cl <- makeCluster(cores)
@@ -82,7 +82,7 @@ for(ngenes in totalgenes){
             logpost <- function(x){lgamma(x)-lgamma(n+x)+sum(lgamma(fx[,ngenes+2]+x/cx))-et*lgamma(x/cx)-log(x)}
             ##aa <- optimize(f=logpost,interval=c(1,cx),maximum=T)$maximum
             ##if(aa==cx){write.table(c(ngenes,i),paste0(savedir,probstring,ngenes,'_',i,'.csv'),sep=',',row.names=F,col.names=F)}
-            aa <- 2L		##print(aa)
+            aa <- cx ##print(aa)
             n2 <- n+aa
             dnna <- 1/n2 #(nn-n)/(nn*n2)
             
@@ -129,7 +129,7 @@ for(ngenes in totalgenes){
             logpost <- function(x){lgamma(x)-lgamma(n+x)+sum(lgamma(fx[,ngenes+2]+x/cx))-et*lgamma(x/cx)-log(x)}
             ##aa <- optimize(f=logpost,interval=c(1,cx),maximum=T)$maximum
             ##if(aa==cx){write.table(c(ngenes,i),paste0(savedir,probstring,ngenes,'_',i,'.csv'),sep=',',row.names=F,col.names=F)}
-            aa <- 2L
+            aa <- cx
             n2 <- n+aa
             dnna <- 1/n2 #(nn-n)/(nn*n2)
 
