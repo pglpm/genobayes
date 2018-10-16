@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-10-15T22:02:41+0200
+%% Last-Updated: 2018-10-16T00:43:55+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1392,7 +1392,7 @@ the multivariate hypergeometric distribution:
 in][\chap~8]{gelmanetal1995_r2014}[\chap~3]{jaynes1994_r2003}[properties of
 this distribution are discussed
 in][\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}. For $N$
-very large this distribution simplifies to
+very large this distribution simplifies to a multinomial one:
 \begin{equation}
   \label{eq:multivariate_hyperg_Ninf}
   \pf(\yf \| n,\yF, \yI) =\binom{n}{n\yf} \;\yprod \yF^{n\yf}.
@@ -1430,7 +1430,7 @@ If $N$ is very large the formula above becomes
 In the previous sections we have considered the cases of finite and
 infinite $N$. There are two reasons for focusing on the infinite-$N$ case.
 
-First: we are interested in a general statistical connection between
+First: we are interested in a general connection between
 insomnia symptoms and gene alleles, independent of the size of the full
 population. Thus we can consider our sample as coming from a hypothetical
 population of statistically similar biological characteristics.
@@ -1457,6 +1457,59 @@ We need to assess our initial \dob\ for $\yF$ according to some background
 knowledge. We'd also like our initial \dob\ to have a convenient
 mathematical expression.
 
+We choose to express initial state of knowledge $\yIo$ with a Dirichlet
+distribution \mynote{refs}, which depends on a positive parameter $\yA$ and
+a non-negative $C$-tuple $\ya$ such that $\ysum\ya=1$, which we take equal
+to $(1/C,\dotsc,1/C)$:
+\begin{equation}
+  \label{eq:dirichlet_prior}
+  \pf(\yF \| \ya, \yA,\yIo)\,\di\yF =
+  \frac{\Gamma(\yA)}{\yprod\Gamma(\yA\ya)}\;
+  \yprod \yF^{\yA\ya-1}\;\di\yF,\qquad
+  \ya \defd (\underbrace{1/C,\dotsc,1/C}_{\text{$C$ elements}}).
+\end{equation}
+Our choice is motivated by the following reasons.
+
+First, this distribution
+is uniquely determined by the assumption, called \enquote{sufficientness}
+\citep{zabell1982,dinizetal2016}\mynote{more refs}, that only the data
+about a specific variate value, say $(\yso, \ygo)$ are relevant for our
+belief about the frequency $X_{\yso, \ygo}$ of that value:
+\begin{equation}
+  \label{eq:sufficientness}
+  \pf(X_{\yso, \ygo} \| \yf, n, \ya, \yA,\yIo\bigr)\,\di\yF \equiv
+  \pf(X_{\yso, \ygo} \| x_{\yso,\ygo}, n, \ya, \yA,\yIo\bigr)\,\di\yF.
+\end{equation}
+This in particular implies that our \dobs\ about the insomnia symptoms or
+any particular gene allele are not affected by the number of alleles we're
+considering. That is, if we decide to consider additional genes, our
+inferences are consistent with the ones previously made when those genes
+were not considered; likewise if we decide to neglect some genes.
+
+Second, the Dirichlet distribution is the conjugate of the multinomial
+distribution~\eqref{eq:multivariate_hyperg_Ninf}, which means that our
+\dob\ updated from the data will still be expressed by a Dirichlet
+distribution but with new parameters $\yA'$, $\ya'$:
+\begin{multline}
+  \label{eq:update_dirichlet_prior}
+  \pf(\yF \| \yf, n, \ya, \yA,\yIo)\,\di\yF =
+  \frac{\Gamma(\yA')}{\yprod\Gamma(\yA'\ya')}\;
+  \yprod \yF^{\yA'\ya'-1}\;\di\yF,\\
+  \text{with}\qquad
+  \yA' \defd n + \yA,
+  \quad
+  \ya' \defd \frac{n\yf + \yA\ya}{n+\yA}.
+\end{multline}
+
+This distribution has mean and covariance matrix
+\begin{equation}\label{eq:mean_covariance_dirichlet}
+  \E(\yF \| \yA, \ya,\yIo) = \ya, \qquad
+  \cov(\yF \| \yA, \ya,\yIo) =
+  \frac{1}{\yA+1}(\diag\ya -\ya\otimes\ya).
+\end{equation}
+Equations~\eqref{eq:update_dirichlet_prior} and
+\eqref{eq:mean_covariance_dirichlet} show the meanings of the parameters
+$\ya$, $\yA$:
 
 
 
@@ -1514,11 +1567,11 @@ such that $\ysum\ya=1$, which we take equal to $(1/C,\dotsc,1/C)$:
 especially][\sects~3--4]{basuetal1982}.
 
 This distribution has mean and covariance matrix
-\begin{equation}\label{eq:mean_covariance_dirichlet}
-  \E(\yF \| \yA, \ya,\yIo) = \ya, \qquad
-  \cov(\yF \| \yA, \ya,\yIo) =
-  \frac{\yA+N}{N\,(\yA+1)}(\diag\ya -\ya\otimes\ya).
-\end{equation}
+% \begin{equation}\label{eq:mean_covariance_dirichlet}
+%   \E(\yF \| \yA, \ya,\yIo) = \ya, \qquad
+%   \cov(\yF \| \yA, \ya,\yIo) =
+%   \frac{\yA+N}{N\,(\yA+1)}(\diag\ya -\ya\otimes\ya).
+% \end{equation}
 It also has the property of leaving the distribution of \dob\ for the
 marginal frequencies of any number of gene variations invariant if we
 consider more genes \citep[\sects~3--4]{basuetal1982}, provided $\yA$ is
