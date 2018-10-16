@@ -51,7 +51,7 @@ cores <- 30
 cl <- makeCluster(cores)
 registerDoParallel(cl)
 
-result <- foreach(gene=allgenes, .combine=cbind,.export=c('xlogy','n','d','priorjfreq','allgenes','aa'), .packages=c('dplyr','doParallel')) %do% {
+result <- foreach(gene=allgenes, .combine=cbind,.export=c('xlogy','n','d','priorjfreq','allgenes','aa'), .packages=c('dplyr','doParallel')) %dopar% {
 
     parres <- foreach(symp=1:3, .combine=rbind) %do% {
         ## rows: symptom 0/1; columns: allele 0/1
