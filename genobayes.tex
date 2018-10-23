@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-10-22T23:49:10+0200
+%% Last-Updated: 2018-10-23T17:42:47+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -836,11 +836,40 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \label{sec:intro}
 
 
+\subsection{Summary of the main formulae}
+
+We have a sample of size $n$. We check the subsample of individuals that
+have a particular allele, say Bx, for a particular gene, say rs697680\_A.
+Suppose that in this subsample $n_1$ individuals show symptom A and $n_1$
+don't show symptom A. This also means that the size of our subsample
+(individuals with allele Bx) is $n_1+n_0$.
+
+Then our \dob\ about the frequency $f$ of symptom A among the individuals with
+allele Bx in an \emph{infinite} population is a Beta distribution:
+\begin{equation}
+  \label{eq:beta_fr}
+\pf(f \| n_1,n_0)\;\di f = \frac{\Gamma(n_1+n_0)}{\Gamma(n_1)\;\Gamma(n_0)}
+ \; f^{n_1-1}\;(1-f)^{n_0-1} \;\di f
+\end{equation}
+This distribution has expected value and variance
+\begin{equation}
+  \label{eq:exp_value}
+  \expe{f \| n_1, n_0} = \frac{n_1}{n_1+n_0},
+  \qquad
+  \var(f \| n_1, n_0) = \frac{n_1\;n_0}{(n_1+n_0)^2\;(n_1+n_0+1)}.
+\end{equation}
+
+
+
+
+
+
 
 \mynote{Possible further developments: use of hyper-Dirichlet priors, use
   of graphical models to infer causal relationships
   \citep{pearl2000_r2009}}
 
+\newpage
 \renewcommand*{\appendixpagename}{Appendix}
 \renewcommand*{\appendixname}{Appendix}
 %\appendixpage
@@ -851,7 +880,6 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 
 \section{Introductory notes}
 \label{sec:pre_intro}
-
 
 
 \subsection{Preliminary remarks about Bayesian  theory}
