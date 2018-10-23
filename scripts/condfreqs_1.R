@@ -1,6 +1,6 @@
-## Calculation of mutual information from sampled data
-## for 1 gene, 2 genes, etc, keeping at each step those with highest mutual info
-## parameter A = 2
+## Calculation of expected value, std, and quantiles of conditional frequencies
+## of symptoms given gene+allele
+## Based on mackayetal1995. Uses a Dirichlet distribution for the conditional frequencies
 
 ## libraries and colour-blind palette from http://www.sron.nl/~pault/
 ##runfunction <- function(aa=1e3L){
@@ -12,7 +12,7 @@ library('plot3D')
 library('doParallel')
 #library('GA')
 library('dplyr')
-
+#
 mypurpleblue <- '#4477AA'
 myblue <- '#66CCEE'
 mygreen <- '#228833'
@@ -32,46 +32,50 @@ savedir <- './'
 ## entropyf <- function(x){-sum(sapply(x,function(y){xlogy(y,y)}))}
 
 dpath  <-  "./"
-datafile <- 'dataset1_simple.csv'
+datafile <- 'dataset1_binarized.csv'
 nfile  <-  dir(path = dpath,pattern = datafile)
-d <- read.csv(paste0(dpath,nfile[1]))
-n <- length(d[,1])
+data <- read.csv(paste0(dpath,nfile[1]))
+n <- length(data[,1])
 
-filename <- 'condprobs_1gene'
-aa <- 0
+filename <- 'condfreqs_1gene' # where to save the results
+aa <- 0 # parameter A for Dirichlet
 
 n2 <- n+aa
 
-
-allgenes <- 1:94
+allgenes <- 1:10
 allsymptoms <- 1:3
-cores <- 1
+quantiles <- c(0.05,0.95)
+cores <- 25
 
-priorj <- matrix(1,2,2)/4
-priorj1 <- priorj[2,]
-priors <- matrix(1,2,3)/2
+## row an column headers for results
+rown <- c(rbind(paste0(colnames(sdata)[allgenes+1],'-AA'),paste0(colnames(sdata)[allgenes+1],'-Bx')))
+coln <-  c('E','STD','Q.05','Q.95')
 
-sfreq <- foreach(symp=allsymptoms, .combine=cbind) %do% {table(d[,symp])}
-sprob <- (sfreq + aa*priors)/n2
-sprob1 <- sprob[2,]
-##sentropy <- apply(sprob,2,entropyf)
+## prior expected frequencies for each symptom (parameter alpha)
+allsprior <- matrix(1,nrow=2,ncol=3)/2
 
 cl <- makeCluster(cores)
 registerDoParallel(cl)
 
-result <- foreach(gene=allgenes, .combine=cbind,.export=c('xlogy','n','d','priorj','allgenes','aa'), .packages=c('dplyr')) %do% {
-    conds <- sapply(1:3,function(symp){
-        jfreq <- table(d[,c(symp,3+gene)])
-        jprob <- (jfreq + aa*priorj)/n2
-        gprob <- apply(jprob,2,sum)
-        jprob[2,]/gprob
-    })
-    -(sprob1-t(conds))/sprob1}
-dim(result) <- c(3,2,length(allgenes))
+for(i in allsymptoms){
+    sdata <- data[,c(i,3+allgenes)]
+    sprior <- allsprior[,i]
+    res <- t(foreach(g=allgenes,
+                     .combine=cbind, .export=c('sdata','sprior','aa')) %do% {
+                       sapply(0:1,function(x){
+                           f <- table(sdata[sdata[[1+g]]==x,c(1,1+g)])
+                           a2 <- sum(f)+aa
+                           f2 <- (f+aa*sprior)/a2
+                           sstd <- sqrt(prod(f2)/(1+a2))
+                           squant <- qbeta(quantiles,a2*f2[2],a2*f2[1])
+                           c(f2[2],sstd,squant)
+                       })
+                     })
+    rownames(res) <- rown
+    colnames(res) <- coln
 
-
-inds <- sapply(allsymptoms,function(symp){arrayInd(which.max(abs(result[symp,,])), dim(result[symp,,]))})
-
-indspos <- sapply(allsymptoms,function(symp){arrayInd(which.max((result[symp,,])), dim(result[symp,,]))})
+    write.csv(res,paste0(dpath,filename,'_s',c('A','B','C')[i],'.csv'))
+    ##,sep=',',row.names=rown,col.names=coln,na='NA')
+}
 
 stopCluster(cl)
