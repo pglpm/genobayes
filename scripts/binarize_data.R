@@ -33,7 +33,7 @@ symp <- t(sapply(1:n,function(i){symptoms(predata[i,1])}))
 data <- cbind(symp,predata[,2:v])
 colnames(data) <- c('A','B','C',colnames(data)[-(1:3)])
 
-write.table(data,paste0(dpath,'dataset1_binarized.csv'),sep=',',row.names=F,na='NA')
+write.csv(data,paste0(dpath,'dataset1_binarized.csv'))
 res <- sapply(1:n,function(i){all(c(symptoms(predata[i,1]),predata[i,2:v])==data[i,])})
 
 all(res==TRUE)
