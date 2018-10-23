@@ -34,7 +34,7 @@ savedir <- './'
 dpath  <-  "./"
 datafile <- 'dataset1_binarized.csv'
 nfile  <-  dir(path = dpath,pattern = datafile)
-data <- read.csv(paste0(dpath,nfile[1]))
+data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 n <- length(data[,1])
 
 filename <- 'condfreqs_1gene' # where to save the results
@@ -50,7 +50,7 @@ cores <- 25
 ## row an column headers for results
 gnames <- colnames(data)[allgenes+3]
 rown <- c(rbind(paste0(gnames,'-AA'),paste0(gnames,'-Bx')))
-coln <-  c('EV','STD','Q.05','Q.95')
+coln <-  c('EV','STD','Q.05','Q.95','n')
 
 ## prior expected frequencies for each symptom (parameter alpha)
 allsprior <- matrix(1,nrow=2,ncol=3)/2
@@ -62,14 +62,14 @@ for(i in allsymptoms){
     sdata <- data[,c(i,3+allgenes)]
     sprior <- allsprior[,i]
     res <- t(foreach(g=allgenes,
-                     .combine=cbind, .export=c('sdata','sprior','aa')) %do% {
+                     .combine=cbind, .export=c('sdata','sprior','aa')) %dopar% {
                        sapply(0:1,function(x){
                            f <- table(sdata[sdata[[1+g]]==x,c(1,1+g)])
                            a2 <- sum(f)+aa
                            f2 <- (f+aa*sprior)/a2
                            sstd <- sqrt(prod(f2)/(1+a2))
                            squant <- qbeta(quantiles,a2*f2[2],a2*f2[1])
-                           c(f2[2],sstd,squant)
+                           c(f2[2],sstd,squant,sum(f))
                        })
                      })
     rownames(res) <- rown
