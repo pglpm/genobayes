@@ -42,14 +42,15 @@ aa <- 0 # parameter A for Dirichlet
 
 n2 <- n+aa
 
-allgenes <- 1:10
+allgenes <- 1:94
 allsymptoms <- 1:3
 quantiles <- c(0.05,0.95)
 cores <- 25
 
 ## row an column headers for results
-rown <- c(rbind(paste0(colnames(sdata)[allgenes+1],'-AA'),paste0(colnames(sdata)[allgenes+1],'-Bx')))
-coln <-  c('E','STD','Q.05','Q.95')
+gnames <- colnames(data)[allgenes+3]
+rown <- c(rbind(paste0(gnames,'-AA'),paste0(gnames,'-Bx')))
+coln <-  c('EV','STD','Q.05','Q.95')
 
 ## prior expected frequencies for each symptom (parameter alpha)
 allsprior <- matrix(1,nrow=2,ncol=3)/2
