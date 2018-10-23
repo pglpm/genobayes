@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-10-16T00:43:55+0200
+%% Last-Updated: 2018-10-22T23:49:10+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -831,13 +831,31 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
   faults in its premisses, logic, evidence, and of any other criticisms you
   may have.}\fi
 
-\section{Introductory notes}
+
+\section{Problem setup}
 \label{sec:intro}
 
 
 
+\mynote{Possible further developments: use of hyper-Dirichlet priors, use
+  of graphical models to infer causal relationships
+  \citep{pearl2000_r2009}}
+
+\renewcommand*{\appendixpagename}{Appendix}
+\renewcommand*{\appendixname}{Appendix}
+%\appendixpage
+%\appendix
+
+
+\mynote{2018--10--21: This is the old version, before the approach via conditional \dobs}
+
+\section{Introductory notes}
+\label{sec:pre_intro}
+
+
+
 \subsection{Preliminary remarks about Bayesian  theory}
-\label{sec:prelim_remarks}
+\label{sec:pre_prelim_remarks}
 
 Bayesian  theory is not just a set of new, better recipes meant
 to replace old ones. It also requires a different -- and simpler -- mindset
@@ -912,7 +930,7 @@ between $A$ and $B$, but an \emph{informational} connection. In that
 conditional \dob, $A$ could be the cause of $B$, or $B$ of $A$, or neither
 could be the cause of the other. The classical example of this is
 \begin{equation}
-  \label{eq:rain_clouds}
+  \label{eq:pre_rain_clouds}
   \p(\text{\small clouds in the sky} \| \text{\small rain on the pavement}, I) > 0.5,
 \end{equation}
 not because the rain is the cause of the clouds, but because its presence gives us
@@ -924,7 +942,7 @@ The previous remarks may appear pedantic, but they're important lest we
 misuse Bayesian methods.
 
 \subsection{What is the question?}
-\label{sec:what_question}
+\label{sec:pre_what_question}
 
 \mynote{Luca: the following thoughts may be naive; I must still read
   \citep{stingoetal2015} and \citep{bushetal2012}}
@@ -955,7 +973,7 @@ then the particular genetic variation $\yG$ are \emph{ir}relevant for our
 prediction of the insomnia symptom $\yS$. The same conclusion holds with
 $\yG$ and $\yS$ exchanged: the plausibility calculus says that
 \begin{equation}
-  \label{eq:exchange_irrelevance}
+  \label{eq:pre_exchange_irrelevance}
   \p(\yS \| \yG \,\yD \yI) = \p(\yS \| \yD \yI)
   \quad\Longleftrightarrow\quad
     \p(\yG \| \yS \,\yD \yI) = \p(\yG \| \yD \yI)
@@ -967,7 +985,7 @@ symptoms $\set{\yS}$ and of genetic variations $\set{\yG}$ by using the
 conditional entropy
 \citep{shannon1948,kelly1956}[\sect~14.7]{pressetal1988_r2007}[\chap~2]{coveretal1991_r2006}
 \begin{equation}
-  \label{eq:conditional_entropy}
+  \label{eq:pre_conditional_entropy}
   \sH(\set{\yS} \| \set{\yG}, \yD\yI) \defd
   -\sum_{\yG} \p(\yG \| \yD\yI)\,
   \sum_{\yS} \p(\yS \|\yG\,\yD\yI) \ln\p(\yS \|\yG\,\yD\yI),
@@ -977,12 +995,12 @@ the entropy
 \begin{equation}
   \sH(\set{\yS} \| \yD\yI) \defd
 -\sum_{\yS}\p(\yS \|\yD\yI) \ln\p(\yS \|\yD\yI)
-  \label{eq:entropy_G}
+  \label{eq:pre_entropy_G}
 \end{equation}
 if $\yG$ is irrelevant for predicting $\yS$
 \citep[\sect~14.7]{pressetal1988_r2007}[\chap~2]{coveretal1991_r2006}.
 Another, symmetric measure of relevance is the mutual information,
-discussed in \sect~\ref{sec:joint_prob}.
+discussed in \sect~\ref{sec:pre_joint_prob}.
 
 If we find that there is mutual informational relevance between genetic
 variations and insomnia symptoms, we can conclude from biologic reasons
@@ -998,7 +1016,7 @@ approaches and see whether their results are mutually consistent.
 
 
 \subsection{Why exchangeability}
-\label{sec:why_exchangeability}
+\label{sec:pre_why_exchangeability}
 
 
 
@@ -1053,7 +1071,7 @@ exchange symptom labels among individuals with different genetic
 variations. The exact mathematical expression may look complicated; a
 concrete example is
 \begin{multline}
-  \label{eq:example_partial_exch}
+  \label{eq:pre_example_partial_exch}
   \p(\ySi{1}_{\text{a}}\, \ySi{2}_{\text{c}}\, \ySi{3}_{\text{d}}\,
   \ySi{4}_{\text{a}}\, \ySi{5}_{\text{b}}\, \ySi{6}_{\text{d}}\,\dotso \|
   \yGi{1}_{\alphaup}\, \yGi{2}_{\betaup}\, \yGi{3}_{\betaup}\,
@@ -1077,10 +1095,10 @@ is called \emph{partial} exchangeability
 \cites{definetti1938,diaconisetal1980b,diaconis1988}[for a connection with
 sampling theory see][]{sugden1982,sugden1993}.
 
-Note that the property exemplified by \eqn~\eqref{eq:example_partial_exch}
+Note that the property exemplified by \eqn~\eqref{eq:pre_example_partial_exch}
 is more general than just separately stating exchangeability for the
 distributions of \dobs\ in the individuals' sharing the same genetic
-variations. Property~\eqref{eq:example_partial_exch} allows data about
+variations. Property~\eqref{eq:pre_example_partial_exch} allows data about
 individuals with a genetic variation to be \emph{relevant} for prediction
 of data about individuals with \emph{another} genetic variation, as we'll
 see shortly.
@@ -1090,18 +1108,18 @@ see shortly.
   \dobs\ with the property above}
 
 \subsection{Selection of variables and robustness}
-\label{sec:variable_selection_robustness}
+\label{sec:pre_variable_selection_robustness}
 
 Denote the presence of the genetic variation labelled $i$ by $\yGv_i$ and its
 absence by $\lnot\yGv_i$. We can consider the  relevance of each
 variation individually, say
 \begin{equation}
-  \label{eq:example_relevance_onevariation}
+  \label{eq:pre_example_relevance_onevariation}
   \p(\yS \|\yGv_1 \,\yD \yI),
 \end{equation}
 or of the combination of any number of variations, say
 \begin{equation}
-  \label{eq:example_relevance_manyvariations}
+  \label{eq:pre_example_relevance_manyvariations}
   \p(\yS \|\yGv_1 \lnot\yGv_2 \lnot\yGv_3 \yGv_4 \,\yD \yI).
 \end{equation}
 The plausibility calculus allows us to assign all these \dobs\ for any
@@ -1132,15 +1150,15 @@ $\yD$ are robust.
 
 
 \section{First approach: joint \dob\ and mutual information}
-\label{sec:joint_prob}
+\label{sec:pre_joint_prob}
 
-\subsection{Notation}\label{sec:notation}
+\subsection{Notation}\label{sec:pre_notation}
 The following notation produces compact but readily understandable
 formulae. Functions and operations on tuples $\yx \defd (x_1,\dotsc,x_C)$,
 $\yy \defd (y_1,\dotsc,y_C)$, and numbers $a$ operate component-wise. For
 example:
 \begin{subequations}
-    \label{eq:example_notation}
+    \label{eq:pre_example_notation}
   \begin{equation}
     \begin{gathered}
       \exp\yx \defd \bigl( \exp x_1, \dotsc, \exp x_C \bigr)
@@ -1173,7 +1191,7 @@ where the first expression is the multinomial coefficient.
 
 
 \subsection{Scheme of this approach}
-\label{sec:1st_approach_scheme}
+\label{sec:pre_1st_approach_scheme}
 
 Here is the way of thinking and general form of the calculations for this
 approach. We'll see later if these calculations are practically feasible.
@@ -1234,7 +1252,7 @@ inferences about two connected unknowns:
   and $\yF$ the joint distribution of both. In formulae we want to assign
   values to
   \begin{equation}
-    \label{eq:goal_plausibilities}
+    \label{eq:pre_goal_plausibilities}
     \pf(\yF \| \yD,\yI),\qquad
     \pf(\yFs \| \yD,\yI),\qquad
     \pf(\yFg \| \yD,\yI).
@@ -1248,7 +1266,7 @@ inferences about two connected unknowns:
   our degrees of belief in joint and separate possible values of these
   variates for this individual:
   \begin{equation}
-    \label{eq:goal_ind_plausibilities}
+    \label{eq:pre_goal_ind_plausibilities}
     \pf\bigl( \ysi{0}, \ygi{0} \| \yD, \yI \bigr),\qquad
     \pf\bigl( \ysi{0} \| \yD, \yI \bigr),\qquad
     \pf\bigl(  \ygi{0} \| \yD, \yI \bigr).
@@ -1266,7 +1284,7 @@ frequency distribution $\yF$ in the full population, then our degree of
 belief that individual $0$ have variates $\bigl( \yso,\ygo \bigr)$ would
 be, by symmetry,
 \begin{equation}
-  \label{eq:joint_prob_new_ind_F_known}
+  \label{eq:pre_joint_prob_new_ind_F_known}
   \pf\bigl(\yso, \ygo \| \yF, \yI\bigr)  =
   \pf\bigl(\yso, \ygo \| \yF, \yD, \yI\bigr)  =
   X_{\yso, \ygo},
@@ -1277,7 +1295,7 @@ $\yF$ besides our initial knowledge $\yI$, and the first equality says that
 the data $\yD$ would be irrelevant if we knew $\yF$. If $\yF$ is unknown,
 then by the theorem of total \dob\ we have
 \begin{multline}
-  \label{eq:joint_prob_new_ind_F_unknown}
+  \label{eq:pre_joint_prob_new_ind_F_unknown}
   \pf\bigl(\yso, \ygo \| \yD, \yI\bigr)  =
   \sum_{\yF}  \pf\bigl(\yso, \ygo \| \yF, \yD, \yI\bigr) \;
   \pf( \yF \| \yD, \yI) \equiv{}\\
@@ -1286,9 +1304,9 @@ then by the theorem of total \dob\ we have
 where the sum comprises $\binom{N+C-1}{C-1}$ terms. This formula says that
 our \dob\ in the individual's variates equals our expectation of the
 frequency of those variates.
-Formula~\eqref{eq:joint_prob_new_ind_F_unknown} thus connects the degrees
-of belief~\eqref{eq:goal_plausibilities} and
-\eqref{eq:goal_ind_plausibilities}. Analogous equations hold for the
+Formula~\eqref{eq:pre_joint_prob_new_ind_F_unknown} thus connects the degrees
+of belief~\eqref{eq:pre_goal_plausibilities} and
+\eqref{eq:pre_goal_ind_plausibilities}. Analogous equations hold for the
 marginal frequency distributions $\yFs$, $\yFg$ and the variates $\yso$,
 $\ygo$.
 
@@ -1303,7 +1321,7 @@ the same meaning regarding the joint variate
 $\bigl( \ysi{0}, \ygi{0} \bigr)$. Obviously $\yCg = \yCgd+\yCgn$,
 $C=\yCd+\yCn$, and $\yCd \le \yCgd$.
 
-As explained in \sect~\ref{sec:what_question}, the relevance of our
+As explained in \sect~\ref{sec:pre_what_question}, the relevance of our
 knowledge of an individual's genetic data for our \dob\ about his or her
 insomnia symptoms resides in the difference between the distributions
 $\pf\bigl(\yso\| \ygo, \yD, \yI\bigr)$ and
@@ -1315,7 +1333,7 @@ mutual information \citep[in these called
 \enquote{rate of
   transmission}]{shannon1948,kelly1956}[\sect~14.7]{pressetal1988_r2007}[\chap~2]{coveretal1991_r2006}:
 \begin{equation}
-  \label{eq:mutual_info_new_ind}
+  \label{eq:pre_mutual_info_new_ind}
   \begin{split}
   \mI\bigl( \ysi{0} : \ygi{0} \| \yD,\yI \bigr) &\defd
   \sH\bigl(\yso \| \yD,\yI\bigr) -
@@ -1364,14 +1382,14 @@ few compared to the range of the variates.
 
 \medskip
 
-To calculate the mutual information~\eqref{eq:mutual_info_new_ind} given
-the data we need the joint \dobs~\eqref{eq:goal_ind_plausibilities}. To
-calculate the latter we use \eqn~\eqref{eq:joint_prob_new_ind_F_unknown},
+To calculate the mutual information~\eqref{eq:pre_mutual_info_new_ind} given
+the data we need the joint \dobs~\eqref{eq:pre_goal_ind_plausibilities}. To
+calculate the latter we use \eqn~\eqref{eq:pre_joint_prob_new_ind_F_unknown},
 which needs our \dobs\ about the joint frequency
-distribution~\eqref{eq:goal_plausibilities}. These can be calculated from
+distribution~\eqref{eq:pre_goal_plausibilities}. These can be calculated from
 our initial \dobs\ $\pf( \yF \| \yI)$ via Bayes's theorem:
 \begin{equation}
-  \label{eq:F_from_f_generic}
+  \label{eq:pre_F_from_f_generic}
   \pf(\yF \| \yf, n, \yI) =
   \frac{\pf(\yf \| n,\yF, \yI)\; \pf(\yF \| \yI)}{
   \sum_{\yF}\pf(\yf \| n,\yF, \yI)\; \pf(\yF \| \yI)}.
@@ -1383,7 +1401,7 @@ $\yF$ in the full population. This problem is similar to \enquote{drawing
   from an urn without replacement}, for which our \dobs\ are represented by
 the multivariate hypergeometric distribution:
 \begin{equation}
-  \label{eq:multivariate_hyperg}
+  \label{eq:pre_multivariate_hyperg}
   \pf(\yf \| n,\yF, \yI) =
   \binom{N}{n}^{-1}\,\yprod\binom{N\yF}{n\yf}
   \equiv \binom{N}{N\yF}^{-1}\,\binom{n}{n\yf}\,\binom{N-n}{N\yF-n\yf}
@@ -1394,15 +1412,15 @@ this distribution are discussed
 in][\sect~4.8.3]{ross1976_r2010}[\sect~II.6]{feller1950_r1968}. For $N$
 very large this distribution simplifies to a multinomial one:
 \begin{equation}
-  \label{eq:multivariate_hyperg_Ninf}
+  \label{eq:pre_multivariate_hyperg_Ninf}
   \pf(\yf \| n,\yF, \yI) =\binom{n}{n\yf} \;\yprod \yF^{n\yf}.
 \end{equation}
 
-Combining \eqns~\eqref{eq:joint_prob_new_ind_F_unknown},
-\eqref{eq:F_from_f_generic}, \eqref{eq:multivariate_hyperg}, and
+Combining \eqns~\eqref{eq:pre_joint_prob_new_ind_F_unknown},
+\eqref{eq:pre_F_from_f_generic}, \eqref{eq:pre_multivariate_hyperg}, and
 simplifying we obtain
 \begin{equation}
-  \label{eq:joint_prob_new_ind_full}
+  \label{eq:pre_joint_prob_new_ind_full}
   \pf\bigl(\yso, \ygo \| \yf, n,\yI\bigr)  =
   \frac{
     \sum_{\yF} X_{\yso, \ygo}\;
@@ -1413,10 +1431,10 @@ With an analogous reasoning we find analogous formulae for
 $\pf\bigl(\yso \| \yf, n,\yI\bigr)$ by replacing $\yF$, $\yf$ with
 $\yFs$, $\yfs$; and for $\pf\bigl(\ygo \| \yf, n,\yI\bigr)$ by
 replacing $\yF$, $\yf$ with $\yFg$, $\yfg$. From these we can calculate the
-mutual information~\eqref{eq:mutual_info_new_ind}.
+mutual information~\eqref{eq:pre_mutual_info_new_ind}.
 If $N$ is very large the formula above becomes
 \begin{equation}
-  \label{eq:joint_prob_new_ind_full_Ninf}
+  \label{eq:pre_joint_prob_new_ind_full_Ninf}
   \pf\bigl(\yso, \ygo \| \yf, n,\yI\bigr)  =
   \frac{
     \int X_{\yso, \ygo}\;\bigl( \yprod\yF^{n\yf} \bigr)\;
@@ -1425,7 +1443,7 @@ If $N$ is very large the formula above becomes
 \end{equation}
 
 \subsection{Motivation for the infinite-population limit}
-\label{sec:motivation_Ninf}
+\label{sec:pre_motivation_Ninf}
 
 In the previous sections we have considered the cases of finite and
 infinite $N$. There are two reasons for focusing on the infinite-$N$ case.
@@ -1437,7 +1455,7 @@ population of statistically similar biological characteristics.
 
 Second: if the number of alleles $l\gg\log_{2}N$, then every individual
 will have a unique combination of alleles, leading to \dobs\
-\eqref{eq:joint_prob_new_ind_full} about the frequencies $\yFg$ and $\yF$
+\eqref{eq:pre_joint_prob_new_ind_full} about the frequencies $\yFg$ and $\yF$
 that are either zero or unity, since each combination appears only once or
 not at all. This in turn leads to a mutual information with maximal value.
 But the reason of this maximal value is in this case not biological, but
@@ -1446,7 +1464,7 @@ population size. We will still have to take care of this statistical
 phenomenon in what follows.
 
 \subsection{Calculation: Dirichlet distributions}
-\label{sec:2nd_calculation_unif_marginals}
+\label{sec:pre_2nd_calculation_unif_marginals}
 
 \mynote{The results of this section will be improved using the analysis by
   Good \citey[\chaps~4--5]{good1965}{good1980}}
@@ -1462,7 +1480,7 @@ distribution \mynote{refs}, which depends on a positive parameter $\yA$ and
 a non-negative $C$-tuple $\ya$ such that $\ysum\ya=1$, which we take equal
 to $(1/C,\dotsc,1/C)$:
 \begin{equation}
-  \label{eq:dirichlet_prior}
+  \label{eq:pre_dirichlet_prior}
   \pf(\yF \| \ya, \yA,\yIo)\,\di\yF =
   \frac{\Gamma(\yA)}{\yprod\Gamma(\yA\ya)}\;
   \yprod \yF^{\yA\ya-1}\;\di\yF,\qquad
@@ -1476,7 +1494,7 @@ is uniquely determined by the assumption, called \enquote{sufficientness}
 about a specific variate value, say $(\yso, \ygo)$ are relevant for our
 belief about the frequency $X_{\yso, \ygo}$ of that value:
 \begin{equation}
-  \label{eq:sufficientness}
+  \label{eq:pre_sufficientness}
   \pf(X_{\yso, \ygo} \| \yf, n, \ya, \yA,\yIo\bigr)\,\di\yF \equiv
   \pf(X_{\yso, \ygo} \| x_{\yso,\ygo}, n, \ya, \yA,\yIo\bigr)\,\di\yF.
 \end{equation}
@@ -1487,11 +1505,11 @@ inferences are consistent with the ones previously made when those genes
 were not considered; likewise if we decide to neglect some genes.
 
 Second, the Dirichlet distribution is the conjugate of the multinomial
-distribution~\eqref{eq:multivariate_hyperg_Ninf}, which means that our
+distribution~\eqref{eq:pre_multivariate_hyperg_Ninf}, which means that our
 \dob\ updated from the data will still be expressed by a Dirichlet
 distribution but with new parameters $\yA'$, $\ya'$:
 \begin{multline}
-  \label{eq:update_dirichlet_prior}
+  \label{eq:pre_update_dirichlet_prior}
   \pf(\yF \| \yf, n, \ya, \yA,\yIo)\,\di\yF =
   \frac{\Gamma(\yA')}{\yprod\Gamma(\yA'\ya')}\;
   \yprod \yF^{\yA'\ya'-1}\;\di\yF,\\
@@ -1502,13 +1520,13 @@ distribution but with new parameters $\yA'$, $\ya'$:
 \end{multline}
 
 This distribution has mean and covariance matrix
-\begin{equation}\label{eq:mean_covariance_dirichlet}
+\begin{equation}\label{eq:pre_mean_covariance_dirichlet}
   \E(\yF \| \yA, \ya,\yIo) = \ya, \qquad
   \cov(\yF \| \yA, \ya,\yIo) =
   \frac{1}{\yA+1}(\diag\ya -\ya\otimes\ya).
 \end{equation}
-Equations~\eqref{eq:update_dirichlet_prior} and
-\eqref{eq:mean_covariance_dirichlet} show the meanings of the parameters
+Equations~\eqref{eq:pre_update_dirichlet_prior} and
+\eqref{eq:pre_mean_covariance_dirichlet} show the meanings of the parameters
 $\ya$, $\yA$:
 
 
@@ -1520,12 +1538,12 @@ knowledge $\yIc$ such that the \dob\ is constant for all possible
 distributions $\yF$. There are $\binom{N+C-1}{C-1}$ possible distributions
 $\yF$; hence
 \begin{equation}
-  \label{eq:constant_prior}
+  \label{eq:pre_constant_prior}
   \pf(\yF \| \yIc) = \binom{N+C-1}{C-1}^{-1}.
 \end{equation}
 This yields a constant  initial  distribution of \dob\ for $(\yso,\ygo)$:
 \begin{multline}
-  \label{eq:joint_prob_initial_F_unknown}
+  \label{eq:pre_joint_prob_initial_F_unknown}
   \pf\bigl(\yso, \ygo \| \yIc\bigr)  =
   \sum_{\yF}  \pf\bigl(\yso, \ygo \| \yF,\yIc\bigr) \;
   \pf( \yF \| \yIc) ={}\\
@@ -1544,7 +1562,7 @@ inference with the ones previously made.
 
 Another bothering feature of the state of knowledge $\yIc$ is that the
 marginal \dob\ in the insomnia symptoms alone given the full set of
-data, \eqn~\eqref{eq:marginals_final_const_prior}, depends on the number of
+data, \eqn~\eqref{eq:pre_marginals_final_const_prior}, depends on the number of
 gene variations considered in the data. Likewise, the \dob\ in the
 gene variations depend on the number of insomnia symptoms.
 
@@ -1558,7 +1576,7 @@ characterized by a Dirichlet-multinomial distribution for $\yF$, which
 depends on a positive parameter $\yA$ and a non-negative $C$-tuple $\ya$
 such that $\ysum\ya=1$, which we take equal to $(1/C,\dotsc,1/C)$:
 \begin{multline}
-  \label{eq:dirichlet_prior}
+  \label{eq:pre_dirichlet_prior}
   \pf(\yF \| \yA, \ya,\yIo) =
   \binom{N+\yA-1}{N}^{-1} \yprod\binom{N\yF+\yA\ya-1}{N\yF},\\
   \ya \defd (\underbrace{1/C,\dotsc,1/C}_{\text{$C$ elements}})
@@ -1567,7 +1585,7 @@ such that $\ysum\ya=1$, which we take equal to $(1/C,\dotsc,1/C)$:
 especially][\sects~3--4]{basuetal1982}.
 
 This distribution has mean and covariance matrix
-% \begin{equation}\label{eq:mean_covariance_dirichlet}
+% \begin{equation}\label{eq:pre_mean_covariance_dirichlet}
 %   \E(\yF \| \yA, \ya,\yIo) = \ya, \qquad
 %   \cov(\yF \| \yA, \ya,\yIo) =
 %   \frac{\yA+N}{N\,(\yA+1)}(\diag\ya -\ya\otimes\ya).
@@ -1580,7 +1598,7 @@ determines our \dob\ about the frequency of single gene variations, for
 example for the first gene allele, $G_{\yg_0}$: it is a beta-binomial
 distribution
 \begin{equation}
-  \label{eq:dirichlet_prior_marginal_beta-binomial}
+  \label{eq:pre_dirichlet_prior_marginal_beta-binomial}
   \pf(G_{\yg_0} \| \yA, \ya,\yIo) =
   \binom{N+\yA-1}{N}^{-1} \yprod\binom{N G_{\yg_0}+\yA/2-1}{N G_{\yg_0}}.
 \end{equation}
@@ -1596,7 +1614,7 @@ our inferences. We consider two particular values:
   uniform; it doesn't assign equal \dobs\ to the possible frequency
   distributions for the $\yCs\equiv 8$ symptom combinations; % but rather
   % \begin{multline}
-  %   \label{eq:dirichlet_prior_symptoms}
+  %   \label{eq:pre_dirichlet_prior_symptoms}
   %   \pf(\yFs \| \yIo)\,\di\yFs = \frac{1}{\yprod\Gamma\bigl(
   %   \frac{2}{\yCs} \bigr)}
   %   \yprod \yFs^{\frac{2}{\yCs}-1}\,\delt(\ysum\yFs-1)\,\di\yFs ={}\\
@@ -1616,7 +1634,7 @@ our inferences. We consider two particular values:
 % 12 gene variations), this approximation should be valid. If we consider a
 % large amount of gene variations, so that $C/N$ is large (say, more than 25
 % gene variations), the possible frequencies lie on the faces of the
-% $(C-1)$-dimensional simplex; but the density~\eqref{eq:dirichlet_prior} is
+% $(C-1)$-dimensional simplex; but the density~\eqref{eq:pre_dirichlet_prior} is
 % concentrated in regions at the boundary of the simplex, and thus the
 % approximation may still be reasonable.
 
@@ -1625,38 +1643,38 @@ Theorem~2]{basuetal1982}, the initial \dob\ $\yIo$ leads to a \dob\ for
 $N\yF-n\yf$ conditional on our data $\yD$ that has the same form, but with
 new parameters $n+\yA$ and $(n\yf+\yA\ya)/(n+\yA)$:
 \begin{equation}
-  \label{eq:dirichlet_posterior_X}
+  \label{eq:pre_dirichlet_posterior_X}
   \pf(N\yF -n\yf \| \yf, n, \yA, \ya,\yIo) =
   \binom{N+\yA-1}{N-n}^{-1} \yprod\binom{N\yF+\yA\ya-1}{N\yF-n\yf},
 \end{equation}
-from which we can deduce the \dob~\eqref{eq:F_from_f_generic}, using
-\eqref{eq:multivariate_hyperg}. Moreover, the expectation of $N\yF-n\yf$ is
+from which we can deduce the \dob~\eqref{eq:pre_F_from_f_generic}, using
+\eqref{eq:pre_multivariate_hyperg}. Moreover, the expectation of $N\yF-n\yf$ is
 \citey[\sect~3]{basuetal1982}
 \begin{equation}
-  \label{eq:dirichlet_posterior_expectation}
+  \label{eq:pre_dirichlet_posterior_expectation}
   \E(N\yF -n\yf \| \yf, n, \yA, \ya,\yIo) =
   (N-n) \frac{n\yf+\yA\ya}{n+\yA},
 \end{equation}
 from which we find
 \begin{equation}
-    \label{eq:expect_freq_dirichlet_prior_final}
+    \label{eq:pre_expect_freq_dirichlet_prior_final}
     \E(\yF \| \yf, n,\yA,\ya, \yIo)  =
     \frac{n}{N}x_{\yso, \ygo} + \frac{N-n}{N}
 \frac{n x_{\yso, \ygo}+\yA/C}{n+\yA}.
 \end{equation}
 This expression can be combined with
-\eqn~\eqref{eq:joint_prob_new_ind_F_unknown} to finally find
+\eqn~\eqref{eq:pre_joint_prob_new_ind_F_unknown} to finally find
 \begin{equation}
-    \label{eq:joint_prob_new_ind_full_dirichlet_prior_final}
+    \label{eq:pre_joint_prob_new_ind_full_dirichlet_prior_final}
     \pf(\yso, \ygo \| \yf, n,\yA,\ya, \yIo)  =
     \frac{n}{N}x_{\yso, \ygo} + \frac{N-n}{N}
 \frac{n x_{\yso, \ygo}+\yA/C}{n+\yA}.
 \end{equation}
 
-From equation~\eqref{eq:mean_covariance_dirichlet} we can calculate the
+From equation~\eqref{eq:pre_mean_covariance_dirichlet} we can calculate the
 variance of our \dob\ in the frequency of a particular variate value:
 \begin{multline}
-  \label{eq:variance_single_gene_dirichlet}
+  \label{eq:pre_variance_single_gene_dirichlet}
   \var(X_{\ys,\yg} \| \yf, n,\yA,\ya, \yIo)  ={}\\
   \frac{N+n+\yA}{N\,(n+\yA+1)}
   \frac{n x_{\yso, \ygo}+\yA/C}{n+\yA}
@@ -1665,7 +1683,7 @@ variance of our \dob\ in the frequency of a particular variate value:
 
 
 \subsection*{Calculation: Dirichlet distributions with finite $N$}
-%\label{sec:2nd_calculation_unif_marginals}
+%\label{sec:pre_2nd_calculation_unif_marginals}
 
 \mynote{Old section, kept for reference}
 
@@ -1677,12 +1695,12 @@ knowledge $\yIc$ such that the \dob\ is constant for all possible
 distributions $\yF$. There are $\binom{N+C-1}{C-1}$ possible distributions
 $\yF$; hence
 \begin{equation}
-  \label{eq:NO-constant_prior}
+  \label{eq:pre_NO-constant_prior}
   \pf(\yF \| \yIc) = \binom{N+C-1}{C-1}^{-1}.
 \end{equation}
 This yields a constant  initial  distribution of \dob\ for $(\yso,\ygo)$:
 \begin{multline}
-  \label{eq:NO-joint_prob_initial_F_unknown}
+  \label{eq:pre_NO-joint_prob_initial_F_unknown}
   \pf\bigl(\yso, \ygo \| \yIc\bigr)  =
   \sum_{\yF}  \pf\bigl(\yso, \ygo \| \yF,\yIc\bigr) \;
   \pf( \yF \| \yIc) ={}\\
@@ -1701,7 +1719,7 @@ inference with the ones previously made.
 
 Another bothering feature of the state of knowledge $\yIc$ is that the
 marginal \dob\ in the insomnia symptoms alone given the full set of
-data, \eqn~\eqref{eq:NO-marginals_final_const_prior}, depends on the number of
+data, \eqn~\eqref{eq:pre_NO-marginals_final_const_prior}, depends on the number of
 gene variations considered in the data. Likewise, the \dob\ in the
 gene variations depend on the number of insomnia symptoms.
 
@@ -1715,7 +1733,7 @@ characterized by a Dirichlet-multinomial distribution for $\yF$, which
 depends on a positive parameter $\yA$ and a non-negative $C$-tuple $\ya$
 such that $\ysum\ya=1$, which we take equal to $(1/C,\dotsc,1/C)$:
 \begin{multline}
-  \label{eq:NO-dirichlet_prior}
+  \label{eq:pre_NO-dirichlet_prior}
   \pf(\yF \| \yA, \ya,\yIo) =
   \binom{N+\yA-1}{N}^{-1} \yprod\binom{N\yF+\yA\ya-1}{N\yF},\\
   \ya \defd (\underbrace{1/C,\dotsc,1/C}_{\text{$C$ elements}})
@@ -1724,7 +1742,7 @@ such that $\ysum\ya=1$, which we take equal to $(1/C,\dotsc,1/C)$:
 especially][\sects~3--4]{basuetal1982}.
 
 This distribution has mean and covariance matrix
-\begin{equation}\label{eq:NO-mean_covariance_dirichlet}
+\begin{equation}\label{eq:pre_NO-mean_covariance_dirichlet}
   \E(\yF \| \yA, \ya,\yIo) = \ya, \qquad
   \cov(\yF \| \yA, \ya,\yIo) =
   \frac{\yA+N}{N\,(\yA+1)}(\diag\ya -\ya\otimes\ya).
@@ -1737,7 +1755,7 @@ determines our \dob\ about the frequency of single gene variations, for
 example for the first gene allele, $G_{\yg_0}$: it is a beta-binomial
 distribution
 \begin{equation}
-  \label{eq:NO-dirichlet_prior_marginal_beta-binomial}
+  \label{eq:pre_NO-dirichlet_prior_marginal_beta-binomial}
   \pf(G_{\yg_0} \| \yA, \ya,\yIo) =
   \binom{N+\yA-1}{N}^{-1} \yprod\binom{N G_{\yg_0}+\yA/2-1}{N G_{\yg_0}}.
 \end{equation}
@@ -1753,7 +1771,7 @@ our inferences. We consider two particular values:
   uniform; it doesn't assign equal \dobs\ to the possible frequency
   distributions for the $\yCs\equiv 8$ symptom combinations; % but rather
   % \begin{multline}
-  %   \label{eq:NO-dirichlet_prior_symptoms}
+  %   \label{eq:pre_NO-dirichlet_prior_symptoms}
   %   \pf(\yFs \| \yIo)\,\di\yFs = \frac{1}{\yprod\Gamma\bigl(
   %   \frac{2}{\yCs} \bigr)}
   %   \yprod \yFs^{\frac{2}{\yCs}-1}\,\delt(\ysum\yFs-1)\,\di\yFs ={}\\
@@ -1773,7 +1791,7 @@ our inferences. We consider two particular values:
 % 12 gene variations), this approximation should be valid. If we consider a
 % large amount of gene variations, so that $C/N$ is large (say, more than 25
 % gene variations), the possible frequencies lie on the faces of the
-% $(C-1)$-dimensional simplex; but the density~\eqref{eq:NO-dirichlet_prior} is
+% $(C-1)$-dimensional simplex; but the density~\eqref{eq:pre_NO-dirichlet_prior} is
 % concentrated in regions at the boundary of the simplex, and thus the
 % approximation may still be reasonable.
 
@@ -1782,38 +1800,38 @@ Theorem~2]{basuetal1982}, the initial \dob\ $\yIo$ leads to a \dob\ for
 $N\yF-n\yf$ conditional on our data $\yD$ that has the same form, but with
 new parameters $n+\yA$ and $(n\yf+\yA\ya)/(n+\yA)$:
 \begin{equation}
-  \label{eq:NO-dirichlet_posterior_X}
+  \label{eq:pre_NO-dirichlet_posterior_X}
   \pf(N\yF -n\yf \| \yf, n, \yA, \ya,\yIo) =
   \binom{N+\yA-1}{N-n}^{-1} \yprod\binom{N\yF+\yA\ya-1}{N\yF-n\yf},
 \end{equation}
-from which we can deduce the \dob~\eqref{eq:NO-F_from_f_generic}, using
-\eqref{eq:NO-multivariate_hyperg}. Moreover, the expectation of $N\yF-n\yf$ is
+from which we can deduce the \dob~\eqref{eq:pre_NO-F_from_f_generic}, using
+\eqref{eq:pre_NO-multivariate_hyperg}. Moreover, the expectation of $N\yF-n\yf$ is
 \citey[\sect~3]{basuetal1982}
 \begin{equation}
-  \label{eq:NO-dirichlet_posterior_expectation}
+  \label{eq:pre_NO-dirichlet_posterior_expectation}
   \E(N\yF -n\yf \| \yf, n, \yA, \ya,\yIo) =
   (N-n) \frac{n\yf+\yA\ya}{n+\yA},
 \end{equation}
 from which we find
 \begin{equation}
-    \label{eq:NO-expect_freq_dirichlet_prior_final}
+    \label{eq:pre_NO-expect_freq_dirichlet_prior_final}
     \E(\yF \| \yf, n,\yA,\ya, \yIo)  =
     \frac{n}{N}x_{\yso, \ygo} + \frac{N-n}{N}
 \frac{n x_{\yso, \ygo}+\yA/C}{n+\yA}.
 \end{equation}
 This expression can be combined with
-\eqn~\eqref{eq:NO-joint_prob_new_ind_F_unknown} to finally find
+\eqn~\eqref{eq:pre_NO-joint_prob_new_ind_F_unknown} to finally find
 \begin{equation}
-    \label{eq:NO-joint_prob_new_ind_full_dirichlet_prior_final}
+    \label{eq:pre_NO-joint_prob_new_ind_full_dirichlet_prior_final}
     \pf(\yso, \ygo \| \yf, n,\yA,\ya, \yIo)  =
     \frac{n}{N}x_{\yso, \ygo} + \frac{N-n}{N}
 \frac{n x_{\yso, \ygo}+\yA/C}{n+\yA}.
 \end{equation}
 
-From equation~\eqref{eq:NO-mean_covariance_dirichlet} we can calculate the
+From equation~\eqref{eq:pre_NO-mean_covariance_dirichlet} we can calculate the
 variance of our \dob\ in the frequency of a particular variate value:
 \begin{multline}
-  \label{eq:NO-variance_single_gene_dirichlet}
+  \label{eq:pre_NO-variance_single_gene_dirichlet}
   \var(X_{\ys,\yg} \| \yf, n,\yA,\ya, \yIo)  ={}\\
   \frac{N+n+\yA}{N\,(n+\yA+1)}
   \frac{n x_{\yso, \ygo}+\yA/C}{n+\yA}
@@ -1821,7 +1839,7 @@ variance of our \dob\ in the frequency of a particular variate value:
 \end{multline}
 
 \subsection*{Constant initial \dob}
-\label{sec:first_calc_const_prior}
+\label{sec:pre_first_calc_const_prior}
 \mynote{This section has become irrelevant. Left here just for reference}
 
 We need to assess our initial \dob\ for $\yF$ according to some
@@ -1830,12 +1848,12 @@ knowledge $\yIc$ such that the \dob\ is constant for all possible
 distributions $\yF$. There are $\binom{N+C-1}{C-1}$ possible distributions
 $\yF$; hence
 \begin{equation}
-  \label{eq:constant_prior}
+  \label{eq:pre_constant_prior}
   \pf(\yF \| \yIc) = \binom{N+C-1}{C-1}^{-1}.
 \end{equation}
 This yields a constant  initial  distribution of \dob\ for $(\yso,\ygo)$:
 \begin{multline}
-  \label{eq:joint_prob_initial_F_unknown}
+  \label{eq:pre_joint_prob_initial_F_unknown}
   \pf\bigl(\yso, \ygo \| \yIc\bigr)  =
   \sum_{\yF}  \pf\bigl(\yso, \ygo \| \yF,\yIc\bigr) \;
   \pf( \yF \| \yIc) ={}\\
@@ -1847,9 +1865,9 @@ points in a simplex of dimension $C-1$, giving its centre of mass
 $(1/C, 1/C, \dotso)$.
 
 With the initial knowledge $\yIc$,
-\eqn~\eqref{eq:joint_prob_new_ind_full} simplifies to
+\eqn~\eqref{eq:pre_joint_prob_new_ind_full} simplifies to
 \begin{equation}
-    \label{eq:joint_prob_new_ind_full_simplified}
+    \label{eq:pre_joint_prob_new_ind_full_simplified}
   \pf\bigl(\yso, \ygo \| \yf, n,\yIc\bigr)  =
   \frac{
     \sum_{\yF} X_{\yso, \ygo}\,
@@ -1860,20 +1878,20 @@ The sum in the denominator can be calculated with an identity for
 multinomial coefficients\mynote{add
   refs for summation formula}:
 \begin{equation}
-  \label{eq:multinomial_sum_identity}
+  \label{eq:pre_multinomial_sum_identity}
   \sum_{\yF} \yprod\binom{N\yF}{n\yf} = \binom{N+C-1}{n+C-1},
 \end{equation}
-which, substituted in \eqn~\eqref{eq:F_from_f_generic}, also leads to
+which, substituted in \eqn~\eqref{eq:pre_F_from_f_generic}, also leads to
 \begin{equation}
-  \label{eq:F_from_f_specific}
+  \label{eq:pre_F_from_f_specific}
   \pf(\yF \| \yf, n, \yIc) = \binom{N+C-1}{n+C-1}^{-1}\,\yprod\binom{N\yF}{n\yf}.
 \end{equation}
 
 The sum in the numerator of
-\eqn~\eqref{eq:joint_prob_new_ind_full_simplified} can be
+\eqn~\eqref{eq:pre_joint_prob_new_ind_full_simplified} can be
 rewritten\mynote{explain the steps} obtaining
 \begin{equation}
-  \label{eq:numerator_constant_prior}
+  \label{eq:pre_numerator_constant_prior}
   \sum_{\yF} X_{\yso, \ygo}\, \yprod\binom{N\yF}{n\yf}
   =
   \frac{n x_{\yso, \ygo}+1}{N} \binom{N+C}{n+C}
@@ -1882,15 +1900,15 @@ rewritten\mynote{explain the steps} obtaining
 
 Simplifying we finally find
 \begin{equation}
-    \label{eq:joint_prob_new_ind_full_const_prior_final}
+    \label{eq:pre_joint_prob_new_ind_full_const_prior_final}
   \pf\bigl(\yso, \ygo \| \yf, n,\yIc\bigr)  =
 \frac{(N+C) n x_{\yso, \ygo}+N-n}{N\,(n+C)}
 \end{equation}
 This expression can be interpreted as a weighted sum of the observed
 frequency $x_{\yso,\ygo}$ in the data and the initial \dob\ $1/C$,
-\eqn~\eqref{eq:joint_prob_initial_F_unknown}:
+\eqn~\eqref{eq:pre_joint_prob_initial_F_unknown}:
 \begin{equation}
-    \label{eq:joint_prob_new_ind_full_const_prior_final_reinterpret}
+    \label{eq:pre_joint_prob_new_ind_full_const_prior_final_reinterpret}
   \pf\bigl(\yso, \ygo \| \yf, n,\yIc\bigr)  \propto
 x_{\yso, \ygo}+ \frac{N-n}{n}\frac{C}{N+C}\,\frac{1}{C},
 \end{equation}
@@ -1900,18 +1918,18 @@ $(N-n)/n\times C/(N+C)$\mynote{Luca: I don't find this intuitively
   state of knowledge}. When $n=N$, that is, when we've sampled the full
 population, the second weight is zero and we're left with $x_{\yso,\ygo}$,
 which is also equal to $X_{\yso,\ygo}$, consistent with
-\eqn~\eqref{eq:joint_prob_new_ind_F_known}.
+\eqn~\eqref{eq:pre_joint_prob_new_ind_F_known}.
 
 \iffalse For large $C$ this is approximately
 \begin{equation}
-    \label{eq:joint_prob_new_ind_full_const_prior_final_approx_C}
+    \label{eq:pre_joint_prob_new_ind_full_const_prior_final_approx_C}
     \pf\bigl(\yso, \ygo \| \yf, n,\yIc\bigr)  \approx
     \frac{n x_{\yso, \ygo}}{N} +
     \frac{(N-n)\,(n x_{\yso, \ygo} +1)}{N C}
 \end{equation}
 and for large $N$
 \begin{equation}
-    \label{eq:joint_prob_new_ind_full_const_prior_final_approx_N}
+    \label{eq:pre_joint_prob_new_ind_full_const_prior_final_approx_N}
     \pf\bigl(\yso, \ygo \| \yf, n,\yIc\bigr)  \approx
     \frac{n x_{\yso, \ygo} +1}{n + C}.
 \end{equation}
@@ -1919,7 +1937,7 @@ and for large $N$
 
 For the marginal distributions we obtain, by summation,
 \begin{gather}
-  \label{eq:marginals_final_const_prior}
+  \label{eq:pre_marginals_final_const_prior}
     \pf\bigl(\yso \| \yf, n,\yIc\bigr)  =
 \frac{(N+C) n s_{\yso}+(N-n)\yCg}{N\,(n+C)},
 \\
@@ -1931,11 +1949,11 @@ $\yF$ is uniform, then the \dobs\ for the marginal frequencies $\yFs$ and
 $\yFg$ are \emph{not} uniform.
 
 Using the
-distributions~\eqref{eq:joint_prob_new_ind_full_const_prior_final}
-and~\eqref{eq:marginals_final_const_prior} in the formula for the mutual
-information~\eqref{eq:mutual_info_new_ind} and simplifying we find
+distributions~\eqref{eq:pre_joint_prob_new_ind_full_const_prior_final}
+and~\eqref{eq:pre_marginals_final_const_prior} in the formula for the mutual
+information~\eqref{eq:pre_mutual_info_new_ind} and simplifying we find
 \begin{multline}
-  \label{eq:mutual_info_final}
+  \label{eq:pre_mutual_info_final}
   \mI\bigl( \yso : \ygo \| \yD,\yIc \bigr) =
   \ln[N\,(n+C)] +
   \sum_{\mathclap{\yso,\ygo}}
@@ -1950,7 +1968,7 @@ We can divide this sum into two parts: one sum over the values of $\yso$
 and $\ygo$ which appear in our data, for which $g_{\ygo}>0$; and one sum
 over the $\yCgn$ remaining $\ygo$ values,  for which $g_{\ygo}=x_{\yso,\ygo}=0$:
 \begin{multline}
-  \label{eq:mutual_info_final_three}
+  \label{eq:pre_mutual_info_final_three}
   \mI\bigl( \yso : \ygo \| \yD,\yIc \bigr) =
   \ln[N\,(n+C)] \\
   \begin{aligned}[b]
@@ -2021,10 +2039,6 @@ concentrated on the edges of the simplex.
 \end{acknowledgements}
 \fi
 
-\renewcommand*{\appendixpagename}{Appendix}
-\renewcommand*{\appendixname}{Appendix}
-%\appendixpage
-%\appendix
 
 %%%%%%%%%%%%%%% BIB %%%%%%%%%%%%%%%
 
