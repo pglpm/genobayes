@@ -47,7 +47,7 @@ cores <- 1
 ## row an column headers for results
 gnames <- colnames(data)[allgenes+3]
 ganames <- c(rbind(paste0(gnames,'-AA'),paste0(gnames,'-Bx')))
-qnames <-  c('EV','STD','Q.05','Q.95',sapply(1:2,function(x){paste0('theta',x)}))
+qnames <-  c('EV','STD','Q.05','Q.95',sapply(0:1,function(x){paste0('theta',x)}))
 
 ## prior expected frequencies for each symptom (parameter alpha)
 
@@ -92,7 +92,7 @@ for(i in allsymptoms){
                            ## STD
                            sqrt(c(t(t(apply(fnew,2,prod))/((nnew^2)*(1+nnew))))),
                            ## quantiles
-                           sapply(1:dim(fnew)[2],function(al){qbeta(quantiles,fnew[1,al],fnew[2,al])}),
+                           sapply(1:dim(fnew)[2],function(al){qbeta(quantiles,fnew[2,al],fnew[1,al])}),
                            matrix(rep(maxsearch$par,2),ncol=2) # Theta with max evidence
                        )
                        }
