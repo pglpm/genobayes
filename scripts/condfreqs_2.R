@@ -38,11 +38,11 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 n <- length(data[,1])
 
-filename <- 'allcondfreqs_1gene_thetamax_v2' # where to save the results
+filename <- 'allcondfreqs_1gene_thetamax_v3cg' # where to save the results
 allgenes <- 1:94
 allsymptoms <- 1:3
 quantiles <- c(0.05,0.95)
-cores <- 1
+cores <- 25
 
 ## row an column headers for results
 gnames <- colnames(data)[allgenes+3]
@@ -60,7 +60,7 @@ registerDoParallel(cl)
 for(i in allsymptoms){
     sdata <- data[,c(i,3+allgenes)]
     result <- foreach(g=allgenes,
-                     .combine=cbind, .export=c('sdata')) %do% {
+                     .combine=cbind, .export=c('sdata')) %dopar% {
                        f <- sapply(0:1,function(x){
                            table(sdata[sdata[[1+g]]==x,c(1,1+g)])
                        }) # one column per allele
@@ -81,8 +81,8 @@ for(i in allsymptoms){
                        }
                        ## search parameter Theta with max evidence
                        maxsearch <- optim(par=c(1,1),fn=logprob,gr=gradient,control=list(maxit=1e8,reltol=1e-10),#,parscale=c(f[,1])),
-                                        method="Nelder-Mead"
-                                        #method="BFGS"
+                                        #method="Nelder-Mead"
+                                        method="CG"
                                         #method='L-BFGS-B',lower=c(1e-10,1e-10)
                                         )
                        if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g))}
