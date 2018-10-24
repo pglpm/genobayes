@@ -11,7 +11,7 @@ library('cowplot')
 library('png')
 library('plot3D')
 library('doParallel')
-library('GA')
+#library('GA')
 library('dplyr')
 #
 mypurpleblue <- '#4477AA'
@@ -38,7 +38,7 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 n <- length(data[,1])
 
-filename <- 'allcondfreqs_1gene_thetamax' # where to save the results
+filename <- 'allcondfreqs_1gene_thetamax_v2' # where to save the results
 allgenes <- 1:94
 allsymptoms <- 1:3
 quantiles <- c(0.05,0.95)
@@ -80,11 +80,12 @@ for(i in allsymptoms){
                                 digamma(t)))
                        }
                        ## search parameter Theta with max evidence
-                       maxsearch <- optim(par=c(1,1),fn=logprob,gr=gradient,control=list(maxit=1e6),
+                       maxsearch <- optim(par=c(1,1),fn=logprob,gr=gradient,control=list(maxit=1e8,reltol=1e-10),#,parscale=c(f[,1])),
                                         method="Nelder-Mead"
                                         #method="BFGS"
                                         #method='L-BFGS-B',lower=c(1e-10,1e-10)
                                         )
+                       if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g))}
                        fnew <- f+maxsearch$par
                        nnew <- apply(fnew,2,sum)
                        rbind(
