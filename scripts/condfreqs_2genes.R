@@ -1,5 +1,5 @@
 ## Calculation of expected value, std, and quantiles of conditional frequencies
-## of symptoms given gene+allele
+## of symptoms given gene+allele pairs
 ## Based on mackayetal1995. Uses a Dirichlet distribution for the conditional frequencies
 ## Calculates parameter Theta from the data, as in mackayetal1995
 
@@ -39,8 +39,8 @@ data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 n <- length(data[,1])
 
 filename <- 'allcondfreqs_1gene_thetamax' # where to save the results
-allgenes <- 1:94
-allsymptoms <- 1:3
+allgenes <- 1:10
+allsymptoms <- 1:1
 quantiles <- c(0.05,0.95)
 cores <- 1
 
@@ -59,48 +59,50 @@ registerDoParallel(cl)
 }
 for(i in allsymptoms){
     sdata <- data[,c(i,3+allgenes)]
-    result <- foreach(g=allgenes,
-                     .combine=cbind, .export=c('sdata')) %dopar% {
-                       f <- sapply(0:1,function(x){
-                           table(sdata[sdata[[1+g]]==x,c(1,1+g)])
+    result <- foreach(g1=allgenes,
+                      .combine=cbind, .export=c('sdata')) %:%
+        foreach(g2=allgenes[-c(1:(g1))],
+                      .combine=cbind, .export=c('sdata')) %do% {
+                       f <- apply(expand.grid(0:1,0:1),1,function(x){
+                           table(sdata[sdata[[1+g1]]==x[1]&sdata[[1+g2]]==x[1],c(1,1+g1,1+g2)])
                        }) # one column per allele
-                       ## functions for maximization
-                       logprob <- function(t){
-                           r2 <- f+t
-                           -(sum(lgamma(r2))-
-                             sum(lgamma(apply(r2,2,sum))) +
-                             2*(lgamma(sum(t)) -
-                                sum(lgamma(t))))
+                       f
+                       ## ## functions for maximization
+                       ## logprob <- function(t){
+                       ##     r2 <- f+t
+                       ##     -(sum(lgamma(r2))-
+                       ##       sum(lgamma(apply(r2,2,sum))) +
+                       ##       2*(lgamma(sum(t)) -
+                       ##          sum(lgamma(t))))
+                       ## }
+                       ## gradient <- function(t){
+                       ##     r2 <- f+t
+                       ##     -(apply(digamma(r2),1,sum)-
+                       ##       sum(digamma(apply(r2,2,sum))) +
+                       ##       2*(digamma(sum(t)) -
+                       ##          digamma(t)))
+                       ## }
+                       ## ## search parameter Theta with max evidence
+                       ## maxsearch <- optim(par=c(1,1),fn=logprob,gr=gradient,control=list(maxit=1e8,reltol=1e-10),#,parscale=c(f[,1])),
+                       ##                  method="Nelder-Mead"
+                       ##                  #method="CG"
+                       ##                  #method='L-BFGS-B',lower=c(1e-10,1e-10)
+                       ##                  )
+                       ## if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g))}
+                       ## fnew <- f+maxsearch$par
+                       ## nnew <- apply(fnew,2,sum)
+                       ## rbind(
+                       ##     t(as.matrix(t(fnew)[,-1]/nnew)), # EV
+                       ##     ## STD
+                       ##     sqrt(c(t(t(apply(fnew,2,prod))/((nnew^2)*(1+nnew))))),
+                       ##     ## quantiles
+                       ##     sapply(1:dim(fnew)[2],function(al){qbeta(quantiles,fnew[2,al],fnew[1,al])}),
+                       ##     matrix(rep(maxsearch$par,2),ncol=2) # Theta with max evidence
+                       ## )
                        }
-                       gradient <- function(t){
-                           r2 <- f+t
-                           -(apply(digamma(r2),1,sum)-
-                             sum(digamma(apply(r2,2,sum))) +
-                             2*(digamma(sum(t)) -
-                                digamma(t)))
-                       }
-                       ## search parameter Theta with max evidence
-                       maxsearch <- optim(par=c(1,1),fn=logprob,gr=gradient,control=list(maxit=1e8,reltol=1e-10),#,parscale=c(f[,1])),
-                                        method="Nelder-Mead"
-                                        #method="CG"
-                                        #method='L-BFGS-B',lower=c(1e-10,1e-10)
-                                        )
-                       if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g))}
-                       fnew <- f+maxsearch$par
-                       nnew <- apply(fnew,2,sum)
-                       rbind(
-                           t(as.matrix(t(fnew)[,-1]/nnew)), # EV
-                           ## STD
-                           sqrt(c(t(t(apply(fnew,2,prod))/((nnew^2)*(1+nnew))))),
-                           ## quantiles
-                           sapply(1:dim(fnew)[2],function(al){qbeta(quantiles,fnew[2,al],fnew[1,al])}),
-                           matrix(rep(maxsearch$par,2),ncol=2) # Theta with max evidence
-                       )
-                       }
-    rownames(result) <- qnames
-    colnames(result) <- ganames
-
-    write.csv(result,paste0(dpath,filename,'_s',c('A','B','C')[i],'.csv'))
+    ## rownames(result) <- qnames
+    ## colnames(result) <- ganames
+    ## write.csv(result,paste0(dpath,filename,'_s',c('A','B','C')[i],'.csv'))
 }
 
 if(cores>1){
