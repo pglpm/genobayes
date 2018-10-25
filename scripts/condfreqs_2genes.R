@@ -27,7 +27,6 @@ barpalette <- colorRampPalette(c(mypurpleblue,'white',myredpurple),space='Lab')
 barpalettepos <- colorRampPalette(c('white','black'),space='Lab')
 dev.off()
 mmtoin <- 0.0393701
-savedir <- './'
 
 
 
@@ -48,7 +47,7 @@ n <- length(data[,1])
 savedir <- './2gene-results/'
 filename <- 'genes' # where to save the results
 allgenes <- 1:94
-allsymptoms <- 1:1
+allsymptoms <- 1:3
 quantiles <- c(0.05,0.95)
 cores <- 25
 
@@ -76,7 +75,7 @@ for(i in allsymptoms){
     result <- foreach(g1=allgenes[-length(allgenes)], .export=c('sdata','binoutcomes','noutcomes')) %:%
         foreach(g2=allgenes[-c(1:(g1))],
                 ##.combine=cbind,
-                .export=c('sdata','binoutcomes','noutcomes')) %do% {
+                .export=c('sdata','binoutcomes','noutcomes')) %dopar% {
                     f <- sapply(binoutcomes,function(x){
                         table(factor(sdata[sdata[[1+g1]]==x[1]&sdata[[1+g2]]==x[2],1],levels=0:1))}) #one column per allele combination
                     ## functions for maximization
