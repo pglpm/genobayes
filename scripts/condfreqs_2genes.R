@@ -29,8 +29,15 @@ dev.off()
 mmtoin <- 0.0393701
 savedir <- './'
 
+
+
 ## xlogy <- function(x,y){if(x==0){0}else{x*log(y)}}
 ## entropyf <- function(x){-sum(sapply(x,function(y){xlogy(y,y)}))}
+tobinary  <- function(number, noBits) {
+    as.numeric(intToBits(number))[1:noBits]
+#    binary_vector[-(1:(length(binary_vector) - noBits))]
+}
+frombinary  <- function(digits) {sum(2^(0:(length(digits)-1))*digits)}
 
 dpath  <-  "./"
 datafile <- 'dataset1_binarized.csv'
@@ -38,18 +45,25 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 n <- length(data[,1])
 
-filename <- 'allcondfreqs_1gene_thetamax' # where to save the results
-allgenes <- 1:10
+savedir <- './2gene-results/'
+filename <- 'genes' # where to save the results
+allgenes <- 1:94
 allsymptoms <- 1:1
 quantiles <- c(0.05,0.95)
-cores <- 1
+cores <- 25
 
 ## row an column headers for results
+alnames <- c('A','B')
 gnames <- colnames(data)[allgenes+3]
 ganames <- c(rbind(paste0(gnames,'-AA'),paste0(gnames,'-Bx')))
 qnames <-  c('EV','STD','Q.05','Q.95',sapply(0:1,function(x){paste0('theta',x)}))
 
-## prior expected frequencies for each symptom (parameter alpha)
+
+gridoutcomes <- t(apply(expand.grid(0:1,0:1),1,rev))
+outcomes <- apply(gridoutcomes,1,frombinary)
+binoutcomes <- lapply(outcomes,function(x){tobinary(x,2)})
+noutcomes <- length(outcomes)
+alcombnames <- sapply(binoutcomes,function(x){do.call(paste0,as.list(alnames[x+1]))})
 
 results <- list(A=NULL,B=NULL,C=NULL)
 
@@ -59,51 +73,50 @@ registerDoParallel(cl)
 }
 for(i in allsymptoms){
     sdata <- data[,c(i,3+allgenes)]
-    result <- foreach(g1=allgenes,
-                      .combine=cbind, .export=c('sdata')) %:%
+    result <- foreach(g1=allgenes[-length(allgenes)], .export=c('sdata','binoutcomes','noutcomes')) %:%
         foreach(g2=allgenes[-c(1:(g1))],
-                      .combine=cbind, .export=c('sdata')) %do% {
-                       f <- apply(expand.grid(0:1,0:1),1,function(x){
-                           table(sdata[sdata[[1+g1]]==x[1]&sdata[[1+g2]]==x[1],c(1,1+g1,1+g2)])
-                       }) # one column per allele
-                       f
-                       ## ## functions for maximization
-                       ## logprob <- function(t){
-                       ##     r2 <- f+t
-                       ##     -(sum(lgamma(r2))-
-                       ##       sum(lgamma(apply(r2,2,sum))) +
-                       ##       2*(lgamma(sum(t)) -
-                       ##          sum(lgamma(t))))
-                       ## }
-                       ## gradient <- function(t){
-                       ##     r2 <- f+t
-                       ##     -(apply(digamma(r2),1,sum)-
-                       ##       sum(digamma(apply(r2,2,sum))) +
-                       ##       2*(digamma(sum(t)) -
-                       ##          digamma(t)))
-                       ## }
-                       ## ## search parameter Theta with max evidence
-                       ## maxsearch <- optim(par=c(1,1),fn=logprob,gr=gradient,control=list(maxit=1e8,reltol=1e-10),#,parscale=c(f[,1])),
-                       ##                  method="Nelder-Mead"
-                       ##                  #method="CG"
-                       ##                  #method='L-BFGS-B',lower=c(1e-10,1e-10)
-                       ##                  )
-                       ## if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g))}
-                       ## fnew <- f+maxsearch$par
-                       ## nnew <- apply(fnew,2,sum)
-                       ## rbind(
-                       ##     t(as.matrix(t(fnew)[,-1]/nnew)), # EV
-                       ##     ## STD
-                       ##     sqrt(c(t(t(apply(fnew,2,prod))/((nnew^2)*(1+nnew))))),
-                       ##     ## quantiles
-                       ##     sapply(1:dim(fnew)[2],function(al){qbeta(quantiles,fnew[2,al],fnew[1,al])}),
-                       ##     matrix(rep(maxsearch$par,2),ncol=2) # Theta with max evidence
-                       ## )
-                       }
-    ## rownames(result) <- qnames
-    ## colnames(result) <- ganames
-    ## write.csv(result,paste0(dpath,filename,'_s',c('A','B','C')[i],'.csv'))
-}
+                ##.combine=cbind,
+                .export=c('sdata','binoutcomes','noutcomes')) %do% {
+                    f <- sapply(binoutcomes,function(x){
+                        table(factor(sdata[sdata[[1+g1]]==x[1]&sdata[[1+g2]]==x[2],1],levels=0:1))}) #one column per allele combination
+                    ## functions for maximization
+                    logprob <- function(t){
+                        r2 <- f+t
+                        -(sum(lgamma(r2))-
+                          sum(lgamma(apply(r2,2,sum))) +
+                          noutcomes*(lgamma(sum(t)) -
+                                     sum(lgamma(t))))
+                    }
+                    gradient <- function(t){
+                        r2 <- f+t
+                        -(apply(digamma(r2),1,sum)-
+                          sum(digamma(apply(r2,2,sum))) +
+                          noutcomes*(digamma(sum(t)) -
+                             digamma(t)))
+                    }
+                       ## search parameter Theta with max evidence
+                       maxsearch <- optim(par=rep(1,2),fn=logprob,gr=gradient,control=list(maxit=1e6,reltol=1e-12),#,parscale=c(f[,1])),
+                                        #method="Nelder-Mead"
+                                        method="BFGS"
+                                        #method='L-BFGS-B',lower=c(1e-10,1e-10)
+                                        )
+                       if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g))}
+                       fnew <- f+maxsearch$par
+                       nnew <- apply(fnew,2,sum)
+                       quantities <- rbind(
+                           t(as.matrix(t(fnew)[,-1]/nnew)), # EV
+                           ## STD
+                           sqrt(c(t(t(apply(fnew,2,prod))/((nnew^2)*(1+nnew))))),
+                           ## quantiles
+                           sapply(1:dim(fnew)[2],function(al){qbeta(quantiles,fnew[2,al],fnew[1,al])}),
+                           matrix(rep(maxsearch$par,noutcomes),nrow=2) # Theta with max evidence
+                       )
+                    rownames(quantities) <- qnames
+                    colnames(quantities) <- alcombnames
+
+                    write.csv(quantities,paste0(savedir,filename,g1,'-',g2,'_s',c('A','B','C')[i],'.csv'))
+                    quantities
+                }}
 
 if(cores>1){
 stopCluster(cl)
