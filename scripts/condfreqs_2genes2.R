@@ -95,12 +95,12 @@ for(i in allsymptoms){
                     ##          digamma(t)))
                     ## }
                        ## search parameter Theta with max evidence
-                       maxsearch <- optim(par=rep(0,2),fn=logprob,control=list(maxit=1e6,reltol=1e-12),#,parscale=c(f[,1])),
+                       maxsearch <- optim(par=log(apply(f,1,mean)),fn=logprob,control=list(maxit=1e6,reltol=1e-12),#,parscale=c(f[,1])),
                                         method="Nelder-Mead"
                                         #gr=gradient,method="BFGS"
                                         #method='L-BFGS-B',lower=c(1e-10,1e-10)
                                         )
-                    if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g))}
+                    if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g1,' ',g2))}
                     theta <- exp(maxsearch$par)
                        fnew <- f+theta
                        nnew <- apply(fnew,2,sum)
