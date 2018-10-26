@@ -13,7 +13,7 @@ library('plot3D')
 library('doParallel')
 #library('GA')
 library('dplyr')
-library('gridExtra')
+#library('gridExtra')
 #
 mypurpleblue <- '#4477AA'
 myblue <- '#66CCEE'
@@ -48,8 +48,8 @@ n <- length(data[,1])
 
 savedir <- './2gene-results/'
 filename <- 'genes' # where to save the results
-allgenes <- 1:5
-allsymptoms <- 1:1
+allgenes <- 1:94
+allsymptoms <- 1:3
 quantiles <- c(0.05,0.95)
 cores <- 1
 
@@ -65,14 +65,18 @@ outcomes <- apply(gridoutcomes,1,frombinary)
 binoutcomes <- lapply(outcomes,function(x){tobinary(x,2)})
 noutcomes <- length(outcomes)
 alcombnames <- sapply(binoutcomes,function(x){do.call(paste0,as.list(alnames[x+1]))})
+ncombinations <- (length(allgenes)^2-length(allgenes))/2
 
-if(cores>1){
-cl <- makeCluster(cores)
-registerDoParallel(cl)
-}
+## if(cores>1){
+## cl <- makeCluster(cores)
+## registerDoParallel(cl)
+## }
 for(i in allsymptoms){
 
     results <- list()
+    spread <- matrix(NA,nrow=ncombinations,ncol=3)
+    colnames(spread) <- c('spread','gene1','gene2')
+    rownames(spread) <- NULL
     ii <- 0
     ymin <- +Inf
     ymax <- -Inf
@@ -81,43 +85,21 @@ for(i in allsymptoms){
             ii <- ii+1
             result <- as.matrix(read.csv(paste0(savedir,filename,g1,'-',g2,'_s',c('A','B','C')[i],'.csv'))[,-1])
             results[[ii]] <- result
+            spread[ii,] <- c(max(result[1,])-min(result[1,]) ,g1,g2)
             ymin <- min(ymin,c(result[1,]-result[2,]))
             ymax <- max(ymax,c(result[1,]+result[2,]))
-            }}
-
-    lout <- matrix(NA,length(allgenes),length(allgenes))
-    ii <- 0
-    for(g1 in allgenes[-length(allgenes)]) {
-        for(g2 in allgenes[-c(1:g1)]) {
-            ii <- ii+1
-            lout[g2,g1] <- ii
         }}
+    print(paste('ymin',ymin,'ymax',ymax))
+    write.csv(spread,paste0('spread_2genes_s',c('A','B','C')[i],'.csv'))
 
-    message('preparing plots...')
-
-   pl <- lapply(1:ii, function(x){
-    ## pl <- foreach(x=1:ii, .export=c('lout','results','alcombnames','allgenes','ymin','ymax'), .packages=c('ggplot2')) %do% {
-        inde <- which(lout==x, arr.ind=T)
-        result <- results[[x]]
-        plo <- ggplot() + #qplot(alcombnames,result[1,]) +
-                geom_point(aes(x=alcombnames,y=result[1,]))+
-                geom_errorbar(aes(x = alcombnames,
-                                  ymin=result[1,]-result[2,],
-                                  ymax=result[1,]+result[2,]), width=0.25) +
-                labs(x=if(inde[1]==allgenes[length(allgenes)]){'alleles'}else{NULL},y=if(inde[2]==1){'p(symptom|alleles)'}else{NULL}) +
-                scale_y_continuous(limits=c(ymin,ymax),
-                                   breaks = scales::pretty_breaks(n = 20))
-    plo})
-
-    message('saving plots...')
-    
-    gr <- arrangeGrob(
-        grobs = pl,
-        ##  widths = c(2, 1, 1),
-        layout_matrix = lout)
-    ggsave("testplot.pdf", gr, height = 500, width = 500, dpi = 600,limitsize=F)
 }
+## if(cores>1){stopCluster(cl)}
 
-if(cores>1){
-stopCluster(cl)
-}
+## A min max
+## 0.207918316907101, 0.32303495937424
+##
+## B min max
+## 0.335406572681691, 0.495964560003159
+##
+## A min max
+## 0.207918316907101, 0.32303495937424

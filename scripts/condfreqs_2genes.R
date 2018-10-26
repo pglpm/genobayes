@@ -44,7 +44,7 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 n <- length(data[,1])
 
-savedir <- './2gene-results/'
+savedir <- './2gene-results_v2/'
 filename <- 'genes' # where to save the results
 allgenes <- 1:94
 allsymptoms <- 1:3
@@ -79,28 +79,31 @@ for(i in allsymptoms){
                     f <- sapply(binoutcomes,function(x){
                         table(factor(sdata[sdata[[1+g1]]==x[1]&sdata[[1+g2]]==x[2],1],levels=0:1))}) #one column per allele combination
                     ## functions for maximization
-                    logprob <- function(t){
+                    logprob <- function(lt){
+                        t <- exp(lt)
                         r2 <- f+t
                         -(sum(lgamma(r2))-
                           sum(lgamma(apply(r2,2,sum))) +
                           noutcomes*(lgamma(sum(t)) -
                                      sum(lgamma(t))))
                     }
-                    gradient <- function(t){
+                    gradient <- function(lt){
+                        t <- exp(lt)
                         r2 <- f+t
-                        -(apply(digamma(r2),1,sum)-
+                        -t*(apply(digamma(r2),1,sum)-
                           sum(digamma(apply(r2,2,sum))) +
                           noutcomes*(digamma(sum(t)) -
                              digamma(t)))
                     }
                        ## search parameter Theta with max evidence
-                       maxsearch <- optim(par=rep(1,2),fn=logprob,gr=gradient,control=list(maxit=1e6,reltol=1e-12),#,parscale=c(f[,1])),
+                       maxsearch <- optim(par=rep(0,2),fn=logprob,gr=gradient,control=list(maxit=1e6,reltol=1e-12),#,parscale=c(f[,1])),
                                         #method="Nelder-Mead"
                                         method="BFGS"
                                         #method='L-BFGS-B',lower=c(1e-10,1e-10)
                                         )
-                       if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g))}
-                       fnew <- f+maxsearch$par
+                    if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g))}
+                    theta <- exp(maxsearch$par)
+                       fnew <- f+theta
                        nnew <- apply(fnew,2,sum)
                        quantities <- rbind(
                            t(as.matrix(t(fnew)[,-1]/nnew)), # EV
@@ -108,7 +111,7 @@ for(i in allsymptoms){
                            sqrt(c(t(t(apply(fnew,2,prod))/((nnew^2)*(1+nnew))))),
                            ## quantiles
                            sapply(1:dim(fnew)[2],function(al){qbeta(quantiles,fnew[2,al],fnew[1,al])}),
-                           matrix(rep(maxsearch$par,noutcomes),nrow=2) # Theta with max evidence
+                           matrix(rep(theta,noutcomes),nrow=2) # Theta with max evidence
                        )
                     rownames(quantities) <- qnames
                     colnames(quantities) <- alcombnames
