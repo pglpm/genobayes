@@ -86,18 +86,18 @@ for(i in allsymptoms){
                           noutcomes*(lgamma(sum(t)) -
                                      sum(lgamma(t))))
                     }
-                    gradient <- function(lt){
-                        t <- exp(lt)
-                        r2 <- f+t
-                        -t*(apply(digamma(r2),1,sum)-
-                          sum(digamma(apply(r2,2,sum))) +
-                          noutcomes*(digamma(sum(t)) -
-                             digamma(t)))
-                    }
+                    ## gradient <- function(lt){
+                    ##     t <- exp(lt)
+                    ##     r2 <- f+t
+                    ##     -t*(apply(digamma(r2),1,sum)-
+                    ##       sum(digamma(apply(r2,2,sum))) +
+                    ##       noutcomes*(digamma(sum(t)) -
+                    ##          digamma(t)))
+                    ## }
                        ## search parameter Theta with max evidence
-                       maxsearch <- optim(par=rep(0,2),fn=logprob,gr=gradient,control=list(maxit=1e6,reltol=1e-12),#,parscale=c(f[,1])),
-                                        #method="Nelder-Mead"
-                                        method="BFGS"
+                       maxsearch <- optim(par=rep(0,2),fn=logprob,control=list(maxit=1e6,reltol=1e-12),#,parscale=c(f[,1])),
+                                        method="Nelder-Mead"
+                                        #gr=gradient,method="BFGS"
                                         #method='L-BFGS-B',lower=c(1e-10,1e-10)
                                         )
                     if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g))}
@@ -118,7 +118,9 @@ for(i in allsymptoms){
                     write.csv(quantities,paste0(savedir,filename,g1,'-',g2,'_s',c('A','B','C')[i],'.csv'))
                     quantities
                 }
+    
     message('saving spread...')
+    ##resultl <- list()
     spread <- matrix(NA,nrow=ncombinations,ncol=3)
     colnames(spread) <- c('spread','gene1','gene2')
     rownames(spread) <- NULL
@@ -129,6 +131,7 @@ for(i in allsymptoms){
         for(g2 in allgenes[-c(1:g1)]) {
             ii <- ii+1
             resu <- as.matrix(read.csv(paste0(savedir,filename,g1,'-',g2,'_s',c('A','B','C')[i],'.csv'))[,-1])
+            ##resultl[[ii]] <- resu
             spread[ii,] <- c(max(resu[1,])-min(resu[1,]) ,g1,g2)
             ymin <- min(ymin,c(resu[1,]-resu[2,]))
             ymax <- max(ymax,c(resu[1,]+resu[2,]))
