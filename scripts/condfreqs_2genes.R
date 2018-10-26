@@ -46,7 +46,7 @@ n <- length(data[,1])
 
 savedir <- './2gene-results_v2/'
 filename <- 'genes' # where to save the results
-allgenes <- 1:94
+allgenes <- 1:15
 allsymptoms <- 1:3
 quantiles <- c(0.05,0.95)
 cores <- 25
@@ -118,82 +118,27 @@ for(i in allsymptoms){
 
                     write.csv(quantities,paste0(savedir,filename,g1,'-',g2,'_s',c('A','B','C')[i],'.csv'))
                     quantities
-                }}
+                }
+    message('saving spread...')
+    spread <- matrix(NA,nrow=ncombinations,ncol=3)
+    colnames(spread) <- c('spread','gene1','gene2')
+    rownames(spread) <- NULL
+    ii <- 0
+    ymin <- +Inf
+    ymax <- -Inf
+    for(g1 in allgenes[-length(allgenes)]) {
+        for(g2 in allgenes[-c(1:g1)]) {
+            ii <- ii+1
+            resu <- as.matrix(read.csv(paste0(savedir,filename,g1,'-',g2,'_s',c('A','B','C')[i],'.csv'))[,-1])
+            spread[ii,] <- c(max(resu[1,])-min(resu[1,]) ,g1,g2)
+            ymin <- min(ymin,c(resu[1,]-resu[2,]))
+            ymax <- max(ymax,c(resu[1,]+resu[2,]))
+        }}
+    print(paste('ymin',ymin,'ymax',ymax))
+    write.csv(spread,paste0('spread_2genes_s',c('A','B','C')[i],'.csv'))
+
+}
 
 if(cores>1){
 stopCluster(cl)
 }
-
-
-
-
-
-
-
-stop('No error, just end of script')
-    
-    ## logprobold <- function(t0,t1){
-    ##     sum(
-    ##         apply(lgamma(result+c(t0,t1)),2,sum)-
-    ##         lgamma(apply(result,2,sum)+t0+t1) +
-    ##         lgamma(t0+t1) -
-    ##         sum(lgamma(c(t0,t1)))
-    ##     )
-    ## }
-## this is faster
-gene <- 1
-    logprob <- function(t){
-        r2 <- result[,c(gene,gene+1)]+t
-        -(sum(lgamma(r2))-
-            sum(lgamma(apply(r2,2,sum))) +
-            2*(lgamma(sum(t)) -
-                            sum(lgamma(t))))
-    }
-
-    gradient <- function(t){
-        r2 <- result[,c(gene,gene+1)]+t
-        -(apply(digamma(r2),1,sum)-
-            sum(digamma(apply(r2,2,sum))) +
-            2*(digamma(sum(t)) -
-                            digamma(t)))
-    }
- maxres <-    ga(type='real-valued', fitness=logprob, lower=c(1e-10,1e-10),upper=c(1e12,1e12),popSize = 50, maxiter = 500, run = 100, parallel=FALSE,optim=FALSE,optimArgs=list(gr=gradient,control=list(maxit=2500)))
-
-    
-    maxpars <- optrobot@solution
-    maxval <- -optrobot@fitnessValue
-
-
-
-    
-    optim(par=c(1,1),fn=logprob,gr=gradient,control=list(maxit=1e6),
-                                        method="Nelder-Mead"
-                                        #method="BFGS"
-                                        #method='L-BFGS-B',lower=c(1e-10,1e-10)
-          )
-
-cl <- makeCluster(cores)
-registerDoParallel(cl)
-
-for(i in allsymptoms){
-    sdata <- data[,c(i,3+allgenes)]
-    sprior <- allsprior[,i]
-    res <- t(foreach(g=allgenes,
-                     .combine=cbind, .export=c('sdata','sprior','aa')) %dopar% {
-                       sapply(0:1,function(x){
-                           f <- table(sdata[sdata[[1+g]]==x,c(1,1+g)])
-                           a2 <- sum(f)+aa
-                           f2 <- (f+aa*sprior)/a2
-                           sstd <- sqrt(prod(f2)/(1+a2))
-                           squant <- qbeta(quantiles,a2*f2[2],a2*f2[1])
-                           c(f2[2],sstd,squant,sum(f))
-                       })
-                     })
-    rownames(res) <- rown
-    colnames(res) <- coln
-
-    write.csv(res,paste0(dpath,filename,'_s',c('A','B','C')[i],'.csv'))
-    ##,sep=',',row.names=rown,col.names=coln,na='NA')
-}
-
-stopCluster(cl)
