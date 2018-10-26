@@ -46,7 +46,7 @@ n <- length(data[,1])
 
 savedir <- './2gene-results_v2/'
 filename <- 'genes' # where to save the results
-allgenes <- 1:94
+allgenes <- 1:25
 allsymptoms <- 1:3
 quantiles <- c(0.05,0.95)
 cores <- 25
@@ -71,6 +71,7 @@ cl <- makeCluster(cores)
 registerDoParallel(cl)
 }
 for(i in allsymptoms){
+print(i)
     sdata <- data[,c(i,3+allgenes)]
     result <- foreach(g1=allgenes[-length(allgenes)], .export=c('sdata','binoutcomes','noutcomes')) %:%
         foreach(g2=allgenes[-c(1:(g1))],
