@@ -63,8 +63,7 @@ outcomes <- apply(gridoutcomes,1,frombinary)
 binoutcomes <- lapply(outcomes,function(x){tobinary(x,2)})
 noutcomes <- length(outcomes)
 alcombnames <- sapply(binoutcomes,function(x){do.call(paste0,as.list(alnames[x+1]))})
-
-results <- list(A=NULL,B=NULL,C=NULL)
+ncombinations <- (length(allgenes)^2-length(allgenes))/2
 
 if(cores>1){
 cl <- makeCluster(cores)
