@@ -46,7 +46,7 @@ n <- length(data[,1])
 
 savedir <- './2gene-results_v2/'
 filename <- 'genes' # where to save the results
-allgenes <- 1:15
+allgenes <- 1:94
 allsymptoms <- 1:3
 quantiles <- c(0.05,0.95)
 cores <- 25
@@ -66,10 +66,11 @@ alcombnames <- sapply(binoutcomes,function(x){do.call(paste0,as.list(alnames[x+1
 ncombinations <- (length(allgenes)^2-length(allgenes))/2
 
 if(cores>1){
-cl <- makeCluster(cores)
+cl <- makeCluster(cores, outfile="")
 registerDoParallel(cl)
 }
 for(i in allsymptoms){
+print(i)
     sdata <- data[,c(i,3+allgenes)]
     result <- foreach(g1=allgenes[-length(allgenes)], .export=c('sdata','binoutcomes','noutcomes')) %:%
         foreach(g2=allgenes[-c(1:(g1))],
@@ -100,7 +101,10 @@ for(i in allsymptoms){
                                         #gr=gradient,method="BFGS"
                                         #method='L-BFGS-B',lower=c(1e-10,1e-10)
                                         )
-                    if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g))}
+                    if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g1,' ',g2))
+					#print(f)
+					#print(maxsearch)
+					}
                     theta <- exp(maxsearch$par)
                        fnew <- f+theta
                        nnew <- apply(fnew,2,sum)
