@@ -140,7 +140,8 @@ print(i)
             ymin <- min(ymin,c(resu[1,]-resu[2,]))
             ymax <- max(ymax,c(resu[1,]+resu[2,]))
         }}
-    print(paste('ymin',ymin,'ymax',ymax))
+print(paste('ymin',ymin,'ymax',ymax))
+
     write.csv(spread,paste0('spread_2genes_s',c('A','B','C')[i],'.csv'))
 
 }
@@ -148,3 +149,7 @@ print(i)
 if(cores>1){
 stopCluster(cl)
 }
+
+##A: ymin 0.208033659233357 ymax 0.322833308123198
+##B: ymin 0.335524081808346 ymax 0.495933999204931
+##C: ymin 0.193251762088137 ymax 0.329334600984093
