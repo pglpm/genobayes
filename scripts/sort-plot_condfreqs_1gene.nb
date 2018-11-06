@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19713,        479]
-NotebookOptionsPosition[     18596,        454]
-NotebookOutlinePosition[     18942,        469]
-CellTagsIndexPosition[     18899,        466]
+NotebookDataLength[     19792,        480]
+NotebookOptionsPosition[     18676,        455]
+NotebookOutlinePosition[     19021,        470]
+CellTagsIndexPosition[     18978,        467]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -325,8 +325,8 @@ Cell[BoxData[{
              RowBox[{"symptom", "|", "\"\<genes alleles\>\""}], "]"}], ",", 
             "41"}], "]"}]}], "}"}]}], ",", "\[IndentingNewLine]", 
        RowBox[{"FrameStyle", "\[Rule]", 
-        RowBox[{"Directive", "[", "Large", "]"}]}], ",", 
-       "\[IndentingNewLine]", 
+        RowBox[{"Directive", "[", 
+         RowBox[{"Large", ",", "Black"}], "]"}]}], ",", "\[IndentingNewLine]", 
        RowBox[{"FrameTicks", "\[Rule]", 
         RowBox[{"{", 
          RowBox[{"Auto", ",", 
@@ -448,12 +448,13 @@ Cell[BoxData[{
    3.7498963912391844`*^9, 3.7498963944527903`*^9}, {3.74993162657198*^9, 
    3.749931708097723*^9}, {3.7499317482365937`*^9, 3.7499318810708275`*^9}, {
    3.7499319186512933`*^9, 3.749931953361354*^9}, {3.7499329803287582`*^9, 
-   3.7499330180652246`*^9}, {3.7499335885738263`*^9, 
-   3.749933592255433*^9}},ExpressionUUID->"b357a4ec-64a0-4389-8892-\
+   3.7499330180652246`*^9}, {3.7499335885738263`*^9, 3.749933592255433*^9}, {
+   3.7504806146118593`*^9, 
+   3.7504806156726613`*^9}},ExpressionUUID->"b357a4ec-64a0-4389-8892-\
 8df1051e4bf3"]
 },
 WindowSize->{640, 755},
-WindowMargins->{{21, Automatic}, {Automatic, 0}},
+WindowMargins->{{Automatic, 2}, {Automatic, 0}},
 FrontEndVersion->"11.2 for Microsoft Windows (32-bit) (September 10, 2017)",
 StyleDefinitions->"Default.nb"
 ]
@@ -480,7 +481,7 @@ Cell[2201, 61, 201, 5, 31, "Input",ExpressionUUID->"848395eb-03d8-416a-a39f-22be
 Cell[2405, 68, 1330, 37, 134, "Input",ExpressionUUID->"f6ba9acf-3b39-4dfe-846c-0010e8715938"],
 Cell[3738, 107, 1653, 31, 116, "Input",ExpressionUUID->"16c3d50a-d39d-4a00-a7af-1d7c4c157d71"],
 Cell[5394, 140, 1380, 35, 155, "Input",ExpressionUUID->"31875419-dd78-4a87-87e1-f527f85ef2fd"],
-Cell[6777, 177, 11815, 275, 863, "Input",ExpressionUUID->"b357a4ec-64a0-4389-8892-8df1051e4bf3"]
+Cell[6777, 177, 11895, 276, 866, "Input",ExpressionUUID->"b357a4ec-64a0-4389-8892-8df1051e4bf3"]
 }
 ]
 *)

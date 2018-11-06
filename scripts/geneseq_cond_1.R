@@ -1,7 +1,5 @@
-## Calculation of expected value, std, and quantiles of conditional frequencies
-## of symptoms given gene+allele pairs
-## Based on mackayetal1995. Uses a Dirichlet distribution for the conditional frequencies
-## Calculates parameter Theta from the data, as in mackayetal1995
+## Calculation of beliefs for conditional frequencies
+## for 1 gene, 2 genes, etc, keeping at each step those with highest spread
 
 ## libraries and colour-blind palette from http://www.sron.nl/~pault/
 ##runfunction <- function(aa=1e3L){
@@ -13,7 +11,7 @@ library('plot3D')
 library('doParallel')
 #library('GA')
 library('dplyr')
-#
+
 mypurpleblue <- '#4477AA'
 myblue <- '#66CCEE'
 mygreen <- '#228833'
@@ -27,126 +25,152 @@ barpalette <- colorRampPalette(c(mypurpleblue,'white',myredpurple),space='Lab')
 barpalettepos <- colorRampPalette(c('white','black'),space='Lab')
 dev.off()
 mmtoin <- 0.0393701
+savedir <- './'
 
-
-
-## xlogy <- function(x,y){if(x==0){0}else{x*log(y)}}
-## entropyf <- function(x){-sum(sapply(x,function(y){xlogy(y,y)}))}
-tobinary  <- function(number, noBits) {
-    as.numeric(intToBits(number))[1:noBits]
-#    binary_vector[-(1:(length(binary_vector) - noBits))]
-}
-frombinary  <- function(digits) {sum(2^(0:(length(digits)-1))*digits)}
+##xlogy <- function(x,y){if(x==0){0}else{x*log(y)}}
 
 dpath  <-  "./"
 datafile <- 'dataset1_binarized.csv'
 nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 n <- length(data[,1])
+symstrings <- c('A','B','C')
 
-savedir <- './1gene-results/'
-filename <- 'gene' # where to save the results
+symptom <- 1
+savedir <- paste0('cumulative_condfreq_s',symstrings[symptom],'/')
+
+## max number of iterations
+totalgenes <- 94
+## this tuple contains the genes kept so far
+keptgenes <- NULL
+keptinfo <- NULL
 allgenes <- 1:94
-allsymptoms <- 1:3
-quantiles <- c(0.05,0.95)
+## this tuple contains the genes to be checked 
+genegroup <- allgenes
+
 cores <- 1
 
-## row an column headers for results
 alnames <- c('A','B')
 gnames <- colnames(data)[allgenes+3]
-#ganames <- c(rbind(paste0(gnames,'-AA'),paste0(gnames,'-Bx')))
-qnames <-  c('EV','STD','Q.05','Q.95',sapply(0:1,function(x){paste0('theta',x)}))
 
+rname <- 'ac_'
+warnstring <- 'warn1e3_'
+cores <- 1
+if(cores>1){cl <- makeCluster(cores)
+registerDoParallel(cl)}
 
-gridoutcomes <- expand.grid(0:1)
-outcomes <- apply(gridoutcomes,1,frombinary)
-binoutcomes <- lapply(outcomes,function(x){tobinary(x,1)})
-noutcomes <- length(outcomes)
-alcombnames <- sapply(binoutcomes,function(x){do.call(paste0,as.list(alnames[x+1]))})
-ncombinations <- length(allgenes)
+## iteration at which to switch parallel loop
+changepar <- totalgenes - cores
 
-if(cores>1){
-cl <- makeCluster(cores, outfile="")
-registerDoParallel(cl)
+for(ngenes in 1:totalgenes){
+    message(paste0('iteration ',ngenes))
+    ## "if" to choose whether to parallelize outer or inner loop
+    if(ngenes<changepar){# parallelize outer loop
+
+        allminfo <- foreach(i=genegroup, .combine=rbind, .export=c('xlogy','keptgenes','ngenes','n','cs','fs'),
+                            .packages=c('dplyr','doParallel')) %dopar% {
+            genes <- sort(c(keptgenes,i))
+            data <- predata[,c(1,1+genes)]
+            ## uncomment this to shuffle the symptom data
+            ##    data[,1] <- sample(data[,1])
+            cg <- 2^ngenes
+            cx <- cs*cg
+            
+            ## data frequencies for genes
+            fg <- data.matrix(tally(group_by_at(data,.vars=c(2:(1+ngenes)))))
+            ## data frequencies for both
+            fx <- data.matrix(tally(group_by_at(data,.vars=c(1:(ngenes+1)))))
+
+            et <- dim(fx)[1]
+            logpost <- function(x){lgamma(x)-lgamma(n+x)+sum(lgamma(fx[,ngenes+2]+x/cx))-et*lgamma(x/cx)-log(x)}
+            ##aa <- optimize(f=logpost,interval=c(1,cx),maximum=T)$maximum
+            ##if(aa==cx){write.table(c(ngenes,i),paste0(savedir,warnstring,ngenes,'_',i,'.csv'),sep=',',row.names=F,col.names=F)}
+            aa <- cx ##print(aa)
+            n2 <- n+aa
+            dnna <- 1/n2 #(nn-n)/(nn*n2)
+            
+            cgminus <- cg-dim(fg)[1]
+            cgplus <- dim(fg)[1]
+
+            minfo <- sum(apply(fs,1,function(sig){
+                ##  if(messages==TRUE){print(sig[1])}
+                foreach(i=1:cgplus, .combine=cbind#,
+                                        #  .export=c('fg','fx','ngenes','cg','cs','cx','n','n2','dnna','xlogy','aa')
+                        ) %do% {
+                                        gam <- fg[i,]
+                                        ## marginal freqs
+                                        ns <- sig[2]
+                                        ng <- gam[ngenes+1]
+                                        ## frequency of pair
+                                        nx <- sum(apply(fx,1,function(i){all(i[1:(ngenes+1)]==c(sig[1],gam[1:ngenes]))*i[ngenes+2]}))
+                                        
+                                        probx <- dnna*(nx+aa/cx)
+                                        probs <- dnna*(ns+aa/cs)
+                                        probg <- dnna*(ng+aa/cg)
+
+                                        xlogy(probx,probx/(probs*probg))}
+            })) -
+    cgminus*2*dnna/cx*sum(log((dnna*(fs[,2]+aa/cs))*cx/cg))
+            c(minfo,aa)
+        }
+    } else {# parallelize inner loop
+        allminfo <- foreach(i=genegroup, .combine=rbind #, .export=c('xlogy','keptgenes','ngenes','n','cs','fs','aa','n2','dnna'),
+                           ) %do% {
+            genes <- sort(c(keptgenes,i))
+            data <- predata[,c(1,1+genes)]
+            ## uncomment this to shuffle the symptom data
+            ##    data[,1] <- sample(data[,1])
+            cg <- 2^ngenes
+            cx <- cs*cg
+
+            ## data frequencies for genes
+            fg <- data.matrix(tally(group_by_at(data,.vars=c(2:(1+ngenes)))))
+            ## data frequencies for both
+            fx <- data.matrix(tally(group_by_at(data,.vars=c(1:(ngenes+1)))))
+
+            et <- dim(fx)[1]
+            logpost <- function(x){lgamma(x)-lgamma(n+x)+sum(lgamma(fx[,ngenes+2]+x/cx))-et*lgamma(x/cx)-log(x)}
+            ##aa <- optimize(f=logpost,interval=c(1,cx),maximum=T)$maximum
+            ##if(aa==cx){write.table(c(ngenes,i),paste0(savedir,warnstring,ngenes,'_',i,'.csv'),sep=',',row.names=F,col.names=F)}
+            aa <- cx
+            n2 <- n+aa
+            dnna <- 1/n2 #(nn-n)/(nn*n2)
+
+            cgminus <- cg-dim(fg)[1]
+            cgplus <- dim(fg)[1]
+
+            minfo <- sum(apply(fs,1,function(sig){
+                ##  if(messages==TRUE){print(sig[1])}
+                foreach(i=1:cgplus, .combine=cbind , .export=c('fg','fx','ngenes','cg','cs','cx','n','n2','dnna','xlogy','aa')
+                        ) %dopar% {
+                                        gam <- fg[i,]
+                                        ## marginal freqs
+                                        ns <- sig[2]
+                                        ng <- gam[ngenes+1]
+                                        ## frequency of pair
+                                        nx <- sum(apply(fx,1,function(i){all(i[1:(ngenes+1)]==c(sig[1],gam[1:ngenes]))*i[ngenes+2]}))
+                                        
+                                        probx <- dnna*(nx+aa/cx)
+                                        probs <- dnna*(ns+aa/cs)
+                                        probg <- dnna*(ng+aa/cg)
+
+                                        xlogy(probx,probx/(probs*probg))}
+            })) -
+    cgminus*2*dnna/cx*sum(log((dnna*(fs[,2]+aa/cs))*cx/cg))
+            c(minfo,aa)
+        }
+    }
+    
+        
+    write.table(cbind(genegroup,allminfo),paste0(savedir,'iteration_',rname,ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
+    ##print(allminfo)
+    maxinfo <- max(allminfo[,1])
+    keptinfo <- c(keptinfo,maxinfo)
+    maxgene <- genegroup[which.max(allminfo[,1])]
+    #maxaa <- allminfo[which.max(allminfo,1),2]
+    keptgenes <- c(keptgenes,maxgene)
+    genegroup <- allgenes[-keptgenes]
+    write.table(cbind(keptgenes,keptinfo),paste0(savedir,'infoseq_',rname,ngenes,'.csv'),sep=',',row.names=F,col.names=F,na='Infinity')
 }
-for(i in allsymptoms){
-print(i)
-    sdata <- data[,c(i,3+allgenes)]
-    result <- foreach(g1=allgenes, .export=c('sdata','binoutcomes','noutcomes')) %do% {
-                    f <- sapply(binoutcomes,function(x){
-                        table(factor(sdata[sdata[[1+g1]]==x[1],1],levels=0:1))}) #one column per allele combination
-                    ## functions for maximization
-                    logprob <- function(lt){
-                        t <- exp(lt)
-                        r2 <- f+t
-                        -(sum(lgamma(r2))-
-                          sum(lgamma(apply(r2,2,sum))) +
-                          noutcomes*(lgamma(sum(t)) -
-                                     sum(lgamma(t))))
-                    }
-                    ## gradient <- function(lt){
-                    ##     t <- exp(lt)
-                    ##     r2 <- f+t
-                    ##     -t*(apply(digamma(r2),1,sum)-
-                    ##       sum(digamma(apply(r2,2,sum))) +
-                    ##       noutcomes*(digamma(sum(t)) -
-                    ##          digamma(t)))
-                    ## }
-                       ## search parameter Theta with max evidence
-                       maxsearch <- optim(par=rep(0,2),fn=logprob,control=list(maxit=1e6,reltol=1e-12),#,parscale=c(f[,1])),
-                                        method="Nelder-Mead"
-                                        #gr=gradient,method="BFGS"
-                                        #method='L-BFGS-B',lower=c(1e-10,1e-10)
-                                        )
-                    if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g1))
-					#print(f)
-					#print(maxsearch)
-					}
-                    theta <- exp(maxsearch$par)
-                       fnew <- f+theta
-                       nnew <- apply(fnew,2,sum)
-                       quantities <- rbind(
-                           t(as.matrix(t(fnew)[,-1]/nnew)), # EV
-                           ## STD
-                           sqrt(c(t(t(apply(fnew,2,prod))/((nnew^2)*(1+nnew))))),
-                           ## quantiles
-                           sapply(1:dim(fnew)[2],function(al){qbeta(quantiles,fnew[2,al],fnew[1,al])}),
-                           matrix(rep(theta,noutcomes),nrow=2) # Theta with max evidence
-                       )
-                    rownames(quantities) <- qnames
-                    colnames(quantities) <- alcombnames
-
-                    write.csv(quantities,paste0(savedir,filename,g1,'_s',c('A','B','C')[i],'.csv'))
-                    quantities
-                }
-}
-    message('saving spread...')
-    ##resultl <- list()
-    spread <- matrix(NA,nrow=ncombinations,ncol=3)
-    colnames(spread) <- c('spread','gene1','gene2')
-    rownames(spread) <- NULL
-    ii <- 0
-    ymin <- +Inf
-    ymax <- -Inf
-    for(g1 in allgenes[-length(allgenes)]) {
-        for(g2 in allgenes[-c(1:g1)]) {
-            ii <- ii+1
-            resu <- as.matrix(read.csv(paste0(savedir,filename,g1,'-',g2,'_s',c('A','B','C')[i],'.csv'))[,-1])
-            ##resultl[[ii]] <- resu
-            spread[ii,] <- c(max(resu[1,])-min(resu[1,]) ,g1,g2)
-            ymin <- min(ymin,c(resu[1,]-resu[2,]))
-            ymax <- max(ymax,c(resu[1,]+resu[2,]))
-        }}
-print(paste('ymin',ymin,'ymax',ymax))
-
-    write.csv(spread,paste0('spread_2genes_s',c('A','B','C')[i],'.csv'))
-
-}
-
-if(cores>1){
 stopCluster(cl)
-}
 
-##A: ymin 0.208033659233357 ymax 0.322833308123198
-##B: ymin 0.335524081808346 ymax 0.495933999204931
-##C: ymin 0.193251762088137 ymax 0.329334600984093
