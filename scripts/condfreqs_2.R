@@ -60,10 +60,11 @@ registerDoParallel(cl)
 for(i in allsymptoms){
     sdata <- data[,c(i,3+allgenes)]
     result <- foreach(g=allgenes,
-                     .combine=cbind, .export=c('sdata')) %dopar% {
+                     .combine=cbind, .export=c('sdata')) %do% {
                        f <- sapply(0:1,function(x){
                            table(sdata[sdata[[1+g]]==x,c(1,1+g)])
                        }) # one column per allele
+                       
                        ## functions for maximization
                        logprob <- function(t){
                            r2 <- f+t
@@ -72,17 +73,19 @@ for(i in allsymptoms){
                              2*(lgamma(sum(t)) -
                                 sum(lgamma(t))))
                        }
-                       gradient <- function(t){
-                           r2 <- f+t
-                           -(apply(digamma(r2),1,sum)-
-                             sum(digamma(apply(r2,2,sum))) +
-                             2*(digamma(sum(t)) -
-                                digamma(t)))
-                       }
+                       ## ## uncomment gradient if using BFGS method
+                       ## gradient <- function(t){
+                       ##     r2 <- f+t
+                       ##     -(apply(digamma(r2),1,sum)-
+                       ##       sum(digamma(apply(r2,2,sum))) +
+                       ##       2*(digamma(sum(t)) -
+                       ##          digamma(t)))
+                       ## }
+                       
                        ## search parameter Theta with max evidence
-                       maxsearch <- optim(par=c(1,1),fn=logprob,gr=gradient,control=list(maxit=1e8,reltol=1e-10),#,parscale=c(f[,1])),
+                       maxsearch <- optim(par=c(1,1),fn=logprob,control=list(maxit=1e8,reltol=1e-10),#,parscale=c(f[,1])),
                                         method="Nelder-Mead"
-                                        #method="CG"
+                                        #gr=gradient,method="BFGS"
                                         #method='L-BFGS-B',lower=c(1e-10,1e-10)
                                         )
                        if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g))}
