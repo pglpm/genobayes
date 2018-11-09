@@ -40,7 +40,7 @@ savedir <- '1sym_2snp/' # directory for saving results
 filename <- 'freq-' # filename prefix
 writeflag <- TRUE # whether to write the results for each case/snp combination in a file
 
-cores <- 1 # for parallel processing
+cores <- 2 # for parallel processing
 
 symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('A','B','C')
@@ -49,7 +49,7 @@ prefixsymptoms <- 'sym_' # for filename
 symptomvariants <- 0:1
 namesymptomvariants <- c('n','y')
 
-ngenes <- 3 # auxiliary quantity
+ngenes <- 94 # auxiliary quantity
 snps <- unlist(lapply(1:(ngenes-1),function(x){lapply((x+1):ngenes,function(y){3+c(x,y)})}),
                recursive=FALSE) # list of all pairs of snps
 namesnps <- sapply(snps,function(x){paste0(x[1]-3,'_',x[2]-3)})
