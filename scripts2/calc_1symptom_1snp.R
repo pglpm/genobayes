@@ -63,7 +63,16 @@ logpriortheta <- function(lt){dcauchy(lt,location=log(1000),scale=log(1000),log=
 ## measure of spread, applied to the final matrix of quantities
 ## it calculates abs((EV_freq1 - EV_freq2)/(SD_freq1 + SD_freq2))
 ## for all pairs and takes the maximum
-spread <- function(q,numsymptomvariants,numsnpvariants){sapply(1:numsymptomvariants,function(co){max(abs(sapply(1:(numsnpvariants-1),function(x){sapply((x+1):numsnpvariants,function(y){(q[co,x]-q[co,y])/(q[co+numsymptomvariants,x]+q[co+numsymptomvariants,y])})})))})}
-
+spread <- function(q,numsymptomvariants,numsnpvariants){
+    sapply(1:numsymptomvariants,function(co){
+        max(abs(unlist(
+            sapply(1:(numsnpvariants-1),function(x){
+                sapply((x+1):numsnpvariants,function(y){
+                    (q[co,x]-q[co,y])/(q[co+numsymptomvariants,x]+q[co+numsymptomvariants,y])
+                })
+            })
+        )))
+    })
+}
 
 results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,savedir,filename,logpriortheta,spread,writeflag,cores)
