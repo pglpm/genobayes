@@ -44,7 +44,7 @@ savedir <- 'allsym_1snp/' # directory for saving results
 filename <- 'freq-' # filename prefix
 writeflag <- TRUE # whether to write the results for each case/snp combination in a file
 
-cores <- 1 # for parallel processing
+cores <- 25 # for parallel processing
 
 symptoms <- list(1:3) # all symptoms at once, they correspond to one index tuple: c(1,2,3)
 namesymptoms <- '' # there's only one case

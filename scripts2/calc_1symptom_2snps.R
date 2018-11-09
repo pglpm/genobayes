@@ -38,7 +38,7 @@ data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 
 savedir <- '1sym_2snp/' # directory for saving results
 filename <- 'freq-' # filename prefix
-writeflag <- TRUE # whether to write the results for each case/snp combination in a file
+writeflag <- FALSE # whether to write the results for each case/snp combination in a file
 
 cores <- 25 # for parallel processing
 
@@ -46,7 +46,7 @@ symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('A','B','C')
 prefixsymptoms <- 'sym_' # for filename
 
-symptomvariants <- 0:1
+symptomvariants <- list(0,1)
 namesymptomvariants <- c('n','y')
 
 ngenes <- 94 # auxiliary quantity
