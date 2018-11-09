@@ -80,7 +80,7 @@ result <- foreach(symptom=1:numsymptoms,
         ## search parameter Theta with max evidence
         maxsearch <- nlm(f=logprob,p=log(apply(f,1,mean)/100),iterlim=1e6 )
         if(maxsearch$code>2){
-            print(paste0('warning maximization code ',maxsearch$code,' symptom=',symptom,' snp=',snp,' trying alterative...'))
+            print(paste0('warning maximization: code=',maxsearch$code,' symptom=',symptom,' snp=',snp,' trying alterative...'))
             maxsearch <- nlm(f=logprob,p=rep(0,numsymptomvariants),iterlim=1e6 )
             }
         ## ## old method with optim() performed poorly
@@ -88,7 +88,7 @@ result <- foreach(symptom=1:numsymptoms,
         ##                 #gr=gradient,method="BFGS"
         ##                 #method='L-BFGS-B',lower=c(1e-10,1e-10)
         ##                 )
-        if(maxsearch$code>2){print(paste0('failure maximization code ',maxsearch$code,' symptom=',symptom,' snp=',snp))}
+        if(maxsearch$code>2){print(paste0('failure maximization: code=',maxsearch$code,' symptom=',symptom,' snp=',snp))}
         
         theta <- exp(maxsearch$estimate)
         fnew <- f+theta
