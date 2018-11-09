@@ -3,12 +3,32 @@
 ## where each symptom can assume values listed in 'symptomvariants'
 ## and each snp can assume values (alleles) listed in 'snpvariants'
 ## such values can be tuples
-condfreqstatistics <- function(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namestatistics,savedir,filename,logpriortheta,spread,writeflag=TRUE,cores=1){
+condfreqstatistics <- function(
+                               data,# matrix of data
+                               symptoms,# list of (groups of) indices in data
+                               symptomvariants,# list of (combinations) of values for each symptom
+                               snps,# list of (groups of) indices in data
+                               snpvariants,# list of (combinations) of values for each symptom
+                               namesymptoms,# names of each group of symptoms
+                               namesymptomvariants,# names of each group of symptom values
+                               namesnps,# names of each group of snps
+                               namesnpvariants,# names of each group of snp values
+                               savedir,# directory to save results
+                               filename,# initial part of file name
+                               logpriortheta,# prior log-probability of log(theta)
+                               spread,# spread measure
+                               writeflag=TRUE,# write results to files?
+                               cores=1# cores for parallel processing, 1=no parallel
+                               ){
 
-numsymptoms <- length(symptoms)
-numsymptomvariants <- length(symptomvariants)
-numsnps <- length(snps)
-numsnpvariants <- length(snpvariants)
+    numsymptoms <- length(symptoms)
+    numsymptomvariants <- length(symptomvariants)
+    numsnps <- length(snps)
+    numsnpvariants <- length(snpvariants)
+    
+    namestatistics <- c(sapply(c('EV_','SD_','post.theta_','opt.theta_','max.spread_'),function(y){
+    sapply(namesymptomvariants,function(x){paste0(y,x)})}))
+
 
 if(writeflag){dir.create(savedir)}
     
@@ -58,15 +78,17 @@ result <- foreach(symptom=1:numsymptoms,
         ##          digamma(t)))
         ## }
         ## search parameter Theta with max evidence
-        maxsearch <- nlm(f=logprob,p=rep(0,numsymptomvariants),iterlim=1e6 )
-##        maxsearch <- nlm(f=logprob,p=log(apply(f,1,mean)/100),iterlim=1e6 )
+        maxsearch <- nlm(f=logprob,p=log(apply(f,1,mean)/100),iterlim=1e6 )
+        if(maxsearch$code>2){
+            print(paste0('warning maximization code ',maxsearch$code,' symptom=',symptom,' snp=',snp,' trying alterative...'))
+            maxsearch <- nlm(f=logprob,p=rep(0,numsymptomvariants),iterlim=1e6 )
+            }
         ## ## old method with optim() performed poorly
-        ## maxsearch <- optim(par=log(apply(f,1,mean)/100),fn=logprob,control=list(maxit=1e6,reltol=1e-12),#,parscale=c(f[,1])),
         ##                 method="Nelder-Mead"
         ##                 #gr=gradient,method="BFGS"
         ##                 #method='L-BFGS-B',lower=c(1e-10,1e-10)
         ##                 )
-        if(maxsearch$code>2){print(paste0('warn: ',maxsearch$code,' symptom=',symptom,' snp=',snp))}
+        if(maxsearch$code>2){print(paste0('failure maximization code ',maxsearch$code,' symptom=',symptom,' snp=',snp))}
         
         theta <- exp(maxsearch$estimate)
         fnew <- f+theta
@@ -87,7 +109,7 @@ result <- foreach(symptom=1:numsymptoms,
     colnames(quantities) <- namesnpvariants
 
         if(writeflag){
-            write.csv(quantities,paste0(savedir,filename,prefixsymptoms,namesymptoms[symptom],prefixsnps,namesnps[snp],'.csv'))
+            write.csv(quantities,paste0(savedir,filename,prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'.csv'))
         }        
     quantities
 }

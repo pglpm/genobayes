@@ -1,8 +1,7 @@
-## Calculation of expected value, std, thetas of conditional frequencies
-## of symptom combos given SNP+allele
-## Based on mackayetal1995. Uses a Dirichlet distribution for the conditional frequencies
-## Calculates parameter Theta from the data, as in mackayetal1995
+## Calculation of expected value, std, thetas, spread of conditional frequencies
+## of each symptom given each SNP
 
+#### PREAMBLE
 ## libraries and colour-blind palette from http://www.sron.nl/~pault/
 ##runfunction <- function(aa=1e3L){
 library('ggplot2')
@@ -27,52 +26,44 @@ barpalette <- colorRampPalette(c(mypurpleblue,'white',myredpurple),space='Lab')
 barpalettepos <- colorRampPalette(c('white','black'),space='Lab')
 dev.off()
 mmtoin <- 0.0393701
+#### END PREAMBLE
 
-source('conditional_freqs_1.R')
-
-## xlogy <- function(x,y){if(x==0){0}else{x*log(y)}}
-## entropyf <- function(x){-sum(sapply(x,function(y){xlogy(y,y)}))}
-tobinary  <- function(number, noBits) {
-    as.numeric(intToBits(number))[1:noBits]
-#    binary_vector[-(1:(length(binary_vector) - noBits))]
-}
-frombinary  <- function(digits) {sum(2^(0:(length(digits)-1))*digits)}
+source('conditional_freqs_1.R') ## calls the function that calculates and writes the statistics
 
 dpath  <-  "./"
 datafile <- 'dataset1_binarized.csv'
 nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
-n <- length(data[,1])
+##n <- length(data[,1])
 
-savedir <- '1sympt_1snp/' # directory for saving results
-filename <- 'freq_'
+savedir <- '1sym_1snp/' # directory for saving results
+filename <- 'freq-' # filename prefix
 writeflag <- TRUE # whether to write the results for each case/snp combination in a file
 
 cores <- 1 # for parallel processing
 
-symptoms <- as.list(1:3)
+symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('A','B','C')
 prefixsymptoms <- 'sym_' # for filename
 
-#binarysymptomvariants <- c(0,1,2,4,3,5,6,7) # auxiliary quantity
 symptomvariants <- 0:1
 namesymptomvariants <- c('n','y')
 
-snps <- as.list(3+(1:94))
-namesnps <- 1:94 # colnames(data)[snps+3]
+snps <- as.list(3+(1:94)) # list of gene indices in data
+namesnps <- colnames(data)[(1:94)+3]
 prefixsnps <- 'snp_' # for filename
 
-snpvariants <- as.list(0:1)
-namesnpvariants <- c('0','1')
-
-namestatistics <- c(sapply(c('EV_','SD_','post.theta_','opt.theta_','max.spread_'),function(y){
-    sapply(namesymptomvariants,function(x){paste0(y,x)})}))
+snpvariants <- list(0, 1) # list of allele values
+namesnpvariants <- c('0','1') # allele names
 
 ## log-prior for thetas: see research notes
+## 'lt' is the log of theta
 logpriortheta <- function(lt){dcauchy(lt,location=log(1000),scale=log(1000),log=TRUE)-lt}
 
 ## measure of spread, applied to the final matrix of quantities
+## it calculates abs((EV_freq1 - EV_freq2)/(SD_freq1 + SD_freq2))
+## for all pairs and takes the maximum
 spread <- function(q,numsymptomvariants,numsnpvariants){sapply(1:numsymptomvariants,function(co){max(abs(sapply(1:(numsnpvariants-1),function(x){sapply((x+1):numsnpvariants,function(y){(q[co,x]-q[co,y])/(q[co+numsymptomvariants,x]+q[co+numsymptomvariants,y])})})))})}
 
 
-results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namestatistics,savedir,filename,logpriortheta,spread,writeflag=TRUE,cores=1)
+results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,savedir,filename,logpriortheta,spread,writeflag,cores)
