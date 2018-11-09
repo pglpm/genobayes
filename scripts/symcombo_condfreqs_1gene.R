@@ -44,112 +44,124 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 n <- length(data[,1])
 
-savedir <- './symcombo_1gene-results/'
-filename <- 'gene' # where to save the results
-allgenes <- 1:94
-ncombinations <- length(allgenes)
-quantiles <- c(0.05,0.95)
-cores <- 1
+savedir <- 'testdirectory/' # directory for saving results
+dir.create(savedir)
+filename <- 'freq_'
+writeflag <- TRUE # whether to write the results for each case/snp combination in a file
 
-## row an column headers for results
-alnames <- c('0','1')
-aloutcomes <- 0:1
-nalleles <- length(aloutcomes)
-gnames <- colnames(data)[allgenes+3]
-##ganames <- c(rbind(paste0(gnames,'-AA'),paste0(gnames,'-Bx')))
-symcombos <- c('0','A','B','C','AB','AC','BC','ABC')
-qnames <-  c(sapply(c('EV','SD','theta','post.theta'),function(y){
-    sapply(symcombos,function(x){paste0(y,x)})}))
+cores <- 1 # for parallel processing
 
-outcomes <- c(0,1,2,4,3,5,6,7)
-binoutcomes <- lapply(outcomes,function(x){tobinary(x,3)})
-noutcomes <- length(outcomes)
+## the script computes the probability for the conditional frequencies
+## frequency(case | snp)
+## where each case can assume values listed in 'combos'
+## and each snp can assume values listed in 'alleles'
+## such values can be tuples
+cases <- list(1:3)
+numcases <- length(cases)
+namecases <- ''
+prefixcases <- '' # for filename
 
+binarycombos <- c(0,1,2,4,3,5,6,7) # auxiliary quantity
+combos <- lapply(binarycombos,function(x){tobinary(x,3)})
+numcombos <- length(combos)
+namecombos <- c('0','A','B','C','AB','AC','BC','ABC')
+
+snps <- as.list(3+(1:94))
+numsnps <- length(snps)
+namesnps <- 1:94 # colnames(data)[snps+3]
+prefixsnps <- 'snp_' # for filename
+
+alleles <- as.list(0:1)
+numalleles <- length(alleles)
+namealleles <- c('0','1')
+
+namestatistics <- c(sapply(c('EV_','SD_','post.theta_','opt.theta_','max.spread_'),function(y){
+    sapply(namecombos,function(x){paste0(y,x)})}))
+
+## log-prior for thetas: see research notes
+logpriortheta <- function(lt){dcauchy(lt,location=log(1000),scale=log(1000),log=TRUE)-lt}
+
+## measure of spread, applied to the final matrix of quantities
+spread <- function(q){sapply(1:numcombos,function(co){max(abs(sapply(1:(numalleles-1),function(x){sapply((x+1):numalleles,function(y){(q[co,x]-q[co,y])/(q[co+numcombos,x]+q[co+numcombos,y])})})))})}
+
+## setup parallel processing
 if(cores>1){
 cl <- makeCluster(cores, outfile="")
 registerDoParallel(cl)
 }
 
-result <- foreach(g1=allgenes, .export=c('sdata','binoutcomes','noutcomes')) %do% {
-    sdata <- data[,c(1:3,3+g1)]
-    
-    ##one column per allele
-    f <- sapply(aloutcomes,function(al){
-        sapply(binoutcomes,function(sym){
-            sum(apply(sdata,1,function(z){all(z==c(sym,al))}))})})
+results <- foreach(case=1:numcases,
+                  .export=c('savedir','filename','writeflag','sdata','cases','prefixcases','namecases','combos','numcombos','namecombos','snps','prefixsnps','namesnps','alleles','numalleles','namealleles','namestatistics','logpriortheta')
+                  ) %:%
+    foreach(snp=1:numsnps,
+                  .export=c('savedir','filename','writeflag','sdata','cases','prefixcases','namecases','combos','numcombos','namecombos','snps','prefixsnps','namesnps','alleles','numalleles','namealleles','namestatistics','logpriortheta')
+            ) %do%
+    {
+        sdata <- data[,c(cases[[case]],snps[[snp]])] # load data for that case and snp
 
-    ## functions for maximization
-    logprob <- function(lt){
-        t <- exp(lt)
-        r2 <- f+t
-        -(sum(lgamma(r2))-
-          sum(lgamma(apply(r2,2,sum))) +
-          nalleles*(lgamma(sum(t)) -
-                     sum(lgamma(t)))-8*log(sum(t)))
-    }
-                    ## gradient <- function(lt){
-                    ##     t <- exp(lt)
-                    ##     r2 <- f+t
-                    ##     -t*(apply(digamma(r2),1,sum)-
-                    ##       sum(digamma(apply(r2,2,sum))) +
-                    ##       noutcomes*(digamma(sum(t)) -
-                    ##          digamma(t)))
-                    ## }
-                       ## search parameter Theta with max evidence
-                       maxsearch <- optim(par=rep(0,noutcomes),fn=logprob,control=list(maxit=1e6,reltol=1e-12),#,parscale=c(f[,1])),
-                                        method="Nelder-Mead"
-                                        #gr=gradient,method="BFGS"
-                                        #method='L-BFGS-B',lower=c(1e-10,1e-10)
-                                        )
-                    if(maxsearch$convergence>0){print(paste0('warn: ',maxsearch$convergence,' s',i,' g',g1))
-					#print(f)
-					#print(maxsearch)
-					}
-                    theta <- exp(maxsearch$par)
-                       fnew <- f+theta
-                       nnew <- apply(fnew,2,sum)
-                       quantities <- rbind(
-                           t(as.matrix(t(fnew)[,-1]/nnew)), # EV
-                           ## STD
-                           sqrt(c(t(t(apply(fnew,2,prod))/((nnew^2)*(1+nnew))))),
-                           ## quantiles
-                           sapply(1:dim(fnew)[2],function(al){qbeta(quantiles,fnew[2,al],fnew[1,al])}),
-                           matrix(rep(theta,noutcomes),nrow=2) # Theta with max evidence
-                       )
-                    rownames(quantities) <- qnames
-                    colnames(quantities) <- alcombnames
+        ## calculate conditional frequencies
+        ## one row per combo
+        ## one column per allele
+        f <- sapply(alleles,function(allele){
+            sapply(combos,function(combo){
+                sum(apply(sdata,1,function(z){all(z==c(combo,allele))}))
+            })
+        })
 
-                    write.csv(quantities,paste0(savedir,filename,g1,'_s',c('A','B','C')[i],'.csv'))
-                    quantities
-                }
+        ## minus log-probability for minimization
+        ## we write thetas as exponentials of real numbers, to be positive
+        ## see research notes
+        logprob <- function(lt){
+            t <- exp(lt)
+            r2 <- f+t
+            -(sum(lgamma(r2))
+                - sum(lgamma(apply(r2,2,sum)))
+                + numalleles * (lgamma(sum(t)) - sum(lgamma(t)))
+                + sum(logpriortheta(lt)) )
+        }
+        ## gradient <- function(lt){
+        ##     t <- exp(lt)
+        ##     r2 <- f+t
+        ##     -t*(apply(digamma(r2),1,sum)-
+        ##       sum(digamma(apply(r2,2,sum))) +
+        ##       noutcomes*(digamma(sum(t)) -
+        ##          digamma(t)))
+        ## }
+        ## search parameter Theta with max evidence
+        maxsearch <- nlm(f=logprob,p=log(apply(f,1,mean)),iterlim=1e6 )
+        ## ## old method with optim() performed poorly
+        ## maxsearch <- optim(par=log(apply(f,1,mean)/100),fn=logprob,control=list(maxit=1e6,reltol=1e-12),#,parscale=c(f[,1])),
+        ##                 method="Nelder-Mead"
+        ##                 #gr=gradient,method="BFGS"
+        ##                 #method='L-BFGS-B',lower=c(1e-10,1e-10)
+        ##                 )
+        if(maxsearch$code>2){print(paste0('warn: ',maxsearch$code,' case=',case,' snp=',snp))}
+        
+        theta <- exp(maxsearch$estimate)
+        fnew <- f+theta
+        nnew <- apply(fnew,2,sum)
+        quantities <- rbind(
+            t(as.matrix(t(fnew)/nnew)), # EV
+            ## STD
+            t(sqrt(apply(fnew,1,function(x){x*(nnew-x)/(nnew^2*(1+nnew))}))),
+            ## ## quantiles
+            ## sapply(1:dim(fnew)[2],function(al){qbeta(quantiles,fnew[2,al],fnew[1,al])}),
+            fnew, # posterior theta
+            matrix(c(theta,rep(NA,numcombos*(numalleles-1))),nrow=numcombos) # theta from optimization, only in first column
+        )
+        quantities <- rbind(quantities,
+                            matrix(c(spread(quantities),rep(NA,numcombos*(numalleles-1))),nrow=numcombos)) # spreads, only in first column
+
+    rownames(quantities) <- namestatistics
+    colnames(quantities) <- namealleles
+
+        if(writeflag){
+            write.csv(quantities,paste0(savedir,filename,prefixcases,namecases[case],prefixsnps,namesnps[snp],'.csv'))
+        }
+        
+    quantities
 }
-    message('saving spread...')
-    ##resultl <- list()
-    spread <- matrix(NA,nrow=ncombinations,ncol=3)
-    colnames(spread) <- c('spread','gene1','gene2')
-    rownames(spread) <- NULL
-    ii <- 0
-    ymin <- +Inf
-    ymax <- -Inf
-    for(g1 in allgenes[-length(allgenes)]) {
-        for(g2 in allgenes[-c(1:g1)]) {
-            ii <- ii+1
-            resu <- as.matrix(read.csv(paste0(savedir,filename,g1,'-',g2,'_s',c('A','B','C')[i],'.csv'))[,-1])
-            ##resultl[[ii]] <- resu
-            spread[ii,] <- c(max(resu[1,])-min(resu[1,]) ,g1,g2)
-            ymin <- min(ymin,c(resu[1,]-resu[2,]))
-            ymax <- max(ymax,c(resu[1,]+resu[2,]))
-        }}
-print(paste('ymin',ymin,'ymax',ymax))
-
-    write.csv(spread,paste0('spread_2genes_s',c('A','B','C')[i],'.csv'))
-
-}
-
 if(cores>1){
 stopCluster(cl)
 }
 
-##A: ymin 0.208033659233357 ymax 0.322833308123198
-##B: ymin 0.335524081808346 ymax 0.495933999204931
-##C: ymin 0.193251762088137 ymax 0.329334600984093
