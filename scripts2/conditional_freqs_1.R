@@ -41,10 +41,10 @@ registerDoParallel(cl)
 }
 
 result <- foreach(symptom=1:numsymptoms,
-                  .export=c('savedir','filename','writeflag','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namestatistics','logpriortheta')
+                  .export=c('savedir','filename','writeflag','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namestatistics','logpriortheta','spread')
                   ) %:%
     foreach(snp=1:numsnps,
-                  .export=c('savedir','filename','writeflag','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namestatistics','logpriortheta')
+                  .export=c('savedir','filename','writeflag','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namestatistics','logpriortheta','spread')
             ) %dox%
     {
         sdata <- data[,c(symptoms[[symptom]],snps[[snp]])] # load data for that symptom and snp
