@@ -116,4 +116,6 @@ result <- foreach(symptom=1:numsymptoms,
 if(cores>1){
 stopCluster(cl)
 }
-result}
+
+    saveRDS(result,paste0(savedir,filename,'all.rds'))
+    result}
