@@ -91,15 +91,15 @@ result <- foreach(symptom=1:numsymptoms,
         if(maxsearch$code>2){print(paste0('failure maximization: code=',maxsearch$code,' symptom=',symptom,' snp=',snp))}
         
         theta <- exp(maxsearch$estimate)
-        fnew <- f+theta
-        nnew <- apply(fnew,2,sum)
+        newtheta <- f+theta
+        newA <- apply(newtheta,2,sum)
         quantities <- rbind(
-            t(as.matrix(t(fnew)/nnew)), # EV
+            t(as.matrix(t(newtheta)/newA)), # EV
             ## STD
-            t(sqrt(apply(fnew,1,function(x){x*(nnew-x)/(nnew^2*(1+nnew))}))),
+            t(sqrt(apply(newtheta,1,function(x){x*(newA-x)/(newA^2*(1+newA))}))),
             ## ## quantiles
-            ## sapply(1:dim(fnew)[2],function(al){qbeta(quantiles,fnew[2,al],fnew[1,al])}),
-            fnew, # posterior theta
+            ## sapply(1:dim(newtheta)[2],function(al){qbeta(quantiles,newtheta[2,al],newtheta[1,al])}),
+            newtheta, # posterior theta
             matrix(c(theta,rep(NA,numsymptomvariants*(numsnpvariants-1))),nrow=numsymptomvariants) # theta from optimization, only in first column
         )
         quantities <- rbind(quantities,

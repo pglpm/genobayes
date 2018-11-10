@@ -51,20 +51,20 @@ condfreqstatistics[data_,
 
 	  theta=FindArgMax[{logprob[thetas], Sequence@@((# > 0)& /@thetas)}, T[{thetas, Mean@T@f}]];
 
-	  fnew=f+theta;
-	  nnew=Total@fnew;
+	  newtheta=f+theta;
+	  newA=Total@newtheta;
 	  quantities = {
 	    (* EV *)
-	    Sequence@@T[T[fnew]/nnew],
+	    Sequence@@T[T[newtheta]/newA],
 	    (* STD *)
-	    Sequence@@Sqrt[T[((nnew - T@fnew)*T@fnew)/(nnew^2*(1 + nnew))]],
+	    Sequence@@Sqrt[T[((newA - T@newtheta)*T@newtheta)/(newA^2*(1 + newA))]],
 	   (* (* Quantiles *)
 	    Sequence @@ (T@
 			  Table[Quantile[
-			    BetaDistribution[Sequence @@ (Reverse[fnew[[;; , al]]])], 
+			    BetaDistribution[Sequence @@ (Reverse[newtheta[[;; , al]]])], 
 			    quantiles], {al, binoutcomes + 1}]), *)
 	    (* f + theta *)
-	    Sequence@@fnew,
+	    Sequence@@newtheta,
 	    (* posterior theta *)
 	    Sequence@@T[Join[{theta}, Table[Null, numsnpvariants - 1, numsymptomvariants]]]
 	  };
