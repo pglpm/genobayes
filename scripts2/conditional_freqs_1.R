@@ -53,8 +53,8 @@ result <- foreach(symptom=1:numsymptoms,
         ## one row per symptomvariants
         ## one column per snpvariant
         f <- sapply(snpvariants,function(snpvariant){
-            sapply(symptomvariants,function(symptomvariants){
-                sum(apply(sdata,1,function(z){all(z==c(symptomvariants,snpvariant))}))
+            sapply(symptomvariants,function(symptomvariant){
+                sum(apply(sdata,1,function(z){all(z==c(symptomvariant,snpvariant))}))
             })
         })
 

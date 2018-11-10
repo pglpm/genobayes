@@ -6,7 +6,7 @@
 %% Home page: http://magnaspesmeretrix.org/
 %% Email (remove ZZ): pglpm0ZZ[at]gmail.com
 %% Created: 2000-08-23T16:53:30+0200
-%% Last-Updated: 2018-11-05T11:57:49+0100
+%% Last-Updated: 2018-11-10T12:59:29+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % NB: This database contains also items whose content's validity I
@@ -501,6 +501,7 @@
 @String{jbp = {J. Biol.\ Phys.}}
 @String{jc = {J. Complex.}}
 @String{jcam = {J. Comput.\ Appl.\ Math.}}
+@String{jcb = {J. Comput.\ Biol.}}
 @String{jce = {J. Chem.\ Educ.}}
 @String{jcgs = {J. Comput.\ Graph.\ Stat.}}
 @String{jcl = {J. Climate}}
@@ -5452,6 +5453,18 @@ title =        {Laplace's Method Approximations for Probabilistic Inference in B
 booktitle =    {\citein{lopezdemantarasetal1994}},
 year =         {1994},
 pages =        {28--36}
+}
+
+@InCollection{azzimontietal2017,
+author =       {Laura Azzimonti and Giorgio Corani and Marco Zaffalon},
+title =	       {Hierarchical Multinomial-{Dirichlet} model for the estimation of conditional probability tables},
+booktitle =    {17th IEEE International Conference on Data Mining\subtitleproc{: 18--21 November 2017 New Orleans, Louisiana}},
+publisher =    {IEEE},
+year =	       {2017},
+editor =       {Vijay Raghavan and Srinivas Aluru and George Karypis and Lucio Miele and Xindong Wu},
+pages =	       {739--744},
+address =      {New York},
+note =	       {\url{http://people.idsia.ch/~marco/papers/2017icdm-hierarchical.pdf}}
 }
 
 @InCollection{baazetal1993,
@@ -52484,6 +52497,17 @@ pages =	       {064028},
 keywords =     {differential geometry, relativity theory}
 }
 
+@Book{heidbreder1996,
+editor =       {Glenn R. Heidbreder},
+title =	       {Maximum Entropy and Bayesian Methods. Santa Barbara, California, U.S.A., 1993\subtitleproc{: Proceedings of the Thirteenth International Workshop on Maximum Entropy and Bayesian Methods}},
+publisher =    {Springer},
+year =	       {1996},
+volume =       {62},
+series =       {Fundamental theories of physics},
+address =      {Dordrecht},
+keywords =     {hyperparameters}
+}
+
 @Article{heidelberger2006,
 author =       {Heidelberger, Michael},
 title =	       {Applying Models in Fluid Dynamics},
@@ -59623,7 +59647,8 @@ year =	       {1973},
 address =      {Cambridge},
 edition =      {3},
 note =	       {First publ.\ 1931},
-keywords =     {Bayesian probability theory}
+keywords =     {Bayesian probability theory},
+mynote =       {\enquote{At present a person may have quite different standards for his own hypotheses and other people's, without ever feeling the need to mention the difference. There are people who appear to attach probability $1$ to their own views and others who attach probability $\tfrac{1}{2}$ to any hypothesis, however often it has been verified; and both types would maintain that they are scientific. The reason why they continue to exist is the lack of attention to the analysis of scientific method.} \sect~2.6, p.~41}
 }
 
 @Book{jeffreys1931b,
@@ -74253,6 +74278,15 @@ note =	       {\url{http://www.inference.phy.cam.ac.uk/mackay/itila/}. First pub
 keywords =     {probability theory, communication theory, maximum entropy}
 }
 
+@InCollection{mackay1996,
+author =       {David J. C. MacKay},
+title =	       {Hyperparameters: optimize, or integrate out?},
+booktitle =    {\citein{heidbreder1996}},
+year =	       {1996},
+pages =	       {43--59},
+note =	       {\url{https://bayes.wustl.edu/MacKay/alpha.pdf}}
+}
+
 @Book{mackayetal1987,
 editor =       {R. S. MacKay and J. D. Meiss},
 title =	       {Hamiltonian Dynamical Systems: a reprint selection},
@@ -80169,7 +80203,7 @@ pages =	       {4247},
 note =	       {See \citebi{moelmer1997} and \citebi{geabanacloche1998}}
 }
 
-@Proceedings{mohammaddjafarietal1993,
+@Book{mohammaddjafarietal1993,
 title =	       {Maximum Entropy and Bayesian Methods. Paris, France, 1992\subtitleproc{: Proceedings of the Twelfth International Workshop on Maximum Entropy and Bayesian Methods}},
 year =	       {1993},
 editor =       {Mohammad-Djafari, Ali and G. Demoment},
@@ -83900,6 +83934,29 @@ year =	       {1995},
 key =	       {NIST},
 note = {\url{http://physics.nist.gov/cuu/Uncertainty/bibliography.html}},
 keywords =     {standard}
+}
+
+@Article{niuetal2002,
+author =       {Tianhua Niu and Zhaohui S. Qin and Xiping Xu and Jun S. Liu},
+title =	       {Bayesian Haplotype Inference for Multiple Linked Single-Nucleotide Polymorphisms},
+journal =      ajhg,
+year =	       {2002},
+volume =       {70},
+number =       {1},
+pages =	       {157--169},
+note =	       {See also erratum \citebi{niuetal2002_e2006}},
+keywords =     {Dirichlet process}
+}
+
+@Article{niuetal2002_e2006,
+author =       {Tianhua Niu and Zhaohui S. Qin and Xiping Xu and Jun S. Liu},
+title =	       {Erratum {[Bayesian} Haplotype Inference for Multiple Linked Single-Nucleotide Polymorphisms{]}},
+journal =      ajhg,
+year =	       {2006},
+volume =       {78},
+number =       {1},
+pages =	       {174},
+note =	       {See \citebi{niuetal2002}}
 }
 
 @Article{niven2005,
@@ -119480,6 +119537,16 @@ volume =       {176},
 number =       {3--4},
 pages =	       {135--151},
 keywords =     {continuum mechanics, state}
+}
+
+@Article{xingetal2007,
+author =       {Eric P. Xing and Michael I. Jordan and Roded Sharan},
+title =	       {Bayesian Haplotype Inference via the {Dirichlet} Process},
+journal =      jcb,
+year =	       {2007},
+volume =       {14},
+number =       {3},
+pages =	       {267--284}
 }
 
 @Article{xueetal2008,
