@@ -1,3 +1,12 @@
+defaultspread[q_] :=  Max /@(Abs@ArrayReshape[
+  Table[(q[[co, x]] - q[[co, y]])/
+	(q[[co + numsymptomvariants, x]] + q[[co + numsymptomvariants, y]])
+      , {co, numsymptomvariants}
+      , {x, numsnpvariants - 1}
+      , {y, x + 1, numsnpvariants}]
+				 , {numsymptomvariants, Binomial[numsnpvariants, 2]}
+				 ]);
+
 condfreqstatistics[data_,
 		       symptoms_,
 		       symptomvariants_,
@@ -18,28 +27,53 @@ condfreqstatistics[data_,
     numsnps = Length[snps],
     numsnpvariants = Length[snpvariants],
     namestatistics = Flatten@Table[ii<>jj,{ii,{"EV_", "SD_", "post.theta_", "opt.theta_","max.spread_"}},{jj,namesymptomvariants}],
-    thetas
+    thetas,t,theta
     },
 
-	thetas=Unique["t",numsymptomvariants];
+	thetas=Array[t, numsymptomvariants];
 
 	Table[
-	  sdata=data[[;;,{symptoms[[symptom]],snps[[snp]]}]];
+	  sdata=data[[;;,Join[symptoms[[symptom]],snps[[snp]]]]];
 
+	  (* one column per snpv., one row per symptomv. *)
 	  f=Table[
 	    Total[Boole/@Table[z==Join[symptomvariant,snpvariant],{z,sdata}]]
-	    ,{snpvariant,snpvariants},{symptomvariant,symptomvariants}];
+	    ,{symptomvariant,symptomvariants},{snpvariant,snpvariants}];
+	  
 
 	  logprob[t_] := Block[{r2 = f + t},
 			       Total@Flatten@LogGamma[r2] -
 			       Total@LogGamma[Total@r2] +
-			       noutcomes*(LogGamma[Total@t] - Total@LogGamma[t]) +
-			       Total[logpriortheta[Log@t]]
+			       numsnpvariants*(LogGamma[Total@t] -
+					       Total@LogGamma[t]) +
+			       Total[logpriortheta[t]]
 			 ];
 
-	  theta=thetas/.FindMaximum[{logprob[thetas], Sequence@@((# > 0)& /@thetas)}, T[{thetas, Mean[f]}]][[2]];
+	  theta=FindArgMax[{logprob[thetas], Sequence@@((# > 0)& /@thetas)}, T[{thetas, Mean@T@f}]];
 
+	  fnew=f+theta;
+	  nnew=Total@fnew;
+	  quantities = {
+	    (* EV *)
+	    Sequence@@T[T[fnew]/nnew],
+	    (* STD *)
+	    Sequence@@Sqrt[T[((nnew - T@fnew)*T@fnew)/(nnew^2*(1 + nnew))]],
+	   (* (* Quantiles *)
+	    Sequence @@ (T@
+			  Table[Quantile[
+			    BetaDistribution[Sequence @@ (Reverse[fnew[[;; , al]]])], 
+			    quantiles], {al, binoutcomes + 1}]), *)
+	    (* f + theta *)
+	    Sequence@@fnew,
+	    (* posterior theta *)
+	    Sequence@@T[Join[{theta}, Table[Null, numsnpvariants - 1, numsymptomvariants]]]
+	  };
 
+	  Join[
+	    quantities,
+	    T[Join[{spread[quantities]}, 
+		   Table[Null, numsnpvariants - 1, numsymptomvariants]]]
+		     ]
 
 	,{symptom,numsymptoms},{snp,numsnps}]
-  ]
+  ];
