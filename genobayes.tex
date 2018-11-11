@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-11T17:31:43+0100
+%% Last-Updated: 2018-11-11T18:21:43+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -880,16 +880,20 @@ conditional frequencies.
 Once we have a quantified distribution of belief about the conditional
 frequencies in an infinite population, it is easy to see if we expect the
 latter are significantly different for different alleles. See for example
-\fig~\ref{fig:example_distributions}: we clearly expect the frequencies of
-the symptom conditional on the two alleles to be different. In fact, from
-the two belief distributions we can even calculate our belief that they are
-equal to within some range. For the situation of the figure, our belief
-that the two frequencies are the same within $0.01$ is $3.2\%$.
+\fig~\ref{fig:example_distributions}: from the sample data we expect
+conditional frequencies $0.259$ and $0.284$ for the symptom conditional on
+the two alleles, with standard deviations $0.008$ and $0.006$. From the two
+belief distributions we can even calculate our belief that the two
+conditional frequencies are equal to within some range: for example, our
+belief that the two frequencies are the same within $0.01$ is $3.2\%$.
 \begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
- \centering\includegraphics[width=0.75\linewidth]{example_distr_g6_sA.pdf}\\
+ \centering\includegraphics[width=0.75\linewidth]{example_distr_condfreqs.pdf}\\
 \caption{Example of distributions of belief}\label{fig:example_distributions}
 \end{figure}% scripts/single_gene_condfreqs_thetamax.nb
+%% EVs: 0.25917, 0.283506; SDs: 0.00804727, 0.00635616
+%% overlap at 0.01 = 0.0321908
 
+**assessment is continuous, not hypothesis.
 
 
 
