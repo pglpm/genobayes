@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-11T21:08:28+0100
+%% Last-Updated: 2018-11-11T22:47:06+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -832,133 +832,6 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
   peer-reviewed by \emph{you}. I'm grateful if you let me know of any
   faults in its premisses, logic, evidence, and of any other criticisms you
   may have.}\fi
-
-
-\section{Problem setup}
-\label{sec:intro}
-
-Every single-nucleotide polymorphism (\snp), together with the huge variety
-of external factors, can in principle affect the appearance of a disease's
-symptoms. It is extremely complicated to identify and untangle these causal
-mechanisms and interactions and to ascertain their degrees, although their
-causal graph \citep{pearl2000_r2009} is easy to draw (\fig**). The
-interacting mechanisms represented by the arrows are difficult to study,
-and the external factors $X$ are innumerable and largely unknown.
-
-A qualitative indication of the causal strength of groups of \snp s on some
-symptoms can be obtained by replacing the causal graph with a corresponding
-simplified Bayesian network \citep{pearl2000_r2009} of \emph{conditional
-  probabilities} (\fig**). The external factors $X$ disappear from the
-graph but their presence is implicit in the probabilistic relation between
-the nodes, which also accounts for the unknown causal mechanisms. Consider
-a particular \snp\ and a symptom $S$. In an arbitrarily large population, if
-the individuals having one allele and those having the other allele show
-markedly different \emph{conditional frequencies} of incidence of the
-symptom, then we can conclude that the \snp\ must have some causal relevance,
-however indirect, for the symptom.
-
-These conditional frequencies are far easier to estimate than causes, given
-the conditional frequencies in a population sample.
-
-
-In this study we show how to quantify our degrees of belief about such
-conditional frequencies in an arbitrarily large population, given the
-conditional frequencies in a population sample and a representation of our
-initial information about such frequencies. The calculation is intuitively
-simple: using Bayes's theorem we have
-\begin{multline}
-  \label{eq:intuitive_Bayes}
-  \pf(\ptext{frequencies} \| \ptext{sample data}, \ptext{initial info})
-  \propto{}\\
-  \pf(\ptext{data} \| \ptext{frequencies}, \ptext{initial info})
-  \times
-  \pf(\ptext{frequencies} \| \ptext{initial info}).
-\end{multline}
-The first \dob\ in the product above is given by a simple sampling formula;
-the second can be modelled in several ways, but if the sample data are
-enough it will lead to basically the same final \dobs\ about the
-conditional frequencies.
-
-Once we have a quantified distribution of belief about the conditional
-frequencies in a arbitrarily large population, it is easy to see whether we
-expect the latter to be significantly different for different alleles. See
-for example the distributions in \fig~\ref{fig:example_distributions}: from
-the sample data we expect conditional frequencies $0.259$ and $0.284$ for
-the symptom conditional on the two alleles, with standard deviations
-$0.008$ and $0.006$. From the two belief distributions we can even
-calculate our belief that the two conditional frequencies are equal to
-within some range; in the case of the figure our belief that the two
-frequencies are the same within $0.01$ is $3.2\%$. Many other
-quantifications are possible; for example our belief that a conditional
-frequency lies between two particular values, and so on.
-\begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
- \centering\includegraphics[width=0.75\linewidth]{example_distr_condfreqs.pdf}\\
-\caption{Example of distributions of belief}\label{fig:example_distributions}
-\end{figure}% scripts/single_gene_condfreqs_thetamax.nb
-%% EVs: 0.25917, 0.283506; SDs: 0.00804727, 0.00635616
-%% overlap at 0.01 = 0.0321908
-
-\mynote{add something about dependence of broadness on sample size, and
-  \enquote{smoothing} as discussed by MacKay \amp\ Bauman Peto
-  \citey[\sect~2.6]{mackayetal1995}.}
-
-This approach is not dichotomous, like a \enquote{significance} test.
-Rather, we will find a graduation of cases: from frequencies predicted to
-be clearly distinct, to frequencies predicted to be very similar, or with
-uncertainties too large for drawing definite conclusions. These cases can
-be sorted, obtaining a sequence of \snp s with a decreasing belief of causal
-association with the symptom. How many of these \snp s are to be selected for
-further study depends on one's experimental and computational resources.
-
-
-
-
-
-\subsection{Summary of the main formulae}
-
-We have a sample of size $n$. We check the subsample of individuals that
-have a particular allele, say Bx, for a particular gene, say rs697680\_A.
-Suppose that in this subsample $n_0$ individuals \emph{don't} show symptom
-A and $n_1$ \emph{do} show symptom A. This also means that the size of our
-subsample (individuals with allele Bx) is $n \defd n_0+n_1$.
-
-Our \dob\ about the frequency $f_1$ of symptom A among the individuals with
-allele Bx in an \emph{infinite} population is a Beta distribution with
-parameters $n_0+\theta_0$, $n_1+\theta_1$, with
-$\theta \defd \theta_0+\theta_1$:
-\begin{multline}
-  \label{eq:beta_fr}
-  \pf(f_1 \| n_0,n_1,\theta_0,\theta_1)\;\di f_1 ={}\\
-  \frac{\Gamma(n+\theta)}{\Gamma(n_0+\theta_0)\;\Gamma(n_1+\theta_1)}
-  \; (1-f_1)^{n_0+\theta_0-1}\;{f_1}^{n_1+\theta_1-1} \;\di f_1
-\end{multline}
-This distribution has expected value and variance
-\begin{equation}
-  \label{eq:exp_value}
-  \begin{split}
-  \expe{f_1 \| n_0, n_1, \theta_0,\theta_1} &= \frac{n_1+\theta_1}{n+\theta},
-  \\
-  \var(f_1 \|  n_0, n_1, \theta_0,\theta_1) &=
-  \frac{(n_0+\theta_0)\;(n_1+\theta_1)}{(n+\theta)^2\;(n+\theta+1)}.
-\end{split}
-\end{equation}
-
-
-
-
-
-
-
-\mynote{Possible further developments: use of hyper-Dirichlet priors, use
-  of graphical models to infer causal relationships
-  \citep{pearl2000_r2009}}
-
-\newpage
-\renewcommand*{\appendixpagename}{Appendix}
-\renewcommand*{\appendixname}{Appendix}
-%\appendixpage
-\appendix
-
 
 \mynote{2018--10--21: This is the old version, before the approach via conditional \dobs}
 
@@ -2032,7 +1905,7 @@ population, the second weight is zero and we're left with $x_{\yso,\ygo}$,
 which is also equal to $X_{\yso,\ygo}$, consistent with
 \eqn~\eqref{eq:pre_joint_prob_new_ind_F_known}.
 
-\iffalse For large $C$ this is approximately
+For large $C$ this is approximately
 \begin{equation}
     \label{eq:pre_joint_prob_new_ind_full_const_prior_final_approx_C}
     \pf\bigl(\yso, \ygo \| \yf, n,\yIc\bigr)  \approx
@@ -2045,7 +1918,7 @@ and for large $N$
     \pf\bigl(\yso, \ygo \| \yf, n,\yIc\bigr)  \approx
     \frac{n x_{\yso, \ygo} +1}{n + C}.
 \end{equation}
-\fi
+
 
 For the marginal distributions we obtain, by summation,
 \begin{gather}
@@ -2100,7 +1973,6 @@ over the $\yCgn$ remaining $\ygo$ values,  for which $g_{\ygo}=x_{\yso,\ygo}=0$:
   \end{aligned}
 \end{multline}
 
-\iffalse
 Our initial information is that each individual is characterized by an
 insomnia parameter in $\set{1,\dotsc,8}$ and $94$ gene allele pairs, for a
 total of $8 \times 2^{94} \approx 1.6 \times 10^{29}$ possible combined
@@ -2113,7 +1985,6 @@ $10^{29}$-dimensional simplex of frequency distributions. From this point
 of view the limit $N\to \infty$ does not make much sense. Unless we choose
 a prior  distribution of \dob\ for the frequency distributions that is
 concentrated on the edges of the simplex.
-\fi
 
 \bigskip
 \hrule
@@ -2129,7 +2000,6 @@ concentrated on the edges of the simplex.
   overtranining.
 \end{itemize}
 
-\textcolor{white}{If you find this you can claim a postcard from us.}
 %
 
 %\setlength{\intextsep}{0.5ex}% with wrapfigure
