@@ -42,14 +42,14 @@ writeflag <- TRUE # whether to write the results for each case/snp combination i
 
 cores <- 30 # for parallel processing
 
-symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
+symptoms <- list(1) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('A','B','C')
 prefixsymptoms <- 'sym_' # for filename
 
 symptomvariants <- list(0,1)
 namesymptomvariants <- c('n','y')
 
-snps <- as.list(3+(1:94)) # list of gene indices in data
+snps <- as.list(3+(1:30)) # list of gene indices in data
 namesnps <- colnames(data)[(1:94)+3]
 prefixsnps <- 'snp_' # for filename
 
