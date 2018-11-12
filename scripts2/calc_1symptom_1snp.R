@@ -36,11 +36,11 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- '1sym_1snp/' # directory for saving results
-filename <- 'freq-' # filename prefix
+savedir <- '1sym_1snp_gamma/' # directory for saving results
+filename <- 'freq-1_1_gamma-' # filename prefix
 writeflag <- TRUE # whether to write the results for each case/snp combination in a file
 
-cores <- 25 # for parallel processing
+cores <- 30 # for parallel processing
 
 symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('A','B','C')
@@ -58,7 +58,8 @@ namesnpvariants <- c('0','1') # allele names
 
 ## log-prior for thetas: see research notes
 ## 'lt' is the log of theta
-logpriortheta <- function(lt){dcauchy(lt,location=log(1000),scale=log(1000),log=TRUE)-lt}
+#logpriortheta <- function(lt){dcauchy(lt,location=log(1000),scale=log(1000),log=TRUE)-lt}
+logpriortheta <- function(t){dgamma(exp(t),shape=1,scale=1000,log=TRUE)}
 
 ## measure of spread, applied to the final matrix of quantities
 ## it calculates abs((EV_freq1 - EV_freq2)/(SD_freq1 + SD_freq2))
