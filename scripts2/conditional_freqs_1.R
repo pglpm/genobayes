@@ -67,7 +67,7 @@ result <- foreach(symptom=1:numsymptoms,
             -(sum(lgamma(r2))
                 - sum(lgamma(apply(r2,2,sum)))
                 + numsnpvariants * (lgamma(sum(t)) - sum(lgamma(t)))
-                + sum(logpriortheta(lt)) )
+                + logpriortheta(lt) )
         }
         ## gradient <- function(lt){
         ##     t <- exp(lt)
