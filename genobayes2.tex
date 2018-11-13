@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-12T23:53:52+0100
+%% Last-Updated: 2018-11-13T13:54:02+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -657,7 +657,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %\newcommand*{\with}{\colon}%with (list of indices)
 %\newcommand*{\mul}{\times}%multiplication
 %\newcommand*{\inn}{\cdot}%inner product
-%\newcommand*{\dotv}{\mathord{\,\cdot\,}}%variable place
+\newcommand*{\dotv}{\mathord{\,\cdot\,}}%variable place
 %\newcommand*{\comp}{\circ}%composition of functions
 %\newcommand*{\con}{\mathbin{:}}%scal prod of tensors
 %\newcommand*{\equi}{\sim}%equivalent to 
@@ -717,7 +717,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %\newcommand*{\zerob}[1]{\makebox[0pt][l]{#1}}
 \newcommand*{\tprod}{\mathop{\textstyle\prod}\nolimits}
 \newcommand*{\tsum}{\mathop{\textstyle\sum}\nolimits}
-%\newcommand*{\tint}{\begingroup\textstyle\int\endgroup\nolimits}
+\newcommand*{\tint}{\begingroup\textstyle\int\endgroup\nolimits}
 %\newcommand*{\tland}{\mathop{\textstyle\bigwedge}\nolimits}
 %\newcommand*{\tlor}{\mathop{\textstyle\bigvee}\nolimits}
 %\newcommand*{\sprod}{\mathop{\textstyle\prod}}
@@ -961,28 +961,78 @@ assumptions:
 \item besides the point above, we don't want to make any special
   assumptions about the values of the two conditional frequencies.
 \end{enumerate}
-The first assumption is conservative; if our updated belief conditional on
-the data will show clearly distinct conditional frequencies, it will be
-because the data have given enough evidence to overwhelm our initial
-conservative belief. The density representing this initial belief is
-qualitatively shown in \fig~\ref{fig:initial_belief}.
+The first assumption is conservative; therefore, if our updated belief
+conditional on the data will show clearly distinct conditional frequencies,
+it will be because the data have given enough evidence to overwhelm our
+initial conservative belief.
+
+The kind of density representing this initial belief
+is qualitatively shown in \fig~\ref{fig:initial_belief}.
 \begin{figure}[t!]%{r}{0.4\linewidth} % with wrapfigure
  \centering\includegraphics[width=0.75\linewidth]{prior3d.png}
 \caption{Initial belief}\label{fig:initial_belief}
 \end{figure}% scripts2/plots_distributions.nb
-
-
-Its density is given by
+Mathematically we write it as an integral:
 \begin{equation}
   \label{eq:beta_gamma_prior}
   \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)
   =
-  \int \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\,
+  \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yA
+  \int_{\mathrlap{0}}^{\mathrlap{1}}\di\yq\;
+  \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\,
   \dbeta(f_{\ysA\|\yb} \| \yA,\yq)\,
-  \dA(\yA)\,\di\yq\,\di\yA
+  \dA(\yA,\yq),
 \end{equation}
+where $\dbeta(\dotv \| \yA,\yq)$ is a beta density with shape
+parameters $\yA\yq$ and $\yA\,(1-\yq)$:
+\begin{equation}
+  \label{eq:def_beta}
+  \dbeta(f \| \yA,\yq) \defd
+  \frac{\Gamma(\yA)}{\Gamma(\yA\yq)\,\Gamma[\yA\,(1-\yq)]}\;
+  f^{\yA\yq}\;(1-f)^{\yA\,(1-\yq)},
+\end{equation}
+and $\dA$ is a density that we leave unspecified for the moment: several
+different expressions for $\dA$ will be used, to test how much our
+inferences depend on our initial belief.
 
+We write $\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)$ in the above fashion,
+with integrals, only to emphasize that our beliefs about $f_{\ysA\|\ya}$ and
+$f_{\ysA\|\yb}$ are not disjoint, and to show how their mutual dependence
+comes about: by first considering two independent densities having the same
+parameters, and then mixing over these parameters.
 
+This construction has the interesting consequence that the our updated
+belief $\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI)$ can be formally
+written in the following way:
+\begin{equation}
+  \label{eq:formal_hierarchic}
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI) =
+  \tint\di\yA\tint\di\yq\;
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yA,\yq,\yD, \yI)\;
+  \pf(\yA,\yq \|\yD, \yI),
+\end{equation}
+with
+\begin{equation}
+  \label{eq:update_hyperparameter}
+  \pf(\yA,\yq \|\yD, \yI) \propto
+  \tint\di f_{\ysA\|\ya}\tint\di f_{\ysA\|\yb}\;
+  \pf(\yD \|f_{\ysA\|\ya}, f_{\ysA\|\yb}, \yI)\;
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \|\yA,\yq, \yI).
+\end{equation}
+This representation is discussed in appendix***. It is as if $\yA$, $\yq$
+were unknown parameters, and our update for the frequencies proceeded by
+first updating our belief about the parameters and then marginalizing them
+out. This is a so-called \emph{hierarchic} model \citep{good1980}. A point
+rarely emphasized in the literature is that there is no mathematical
+difference between a hierarchic and a non-hierarchic model: we could forget
+about the integrals in formula~\eqref{eq:beta_gamma_prior} and about the
+update formula~\eqref{eq:formal_hierarchic}, and simply treat
+$\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)$ as the density depicted in
+\fig~\ref{fig:initial_belief}, with update~\eqref{eq:intuitive_Bayes}. The
+results would be the same. The hierarchic way of thinking, though, often
+helps in constructing densities that better represent our initial beliefs,
+and also leads to formulae that can be better approximated when exact
+computation is unfeasible.
 
 
 
