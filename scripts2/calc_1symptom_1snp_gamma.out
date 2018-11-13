@@ -19,37 +19,131 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-starting worker pid=7293 on localhost:11058 at 15:47:30.343
-starting worker pid=7304 on localhost:11058 at 15:47:30.577
-starting worker pid=7315 on localhost:11058 at 15:47:30.810
-starting worker pid=7326 on localhost:11058 at 15:47:31.045
-starting worker pid=7337 on localhost:11058 at 15:47:31.280
-starting worker pid=7348 on localhost:11058 at 15:47:31.515
-starting worker pid=7359 on localhost:11058 at 15:47:31.750
-starting worker pid=7370 on localhost:11058 at 15:47:31.986
-starting worker pid=7381 on localhost:11058 at 15:47:32.222
-starting worker pid=7392 on localhost:11058 at 15:47:32.454
-starting worker pid=7403 on localhost:11058 at 15:47:32.688
-starting worker pid=7414 on localhost:11058 at 15:47:32.924
-starting worker pid=7425 on localhost:11058 at 15:47:33.158
-starting worker pid=7436 on localhost:11058 at 15:47:33.392
-starting worker pid=7447 on localhost:11058 at 15:47:33.626
-starting worker pid=7458 on localhost:11058 at 15:47:33.862
-starting worker pid=7469 on localhost:11058 at 15:47:34.098
-starting worker pid=7480 on localhost:11058 at 15:47:34.332
-starting worker pid=7491 on localhost:11058 at 15:47:34.566
-starting worker pid=7502 on localhost:11058 at 15:47:34.802
-starting worker pid=7513 on localhost:11058 at 15:47:35.042
-starting worker pid=7524 on localhost:11058 at 15:47:35.285
-starting worker pid=7535 on localhost:11058 at 15:47:35.522
-starting worker pid=7546 on localhost:11058 at 15:47:35.756
-starting worker pid=7557 on localhost:11058 at 15:47:35.997
-starting worker pid=7568 on localhost:11058 at 15:47:36.236
-starting worker pid=7579 on localhost:11058 at 15:47:36.476
-starting worker pid=7590 on localhost:11058 at 15:47:36.713
-starting worker pid=7601 on localhost:11058 at 15:47:36.952
-starting worker pid=7612 on localhost:11058 at 15:47:37.191
-Warning messages:
+starting worker pid=16523 on localhost:11514 at 00:53:29.616
+starting worker pid=16534 on localhost:11514 at 00:53:29.857
+starting worker pid=16545 on localhost:11514 at 00:53:30.102
+starting worker pid=16556 on localhost:11514 at 00:53:30.344
+starting worker pid=16567 on localhost:11514 at 00:53:30.589
+starting worker pid=16578 on localhost:11514 at 00:53:30.831
+starting worker pid=16589 on localhost:11514 at 00:53:31.079
+starting worker pid=16600 on localhost:11514 at 00:53:31.320
+starting worker pid=16611 on localhost:11514 at 00:53:31.565
+starting worker pid=16622 on localhost:11514 at 00:53:31.809
+starting worker pid=16633 on localhost:11514 at 00:53:32.055
+starting worker pid=16644 on localhost:11514 at 00:53:32.295
+starting worker pid=16655 on localhost:11514 at 00:53:32.541
+starting worker pid=16666 on localhost:11514 at 00:53:32.784
+starting worker pid=16678 on localhost:11514 at 00:53:33.030
+starting worker pid=16689 on localhost:11514 at 00:53:33.271
+starting worker pid=16700 on localhost:11514 at 00:53:33.516
+starting worker pid=16711 on localhost:11514 at 00:53:33.757
+starting worker pid=16722 on localhost:11514 at 00:53:34.012
+starting worker pid=16733 on localhost:11514 at 00:53:34.257
+starting worker pid=16744 on localhost:11514 at 00:53:34.503
+starting worker pid=16755 on localhost:11514 at 00:53:34.744
+starting worker pid=16766 on localhost:11514 at 00:53:34.991
+starting worker pid=16777 on localhost:11514 at 00:53:35.230
+starting worker pid=16788 on localhost:11514 at 00:53:35.469
+starting worker pid=16799 on localhost:11514 at 00:53:35.709
+starting worker pid=16810 on localhost:11514 at 00:53:35.949
+starting worker pid=16821 on localhost:11514 at 00:53:36.188
+starting worker pid=16832 on localhost:11514 at 00:53:36.427
+starting worker pid=16843 on localhost:11514 at 00:53:36.666
+Error in { : task 1 failed - "argument "t" is missing, with no default"
+Calls: source ... eval -> eval -> condfreqstatistics -> %dox% -> <Anonymous>
+In addition: Warning messages:
 1: In dir.create(savedir) : '1sym_1snp_gamma' already exists
 2: In e$fun(obj, substitute(ex), parent.frame(), e$data) :
   already exporting variable(s): savedir, filename, writeflag, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, namesnpvariants, namestatistics, logpriortheta, spread
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+srun: error: compute-0-0: task 0: Exited with exit code 1
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
