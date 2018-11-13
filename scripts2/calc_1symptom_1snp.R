@@ -69,7 +69,7 @@ spread <- function(q,numsymptomvariants,numsnpvariants){
         max(abs(unlist(
             sapply(1:(numsnpvariants-1),function(x){
                 sapply((x+1):numsnpvariants,function(y){
-                    (q[co,x]-q[co,y])/(q[co+numsymptomvariants,x]+q[co+numsymptomvariants,y])
+                    (q[co,x]-q[co,y])/sqrt(q[co+numsymptomvariants,x]^2+q[co+numsymptomvariants,y]^2)
                 })
             })
         )))
