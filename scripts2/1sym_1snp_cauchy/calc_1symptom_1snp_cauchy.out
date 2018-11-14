@@ -19,124 +19,106 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-starting worker pid=22170 on localhost:11098 at 01:41:57.164
-starting worker pid=22181 on localhost:11098 at 01:41:57.402
-starting worker pid=22192 on localhost:11098 at 01:41:57.646
-starting worker pid=22203 on localhost:11098 at 01:41:57.892
-starting worker pid=22215 on localhost:11098 at 01:41:58.139
-starting worker pid=22230 on localhost:11098 at 01:41:58.391
-starting worker pid=22269 on localhost:11098 at 01:41:58.636
-starting worker pid=22280 on localhost:11098 at 01:41:58.880
-starting worker pid=22291 on localhost:11098 at 01:41:59.123
-starting worker pid=22302 on localhost:11098 at 01:41:59.364
-starting worker pid=22313 on localhost:11098 at 01:41:59.605
-starting worker pid=22324 on localhost:11098 at 01:41:59.843
-starting worker pid=22335 on localhost:11098 at 01:42:00.082
-starting worker pid=22346 on localhost:11098 at 01:42:00.324
-starting worker pid=22357 on localhost:11098 at 01:42:00.566
-starting worker pid=22368 on localhost:11098 at 01:42:00.807
-starting worker pid=22379 on localhost:11098 at 01:42:01.047
-starting worker pid=22390 on localhost:11098 at 01:42:01.286
-starting worker pid=22401 on localhost:11098 at 01:42:01.528
-starting worker pid=22412 on localhost:11098 at 01:42:01.767
-starting worker pid=22423 on localhost:11098 at 01:42:02.012
-starting worker pid=22434 on localhost:11098 at 01:42:02.252
-starting worker pid=22445 on localhost:11098 at 01:42:02.495
-starting worker pid=22456 on localhost:11098 at 01:42:02.734
-starting worker pid=22467 on localhost:11098 at 01:42:02.973
-starting worker pid=22478 on localhost:11098 at 01:42:03.210
-starting worker pid=22489 on localhost:11098 at 01:42:03.449
-starting worker pid=22500 on localhost:11098 at 01:42:03.689
-starting worker pid=22511 on localhost:11098 at 01:42:03.934
-starting worker pid=22522 on localhost:11098 at 01:42:04.176
-[1] "warning maximization: code=3 symptom=1 snp=10 trying alterative..."
-[1] "warning maximization: code=3 symptom=1 snp=29 trying alterative..."
-[1] "warning maximization: code=3 symptom=1 snp=34 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=4 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=46 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=59 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=76 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=65 trying alterative..."
-[1] "warning maximization: code=3 symptom=3 snp=15 trying alterative..."
-[1] "warning maximization: code=3 symptom=3 snp=14 trying alterative..."
+starting worker pid=23880 on localhost:11654 at 02:01:08.739
+starting worker pid=23891 on localhost:11654 at 02:01:08.976
+starting worker pid=23902 on localhost:11654 at 02:01:09.211
+starting worker pid=23913 on localhost:11654 at 02:01:09.448
+starting worker pid=23924 on localhost:11654 at 02:01:09.683
+starting worker pid=23935 on localhost:11654 at 02:01:09.925
+starting worker pid=23946 on localhost:11654 at 02:01:10.163
+starting worker pid=23957 on localhost:11654 at 02:01:10.401
+starting worker pid=23968 on localhost:11654 at 02:01:10.639
+starting worker pid=23979 on localhost:11654 at 02:01:10.875
+starting worker pid=23990 on localhost:11654 at 02:01:11.110
+starting worker pid=24001 on localhost:11654 at 02:01:11.345
+starting worker pid=24012 on localhost:11654 at 02:01:11.580
+starting worker pid=24023 on localhost:11654 at 02:01:11.815
+starting worker pid=24034 on localhost:11654 at 02:01:12.050
+starting worker pid=24045 on localhost:11654 at 02:01:12.288
+starting worker pid=24056 on localhost:11654 at 02:01:12.527
+starting worker pid=24067 on localhost:11654 at 02:01:12.766
+starting worker pid=24079 on localhost:11654 at 02:01:13.003
+starting worker pid=24090 on localhost:11654 at 02:01:13.238
+starting worker pid=24101 on localhost:11654 at 02:01:13.474
+starting worker pid=24112 on localhost:11654 at 02:01:13.708
+starting worker pid=24123 on localhost:11654 at 02:01:13.950
+starting worker pid=24134 on localhost:11654 at 02:01:14.188
+starting worker pid=24145 on localhost:11654 at 02:01:14.427
+starting worker pid=24156 on localhost:11654 at 02:01:14.666
+starting worker pid=24167 on localhost:11654 at 02:01:14.903
+starting worker pid=24178 on localhost:11654 at 02:01:15.139
+starting worker pid=24189 on localhost:11654 at 02:01:15.377
+starting worker pid=24200 on localhost:11654 at 02:01:15.614
+[1] "warning maximization: code=3 symptom=1 snp=10"
+[1] "failure maximization: code=3 symptom=1 snp=10"
+[1] "warning maximization: code=3 symptom=1 snp=29"
+[1] "failure maximization: code=3 symptom=1 snp=29"
+[1] "warning maximization: code=3 symptom=1 snp=34"
+[1] "failure maximization: code=3 symptom=1 snp=34"
+[1] "warning maximization: code=3 symptom=2 snp=4"
+[1] "failure maximization: code=3 symptom=2 snp=4"
+[1] "warning maximization: code=3 symptom=2 snp=46"
+[1] "failure maximization: code=3 symptom=2 snp=46"
+[1] "warning maximization: code=3 symptom=2 snp=59"
+[1] "failure maximization: code=3 symptom=2 snp=59"
+[1] "warning maximization: code=3 symptom=2 snp=65"
+[1] "failure maximization: code=3 symptom=2 snp=65"
+[1] "warning maximization: code=3 symptom=2 snp=76"
+[1] "failure maximization: code=3 symptom=2 snp=76"
+[1] "warning maximization: code=3 symptom=3 snp=14"
+[1] "failure maximization: code=3 symptom=3 snp=14"
+[1] "warning maximization: code=3 symptom=3 snp=15"
+[1] "failure maximization: code=3 symptom=3 snp=15"
 Warning messages:
 1: In f(x, ...) : value out of range in 'lgamma'
-2: In f(x, ...) : value out of range in 'lgamma'
-3: In f(x, ...) : value out of range in 'lgamma'
-4: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
-  NA/Inf replaced by maximum positive value
-5: In f(x, ...) : value out of range in 'lgamma'
-6: In f(x, ...) : value out of range in 'lgamma'
-7: In f(x, ...) : value out of range in 'lgamma'
-Warning messages:
-8: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
-  NA/Inf replaced by maximum positive value
-1: In f(x, ...) : value out of range in 'lgamma'
-2: In f(x, ...) : value out of range in 'lgamma'
-3: In f(x, ...) : value out of range in 'lgamma'
-4: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
-  NA/Inf replaced by maximum positive value
-5: In f(x, ...) : value out of range in 'lgamma'
-6: In f(x, ...) : value out of range in 'lgamma'
-7: In f(x, ...) : value out of range in 'lgamma'
-8: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
-  NA/Inf replaced by maximum positive value
-Warning messages:
-1: In f(x, ...) : value out of range in 'lgamma'
-2: In f(x, ...) : value out of range in 'lgamma'
-3: In f(x, ...) : value out of range in 'lgamma'
-4: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
-  NA/Inf replaced by maximum positive value
-5: In f(x, ...) : value out of range in 'lgamma'
-6: Warning messages:
-In f(x, ...) : value out of range in 'lgamma'
-7: In f(x, ...) : value out of range in 'lgamma'
-1: In f(x, ...) : value out of range in 'lgamma'
-8: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
-  NA/Inf replaced by maximum positive value
 2: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
   NA/Inf replaced by maximum positive value
+Warning messages:
+1: In f(x, ...) : value out of range in 'lgamma'
+2: In f(x, ...) : value out of range in 'lgamma'
 3: In f(x, ...) : value out of range in 'lgamma'
-4: In f(x, ...) : value out of range in 'lgamma'
+There were 18 warnings (use warnings() to see them)
+4: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
+  NA/Inf replaced by maximum positive value
+Warning messages:
+1: In f(x, ...) : value out of range in 'lgamma'
+2: In f(x, ...) : value out of range in 'lgamma'
+3: In f(x, ...) : value out of range in 'lgamma'
+4: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
+  NA/Inf replaced by maximum positive value
 5: In f(x, ...) : value out of range in 'lgamma'
-6: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
+6: In f(x, ...) : value out of range in 'lgamma'
+7: In f(x, ...) : value out of range in 'lgamma'
+Warning messages:
+8: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
   NA/Inf replaced by maximum positive value
+1: In f(x, ...) : value out of range in 'lgamma'
+2: In f(x, ...) : value out of range in 'lgamma'
+3: In f(x, ...) : value out of range in 'lgamma'
+4: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
+  NA/Inf replaced by maximum positive value
+There were 18 warnings (use warnings() to see them)
+There were 18 warnings (use warnings() to see them)
 Warning messages:
 1: In f(x, ...) : value out of range in 'lgamma'
 2: In f(x, ...) : value out of range in 'lgamma'
 3: In f(x, ...) : value out of range in 'lgamma'
 4: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
   NA/Inf replaced by maximum positive value
-There were 32 warnings (use warnings() to see them)
-Warning messages:
-1: In f(x, ...) : value out of range in 'lgamma'
-2: In f(x, ...) : value out of range in 'lgamma'
-3: In f(x, ...) : value out of range in 'lgamma'
-4: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
-  NA/Inf replaced by maximum positive value
-There were 30 warnings (use warnings() to see them)
-Warning messages:
-1: In f(x, ...) : value out of range in 'lgamma'
-2: In f(x, ...) : value out of range in 'lgamma'
-3: In f(x, ...) : value out of range in 'lgamma'
-4: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
-  NA/Inf replaced by maximum positive value
-Warning messages:
-1: In f(x, ...) : value out of range in 'lgamma'
-2: In f(x, ...) : value out of range in 'lgamma'
-3: In f(x, ...) : value out of range in 'lgamma'
-4: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
-  NA/Inf replaced by maximum positive value
-Warning messages:
-1: In f(x, ...) : value out of range in 'lgamma'
-2: In f(x, ...) : value out of range in 'lgamma'
-3: In f(x, ...) : value out of range in 'lgamma'
-4: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
-  NA/Inf replaced by maximum positive value
-There were 30 warnings (use warnings() to see them)
 There were 12 warnings (use warnings() to see them)
+Warning messages:
+1: In f(x, ...) : value out of range in 'lgamma'
+2: In f(x, ...) : value out of range in 'lgamma'
+3: In f(x, ...) : value out of range in 'lgamma'
+4: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
+  NA/Inf replaced by maximum positive value
+There were 14 warnings (use warnings() to see them)
+There were 20 warnings (use warnings() to see them)
 [1] "writing results to file..."
+There were 16 warnings (use warnings() to see them)
+There were 12 warnings (use warnings() to see them)
 [1] "end"
-Warning message:
-In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+Warning messages:
+1: In dir.create(savedir) : '1sym_1snp_cauchy' already exists
+2: In e$fun(obj, substitute(ex), parent.frame(), e$data) :
   already exporting variable(s): savedir, filename, writeflag, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, namesnpvariants, namestatistics, logpriortheta, spread

@@ -78,10 +78,12 @@ result <- foreach(symptom=1:numsymptoms,
         ##          digamma(t)))
         ## }
         ## search parameter Theta with max evidence
-        maxsearch <- nlm(f=logprob,p=log(apply(f,1,mean)/100),iterlim=1e6 )
+        fmaxsearch <- nlm(f=logprob,p=log(apply(f,1,mean)/100),iterlim=1e6 )
+        zmaxsearch <- nlm(f=logprob,p=rep(0,numsymptomvariants),iterlim=1e6 )
+        if(fmaxsearch$minimum < zmaxsearch$minimum){maxsearch <- fmaxsearch}else{maxsearch <- zmaxsearch}
         if(maxsearch$code>2){
-            print(paste0('warning maximization: code=',maxsearch$code,' symptom=',symptom,' snp=',snp,' trying alterative...'))
-            maxsearch <- nlm(f=logprob,p=rep(0,numsymptomvariants),iterlim=1e6 )
+            print(paste0('warning maximization: code=',maxsearch$code,' symptom=',symptom,' snp=',snp)) ##,' trying alterative...'))
+        ##    maxsearch <- nlm(f=logprob,p=rep(0,numsymptomvariants),iterlim=1e6 )
             }
         ## ## old method with optim() performed poorly
         ##                 method="Nelder-Mead"
