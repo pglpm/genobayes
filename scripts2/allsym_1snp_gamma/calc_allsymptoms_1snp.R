@@ -1,5 +1,5 @@
 ## Calculation of expected value, std, thetas, spread of conditional frequencies
-## of each symptom given each SNP
+## of all symptom combos given each SNP
 
 #### PREAMBLE
 ## libraries and colour-blind palette from http://www.sron.nl/~pault/
@@ -30,24 +30,30 @@ mmtoin <- 0.0393701
 
 source('conditional_freqs_1.R') ## calls the function that calculates and writes the statistics
 
+##auxiliary function to write the list of symptom combinations: 000, 100, ...,111
+tobinary  <- function(number, noBits){as.numeric(intToBits(number))[1:noBits]}
+#frombinary  <- function(digits) {sum(2^(0:(length(digits)-1))*digits)}
+
 dpath  <-  "./"
 datafile <- 'dataset1_binarized.csv'
 nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
-##n <- length(data[,1])
+#n <- length(data[,1])
 
-savedir <- '1sym_1snp_cauchy/' # directory for saving results
-filename <- 'freq-1_1_cauchy-' # filename prefix
+savedir <- 'allsym_1snp_gamma/' # directory for saving results
+filename <- 'freq-3_1_gamma-' # filename prefix
 writeflag <- TRUE # whether to write the results for each case/snp combination in a file
 
 cores <- 30 # for parallel processing
 
-symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
-namesymptoms <- c('A','B','C')
-prefixsymptoms <- 'sym_' # for filename
+symptoms <- list(1:3) # all symptoms at once, they correspond to one index tuple: c(1,2,3)
+namesymptoms <- '' # there's only one case
+prefixsymptoms <- '' # for filename
 
-symptomvariants <- list(0,1)
-namesymptomvariants <- c('n','y')
+binarysymptomvariants <- c(0,1,2,4,3,5,6,7) # auxiliary quantity
+## below gives the list of all combinations: c(0,0,0), c(1,0,0), ... c(1,1,1)
+symptomvariants <- lapply(binarysymptomvariants,function(x){tobinary(x,3)})
+namesymptomvariants <- c('0','A','B','C','AB','AC','BC','ABC')
 
 snps <- as.list(3+(1:94)) # list of gene indices in data
 namesnps <- colnames(data)[(1:94)+3]
@@ -56,10 +62,11 @@ prefixsnps <- 'snp_' # for filename
 snpvariants <- list(0, 1) # list of allele values
 namesnpvariants <- c('0','1') # allele names
 
+
 ## log-prior for thetas: see research notes
 ## 'lt' is the log of theta
-logpriortheta <- function(lt,t){sum(dcauchy(lt,location=log(1000),scale=log(1000),log=TRUE))-sum(lt)}
-#logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
+#logpriortheta <- function(lt){dcauchy(lt,location=log(1000),scale=log(1000),log=TRUE)-lt}
+logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
 
 ## measure of spread, applied to the final matrix of quantities
 ## it calculates abs((EV_freq1 - EV_freq2)/(SD_freq1 + SD_freq2))
