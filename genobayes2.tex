@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-14T15:29:48+0100
+%% Last-Updated: 2018-11-14T15:43:01+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -866,29 +866,31 @@ Result section we discuss the different relevant associations found.
 \subsection{Outline}
 \label{sec:method_outline}
 
-Let's focus for the moment the simplest reduction of such a graph, with
-only one particular \snp\ with two alleles $\ya$, $\yb$, and one symptom
-$S$. In an arbitrarily large population, consider the fraction $f_{S\|\ya}$
-of individuals that show symptom $S$ among those having allele $\ya$, and
-the fraction $f_{S\|\yb}$ among those having allele $\yb$. These are
+Let's first focus on the simplest kind of association: between one
+particular \snp\ with two alleles $\ya$, $\yb$, and one symptom $S$. In an
+arbitrarily large population, consider the fraction $f_{S\|\ya}$ of
+individuals that show symptom $S$ among those having allele $\ya$, and the
+fraction $f_{S\|\yb}$ among those having allele $\yb$. These are
 \emph{conditional relative frequencies}. If these conditional frequencies
 are markedly different, then we can conclude that the \snp\ must have some
 causal relevance, however indirect, for the symptom.
 
-These conditional frequencies are far easier to study than causal
-relations, given the conditional frequencies in a population sample.
-
-
-In this study we show how to quantify our \dobs\ about such conditional
+We want to quantify our \dob\ about the values of such conditional
 frequencies in an arbitrarily large population, given
 \begin{enumerate*}[label=(\arabic*)]
 \item the conditional frequencies in a population sample, \item a
   representation of our initial information about such frequencies.
-\end{enumerate*}
-The idea behind the calculation is simple: using Bayes's theorem we have
+\end{enumerate*} In formulae,
+\begin{equation*}
+  \pf(\ptext{conditional frequencies} \| \ptext{sample data}, \ptext{initial information}).
+\end{equation*}
+
+Degrees of belief follow the probability calculus
+\citep{jeffreys1939_r1983,cox1946,jaynes1994_r2003,hailperin1996}, hence to
+quantify our belief we use Bayes's theorem:
 \begin{multline}
   \label{eq:intuitive_Bayes}
-  \pf(\ptext{frequencies} \| \ptext{sample data}, \ptext{initial info})
+  \pf(\ptext{frequencies} \| \ptext{data}, \ptext{initial info})
   \propto{}\\
   \pf(\ptext{data} \| \ptext{frequencies}, \ptext{initial info})
   \times

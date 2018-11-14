@@ -17,7 +17,7 @@ condfreqstatistics <- function(
                                filename,# initial part of file name
                                logpriortheta,# prior log-probability of log(theta)
                                spread,# spread measure
-                               writeflag=TRUE,# write results to files?
+                               writeflag=-Inf,# write results to files?
                                cores=1# cores for parallel processing, 1=no parallel
                                ){
 
@@ -29,9 +29,10 @@ condfreqstatistics <- function(
     namestatistics <- c(sapply(c('EV_','SD_','post.theta_','opt.theta_','max.spread_'),function(y){
     sapply(namesymptomvariants,function(x){paste0(y,x)})}))
 
+    if(writeflag==FALSE){writeflag <- +Inf}
 
-if(writeflag){dir.create(savedir)}
-    
+    if(writeflag < +Inf){dir.create(savedir)}
+
 ## setup parallel processing
 `%dox%` <- `%do%`
 if(cores>1){
@@ -103,15 +104,19 @@ result <- foreach(symptom=1:numsymptoms,
             newtheta, # posterior theta
             matrix(c(theta,rep(NA,numsymptomvariants*(numsnpvariants-1))),nrow=numsymptomvariants) # theta from optimization, only in first column
         )
+        ## spreads
+        spreads <- spread(quantities,numsymptomvariants,numsnpvariants)
+        ## add spreads to matrix of quantities, only in first column
         quantities <- rbind(quantities,
-                            matrix(c(spread(quantities,numsymptomvariants,numsnpvariants),rep(NA,numsymptomvariants*(numsnpvariants-1))),nrow=numsymptomvariants)) # spreads, only in first column
+                            matrix(c(spreads,rep(NA,numsymptomvariants*(numsnpvariants-1))),nrow=numsymptomvariants)
+                            )
 
     rownames(quantities) <- namestatistics
     colnames(quantities) <- namesnpvariants
 
-        if(writeflag){
+        if(max(spreads)>writeflag){
             write.csv(quantities,paste0(savedir,filename,prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'.csv'))
-        }        
+        }
     quantities
 }
 if(cores>1){
