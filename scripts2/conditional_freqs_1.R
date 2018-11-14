@@ -17,7 +17,7 @@ condfreqstatistics <- function(
                                filename,# initial part of file name
                                logpriortheta,# prior log-probability of log(theta)
                                spread,# spread measure
-                               writeflag=-Inf,# write results to files?
+                               writeflag=-Inf,# write result to file when its spread is larger that 'writeflag'
                                cores=1# cores for parallel processing, 1=no parallel
                                ){
 

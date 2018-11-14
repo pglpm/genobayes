@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-14T15:43:01+0100
+%% Last-Updated: 2018-11-14T18:05:42+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -953,8 +953,8 @@ given one \snp\ at a time.
 Consider for definiteness symptomn $\ysA$ and a particular \snp\ with
 alleles $\ya$, $\yb$. The limit conditional frequencies are denoted
 $f_{\ysA\|\ya}$ and $f_{\ysA\|\yb}$. Denote the sample data by $\yD$ and
-our initial beliefs by $\yI$. We want to quantify our joint belief about
-these frequencies, expressed by the density function
+our initial beliefs by $\yI$. We want to quantify our belief about these
+frequencies jointly, expressed by the density function
 \begin{equation}
   \label{eq:joint_belief_f}
   \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI).
@@ -969,49 +969,48 @@ $\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)$. Let's consider these in turn.
 \medskip
 
 In our hypothetical large population a fraction $f_{\ysA\|\ya}$ of
-individuals with allele $\ya$ shows symptom $\ysA$, and a fraction
+individuals having allele $\ya$ shows symptom $\ysA$, and a fraction
 $1-f_{\ysA\|\ya}$ doesn't show that symptom. Then, upon sampling $N_{\ya}$
-individuals with allele $\ya$, our belief that a fraction $n_{\ysA\|\ya}$
-of these will show symptom $\ysA$ and a fraction $1-n_{\ysA\|\ya}$ won't
+individuals with allele $\ya$, our belief that a fraction $F_{\ysA\|\ya}$
+of these will show symptom $\ysA$ and a fraction $1-F_{\ysA\|\ya}$ won't
 show this symptom is
 \begin{equation}
   \label{eq:sampling_belief}
   \pf(n_{\ysA\|\ya} \| N_{\ya}, f_{\ysA\|\ya}, \yI)
   =
-  {f_{\ysA\|\ya}}^{N_{\ya}\,n_{\ysA\|\ya}} \;
-  {(1-f_{\ysA\|\ya})}^{N_{\ya}\,(1-n_{\ysA\|\ya})},
+  {f_{\ysA\|\ya}}^{N_{\ya}\,F_{\ysA\|\ya}} \;
+  {(1-f_{\ysA\|\ya})}^{N_{\ya}\,(1-F_{\ysA\|\ya})},
 \end{equation}
 and analogously for allele $\yb$. Our belief about obtaining data
-$\yD = (n_{\ysA\|\ya}, n_{\ysA\|\yb})$ is therefore
+$\yD = (F_{\ysA\|\ya}, F_{\ysA\|\yb})$ is therefore
 \begin{equation}
   \label{eq:sampling_belief_combined}
   \pf(\yD \| N_{\ya}, N_{\yb}, f_{\ysA\|\ya},f_{\ysA\|\yb}, \yI)
   =
- \prod_{x=\ya,\yb} {f_{\ysA\|x}}^{N_{x}\,n_{\ysA\|x}} \;
-  {(1-f_{\ysA\|x})}^{N_{x}\,(1-n_{\ysA\|x})}.
+ \prod_{x=\ya,\yb} {f_{\ysA\|x}}^{N_{x}\,F_{\ysA\|x}} \;
+  {(1-f_{\ysA\|x})}^{N_{x}\,(1-F_{\ysA\|x})}.
 \end{equation}
 
 \medskip
 
-Our initial \dob\ about the limit conditional frequencies is based on these
-assumptions:
-\begin{enumerate}[label=(\arabic*)]
-\item we expect the frequencies conditional on the two alleles not to be
-  wildly different in comparison to the full range $\clcl{0,1}$;
-\item besides the point above, we don't want to make any special
-  assumptions about the values of the two conditional frequencies.
-\end{enumerate}
-The first assumption is conservative; therefore, if our updated belief
-conditional on the data will show clearly distinct conditional frequencies,
-it will be because the data have given enough evidence to overwhelm our
-initial conservative belief.
+Our initial \dob\ about the limit conditional frequencies is based on this
+main assumption: we expect the frequencies conditional on the two alleles,
+$f_{\ysA\|\ya}$ and $f_{\ysA\|\yb}$, not to be wildly different. This is a
+conservative assumption. Therefore, if our updated belief conditional on
+the data will show clearly distinct conditional frequencies, it will be
+because the data have given enough evidence to overwhelm our initial
+conservative belief.
 
 The kind of density representing this initial belief
 is qualitatively shown in \fig~\ref{fig:initial_belief}.
 \begin{figure}[t!]%{r}{0.4\linewidth} % with wrapfigure
- \centering\includegraphics[width=0.75\linewidth]{prior3d.png}
-\caption{Initial belief}\label{fig:initial_belief}
+ \centering\includegraphics[width=0.95\linewidth]{prior3d.png}
+\caption{Qualitative plot of our initial belief}\label{fig:initial_belief}
 \end{figure}% scripts2/plots_distributions.nb
+Note the rise along the diagonal of the coordinates
+$(f_{\ysA\|\ya},
+f_{\ysA\|\yb}$)$.
+
 Mathematically we write it as an integral:
 \begin{equation}
   \label{eq:beta_gamma_prior}
