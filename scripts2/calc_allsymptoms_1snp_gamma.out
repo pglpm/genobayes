@@ -1,0 +1,84 @@
+
+Attaching package: 'cowplot'
+
+The following object is masked from 'package:ggplot2':
+
+    ggsave
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+starting worker pid=20897 on localhost:11646 at 01:28:09.707
+starting worker pid=20908 on localhost:11646 at 01:28:09.953
+starting worker pid=20919 on localhost:11646 at 01:28:10.194
+starting worker pid=20930 on localhost:11646 at 01:28:10.433
+starting worker pid=20941 on localhost:11646 at 01:28:10.671
+starting worker pid=20952 on localhost:11646 at 01:28:10.912
+starting worker pid=20963 on localhost:11646 at 01:28:11.150
+starting worker pid=20974 on localhost:11646 at 01:28:11.388
+starting worker pid=20985 on localhost:11646 at 01:28:11.628
+starting worker pid=20996 on localhost:11646 at 01:28:11.867
+starting worker pid=21007 on localhost:11646 at 01:28:12.106
+starting worker pid=21018 on localhost:11646 at 01:28:12.348
+starting worker pid=21029 on localhost:11646 at 01:28:12.591
+starting worker pid=21040 on localhost:11646 at 01:28:12.831
+starting worker pid=21052 on localhost:11646 at 01:28:13.073
+starting worker pid=21063 on localhost:11646 at 01:28:13.313
+starting worker pid=21074 on localhost:11646 at 01:28:13.553
+starting worker pid=21085 on localhost:11646 at 01:28:13.795
+starting worker pid=21096 on localhost:11646 at 01:28:14.036
+starting worker pid=21107 on localhost:11646 at 01:28:14.273
+starting worker pid=21118 on localhost:11646 at 01:28:14.511
+starting worker pid=21129 on localhost:11646 at 01:28:14.752
+starting worker pid=21140 on localhost:11646 at 01:28:14.995
+starting worker pid=21151 on localhost:11646 at 01:28:15.235
+starting worker pid=21162 on localhost:11646 at 01:28:15.474
+starting worker pid=21173 on localhost:11646 at 01:28:15.715
+starting worker pid=21184 on localhost:11646 at 01:28:15.962
+starting worker pid=21195 on localhost:11646 at 01:28:16.206
+starting worker pid=21206 on localhost:11646 at 01:28:16.447
+starting worker pid=21217 on localhost:11646 at 01:28:16.688
+Warning messages:
+1: In f(x, ...) : value out of range in 'lgamma'
+2: In f(x, ...) : value out of range in 'lgamma'
+3: In f(x, ...) : value out of range in 'lgamma'
+4: In f(x, ...) : value out of range in 'lgamma'
+5: In f(x, ...) : value out of range in 'lgamma'
+6: In f(x, ...) : value out of range in 'lgamma'
+7: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
+  NA/Inf replaced by maximum positive value
+There were 28 warnings (use warnings() to see them)
+Warning messages:
+1: In f(x, ...) : value out of range in 'lgamma'
+2: In f(x, ...) : value out of range in 'lgamma'
+3: In f(x, ...) : value out of range in 'lgamma'
+4: In f(x, ...) : value out of range in 'lgamma'
+5: In f(x, ...) : value out of range in 'lgamma'
+6: In f(x, ...) : value out of range in 'lgamma'
+7: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
+  NA/Inf replaced by maximum positive value
+Warning messages:
+1: In f(x, ...) : value out of range in 'lgamma'
+2: In f(x, ...) : value out of range in 'lgamma'
+3: In f(x, ...) : value out of range in 'lgamma'
+4: In f(x, ...) : value out of range in 'lgamma'
+5: In f(x, ...) : value out of range in 'lgamma'
+6: In f(x, ...) : value out of range in 'lgamma'
+7: In nlm(f = logprob, p = log(apply(f, 1, mean)/100), iterlim = 1e+06) :
+  NA/Inf replaced by maximum positive value
+[1] "writing results to file..."
+[1] "end"
+Warning message:
+In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+  already exporting variable(s): savedir, filename, writeflag, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, namesnpvariants, namestatistics, logpriortheta, spread
