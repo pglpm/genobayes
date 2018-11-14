@@ -1,0 +1,58 @@
+
+Attaching package: 'cowplot'
+
+The following object is masked from 'package:ggplot2':
+
+    ggsave
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+starting worker pid=32104 on localhost:11127 at 03:17:04.349
+starting worker pid=32115 on localhost:11127 at 03:17:04.586
+starting worker pid=32126 on localhost:11127 at 03:17:04.824
+starting worker pid=32137 on localhost:11127 at 03:17:05.060
+starting worker pid=32148 on localhost:11127 at 03:17:05.295
+starting worker pid=32159 on localhost:11127 at 03:17:05.532
+starting worker pid=32170 on localhost:11127 at 03:17:05.769
+starting worker pid=32181 on localhost:11127 at 03:17:06.011
+starting worker pid=32192 on localhost:11127 at 03:17:06.249
+starting worker pid=32203 on localhost:11127 at 03:17:06.487
+starting worker pid=32214 on localhost:11127 at 03:17:06.726
+starting worker pid=32225 on localhost:11127 at 03:17:06.965
+starting worker pid=32237 on localhost:11127 at 03:17:07.201
+starting worker pid=32248 on localhost:11127 at 03:17:07.436
+starting worker pid=32259 on localhost:11127 at 03:17:07.672
+starting worker pid=32270 on localhost:11127 at 03:17:07.916
+starting worker pid=32281 on localhost:11127 at 03:17:08.155
+starting worker pid=32292 on localhost:11127 at 03:17:08.395
+starting worker pid=32303 on localhost:11127 at 03:17:08.634
+starting worker pid=32314 on localhost:11127 at 03:17:08.939
+starting worker pid=32325 on localhost:11127 at 03:17:09.177
+starting worker pid=32336 on localhost:11127 at 03:17:09.414
+starting worker pid=32347 on localhost:11127 at 03:17:09.650
+starting worker pid=32358 on localhost:11127 at 03:17:09.894
+starting worker pid=32369 on localhost:11127 at 03:17:10.136
+starting worker pid=32380 on localhost:11127 at 03:17:10.377
+starting worker pid=32391 on localhost:11127 at 03:17:10.616
+starting worker pid=32402 on localhost:11127 at 03:17:10.853
+starting worker pid=32413 on localhost:11127 at 03:17:11.089
+starting worker pid=32424 on localhost:11127 at 03:17:11.324
+[1] "warning maximization: code=3 symptom=2 snp=484 trying alterative..."
+There were 27 warnings (use warnings() to see them)
+[1] "writing results to file..."
+[1] "end"
+Warning message:
+In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+  already exporting variable(s): savedir, filename, writeflag, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, namesnpvariants, namestatistics, logpriortheta, spread
