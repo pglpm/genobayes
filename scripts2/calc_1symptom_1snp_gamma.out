@@ -19,36 +19,38 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-starting worker pid=7293 on localhost:11058 at 15:47:30.343
-starting worker pid=7304 on localhost:11058 at 15:47:30.577
-starting worker pid=7315 on localhost:11058 at 15:47:30.810
-starting worker pid=7326 on localhost:11058 at 15:47:31.045
-starting worker pid=7337 on localhost:11058 at 15:47:31.280
-starting worker pid=7348 on localhost:11058 at 15:47:31.515
-starting worker pid=7359 on localhost:11058 at 15:47:31.750
-starting worker pid=7370 on localhost:11058 at 15:47:31.986
-starting worker pid=7381 on localhost:11058 at 15:47:32.222
-starting worker pid=7392 on localhost:11058 at 15:47:32.454
-starting worker pid=7403 on localhost:11058 at 15:47:32.688
-starting worker pid=7414 on localhost:11058 at 15:47:32.924
-starting worker pid=7425 on localhost:11058 at 15:47:33.158
-starting worker pid=7436 on localhost:11058 at 15:47:33.392
-starting worker pid=7447 on localhost:11058 at 15:47:33.626
-starting worker pid=7458 on localhost:11058 at 15:47:33.862
-starting worker pid=7469 on localhost:11058 at 15:47:34.098
-starting worker pid=7480 on localhost:11058 at 15:47:34.332
-starting worker pid=7491 on localhost:11058 at 15:47:34.566
-starting worker pid=7502 on localhost:11058 at 15:47:34.802
-starting worker pid=7513 on localhost:11058 at 15:47:35.042
-starting worker pid=7524 on localhost:11058 at 15:47:35.285
-starting worker pid=7535 on localhost:11058 at 15:47:35.522
-starting worker pid=7546 on localhost:11058 at 15:47:35.756
-starting worker pid=7557 on localhost:11058 at 15:47:35.997
-starting worker pid=7568 on localhost:11058 at 15:47:36.236
-starting worker pid=7579 on localhost:11058 at 15:47:36.476
-starting worker pid=7590 on localhost:11058 at 15:47:36.713
-starting worker pid=7601 on localhost:11058 at 15:47:36.952
-starting worker pid=7612 on localhost:11058 at 15:47:37.191
+starting worker pid=19072 on localhost:11198 at 01:12:42.183
+starting worker pid=19083 on localhost:11198 at 01:12:42.428
+starting worker pid=19094 on localhost:11198 at 01:12:42.672
+starting worker pid=19105 on localhost:11198 at 01:12:42.918
+starting worker pid=19116 on localhost:11198 at 01:12:43.160
+starting worker pid=19127 on localhost:11198 at 01:12:43.404
+starting worker pid=19138 on localhost:11198 at 01:12:43.642
+starting worker pid=19149 on localhost:11198 at 01:12:43.886
+starting worker pid=19160 on localhost:11198 at 01:12:44.127
+starting worker pid=19171 on localhost:11198 at 01:12:44.368
+starting worker pid=19182 on localhost:11198 at 01:12:44.608
+starting worker pid=19193 on localhost:11198 at 01:12:44.848
+starting worker pid=19204 on localhost:11198 at 01:12:45.087
+starting worker pid=19215 on localhost:11198 at 01:12:45.330
+starting worker pid=19226 on localhost:11198 at 01:12:45.575
+starting worker pid=19237 on localhost:11198 at 01:12:45.817
+starting worker pid=19248 on localhost:11198 at 01:12:46.063
+starting worker pid=19259 on localhost:11198 at 01:12:46.303
+starting worker pid=19270 on localhost:11198 at 01:12:46.547
+starting worker pid=19281 on localhost:11198 at 01:12:46.788
+starting worker pid=19292 on localhost:11198 at 01:12:47.033
+starting worker pid=19303 on localhost:11198 at 01:12:47.275
+starting worker pid=19314 on localhost:11198 at 01:12:47.519
+starting worker pid=19325 on localhost:11198 at 01:12:47.761
+starting worker pid=19336 on localhost:11198 at 01:12:48.004
+starting worker pid=19347 on localhost:11198 at 01:12:48.245
+starting worker pid=19358 on localhost:11198 at 01:12:48.491
+starting worker pid=19369 on localhost:11198 at 01:12:48.732
+starting worker pid=19380 on localhost:11198 at 01:12:48.976
+starting worker pid=19391 on localhost:11198 at 01:12:49.218
+[1] "writing results to file..."
+[1] "end"
 Warning messages:
 1: In dir.create(savedir) : '1sym_1snp_gamma' already exists
 2: In e$fun(obj, substitute(ex), parent.frame(), e$data) :

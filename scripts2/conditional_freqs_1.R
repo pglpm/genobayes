@@ -67,7 +67,7 @@ result <- foreach(symptom=1:numsymptoms,
             -(sum(lgamma(r2))
                 - sum(lgamma(apply(r2,2,sum)))
                 + numsnpvariants * (lgamma(sum(t)) - sum(lgamma(t)))
-                + logpriortheta(lt) )
+                + logpriortheta(lt,t))
         }
         ## gradient <- function(lt){
         ##     t <- exp(lt)
@@ -116,6 +116,7 @@ result <- foreach(symptom=1:numsymptoms,
 if(cores>1){
 stopCluster(cl)
 }
-
+print('writing results to file...')
     saveRDS(result,paste0(savedir,filename,'all.rds'))
+	print('end')
     result}
