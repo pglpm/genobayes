@@ -19,175 +19,154 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-starting worker pid=33264 on localhost:11062 at 03:28:40.766
-starting worker pid=33275 on localhost:11062 at 03:28:41.004
-starting worker pid=33286 on localhost:11062 at 03:28:41.243
-starting worker pid=33297 on localhost:11062 at 03:28:41.481
-starting worker pid=33308 on localhost:11062 at 03:28:41.718
-starting worker pid=33319 on localhost:11062 at 03:28:41.964
-starting worker pid=33331 on localhost:11062 at 03:28:42.206
-starting worker pid=33342 on localhost:11062 at 03:28:42.449
-starting worker pid=33353 on localhost:11062 at 03:28:42.691
-starting worker pid=33364 on localhost:11062 at 03:28:42.931
-starting worker pid=33375 on localhost:11062 at 03:28:43.172
-starting worker pid=33386 on localhost:11062 at 03:28:43.411
-starting worker pid=33397 on localhost:11062 at 03:28:43.650
-starting worker pid=33408 on localhost:11062 at 03:28:43.888
-starting worker pid=33419 on localhost:11062 at 03:28:44.128
-starting worker pid=33430 on localhost:11062 at 03:28:44.371
-starting worker pid=33441 on localhost:11062 at 03:28:44.613
-starting worker pid=33452 on localhost:11062 at 03:28:44.855
-starting worker pid=33463 on localhost:11062 at 03:28:45.096
-starting worker pid=33474 on localhost:11062 at 03:28:45.336
-starting worker pid=33485 on localhost:11062 at 03:28:45.576
-starting worker pid=33496 on localhost:11062 at 03:28:45.820
-starting worker pid=33507 on localhost:11062 at 03:28:46.064
-starting worker pid=33518 on localhost:11062 at 03:28:46.306
-starting worker pid=33529 on localhost:11062 at 03:28:46.547
-starting worker pid=33540 on localhost:11062 at 03:28:46.788
-starting worker pid=33551 on localhost:11062 at 03:28:47.031
-starting worker pid=33562 on localhost:11062 at 03:28:47.270
-starting worker pid=33573 on localhost:11062 at 03:28:47.507
-starting worker pid=33584 on localhost:11062 at 03:28:47.745
-[1] "warning maximization: code=3 symptom=1 snp=1383 trying alterative..."
-[1] "warning maximization: code=3 symptom=1 snp=2444 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=50 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=175 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=193 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=336 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=398 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=459 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=494 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=542 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=599 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=680 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=842 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=882 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=895 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=896 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=903 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=917 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=922 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=949 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=950 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=963 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=966 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1089 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1083 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1086 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1096 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1134 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1171 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1199 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1279 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1373 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1376 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1380 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1413 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1416 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1426 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1427 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1425 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1436 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1445 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1511 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1553 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1571 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1640 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1639 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1712 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1718 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1746 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1785 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1790 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1806 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1878 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1879 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1890 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1920 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=1944 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2000 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2191 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2192 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2205 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2266 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2261 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2281 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2361 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2492 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2578 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2617 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2629 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2650 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2800 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2850 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2863 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2875 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2917 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=2996 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3020 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3065 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3066 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3071 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3110 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3152 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3218 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3300 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3370 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3415 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3436 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3485 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3576 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3605 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3599 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3620 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3638 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3669 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3675 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3693 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3708 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3727 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3718 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3720 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3721 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3728 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3737 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3753 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3852 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3845 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3850 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3882 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3888 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3901 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3900 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3907 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3912 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3918 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3920 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3930 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3931 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3934 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3982 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=3981 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=4056 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=4053 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=4054 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=4066 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=4062 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=4069 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=4097 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=4150 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=4320 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=4326 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=4336 trying alterative..."
-[1] "warning maximization: code=3 symptom=2 snp=4367 trying alterative..."
+starting worker pid=34226 on localhost:11431 at 03:36:45.043
+starting worker pid=34237 on localhost:11431 at 03:36:45.278
+starting worker pid=34248 on localhost:11431 at 03:36:45.514
+starting worker pid=34259 on localhost:11431 at 03:36:45.749
+starting worker pid=34270 on localhost:11431 at 03:36:45.984
+starting worker pid=34281 on localhost:11431 at 03:36:46.223
+starting worker pid=34292 on localhost:11431 at 03:36:46.462
+starting worker pid=34303 on localhost:11431 at 03:36:46.699
+starting worker pid=34314 on localhost:11431 at 03:36:46.936
+starting worker pid=34325 on localhost:11431 at 03:36:47.172
+starting worker pid=34336 on localhost:11431 at 03:36:47.408
+starting worker pid=34347 on localhost:11431 at 03:36:47.648
+starting worker pid=34358 on localhost:11431 at 03:36:47.884
+starting worker pid=34369 on localhost:11431 at 03:36:48.121
+starting worker pid=34380 on localhost:11431 at 03:36:48.361
+starting worker pid=34391 on localhost:11431 at 03:36:48.601
+starting worker pid=34402 on localhost:11431 at 03:36:48.840
+starting worker pid=34413 on localhost:11431 at 03:36:49.078
+starting worker pid=34424 on localhost:11431 at 03:36:49.312
+starting worker pid=34435 on localhost:11431 at 03:36:49.549
+starting worker pid=34446 on localhost:11431 at 03:36:49.787
+starting worker pid=34457 on localhost:11431 at 03:36:50.028
+starting worker pid=34468 on localhost:11431 at 03:36:50.267
+starting worker pid=34479 on localhost:11431 at 03:36:50.506
+starting worker pid=34490 on localhost:11431 at 03:36:50.745
+starting worker pid=34501 on localhost:11431 at 03:36:50.983
+starting worker pid=34512 on localhost:11431 at 03:36:51.219
+starting worker pid=34523 on localhost:11431 at 03:36:51.455
+starting worker pid=34534 on localhost:11431 at 03:36:51.690
+starting worker pid=34545 on localhost:11431 at 03:36:51.933
+[1] "warning maximization: code=3 symptom=1 snp=117 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=138 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=157 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=153 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=156 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=169 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=184 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=297 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=302 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=319 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=336 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=338 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=557 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=560 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=584 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=595 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=592 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=606 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=613 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=621 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=811 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=818 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=817 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=821 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=827 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=853 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=869 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=884 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1144 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1179 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1210 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1603 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1602 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1606 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1623 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1638 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1640 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1654 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1672 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1674 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1675 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1679 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1696 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1725 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1735 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1736 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1777 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1798 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1822 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1769 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1856 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1869 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1892 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1882 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1926 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1952 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=1955 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2008 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2037 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2054 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2069 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2047 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2072 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2095 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2102 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2104 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2109 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2128 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2125 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2144 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2154 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2297 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2299 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2317 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2329 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2348 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2347 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2688 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2784 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2794 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2801 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2803 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2815 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2840 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2860 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2862 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2865 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=2869 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3064 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3153 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3284 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3306 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3318 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3335 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3478 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3486 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3504 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3598 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3602 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3629 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3651 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3638 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3640 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3664 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3696 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3859 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3874 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3912 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3928 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3929 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3948 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3976 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=3987 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=4037 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=4143 trying alterative..."
 srun: Job step aborted: Waiting up to 2 seconds for job step to finish.
 srun: got SIGCONT
-slurmstepd: *** JOB 325987 CANCELLED AT 2018-11-14T03:33:00 ***
+slurmstepd: *** JOB 325988 CANCELLED AT 2018-11-14T03:38:14 ***
 srun: forcing job termination
-slurmstepd: *** STEP 325987.0 CANCELLED AT 2018-11-14T03:33:00 ***
-Error in unserialize(node$con) : error reading from connection
-Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
-In addition: There were 50 or more warnings (use warnings() to see the first 50)
-Execution halted
+slurmstepd: *** STEP 325988.0 CANCELLED AT 2018-11-14T03:38:14 ***
 srun: error: compute-0-0: task 0: Terminated
