@@ -1,0 +1,56 @@
+
+Attaching package: 'cowplot'
+
+The following object is masked from 'package:ggplot2':
+
+    ggsave
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+starting worker pid=28471 on localhost:11548 at 02:47:06.398
+starting worker pid=28482 on localhost:11548 at 02:47:06.637
+starting worker pid=28493 on localhost:11548 at 02:47:06.873
+starting worker pid=28505 on localhost:11548 at 02:47:07.108
+starting worker pid=28516 on localhost:11548 at 02:47:07.345
+starting worker pid=28527 on localhost:11548 at 02:47:07.583
+starting worker pid=28538 on localhost:11548 at 02:47:07.824
+starting worker pid=28549 on localhost:11548 at 02:47:08.068
+starting worker pid=28560 on localhost:11548 at 02:47:08.309
+starting worker pid=28571 on localhost:11548 at 02:47:08.550
+starting worker pid=28582 on localhost:11548 at 02:47:08.791
+starting worker pid=28593 on localhost:11548 at 02:47:09.029
+starting worker pid=28604 on localhost:11548 at 02:47:09.267
+starting worker pid=28615 on localhost:11548 at 02:47:09.506
+starting worker pid=28626 on localhost:11548 at 02:47:09.743
+starting worker pid=28637 on localhost:11548 at 02:47:09.988
+starting worker pid=28648 on localhost:11548 at 02:47:10.227
+starting worker pid=28659 on localhost:11548 at 02:47:10.468
+starting worker pid=28670 on localhost:11548 at 02:47:10.709
+starting worker pid=28681 on localhost:11548 at 02:47:10.949
+starting worker pid=28692 on localhost:11548 at 02:47:11.187
+starting worker pid=28703 on localhost:11548 at 02:47:11.425
+starting worker pid=28714 on localhost:11548 at 02:47:11.663
+starting worker pid=28725 on localhost:11548 at 02:47:11.901
+starting worker pid=28736 on localhost:11548 at 02:47:12.142
+starting worker pid=28747 on localhost:11548 at 02:47:12.382
+starting worker pid=28758 on localhost:11548 at 02:47:12.625
+starting worker pid=28769 on localhost:11548 at 02:47:12.868
+starting worker pid=28780 on localhost:11548 at 02:47:13.105
+starting worker pid=28791 on localhost:11548 at 02:47:13.343
+[1] "writing results to file..."
+[1] "end"
+Warning message:
+In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+  already exporting variable(s): savedir, filename, writeflag, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, namesnpvariants, namestatistics, logpriortheta, spread
