@@ -59,7 +59,7 @@ namesnpvariants <- c('0','1') # allele names
 ## log-prior for thetas: see research notes
 ## 'lt' is the log of theta
 #logpriortheta <- function(lt){dcauchy(lt,location=log(1000),scale=log(1000),log=TRUE)-lt}
-logpriortheta <- function(lt,t){dgamma(sum(exp(lt)),shape=1,scale=1000,log=TRUE)-log(sum(t))}
+logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
 
 ## measure of spread, applied to the final matrix of quantities
 ## it calculates abs((EV_freq1 - EV_freq2)/(SD_freq1 + SD_freq2))
