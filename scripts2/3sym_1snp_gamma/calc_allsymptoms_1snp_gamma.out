@@ -19,38 +19,39 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-starting worker pid=28471 on localhost:11548 at 02:47:06.398
-starting worker pid=28482 on localhost:11548 at 02:47:06.637
-starting worker pid=28493 on localhost:11548 at 02:47:06.873
-starting worker pid=28505 on localhost:11548 at 02:47:07.108
-starting worker pid=28516 on localhost:11548 at 02:47:07.345
-starting worker pid=28527 on localhost:11548 at 02:47:07.583
-starting worker pid=28538 on localhost:11548 at 02:47:07.824
-starting worker pid=28549 on localhost:11548 at 02:47:08.068
-starting worker pid=28560 on localhost:11548 at 02:47:08.309
-starting worker pid=28571 on localhost:11548 at 02:47:08.550
-starting worker pid=28582 on localhost:11548 at 02:47:08.791
-starting worker pid=28593 on localhost:11548 at 02:47:09.029
-starting worker pid=28604 on localhost:11548 at 02:47:09.267
-starting worker pid=28615 on localhost:11548 at 02:47:09.506
-starting worker pid=28626 on localhost:11548 at 02:47:09.743
-starting worker pid=28637 on localhost:11548 at 02:47:09.988
-starting worker pid=28648 on localhost:11548 at 02:47:10.227
-starting worker pid=28659 on localhost:11548 at 02:47:10.468
-starting worker pid=28670 on localhost:11548 at 02:47:10.709
-starting worker pid=28681 on localhost:11548 at 02:47:10.949
-starting worker pid=28692 on localhost:11548 at 02:47:11.187
-starting worker pid=28703 on localhost:11548 at 02:47:11.425
-starting worker pid=28714 on localhost:11548 at 02:47:11.663
-starting worker pid=28725 on localhost:11548 at 02:47:11.901
-starting worker pid=28736 on localhost:11548 at 02:47:12.142
-starting worker pid=28747 on localhost:11548 at 02:47:12.382
-starting worker pid=28758 on localhost:11548 at 02:47:12.625
-starting worker pid=28769 on localhost:11548 at 02:47:12.868
-starting worker pid=28780 on localhost:11548 at 02:47:13.105
-starting worker pid=28791 on localhost:11548 at 02:47:13.343
+starting worker pid=30380 on localhost:11607 at 03:03:12.933
+starting worker pid=30391 on localhost:11607 at 03:03:13.173
+starting worker pid=30402 on localhost:11607 at 03:03:13.412
+starting worker pid=30413 on localhost:11607 at 03:03:13.654
+starting worker pid=30424 on localhost:11607 at 03:03:13.895
+starting worker pid=30435 on localhost:11607 at 03:03:14.133
+starting worker pid=30446 on localhost:11607 at 03:03:14.371
+starting worker pid=30457 on localhost:11607 at 03:03:14.611
+starting worker pid=30468 on localhost:11607 at 03:03:14.852
+starting worker pid=30479 on localhost:11607 at 03:03:15.093
+starting worker pid=30490 on localhost:11607 at 03:03:15.330
+starting worker pid=30501 on localhost:11607 at 03:03:15.568
+starting worker pid=30512 on localhost:11607 at 03:03:15.805
+starting worker pid=30523 on localhost:11607 at 03:03:16.040
+starting worker pid=30534 on localhost:11607 at 03:03:16.277
+starting worker pid=30545 on localhost:11607 at 03:03:16.515
+starting worker pid=30556 on localhost:11607 at 03:03:16.752
+starting worker pid=30567 on localhost:11607 at 03:03:16.989
+starting worker pid=30579 on localhost:11607 at 03:03:17.227
+starting worker pid=30590 on localhost:11607 at 03:03:17.464
+starting worker pid=30601 on localhost:11607 at 03:03:17.701
+starting worker pid=30612 on localhost:11607 at 03:03:17.938
+starting worker pid=30623 on localhost:11607 at 03:03:18.174
+starting worker pid=30634 on localhost:11607 at 03:03:18.410
+starting worker pid=30645 on localhost:11607 at 03:03:18.646
+starting worker pid=30656 on localhost:11607 at 03:03:18.883
+starting worker pid=30667 on localhost:11607 at 03:03:19.118
+starting worker pid=30678 on localhost:11607 at 03:03:19.353
+starting worker pid=30689 on localhost:11607 at 03:03:19.590
+starting worker pid=30700 on localhost:11607 at 03:03:19.827
 [1] "writing results to file..."
 [1] "end"
-Warning message:
-In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+Warning messages:
+1: In dir.create(savedir) : '3sym_1snp_gamma' already exists
+2: In e$fun(obj, substitute(ex), parent.frame(), e$data) :
   already exporting variable(s): savedir, filename, writeflag, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, namesnpvariants, namestatistics, logpriortheta, spread
