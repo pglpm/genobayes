@@ -123,6 +123,6 @@ if(cores>1){
 stopCluster(cl)
 }
     print('writing results to file...')
-    saveRDS(result,paste0(savedir,filename,'all.rds'))
+    saveRDS(result,paste0(savedir,'_',filename,'all.rds'))
     print('end')
     result}
