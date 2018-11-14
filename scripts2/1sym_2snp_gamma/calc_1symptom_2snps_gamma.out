@@ -19,58 +19,60 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-starting worker pid=19906 on localhost:11316 at 01:19:26.417
-starting worker pid=19917 on localhost:11316 at 01:19:26.648
-starting worker pid=19928 on localhost:11316 at 01:19:26.878
-starting worker pid=19939 on localhost:11316 at 01:19:27.112
-starting worker pid=19950 on localhost:11316 at 01:19:27.349
-starting worker pid=19961 on localhost:11316 at 01:19:27.588
-starting worker pid=19972 on localhost:11316 at 01:19:27.829
-starting worker pid=19984 on localhost:11316 at 01:19:28.072
-starting worker pid=19995 on localhost:11316 at 01:19:28.312
-starting worker pid=20006 on localhost:11316 at 01:19:28.551
-starting worker pid=20017 on localhost:11316 at 01:19:28.790
-starting worker pid=20028 on localhost:11316 at 01:19:29.029
-starting worker pid=20039 on localhost:11316 at 01:19:29.266
-starting worker pid=20050 on localhost:11316 at 01:19:29.504
-starting worker pid=20061 on localhost:11316 at 01:19:29.742
-starting worker pid=20072 on localhost:11316 at 01:19:29.987
-starting worker pid=20083 on localhost:11316 at 01:19:30.227
-starting worker pid=20094 on localhost:11316 at 01:19:30.465
-starting worker pid=20105 on localhost:11316 at 01:19:30.705
-starting worker pid=20116 on localhost:11316 at 01:19:30.943
-starting worker pid=20127 on localhost:11316 at 01:19:31.180
-starting worker pid=20138 on localhost:11316 at 01:19:31.417
-starting worker pid=20149 on localhost:11316 at 01:19:31.656
-starting worker pid=20160 on localhost:11316 at 01:19:31.899
-starting worker pid=20171 on localhost:11316 at 01:19:32.139
-starting worker pid=20182 on localhost:11316 at 01:19:32.377
-starting worker pid=20193 on localhost:11316 at 01:19:32.617
-starting worker pid=20204 on localhost:11316 at 01:19:32.857
-starting worker pid=20215 on localhost:11316 at 01:19:33.096
-starting worker pid=20226 on localhost:11316 at 01:19:33.333
-There were 38 warnings (use warnings() to see them)
-There were 11 warnings (use warnings() to see them)
-There were 27 warnings (use warnings() to see them)
-There were 27 warnings (use warnings() to see them)
-There were 38 warnings (use warnings() to see them)
-There were 33 warnings (use warnings() to see them)
+starting worker pid=31080 on localhost:11171 at 03:07:50.105
+starting worker pid=31091 on localhost:11171 at 03:07:50.343
+starting worker pid=31102 on localhost:11171 at 03:07:50.584
+starting worker pid=31113 on localhost:11171 at 03:07:50.825
+starting worker pid=31124 on localhost:11171 at 03:07:51.064
+starting worker pid=31135 on localhost:11171 at 03:07:51.303
+starting worker pid=31146 on localhost:11171 at 03:07:51.543
+starting worker pid=31157 on localhost:11171 at 03:07:51.784
+starting worker pid=31168 on localhost:11171 at 03:07:52.022
+starting worker pid=31179 on localhost:11171 at 03:07:52.260
+starting worker pid=31190 on localhost:11171 at 03:07:52.503
+starting worker pid=31201 on localhost:11171 at 03:07:52.744
+starting worker pid=31212 on localhost:11171 at 03:07:52.982
+starting worker pid=31223 on localhost:11171 at 03:07:53.221
+starting worker pid=31234 on localhost:11171 at 03:07:53.460
+starting worker pid=31245 on localhost:11171 at 03:07:53.701
+starting worker pid=31256 on localhost:11171 at 03:07:53.942
+starting worker pid=31267 on localhost:11171 at 03:07:54.180
+starting worker pid=31278 on localhost:11171 at 03:07:54.419
+starting worker pid=31289 on localhost:11171 at 03:07:54.661
+starting worker pid=31300 on localhost:11171 at 03:07:54.903
+starting worker pid=31311 on localhost:11171 at 03:07:55.142
+starting worker pid=31322 on localhost:11171 at 03:07:55.382
+starting worker pid=31333 on localhost:11171 at 03:07:55.622
+starting worker pid=31344 on localhost:11171 at 03:07:55.862
+starting worker pid=31355 on localhost:11171 at 03:07:56.101
+starting worker pid=31366 on localhost:11171 at 03:07:56.340
+starting worker pid=31377 on localhost:11171 at 03:07:56.580
+starting worker pid=31388 on localhost:11171 at 03:07:56.821
+starting worker pid=31399 on localhost:11171 at 03:07:57.060
 There were 16 warnings (use warnings() to see them)
-There were 50 or more warnings (use warnings() to see the first 50)
+There were 16 warnings (use warnings() to see them)
+There were 22 warnings (use warnings() to see them)
+There were 27 warnings (use warnings() to see them)
 There were 16 warnings (use warnings() to see them)
 There were 11 warnings (use warnings() to see them)
+There were 11 warnings (use warnings() to see them)
+There were 11 warnings (use warnings() to see them)
+There were 11 warnings (use warnings() to see them)
 There were 16 warnings (use warnings() to see them)
 There were 32 warnings (use warnings() to see them)
-There were 50 or more warnings (use warnings() to see the first 50)
 There were 32 warnings (use warnings() to see them)
 There were 32 warnings (use warnings() to see them)
+There were 11 warnings (use warnings() to see them)
 There were 16 warnings (use warnings() to see them)
-There were 32 warnings (use warnings() to see them)
 There were 16 warnings (use warnings() to see them)
+There were 38 warnings (use warnings() to see them)
 There were 16 warnings (use warnings() to see them)
+There were 27 warnings (use warnings() to see them)
 [1] "writing results to file..."
 There were 16 warnings (use warnings() to see them)
+There were 16 warnings (use warnings() to see them)
 [1] "end"
-Warning message:
-In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+Warning messages:
+1: In dir.create(savedir) : '1sym_2snp_gamma' already exists
+2: In e$fun(obj, substitute(ex), parent.frame(), e$data) :
   already exporting variable(s): savedir, filename, writeflag, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, namesnpvariants, namestatistics, logpriortheta, spread
