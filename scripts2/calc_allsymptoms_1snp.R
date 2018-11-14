@@ -40,7 +40,7 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 #n <- length(data[,1])
 
-savedir <- 'allsym_1snp_gamma/' # directory for saving results
+savedir <- '3sym_1snp_gamma/' # directory for saving results
 filename <- 'freq-3_1_gamma-' # filename prefix
 writeflag <- TRUE # whether to write the results for each case/snp combination in a file
 

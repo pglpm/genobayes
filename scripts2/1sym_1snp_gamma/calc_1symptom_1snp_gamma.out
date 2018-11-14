@@ -19,36 +19,36 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-starting worker pid=19072 on localhost:11198 at 01:12:42.183
-starting worker pid=19083 on localhost:11198 at 01:12:42.428
-starting worker pid=19094 on localhost:11198 at 01:12:42.672
-starting worker pid=19105 on localhost:11198 at 01:12:42.918
-starting worker pid=19116 on localhost:11198 at 01:12:43.160
-starting worker pid=19127 on localhost:11198 at 01:12:43.404
-starting worker pid=19138 on localhost:11198 at 01:12:43.642
-starting worker pid=19149 on localhost:11198 at 01:12:43.886
-starting worker pid=19160 on localhost:11198 at 01:12:44.127
-starting worker pid=19171 on localhost:11198 at 01:12:44.368
-starting worker pid=19182 on localhost:11198 at 01:12:44.608
-starting worker pid=19193 on localhost:11198 at 01:12:44.848
-starting worker pid=19204 on localhost:11198 at 01:12:45.087
-starting worker pid=19215 on localhost:11198 at 01:12:45.330
-starting worker pid=19226 on localhost:11198 at 01:12:45.575
-starting worker pid=19237 on localhost:11198 at 01:12:45.817
-starting worker pid=19248 on localhost:11198 at 01:12:46.063
-starting worker pid=19259 on localhost:11198 at 01:12:46.303
-starting worker pid=19270 on localhost:11198 at 01:12:46.547
-starting worker pid=19281 on localhost:11198 at 01:12:46.788
-starting worker pid=19292 on localhost:11198 at 01:12:47.033
-starting worker pid=19303 on localhost:11198 at 01:12:47.275
-starting worker pid=19314 on localhost:11198 at 01:12:47.519
-starting worker pid=19325 on localhost:11198 at 01:12:47.761
-starting worker pid=19336 on localhost:11198 at 01:12:48.004
-starting worker pid=19347 on localhost:11198 at 01:12:48.245
-starting worker pid=19358 on localhost:11198 at 01:12:48.491
-starting worker pid=19369 on localhost:11198 at 01:12:48.732
-starting worker pid=19380 on localhost:11198 at 01:12:48.976
-starting worker pid=19391 on localhost:11198 at 01:12:49.218
+starting worker pid=27670 on localhost:11084 at 02:40:36.265
+starting worker pid=27681 on localhost:11084 at 02:40:36.502
+starting worker pid=27692 on localhost:11084 at 02:40:36.740
+starting worker pid=27703 on localhost:11084 at 02:40:36.978
+starting worker pid=27715 on localhost:11084 at 02:40:37.213
+starting worker pid=27726 on localhost:11084 at 02:40:37.449
+starting worker pid=27737 on localhost:11084 at 02:40:37.684
+starting worker pid=27748 on localhost:11084 at 02:40:37.919
+starting worker pid=27759 on localhost:11084 at 02:40:38.156
+starting worker pid=27770 on localhost:11084 at 02:40:38.392
+starting worker pid=27781 on localhost:11084 at 02:40:38.627
+starting worker pid=27792 on localhost:11084 at 02:40:38.862
+starting worker pid=27803 on localhost:11084 at 02:40:39.098
+starting worker pid=27814 on localhost:11084 at 02:40:39.333
+starting worker pid=27825 on localhost:11084 at 02:40:39.569
+starting worker pid=27836 on localhost:11084 at 02:40:39.805
+starting worker pid=27847 on localhost:11084 at 02:40:40.041
+starting worker pid=27858 on localhost:11084 at 02:40:40.277
+starting worker pid=27869 on localhost:11084 at 02:40:40.513
+starting worker pid=27880 on localhost:11084 at 02:40:40.751
+starting worker pid=27891 on localhost:11084 at 02:40:40.986
+starting worker pid=27902 on localhost:11084 at 02:40:41.224
+starting worker pid=27913 on localhost:11084 at 02:40:41.462
+starting worker pid=27924 on localhost:11084 at 02:40:41.698
+starting worker pid=27935 on localhost:11084 at 02:40:41.935
+starting worker pid=27946 on localhost:11084 at 02:40:42.169
+starting worker pid=27957 on localhost:11084 at 02:40:42.405
+starting worker pid=27968 on localhost:11084 at 02:40:42.641
+starting worker pid=27979 on localhost:11084 at 02:40:42.878
+starting worker pid=27990 on localhost:11084 at 02:40:43.115
 [1] "writing results to file..."
 [1] "end"
 Warning messages:
