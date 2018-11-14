@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-13T13:54:02+0100
+%% Last-Updated: 2018-11-14T15:29:48+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -805,10 +805,11 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
   may have.}\fi
 
 
-\section{Problem setup}
+\section{\snp s and insomnia}
 \label{sec:intro}
 
-
+\subsection{Introduction and goals}
+\label{sec:intro_goals}
 
 \mynote{Some intro about insomnia and its symptoms here}
 
@@ -826,7 +827,44 @@ simplified Bayesian network \citep{pearl2000_r2009} of \emph{conditional
   probabilities} (\fig**). The external factors $X$ disappear from the
 graph but their presence is implicit in the probabilistic relation between
 the nodes; the latter also accounts for the complexity of the causal
-mechanisms and our uncertainty about them.
+mechanisms and our uncertainty about them. This is the approach of genetic
+association studies \mynote{***ref}.
+
+The present work has two distinct goals:
+
+First, we present evidence of a strong association between some \snp s
+located in *** and the three main insomnia symptoms \mynote{name the
+  relevant \snp s here?}, within population sampled in***. Our results involve
+associations between each symptom and several \snp s indiviudally, and also
+associations between each symptom and \emph{pairs} of \snp s; the latter
+result shows different kinds of interaction between the alleles of a \snp\
+pair.
+
+Second, we give a detailed but intuitive discussion of the Bayesian method
+used to infer the associations described above. Similar methods have been
+used for other kinds of association studies, for example contextual text
+prediction \citep{mackayetal1995} and population-specific allele count
+\citep{lockwoodetal2001}. This method gives simple, clear, and intuitively
+understandable inferences about symptom-\snp\ associations; it is
+computationally fast; and it is easy to generalize to association studies
+of symptom \emph{combinations} vs \emph{multiple} \snp s, as we'll show in
+later sections.
+
+The Method section of this work focus on explaining our Bayesian approach,
+but use the real data from which our results are derived. In the subsequent
+Result section we discuss the different relevant associations found.
+
+
+\subsection{The data}
+\label{sec:data}
+
+\mynote{description of our data here}
+
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Outline}
+\label{sec:method_outline}
 
 Let's focus for the moment the simplest reduction of such a graph, with
 only one particular \snp\ with two alleles $\ya$, $\yb$, and one symptom
