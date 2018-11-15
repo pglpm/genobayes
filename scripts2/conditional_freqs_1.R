@@ -115,7 +115,7 @@ result <- foreach(symptom=1:numsymptoms,
     colnames(quantities) <- namesnpvariants
 
         if(max(spreads)>writeflag){
-            write.csv(quantities,paste0(savedir,filename,prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp]'-spread',max(spreads),'.csv'))
+            write.csv(quantities,paste0(savedir,filename,prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp]'-spr_',max(spreads),'.csv'))
         }
     quantities
 }
