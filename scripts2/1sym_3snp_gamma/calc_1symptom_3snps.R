@@ -38,7 +38,7 @@ data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 
 savedir <- '1sym_3snp_gamma/' # directory for saving results
 filename <- 'freq-1_3_gamma-' # filename prefix
-writeflag <- 2.75 # whether to write the results for each case/snp combination in a file
+writeflag <- 2.5 # whether to write the results for each case/snp combination in a file
 
 cores <- 30 # for parallel processing
 
