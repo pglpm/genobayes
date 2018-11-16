@@ -1,0 +1,134 @@
+
+Attaching package: 'cowplot'
+
+The following object is masked from 'package:ggplot2':
+
+    ggsave
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+starting worker pid=92054 on localhost:11520 at 23:22:24.131
+starting worker pid=92065 on localhost:11520 at 23:22:24.368
+starting worker pid=92076 on localhost:11520 at 23:22:24.606
+starting worker pid=92087 on localhost:11520 at 23:22:24.842
+starting worker pid=92098 on localhost:11520 at 23:22:25.079
+starting worker pid=92109 on localhost:11520 at 23:22:25.314
+starting worker pid=92120 on localhost:11520 at 23:22:25.549
+starting worker pid=92131 on localhost:11520 at 23:22:25.786
+starting worker pid=92142 on localhost:11520 at 23:22:26.028
+starting worker pid=92153 on localhost:11520 at 23:22:26.267
+starting worker pid=92164 on localhost:11520 at 23:22:26.506
+starting worker pid=92175 on localhost:11520 at 23:22:26.751
+starting worker pid=92186 on localhost:11520 at 23:22:26.998
+starting worker pid=92197 on localhost:11520 at 23:22:27.243
+starting worker pid=92208 on localhost:11520 at 23:22:27.483
+starting worker pid=92219 on localhost:11520 at 23:22:27.717
+starting worker pid=92230 on localhost:11520 at 23:22:27.959
+starting worker pid=92241 on localhost:11520 at 23:22:28.199
+starting worker pid=92252 on localhost:11520 at 23:22:28.437
+starting worker pid=92263 on localhost:11520 at 23:22:28.676
+starting worker pid=92274 on localhost:11520 at 23:22:28.914
+starting worker pid=92285 on localhost:11520 at 23:22:29.150
+starting worker pid=92296 on localhost:11520 at 23:22:29.384
+starting worker pid=92307 on localhost:11520 at 23:22:29.619
+starting worker pid=92318 on localhost:11520 at 23:22:29.856
+starting worker pid=92329 on localhost:11520 at 23:22:30.097
+starting worker pid=92340 on localhost:11520 at 23:22:30.336
+starting worker pid=92351 on localhost:11520 at 23:22:30.574
+starting worker pid=92362 on localhost:11520 at 23:22:30.811
+starting worker pid=92373 on localhost:11520 at 23:22:31.047
+[1] "warning maximization: code=3 symptom=1 snp=5729 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=13221 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=28831 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=31867 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=45628 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=60020 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=60019 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=99244 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=99912 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=101273 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=102016 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=108846 trying alterative..."
+[1] "warning maximization: code=3 symptom=1 snp=114868 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=2976 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=8136 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=10295 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=18176 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=26754 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=27281 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=30464 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=31329 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=37040 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=46479 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=48791 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=56859 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=61970 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=75901 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=87319 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=89008 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=93243 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=95042 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=98548 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=116557 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=119931 trying alterative..."
+[1] "warning maximization: code=3 symptom=2 snp=119932 trying alterative..."
+[1] "warning maximization: code=3 symptom=3 snp=3883 trying alterative..."
+[1] "warning maximization: code=3 symptom=3 snp=31586 trying alterative..."
+[1] "warning maximization: code=3 symptom=3 snp=31585 trying alterative..."
+[1] "warning maximization: code=3 symptom=3 snp=33174 trying alterative..."
+[1] "warning maximization: code=3 symptom=3 snp=36659 trying alterative..."
+[1] "warning maximization: code=3 symptom=3 snp=37067 trying alterative..."
+[1] "warning maximization: code=3 symptom=3 snp=74150 trying alterative..."
+[1] "warning maximization: code=3 symptom=3 snp=82564 trying alterative..."
+[1] "warning maximization: code=3 symptom=3 snp=92644 trying alterative..."
+[1] "warning maximization: code=3 symptom=3 snp=109116 trying alterative..."
+[1] "warning maximization: code=3 symptom=3 snp=114671 trying alterative..."
+[1] "warning maximization: code=3 symptom=3 snp=117535 trying alterative..."
+[1] "warning maximization: code=3 symptom=3 snp=125011 trying alterative..."
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)There were 50 or more warnings (use warnings() to see the first 50)
+
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+There were 50 or more warnings (use warnings() to see the first 50)
+[1] "writing results to file..."
+[1] "end"
+Warning message:
+In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+  already exporting variable(s): savedir, filename, writeflag, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, namesnpvariants, namestatistics, logpriortheta, spread
