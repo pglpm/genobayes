@@ -91,7 +91,7 @@ result <- foreach(symptom=1:numsymptoms,
         ##                 #method='L-BFGS-B',lower=c(1e-10,1e-10)
         ##                 )
         if(maxsearch$code>2){print(paste0('failure maximization: code=',maxsearch$code,' symptom=',symptom,' snp=',snp))}
-        
+
         theta <- exp(maxsearch$estimate)
         newtheta <- f+theta
         newA <- apply(newtheta,2,sum)

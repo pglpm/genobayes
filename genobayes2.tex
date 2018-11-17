@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-14T18:05:42+0100
+%% Last-Updated: 2018-11-17T18:23:57+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -752,9 +752,9 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yI}{I}
 \newcommand*{\ya}{a}
 \newcommand*{\yb}{b}
-\newcommand*{\ysA}{A}
-\newcommand*{\ysB}{B}
-\newcommand*{\ysC}{C}
+\newcommand*{\ysA}{\textrm{O}}% onset insomnia
+\newcommand*{\ysB}{\textrm{M}}% maintenance insomnia
+\newcommand*{\ysC}{\textrm{T}}% terminal insomnia
 \newcommand*{\dbeta}{\betaup}
 \newcommand*{\dA}{\pi}
 \newcommand*{\dgamma}{\gammaup}
@@ -875,12 +875,16 @@ fraction $f_{S\|\yb}$ among those having allele $\yb$. These are
 are markedly different, then we can conclude that the \snp\ must have some
 causal relevance, however indirect, for the symptom.
 
+\mynote{Add some remarks about the role of \enquote{limit frequencies} and
+  \enquote{arbitrarily large population}. Relation to partial
+  exchangeability and belief about next individual in an endless sequence.}
+
 We want to quantify our \dob\ about the values of such conditional
 frequencies in an arbitrarily large population, given
 \begin{enumerate*}[label=(\arabic*)]
-\item the conditional frequencies in a population sample, \item a
-  representation of our initial information about such frequencies.
-\end{enumerate*} In formulae,
+\item the conditional frequencies in a population sample, \item our initial
+  information or guesses about such frequencies.
+\end{enumerate*} In formulae, we want to assign a numerical value to
 \begin{equation*}
   \pf(\ptext{conditional frequencies} \| \ptext{sample data}, \ptext{initial information}).
 \end{equation*}
@@ -896,41 +900,51 @@ quantify our belief we use Bayes's theorem:
   \times
   \pf(\ptext{frequencies} \| \ptext{initial info}).
 \end{multline}
-The first \dob\ in the product above is given by a simple sampling formula;
-the second can be modelled in several ways, but if the sample data are
-enough it will lead to basically the same final \dobs\ about the
-conditional frequencies.
+The first \dob\ in the product above is given by a simple sampling formula,
+which we'll discuss shortly. The second can be modelled in several ways,
+but all will lead to the same final \dobs\ about the conditional
+frequencies, if the sample data are enough.
 
 Once we have a quantified distribution of belief about the conditional
-frequencies in an arbitrarily large population, it is easy to see whether we
-expect the latter to be significantly different for different alleles. See
-for example the distributions in \fig~\ref{fig:example_distributions}: from
-the sample data we expect conditional frequencies $0.259$ and $0.284$ for
-the symptom conditional on the two alleles, with standard deviations
-$0.008$ and $0.006$. From the two belief distributions we can even
-calculate our belief that the two conditional frequencies are equal to
-within some range; in the case of the figure our belief that the two
-frequencies are the same within $0.01$ is $3.2\%$. Many other
-quantifications are possible; for example our belief that a conditional
-frequency lies between two particular values, and so on.
-\begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
- \centering\includegraphics[width=0.75\linewidth]{example_distr_condfreqs.pdf}\\
-\caption{Example of distributions of belief}\label{fig:example_distributions}
-\end{figure}% scripts/single_gene_condfreqs_thetamax.nb
-%% EVs: 0.25917, 0.283506; SDs: 0.00804727, 0.00635616
-%% overlap at 0.01 = 0.0321908
+frequencies in an arbitrarily large population, we can quantitatively
+estimate their difference and its significance in a variety of ways. The
+most direct approach is to calculate our belief about their difference;
+% \begin{equation}
+%   \label{eq:distribution_difference}
+%     \pf(\ptext{frequency difference} \| \ptext{data}, \ptext{initial info})
+% \end{equation}
+\fig~\ref{fig:example_difference_distributions} is a concrete example. The
+figure shows that we expect their difference to be $0.033$, with an
+uncertainty of $0.012$ as measured by the standard deviation. The expected
+difference is therefore $2.75$ standard deviations away from zero, and this
+can be a way to quantify the significance of the difference. The belief
+distribution also says, for example, that the difference is $2.7\%$ likely
+to be in the interval $\clcl{-0.01,0.01}$; this isn't a meaningful measure
+of significance, though: any interval around zero is arbitrary since we're
+considering an arbitrarily large population.
+
+% See for example the distributions in \fig~\ref{fig:example_distributions}:
+% from the sample data we expect conditional frequencies $0.259$ and $0.284$
+% for the symptom conditional on the two alleles, with standard deviations
+% $0.008$ and $0.006$. From the two belief distributions we can even
+% calculate our belief that the two conditional frequencies are equal to
+% within some range; in the case of the figure our belief that the two
+% frequencies are the same within $0.01$ is $3.2\%$. Many other
+% quantifications are possible; for example our belief that a conditional
+% frequency lies between two particular values, and so on.
 
 \mynote{add something about dependence of broadness on sample size, and
   \enquote{smoothing} as discussed by MacKay \amp\ Bauman Peto
   \citey[\sect~2.6]{mackayetal1995}.}
 
-This approach is not dichotomous, unlike a \enquote{significance} test.
-Rather, we will find a graduation of cases: from frequencies predicted to
-be clearly distinct, to frequencies with uncertainties too large for
-drawing definite conclusions. These cases can be sorted, obtaining a
-sequence of \snp s with a decreasing belief of causal association with the
-symptom. How many of these \snp s are to be selected for further study
-depends on one's experimental and computational resources.
+The approach just outlined is not dichotomous, unlike a classical
+\enquote{significance} test. Rather, we will find a graduation of cases:
+from conditional frequencies predicted to be clearly distinct, to
+conditional frequencies with uncertainties too large for drawing definite
+conclusions. These cases can be sorted, obtaining a sequence of \snp s with
+a decreasing belief of causal association with the symptom. How many of
+these \snp s are to be selected for further study depends on one's
+experimental and computational resources.
 
 
 In the next sections we use formula~\eqref{eq:intuitive_Bayes} to estimate
@@ -943,23 +957,29 @@ sections we shall consider the study of each symptom given \emph{pairs} of
 given one \snp\ at a time.
 \textcolor{white}{If you find this you can claim a postcard from us.}
 
-\section{Inference}
+\section{Inference: concrete calculation}
 \label{sec:inference}
 
-\mynote{Add some remarks about the role of these \enquote{limit
-    frequencies}. Relation to partial exchangeability and belief about next
-  individual in an endless sequence.}
+In this section we do step by step the calculations outlined above. For
+definiteness we consider onset insomnia ($\ysA$) and the \snp\ rs875994
+with alleles $\ya$, $\yb$. The limit conditional frequencies are denoted
+$f_{\ysA\|\ya}$ and $f_{\ysA\|\yb}$. The sample data, denoted by $\yD$,
+consist of the number of individuals $F_{\ysA\|\ya}$ that show symptom
+$\ysA$ among the sampled individuals having allele $\ya$, and the number
+$F_{\ysA\|\yb}$ showing the same symptom among those having allele $\yb$.
+Our initial information consists in the number $N_{\ya}$ of sampled
+individuals with allele $\ya$, and the number $N_{\yb}$ with allele $\yb$.
+The total number of sampled individuals is therefore $N_{\ya}+N_{\yb}$.
+This initial information and our initial beliefs are denoted by $\yI$; the
+numbers $N_{\ya}$, $N_{\yb}$ will often be indicated explicitly even though
+they're part of $\yI$.
 
-Consider for definiteness symptomn $\ysA$ and a particular \snp\ with
-alleles $\ya$, $\yb$. The limit conditional frequencies are denoted
-$f_{\ysA\|\ya}$ and $f_{\ysA\|\yb}$. Denote the sample data by $\yD$ and
-our initial beliefs by $\yI$. We want to quantify our belief about these
-frequencies jointly, expressed by the density function
+Our belief about the joint conditional frequencies is expressed by the
+density function
 \begin{equation}
   \label{eq:joint_belief_f}
   \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI).
 \end{equation}
-
 According to Bayes's theorem~\eqref{eq:intuitive_Bayes}, the belief above
 is proportional to the product of
 $\pf(\yD \| f_{\ysA\|\ya}, f_{\ysA\|\yb}, \yI)$ and our initial belief
@@ -976,7 +996,7 @@ of these will show symptom $\ysA$ and a fraction $1-F_{\ysA\|\ya}$ won't
 show this symptom is
 \begin{equation}
   \label{eq:sampling_belief}
-  \pf(n_{\ysA\|\ya} \| N_{\ya}, f_{\ysA\|\ya}, \yI)
+  \pf( F_{\ysA\|\ya} \| f_{\ysA\|\ya},  N_{\ya}, \yI)
   =
   {f_{\ysA\|\ya}}^{N_{\ya}\,F_{\ysA\|\ya}} \;
   {(1-f_{\ysA\|\ya})}^{N_{\ya}\,(1-F_{\ysA\|\ya})},
@@ -985,7 +1005,7 @@ and analogously for allele $\yb$. Our belief about obtaining data
 $\yD = (F_{\ysA\|\ya}, F_{\ysA\|\yb})$ is therefore
 \begin{equation}
   \label{eq:sampling_belief_combined}
-  \pf(\yD \| N_{\ya}, N_{\yb}, f_{\ysA\|\ya},f_{\ysA\|\yb}, \yI)
+  \pf(\yD \|  f_{\ysA\|\ya},f_{\ysA\|\yb}, N_{\ya}, N_{\yb}, \yI)
   =
  \prod_{x=\ya,\yb} {f_{\ysA\|x}}^{N_{x}\,F_{\ysA\|x}} \;
   {(1-f_{\ysA\|x})}^{N_{x}\,(1-F_{\ysA\|x})}.
@@ -993,25 +1013,24 @@ $\yD = (F_{\ysA\|\ya}, F_{\ysA\|\yb})$ is therefore
 
 \medskip
 
-Our initial \dob\ about the limit conditional frequencies is based on this
-main assumption: we expect the frequencies conditional on the two alleles,
-$f_{\ysA\|\ya}$ and $f_{\ysA\|\yb}$, not to be wildly different. This is a
-conservative assumption. Therefore, if our updated belief conditional on
-the data will show clearly distinct conditional frequencies, it will be
-because the data have given enough evidence to overwhelm our initial
-conservative belief.
+Our initial \dob\ about the limit conditional frequencies is based on the
+following main assumption: we expect the frequencies conditional on the two
+alleles, $f_{\ysA\|\ya}$ and $f_{\ysA\|\yb}$, not to be wildly different.
+This is a conservative assumption. Therefore, if our updated belief
+conditional on the data will show clearly distinct conditional frequencies,
+it will be because the data have given enough evidence to overwhelm our
+initial conservative belief.
 
-The kind of density representing this initial belief
-is qualitatively shown in \fig~\ref{fig:initial_belief}.
-\begin{figure}[t!]%{r}{0.4\linewidth} % with wrapfigure
+This initial belief is represented by a density qualitatively shown in
+\fig~\ref{fig:initial_belief}.
+\begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
  \centering\includegraphics[width=0.95\linewidth]{prior3d.png}
 \caption{Qualitative plot of our initial belief}\label{fig:initial_belief}
 \end{figure}% scripts2/plots_distributions.nb
-Note the rise along the diagonal of the coordinates
-$(f_{\ysA\|\ya},
-f_{\ysA\|\yb}$)$.
-
-Mathematically we write it as an integral:
+Note how most of our belief's mass is concentrated along the diagonal of
+the coordinates $(f_{\ysA\|\ya}, f_{\ysA\|\yb})$. \mynote{Say something
+  about the rises at the edges of the diagonal.} Mathematically we write
+this density as an integral:
 \begin{equation}
   \label{eq:beta_gamma_prior}
   \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)
@@ -1024,25 +1043,25 @@ Mathematically we write it as an integral:
 \end{equation}
 where $\dbeta(\dotv \| \yA,\yq)$ is a beta density with shape
 parameters $\yA\yq$ and $\yA\,(1-\yq)$:
-\begin{equation}
+\begin{multline}
   \label{eq:def_beta}
   \dbeta(f \| \yA,\yq) \defd
   \frac{\Gamma(\yA)}{\Gamma(\yA\yq)\,\Gamma[\yA\,(1-\yq)]}\;
-  f^{\yA\yq}\;(1-f)^{\yA\,(1-\yq)},
-\end{equation}
+  f^{\yA\yq}\;(1-f)^{\yA\,(1-\yq)},\\
+  \yA>0,\quad 0\le\yq\le1,
+\end{multline}
 and $\dA$ is a density that we leave unspecified for the moment: several
 different expressions for $\dA$ will be used, to test how much our
 inferences depend on our initial belief.
 
-We write $\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)$ in the above fashion,
-with integrals, only to emphasize that our beliefs about $f_{\ysA\|\ya}$ and
-$f_{\ysA\|\yb}$ are not disjoint, and to show how their mutual dependence
-comes about: by first considering two independent densities having the same
-parameters, and then mixing over these parameters.
-
-This construction has the interesting consequence that the our updated
-belief $\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI)$ can be formally
-written in the following way:
+We express $\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)$ as an integral to
+emphasize that our initial beliefs about $f_{\ysA\|\ya}$ and
+$f_{\ysA\|\yb}$ are \emph{not} disjoint, and to show how their mutual
+dependence comes about: by first considering two independent densities
+having the same parameters, and then mixing their product over these
+parameters. This construction has the interesting consequence that the our
+updated belief $\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI)$ can be
+formally written in the following way:
 \begin{equation}
   \label{eq:formal_hierarchic}
   \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI) =
@@ -1073,7 +1092,25 @@ helps in constructing densities that better represent our initial beliefs,
 and also leads to formulae that can be better approximated when exact
 computation is unfeasible.
 
+\begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
+ \centering\includegraphics[width=0.75\linewidth]{example_distr_condfreqs.pdf}\\
+\caption{Example of distributions of belief}\label{fig:example_distributions}
+\end{figure}% scripts/single_gene_condfreqs_thetamax.nb
+%% EVs: 0.25917, 0.283506; SDs: 0.00804727, 0.00635616
+%% overlap at 0.01 = 0.0321908
 
+
+
+\begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
+ \centering\includegraphics[width=0.75\linewidth]{difference_symA_snp6.pdf}\\
+ \caption{Distribution for the difference between the frequencies
+   $f_{\ysA\|\ya}$, $f_{\ysA\|\yb}$ of onset insomnia ($\ysA$) conditional on
+   the two alleles of \snp\ rs875994}\label{fig:example_difference_distributions}
+\end{figure}% scripts/condfreqs_general_tests.nb
+%% snp #6,
+%% EV: -0.0330998, SD: 0.0120472
+%% EV/SD: 2.75
+%% 0.0274176 within 0.01
 
 
 \section{Summary of the main formulae}

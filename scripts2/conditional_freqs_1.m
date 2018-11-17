@@ -1,6 +1,6 @@
 defaultspread[q_] :=  Max /@(Abs@ArrayReshape[
   Table[(q[[co, x]] - q[[co, y]])/
-	(q[[co + numsymptomvariants, x]] + q[[co + numsymptomvariants, y]])
+	Sqrt@(q[[co + numsymptomvariants, x]]^2 + q[[co + numsymptomvariants, y]]^2)
       , {co, numsymptomvariants}
       , {x, numsnpvariants - 1}
       , {y, x + 1, numsnpvariants}]
