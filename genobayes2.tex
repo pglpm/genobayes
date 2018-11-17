@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-17T18:23:57+0100
+%% Last-Updated: 2018-11-17T19:41:28+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -957,7 +957,7 @@ sections we shall consider the study of each symptom given \emph{pairs} of
 given one \snp\ at a time.
 \textcolor{white}{If you find this you can claim a postcard from us.}
 
-\section{Inference: concrete calculation}
+\subsection{Inference: concrete calculation}
 \label{sec:inference}
 
 In this section we do step by step the calculations outlined above. For
@@ -1051,8 +1051,9 @@ parameters $\yA\yq$ and $\yA\,(1-\yq)$:
   \yA>0,\quad 0\le\yq\le1,
 \end{multline}
 and $\dA$ is a density that we leave unspecified for the moment: several
-different expressions for $\dA$ will be used, to test how much our
-inferences depend on our initial belief.
+different choices for $\dA$ will be used, to test how much our inferences
+depend on our initial belief. We discuss these choices in \sect*** together
+with the meaning of the parameters $\yA$, $\yq$.
 
 We express $\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)$ as an integral to
 emphasize that our initial beliefs about $f_{\ysA\|\ya}$ and
@@ -1066,31 +1067,50 @@ formally written in the following way:
   \label{eq:formal_hierarchic}
   \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI) =
   \tint\di\yA\tint\di\yq\;
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yA,\yq,\yD, \yI)\;
-  \pf(\yA,\yq \|\yD, \yI),
+    \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\,
+  \dbeta(f_{\ysA\|\yb} \| \yA,\yq)\;
+%  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yA,\yq,\yI)\;
+  \dA(\yA,\yq \|\yD, \yI),
 \end{equation}
-with
-\begin{equation}
+with the normalized density $\dA(\yA,\yq \|\yD, \yI)$ defined by
+\begin{multline}
   \label{eq:update_hyperparameter}
-  \pf(\yA,\yq \|\yD, \yI) \propto
-  \tint\di f_{\ysA\|\ya}\tint\di f_{\ysA\|\yb}\;
+  \dA(\yA,\yq \|\yD, \yI) \propto
+  \pf(\yD \|\yA,\yq,\yI)\;
+  \dA(\yA,\yq) ={}\\
+\Bigl[   \tint\di f_{\ysA\|\ya}\tint\di f_{\ysA\|\yb}\;
   \pf(\yD \|f_{\ysA\|\ya}, f_{\ysA\|\yb}, \yI)\;
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \|\yA,\yq, \yI).
-\end{equation}
-This representation is discussed in appendix***. It is as if $\yA$, $\yq$
-were unknown parameters, and our update for the frequencies proceeded by
-first updating our belief about the parameters and then marginalizing them
-out. This is a so-called \emph{hierarchic} model \citep{good1980}. A point
-rarely emphasized in the literature is that there is no mathematical
-difference between a hierarchic and a non-hierarchic model: we could forget
-about the integrals in formula~\eqref{eq:beta_gamma_prior} and about the
-update formula~\eqref{eq:formal_hierarchic}, and simply treat
+      \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\,
+      \dbeta(f_{\ysA\|\yb} \| \yA,\yq)
+       \Bigr]\;
+%  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \|\yA,\yq, \yI)\;
+  \dA(\yA,\yq).
+\end{multline}
+It is as if $\yA$, $\yq$ were unknown parameters with initial belief
+density $\dA(\yA,\yq)$, and our update for the frequencies proceeded by
+first updating our belief about the parameters,
+\eqn~\eqref{eq:update_hyperparameter}, and then marginalizing them out,
+\eqn~\eqref{eq:formal_hierarchic}. This is a so-called \emph{hierarchic}
+model \citep{good1980}. This hierarchic way of thinking often helps in
+constructing densities that better represent our initial beliefs, and also
+leads to formulae that can be better approximated when exact computation is
+unfeasible. A point rarely emphasized in the literature, though, is that
+there is no mathematical difference between a hierarchic and a
+non-hierarchic model: we could forget about the integrals in
+formula~\eqref{eq:beta_gamma_prior} and about the update
+formula~\eqref{eq:formal_hierarchic}, and simply treat
 $\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)$ as the density depicted in
 \fig~\ref{fig:initial_belief}, with update~\eqref{eq:intuitive_Bayes}. The
-results would be the same. The hierarchic way of thinking, though, often
-helps in constructing densities that better represent our initial beliefs,
-and also leads to formulae that can be better approximated when exact
-computation is unfeasible.
+results would be the same. Further discussion about the formulae above is
+given in \sect***.
+
+
+\subsection{Choices of initial beliefs}
+\label{sec:choices_prior_info}
+
+
+
+
 
 \begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
  \centering\includegraphics[width=0.75\linewidth]{example_distr_condfreqs.pdf}\\
