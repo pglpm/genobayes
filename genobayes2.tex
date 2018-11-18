@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-18T19:06:26+0100
+%% Last-Updated: 2018-11-18T19:39:52+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -759,16 +759,20 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\dA}{\pi}
 \newcommand*{\dgamma}{\gammaup}
 \newcommand*{\yA}{\alpha}
-\newcommand*{\yq}{\nu}
+\newcommand*{\yqq}{\nu}
+\newcommand*{\yq}{\bm{\yqq}}
 \newcommand*{\yAm}{\alpha_{\text{M}}}
 \newcommand*{\yqm}{\nu_{\text{M}}}
-\newcommand*{\yu}{u}
+\newcommand*{\yu}{\bm{u}}
 \newcommand*{\yua}{u}
 \newcommand*{\yub}{v}
 \newcommand*{\yuam}{\yua_{\text{M}}}
 \newcommand*{\yubm}{\yub_{\text{M}}}
 \newcommand*{\yum}{\bm{u}_{text{M}}}
 \newcommand*{\yna}{k}
+\newcommand*{\yf}{\bm{f}}
+\newcommand*{\ysum}{\tsum}
+\newcommand*{\yprod}{\tprod}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \firmlists
@@ -1180,7 +1184,30 @@ frequencies given the data:
 \label{sec:choices_prior_info}
 
 
-
+The parameters $\yu$ of the Dirichlet density for the frequency
+distribution $\yf$ have very intuitive meanings, even more evident if we
+rewrite them as their sum and a pair of normalized parameters:
+\begin{equation}
+  \label{eq:rewrite_params}
+  \yA \defd \ysum\yu,
+  \qquad
+  \yq\defd\yu/\sum\yu.
+\end{equation}
+The normalized parameters $\yq$ are the expected frequency distribution:
+\begin{equation}
+  \label{eq:meaning_normalized_parameters}
+  \expe{\yf \| \yu} = \yq
+\end{equation}
+The sum of the parameters $\yA$ expresses the sharpness of the
+distribution, as seen from the covariance matrix:
+\begin{equation}
+  \label{eq:variances_covariances}
+  \var(f_i \| \yu) = \frac{\yqq_i\;(1-\yqq_i)}{\yA+1},
+  \qquad
+  \cov(f_i\,f_j \| \yu) = -\frac{\yqq_i\,\yqq_j}{\yA+1}.
+\end{equation}
+In fact, from the update formula*** we see that $\yA$ quantifies the amount
+of data necessary to modify our initial belief.
 
 
 
