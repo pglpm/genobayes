@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-18T12:38:33+0100
+%% Last-Updated: 2018-11-18T13:04:13+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -762,6 +762,9 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yq}{\nu}
 \newcommand*{\yAm}{\alpha_{\text{M}}}
 \newcommand*{\yqm}{\nu_{\text{M}}}
+\newcommand*{\yu}{u}
+\newcommand*{\yum}{\bm{u}_{text{M}}}
+\newcommand*{\yna}{k}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \firmlists
@@ -1048,7 +1051,7 @@ this density as an integral:
   \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\;
   \dbeta(f_{\ysA\|\yb} \| \yA,\yq)
 \end{gather}
-where $\dbeta(\dotv \| \yA,\yq)$ is a beta density with shape
+where $\dbeta(f \| \yA,\yq)$ is a beta density with shape
 parameters $\yA\yq$ and $\yA\,(1-\yq)$:
 \begin{multline}
   \label{eq:def_beta}
@@ -1139,6 +1142,14 @@ belief~\eqref{eq:formal_hierarchic} that doesn't involve parameter integration:
 The maximum of $\dA(\yA,\yq \|\yD, \yI)$, or better of its logarithm, can
 easily be found with most optimization methods. The explicit expression to
 be optimized is discussed in appendix*** \mynote{ref here to \citep{mackay1996}}
+
+\begin{equation}
+  \label{eq:to_optimize}
+  \yna\,[\ln\Gamma(\tsum_s\yu_s) - \tsum_s\ln\Gamma(\yu_s)]
+  -\sum_x
+  [\ln\Gamma(N_x+\tsum_s\yu_s) - \tsum_s\ln\Gamma(N_xF_{s\|x}+\yu_s)]
+\end{equation}
+
 
 
 
