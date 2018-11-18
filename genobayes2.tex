@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-18T13:04:13+0100
+%% Last-Updated: 2018-11-18T19:06:26+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -763,6 +763,10 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yAm}{\alpha_{\text{M}}}
 \newcommand*{\yqm}{\nu_{\text{M}}}
 \newcommand*{\yu}{u}
+\newcommand*{\yua}{u}
+\newcommand*{\yub}{v}
+\newcommand*{\yuam}{\yua_{\text{M}}}
+\newcommand*{\yubm}{\yub_{\text{M}}}
 \newcommand*{\yum}{\bm{u}_{text{M}}}
 \newcommand*{\yna}{k}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
@@ -1040,30 +1044,30 @@ this density as an integral:
   \label{eq:beta_gamma_prior}
   \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)
   =
-  \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yA
-  \int_{\mathrlap{0}}^{\mathrlap{1}}\di\yq\;
-\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yA,\yq,\yI)\;
-  \dA(\yA,\yq \| \yI)
+  \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
+  \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\;
+\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yua,\yub,\yI)\;
+  \dA(\yua,\yub \| \yI)
   \\
 \shortintertext{with}
   \label{eq:def_ff_given_Aq}
-\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yA,\yq,\yI)\defd
-  \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\;
-  \dbeta(f_{\ysA\|\yb} \| \yA,\yq)
+\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yua,\yub,\yI)\defd
+  \dbeta(f_{\ysA\|\ya} \| \yua,\yub)\;
+  \dbeta(f_{\ysA\|\yb} \| \yua,\yub)
 \end{gather}
-where $\dbeta(f \| \yA,\yq)$ is a beta density with shape
-parameters $\yA\yq$ and $\yA\,(1-\yq)$:
-\begin{multline}
+where $\dbeta(f \| \yua,\yub)$ is a beta density with shape
+parameters $\yua$ and $\yub$:
+\begin{equation}
   \label{eq:def_beta}
-  \dbeta(f \| \yA,\yq) \defd
-  \frac{\Gamma(\yA)}{\Gamma(\yA\yq)\,\Gamma[\yA\,(1-\yq)]}\;
-  f^{\yA\yq}\;(1-f)^{\yA\,(1-\yq)},\\
-  \yA>0,\quad 0\le\yq\le1,
-\end{multline}
+  \dbeta(f \| \yua,\yub) \defd
+  \frac{\Gamma(\yua+\yub)}{\Gamma(\yua)\,\Gamma(\yub)}\;
+  f^{\yua}\;(1-f)^{\yub},
+  \qquad  \yua,\yub>0,
+\end{equation}
 and $\dA$ is a normalized density that we leave unspecified for the moment: several
 different choices for $\dA$ will be used, to test how much our inferences
 depend on our initial belief. We discuss these choices in \sect*** together
-with the meaning of the parameters $\yA$, $\yq$.
+with the meaning of the parameters $\yua$, $\yub$.
 
 We express $\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)$ as an integral to
 emphasize that our initial beliefs about $f_{\ysA\|\ya}$ and
@@ -1088,27 +1092,27 @@ in the following way:
 \begin{equation}
   \label{eq:formal_hierarchic}
   \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI) =
-  \tint\di\yA\tint\di\yq\;
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yA,\yq,\yI)\;
-  %   \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\,
-  % \dbeta(f_{\ysA\|\yb} \| \yA,\yq)\;
-  \dA(\yA,\yq \|\yD, \yI),
+  \tint\di\yua\tint\di\yub\;
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yua,\yub,\yI)\;
+  %   \dbeta(f_{\ysA\|\ya} \| \yua,\yub)\,
+  % \dbeta(f_{\ysA\|\yb} \| \yua,\yub)\;
+  \dA(\yua,\yub \|\yD, \yI),
 \end{equation}
-with the normalized density $\dA(\yA,\yq \|\yD, \yI)$ defined by
+with the normalized density $\dA(\yua,\yub \|\yD, \yI)$ defined by
 \begin{multline}
   \label{eq:update_hyperparameter}
-  \dA(\yA,\yq \|\yD, \yI) \propto   \dA(\yA,\yq \|\yI)
+  \dA(\yua,\yub \|\yD, \yI) \propto   \dA(\yua,\yub \|\yI)
 \times{}\\
 %\Bigl[
 \underbrace{\tint\di f_{\ysA\|\ya}\tint\di f_{\ysA\|\yb}\;
   \pf(\yD \|f_{\ysA\|\ya}, f_{\ysA\|\yb}, \yI)\;
- \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \|\yA,\yq, \yI)}_{\zerob{\footnotesize${}\defs\pf(\yD \|\yA,\yq,\yI)$}}.
-      % \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\,
-      % \dbeta(f_{\ysA\|\yb} \| \yA,\yq)
+ \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \|\yua,\yub, \yI)}_{\zerob{\footnotesize${}\defs\pf(\yD \|\yua,\yub,\yI)$}}.
+      % \dbeta(f_{\ysA\|\ya} \| \yua,\yub)\,
+      % \dbeta(f_{\ysA\|\yb} \| \yua,\yub)
 %       \Bigr]
 \end{multline}
-It is as if $\yA$, $\yq$ were unknown parameters with initial belief
-density $\dA(\yA,\yq \|\yI)$, and our update for the frequencies proceeded by
+It is as if $\yua$, $\yub$ were unknown parameters with initial belief
+density $\dA(\yua,\yub \|\yI)$, and our update for the frequencies proceeded by
 first updating our belief about the parameters,
 \eqn~\eqref{eq:update_hyperparameter}, and then marginalizing them out,
 \eqn~\eqref{eq:formal_hierarchic}. This is a so-called \emph{hierarchic}
@@ -1126,35 +1130,55 @@ results would be the same. Further discussion about the formulae above is
 given in \sect***.
 
 
-With large sample sizes the density $\dA(\yA,\yq \|\yD, \yI)$ turns out to
+With large sample sizes the density $\dA(\yua,\yub \|\yD, \yI)$ turns out to
 be so peaked with respect to
-$\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yA,\yq,\yI)$ that it can be considered
-as a Dirac delta centred on the parameters $\yAm$, $\yqm$ that maximize it.
+$\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yua,\yub,\yI)$ that it can be considered
+as a Dirac delta centred on the parameters $\yuam$, $\yubm$ that maximize it.
 We thus obtain a good approximation of the updated
 belief~\eqref{eq:formal_hierarchic} that doesn't involve parameter integration:
 \begin{multline}
   \label{eq:formal_hierarchic_approx}
   \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI) \approx
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yAm,\yqm,\yI)\\
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yuam,\yubm,\yI)\\
   \text{with}\quad
-  (\yAm,\yqm) \defd \argmax_{\yA,\yq}\dA(\yA,\yq \|\yD, \yI).
+  (\yuam,\yubm) \defd \argmax_{\yua,\yub}\dA(\yua,\yub \|\yD, \yI).
 \end{multline}
-The maximum of $\dA(\yA,\yq \|\yD, \yI)$, or better of its logarithm, can
+The maximum of $\dA(\yua,\yub \|\yD, \yI)$, or better of its logarithm, can
 easily be found with most optimization methods. The explicit expression to
-be optimized is discussed in appendix*** \mynote{ref here to \citep{mackay1996}}
-
+be optimized, discussed in appendix***,
 \begin{equation}
   \label{eq:to_optimize}
   \yna\,[\ln\Gamma(\tsum_s\yu_s) - \tsum_s\ln\Gamma(\yu_s)]
-  -\sum_x
+  -\sum_{\mathclap{x=\ya,\yb}}
   [\ln\Gamma(N_x+\tsum_s\yu_s) - \tsum_s\ln\Gamma(N_xF_{s\|x}+\yu_s)]
 \end{equation}
 
+Combininig \eqns~\eqref{eq:formal_hierarchic_approx},
+\eqref{eq:def_ff_given_Aq}, \eqref{eq:def_beta} we thus arrive at the
+following explicit approximate formula for our belief about the conditional
+frequencies given the data:
+\begin{multline}
+  \label{eq:formal_hierarchic_approx_final}
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI) \approx
+  \dbeta(f_{\ysA\|\ya} \| \yuam,\yubm)\;
+  \dbeta(f_{\ysA\|\yb} \| \yuam,\yubm)\\
+  \text{with
+    $(\yuam,\yubm)$ maximizing~\eqref{eq:to_optimize}}.
+\end{multline}
 
 
 
-\subsection{Choices of initial beliefs}
+
+ \mynote{ref here to \citep{mackay1996}}
+\subsection{Generalization to symptom combinations}
+\label{sec:generalization_symptom_combinations}
+
+
+
+
+\subsection{Choices of initial beliefs and meaning of the parameters}
 \label{sec:choices_prior_info}
+
 
 
 
