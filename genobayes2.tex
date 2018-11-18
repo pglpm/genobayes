@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-17T19:41:28+0100
+%% Last-Updated: 2018-11-18T12:33:38+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -714,7 +714,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %\def\hy{-\penalty0\hskip0pt\relax}
 %\newcommand*{\labelbis}[1]{\tag*{(\ref{#1})$_\text{r}$}}
 %\newcommand*{\mathbox}[2][.8]{\parbox[t]{#1\columnwidth}{#2}}
-%\newcommand*{\zerob}[1]{\makebox[0pt][l]{#1}}
+\newcommand*{\zerob}[1]{\makebox[0pt][c]{#1}}
 \newcommand*{\tprod}{\mathop{\textstyle\prod}\nolimits}
 \newcommand*{\tsum}{\mathop{\textstyle\sum}\nolimits}
 \newcommand*{\tint}{\begingroup\textstyle\int\endgroup\nolimits}
@@ -740,7 +740,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand{\mynote}[1]{ {\color{notecolour}\puzzle\ #1}}
 \newcommand*{\widebar}[1]{{\mkern1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
 
-%\DeclareMathOperator*{\argsup}{arg\,sup}
+\DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator{\cov}{cov}
 \DeclareMathOperator{\var}{var}
 \DeclareMathOperator{\diag}{diag}
@@ -760,6 +760,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\dgamma}{\gammaup}
 \newcommand*{\yA}{\alpha}
 \newcommand*{\yq}{\nu}
+\newcommand*{\yAm}{\alpha_{\text{M}}}
+\newcommand*{\yqm}{\nu_{\text{M}}}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \firmlists
@@ -1031,16 +1033,21 @@ Note how most of our belief's mass is concentrated along the diagonal of
 the coordinates $(f_{\ysA\|\ya}, f_{\ysA\|\yb})$. \mynote{Say something
   about the rises at the edges of the diagonal.} Mathematically we write
 this density as an integral:
-\begin{equation}
+\begin{gather}
   \label{eq:beta_gamma_prior}
   \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)
   =
   \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yA
   \int_{\mathrlap{0}}^{\mathrlap{1}}\di\yq\;
-  \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\,
-  \dbeta(f_{\ysA\|\yb} \| \yA,\yq)\,
-  \dA(\yA,\yq),
-\end{equation}
+\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yA,\yq,\yI)\;
+  \dA(\yA,\yq \| \yI)
+  \\
+\shortintertext{with}
+  \label{eq:def_ff_given_Aq}
+\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yA,\yq,\yI)\defd
+  \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\;
+  \dbeta(f_{\ysA\|\yb} \| \yA,\yq)
+\end{gather}
 where $\dbeta(\dotv \| \yA,\yq)$ is a beta density with shape
 parameters $\yA\yq$ and $\yA\,(1-\yq)$:
 \begin{multline}
@@ -1050,7 +1057,7 @@ parameters $\yA\yq$ and $\yA\,(1-\yq)$:
   f^{\yA\yq}\;(1-f)^{\yA\,(1-\yq)},\\
   \yA>0,\quad 0\le\yq\le1,
 \end{multline}
-and $\dA$ is a density that we leave unspecified for the moment: several
+and $\dA$ is a normalized density that we leave unspecified for the moment: several
 different choices for $\dA$ will be used, to test how much our inferences
 depend on our initial belief. We discuss these choices in \sect*** together
 with the meaning of the parameters $\yA$, $\yq$.
@@ -1060,34 +1067,45 @@ emphasize that our initial beliefs about $f_{\ysA\|\ya}$ and
 $f_{\ysA\|\yb}$ are \emph{not} disjoint, and to show how their mutual
 dependence comes about: by first considering two independent densities
 having the same parameters, and then mixing their product over these
-parameters. This construction has the interesting consequence that the our
-updated belief $\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI)$ can be
-formally written in the following way:
+parameters.
+
+This construction has the interesting consequence for our updated belief
+$\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI)$. According to Bayes's
+theorem~\eqref{eq:intuitive_Bayes} combined with our initial
+belief~\eqref{eq:beta_gamma_prior} it is given by
+\begin{equation}
+  \label{eq:straight_Bayes}
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI)
+  \propto
+  \pf(\yD \| f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)\;
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI),
+\end{equation}
+but, as shown in appendix~\ref{sec:bayes_hierarcic}, it can also be written
+in the following way:
 \begin{equation}
   \label{eq:formal_hierarchic}
   \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI) =
   \tint\di\yA\tint\di\yq\;
-    \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\,
-  \dbeta(f_{\ysA\|\yb} \| \yA,\yq)\;
-%  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yA,\yq,\yI)\;
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yA,\yq,\yI)\;
+  %   \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\,
+  % \dbeta(f_{\ysA\|\yb} \| \yA,\yq)\;
   \dA(\yA,\yq \|\yD, \yI),
 \end{equation}
 with the normalized density $\dA(\yA,\yq \|\yD, \yI)$ defined by
 \begin{multline}
   \label{eq:update_hyperparameter}
-  \dA(\yA,\yq \|\yD, \yI) \propto
-  \pf(\yD \|\yA,\yq,\yI)\;
-  \dA(\yA,\yq) ={}\\
-\Bigl[   \tint\di f_{\ysA\|\ya}\tint\di f_{\ysA\|\yb}\;
+  \dA(\yA,\yq \|\yD, \yI) \propto   \dA(\yA,\yq \|\yI)
+\times{}\\
+%\Bigl[
+\underbrace{\tint\di f_{\ysA\|\ya}\tint\di f_{\ysA\|\yb}\;
   \pf(\yD \|f_{\ysA\|\ya}, f_{\ysA\|\yb}, \yI)\;
-      \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\,
-      \dbeta(f_{\ysA\|\yb} \| \yA,\yq)
-       \Bigr]\;
-%  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \|\yA,\yq, \yI)\;
-  \dA(\yA,\yq).
+ \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \|\yA,\yq, \yI)}_{\zerob{\footnotesize${}\defs\pf(\yD \|\yA,\yq,\yI)$}}.
+      % \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\,
+      % \dbeta(f_{\ysA\|\yb} \| \yA,\yq)
+%       \Bigr]
 \end{multline}
 It is as if $\yA$, $\yq$ were unknown parameters with initial belief
-density $\dA(\yA,\yq)$, and our update for the frequencies proceeded by
+density $\dA(\yA,\yq \|\yI)$, and our update for the frequencies proceeded by
 first updating our belief about the parameters,
 \eqn~\eqref{eq:update_hyperparameter}, and then marginalizing them out,
 \eqn~\eqref{eq:formal_hierarchic}. This is a so-called \emph{hierarchic}
@@ -1105,8 +1123,26 @@ results would be the same. Further discussion about the formulae above is
 given in \sect***.
 
 
+With large sample sizes the density $\dA(\yA,\yq \|\yD, \yI)$ turns out to
+be so peaked with respect to
+$\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yA,\yq,\yI)$ that it can be considered
+as a Dirac delta centred on the parameters $\yAm$, $\yqm$ that maximize it.
+We thus obtain a good approximation of the updated
+belief~\eqref{eq:formal_hierarchic} that doesn't involve parameter integration:
+\begin{multline}
+  \label{eq:formal_hierarchic_approx}
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI) \approx
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yAm,\yqm,\yI)\\
+  \text{with}\quad
+  (\yAm,\yqm) \defd \argmax_{\yA,\yq}\dA(\yA,\yq \|\yD, \yI).
+\end{multline}
+
+
+
+
 \subsection{Choices of initial beliefs}
 \label{sec:choices_prior_info}
+
 
 
 
@@ -1131,6 +1167,60 @@ given in \sect***.
 %% EV: -0.0330998, SD: 0.0120472
 %% EV/SD: 2.75
 %% 0.0274176 within 0.01
+
+\newpage
+%\renewcommand*{\appendixpagename}{Appendix}
+%\renewcommand*{\appendixname}{Appendix}
+%\appendixpage
+\appendix
+
+
+\section{Derivation of Bayes's theorem in hierarcic form}
+\label{sec:bayes_hierarcic}
+
+We write Bayes's theorem~\eqref{eq:straight_Bayes} with our initial
+belief~\eqref{eq:beta_gamma_prior} written in full:
+\begin{equation}
+  \label{eq:straight_Bayes_full_prior}
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI)
+  \propto
+  \tint\di\yA\tint\di\yq\;
+    \pf(\yD \| f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)\;
+ \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \|\yA,\yq, \yI)\;
+  \dA(\yA,\yq \|\yI).
+\end{equation}
+Multiplying and dividing within the integral with the expression
+\begin{equation}
+  \label{eq:def_Aq_given_data}
+    \pf(\yD \|\yA,\yq,\yI)\defd
+\tint\di f_{\ysA\|\ya}\tint\di f_{\ysA\|\yb}\;
+  \pf(\yD \|f_{\ysA\|\ya}, f_{\ysA\|\yb}, \yI)\;
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yA,\yq,\yI)
+      % \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\,
+      % \dbeta(f_{\ysA\|\yb} \| \yA,\yq)
+\end{equation}
+we obtain the alternative form~\eqref{eq:formal_hierarchic}
+
+
+
+Combining together the sampling
+formula~\eqref{eq:sampling_belief_combined}, the expression of the beta
+density~\eqref{eq:def_beta}, and the update
+formula~\eqref{eq:update_hyperparameter} we obtain
+\begin{multline}
+  \label{eq:parameter_posterior_first}
+  \dA(\yA,\yq \|\yD, \yI) \propto
+    \dA(\yA,\yq) \times{}\\
+  \Bigl[   \tint\di f_{\ysA\|\ya}\tint\di f_{\ysA\|\yb}\;
+  \dbeta\Bigl(f_{\ysA\|\ya} \bigcond \yA+N_{\ya},
+  \frac{\yA\yq+N_{\ya}F_{\ysA\|\ya}}{\yA+N_{\ya}}
+    \Bigl)\;
+  \dbeta\Bigl(f_{\ysA\|\yb} \bigcond \yA+N_{\yb},
+  \frac{\yA\yq+N_{\yb}F_{\ysA\|\yb}}{\yA+N_{\yb}}
+    \Bigr)
+       \Bigr]
+%  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \|\yA,\yq, \yI)\;
+\end{multline}
 
 
 \section{Summary of the main formulae}
@@ -1168,11 +1258,6 @@ This distribution has expected value and variance
   of graphical models to infer causal relationships
   \citep{pearl2000_r2009}}
 
-% \newpage
-% \renewcommand*{\appendixpagename}{Appendix}
-% \renewcommand*{\appendixname}{Appendix}
-% %\appendixpage
-% \appendix
 
 
 %
