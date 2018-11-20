@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-18T19:39:52+0100
+%% Last-Updated: 2018-11-19T19:01:48+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1065,7 +1065,7 @@ parameters $\yua$ and $\yub$:
   \label{eq:def_beta}
   \dbeta(f \| \yua,\yub) \defd
   \frac{\Gamma(\yua+\yub)}{\Gamma(\yua)\,\Gamma(\yub)}\;
-  f^{\yua}\;(1-f)^{\yub},
+  f^{\yua-1}\;(1-f)^{\yub-1},
   \qquad  \yua,\yub>0,
 \end{equation}
 and $\dA$ is a normalized density that we leave unspecified for the moment: several
@@ -1209,6 +1209,9 @@ distribution, as seen from the covariance matrix:
 In fact, from the update formula*** we see that $\yA$ quantifies the amount
 of data necessary to modify our initial belief.
 
+
+\section{Results}
+\label{sec:results}
 
 
 

@@ -36,7 +36,7 @@ condfreqstatistics[data_,
 	  sdata=data[[;;,Join[symptoms[[symptom]],snps[[snp]]]]];
 
 	  (* one column per snpv., one row per symptomv. *)
-	  f=Table[
+ 	  f=Table[
 	    Total[Boole/@Table[z==Join[symptomvariant,snpvariant],{z,sdata}]]
 	    ,{symptomvariant,symptomvariants},{snpvariant,snpvariants}];
 	  
@@ -46,7 +46,7 @@ condfreqstatistics[data_,
 			       Total@LogGamma[Total@r2] +
 			       numsnpvariants*(LogGamma[Total@t] -
 					       Total@LogGamma[t]) +
-			       Total[logpriortheta[t]]
+			       logpriortheta[t]
 			 ];
 
 	  theta=FindArgMax[{logprob[thetas], Sequence@@((# > 0)& /@thetas)}, T[{thetas, Mean@T@f}]];
