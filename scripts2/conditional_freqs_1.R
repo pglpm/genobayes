@@ -115,7 +115,7 @@ result <- foreach(symptom=1:numsymptoms,
     rownames(quantities) <- namestatistics
     colnames(quantities) <- namesnpvariants
 
-        if(max(spreads)>writethreshold){
+        if(max(spreads)>=writethreshold){
             write.csv(quantities,paste0(savedir,filename,prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'-spr_',format(round(max(spreads),3),digits=3,nsmall=3),'.csv'))
         }
     quantities
