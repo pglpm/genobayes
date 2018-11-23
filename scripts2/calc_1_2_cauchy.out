@@ -1,0 +1,51 @@
+
+Attaching package: 'cowplot'
+
+The following object is masked from 'package:ggplot2':
+
+    ggsave
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+starting worker pid=49826 on localhost:11830 at 13:09:18.548
+starting worker pid=49837 on localhost:11830 at 13:09:18.785
+starting worker pid=49848 on localhost:11830 at 13:09:19.024
+starting worker pid=49859 on localhost:11830 at 13:09:19.261
+starting worker pid=49870 on localhost:11830 at 13:09:19.500
+starting worker pid=49881 on localhost:11830 at 13:09:19.738
+starting worker pid=49892 on localhost:11830 at 13:09:19.975
+starting worker pid=49903 on localhost:11830 at 13:09:20.213
+starting worker pid=49914 on localhost:11830 at 13:09:20.451
+starting worker pid=49925 on localhost:11830 at 13:09:20.688
+starting worker pid=49936 on localhost:11830 at 13:09:20.926
+starting worker pid=49947 on localhost:11830 at 13:09:21.164
+starting worker pid=49958 on localhost:11830 at 13:09:21.400
+starting worker pid=49969 on localhost:11830 at 13:09:21.638
+starting worker pid=49980 on localhost:11830 at 13:09:21.875
+starting worker pid=49991 on localhost:11830 at 13:09:22.113
+starting worker pid=50002 on localhost:11830 at 13:09:22.350
+starting worker pid=50013 on localhost:11830 at 13:09:22.587
+starting worker pid=50024 on localhost:11830 at 13:09:22.825
+starting worker pid=50035 on localhost:11830 at 13:09:23.062
+starting worker pid=50046 on localhost:11830 at 13:09:23.298
+starting worker pid=50057 on localhost:11830 at 13:09:23.533
+starting worker pid=50068 on localhost:11830 at 13:09:23.771
+starting worker pid=50080 on localhost:11830 at 13:09:24.011
+starting worker pid=50091 on localhost:11830 at 13:09:24.246
+starting worker pid=50102 on localhost:11830 at 13:09:24.483
+starting worker pid=50113 on localhost:11830 at 13:09:24.720
+starting worker pid=50124 on localhost:11830 at 13:09:24.955
+starting worker pid=50135 on localhost:11830 at 13:09:25.194
+starting worker pid=50146 on localhost:11830 at 13:09:25.430
