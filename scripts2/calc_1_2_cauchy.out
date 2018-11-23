@@ -19,36 +19,36 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-starting worker pid=49826 on localhost:11830 at 13:09:18.548
-starting worker pid=49837 on localhost:11830 at 13:09:18.785
-starting worker pid=49848 on localhost:11830 at 13:09:19.024
-starting worker pid=49859 on localhost:11830 at 13:09:19.261
-starting worker pid=49870 on localhost:11830 at 13:09:19.500
-starting worker pid=49881 on localhost:11830 at 13:09:19.738
-starting worker pid=49892 on localhost:11830 at 13:09:19.975
-starting worker pid=49903 on localhost:11830 at 13:09:20.213
-starting worker pid=49914 on localhost:11830 at 13:09:20.451
-starting worker pid=49925 on localhost:11830 at 13:09:20.688
-starting worker pid=49936 on localhost:11830 at 13:09:20.926
-starting worker pid=49947 on localhost:11830 at 13:09:21.164
-starting worker pid=49958 on localhost:11830 at 13:09:21.400
-starting worker pid=49969 on localhost:11830 at 13:09:21.638
-starting worker pid=49980 on localhost:11830 at 13:09:21.875
-starting worker pid=49991 on localhost:11830 at 13:09:22.113
-starting worker pid=50002 on localhost:11830 at 13:09:22.350
-starting worker pid=50013 on localhost:11830 at 13:09:22.587
-starting worker pid=50024 on localhost:11830 at 13:09:22.825
-starting worker pid=50035 on localhost:11830 at 13:09:23.062
-starting worker pid=50046 on localhost:11830 at 13:09:23.298
-starting worker pid=50057 on localhost:11830 at 13:09:23.533
-starting worker pid=50068 on localhost:11830 at 13:09:23.771
-starting worker pid=50080 on localhost:11830 at 13:09:24.011
-starting worker pid=50091 on localhost:11830 at 13:09:24.246
-starting worker pid=50102 on localhost:11830 at 13:09:24.483
-starting worker pid=50113 on localhost:11830 at 13:09:24.720
-starting worker pid=50124 on localhost:11830 at 13:09:24.955
-starting worker pid=50135 on localhost:11830 at 13:09:25.194
-starting worker pid=50146 on localhost:11830 at 13:09:25.430
+starting worker pid=68531 on localhost:11163 at 13:17:39.780
+starting worker pid=68542 on localhost:11163 at 13:17:40.023
+starting worker pid=68553 on localhost:11163 at 13:17:40.267
+starting worker pid=68564 on localhost:11163 at 13:17:40.508
+starting worker pid=68575 on localhost:11163 at 13:17:40.750
+starting worker pid=68586 on localhost:11163 at 13:17:40.992
+starting worker pid=68597 on localhost:11163 at 13:17:41.235
+starting worker pid=68608 on localhost:11163 at 13:17:41.477
+starting worker pid=68619 on localhost:11163 at 13:17:41.719
+starting worker pid=68630 on localhost:11163 at 13:17:41.959
+starting worker pid=68641 on localhost:11163 at 13:17:42.200
+starting worker pid=68652 on localhost:11163 at 13:17:42.442
+starting worker pid=68663 on localhost:11163 at 13:17:42.687
+starting worker pid=68674 on localhost:11163 at 13:17:42.928
+starting worker pid=68685 on localhost:11163 at 13:17:43.169
+starting worker pid=68696 on localhost:11163 at 13:17:43.410
+starting worker pid=68707 on localhost:11163 at 13:17:43.656
+starting worker pid=68718 on localhost:11163 at 13:17:43.893
+starting worker pid=68730 on localhost:11163 at 13:17:44.136
+starting worker pid=68741 on localhost:11163 at 13:17:44.379
+starting worker pid=68752 on localhost:11163 at 13:17:44.623
+starting worker pid=68763 on localhost:11163 at 13:17:44.861
+starting worker pid=68774 on localhost:11163 at 13:17:45.104
+starting worker pid=68785 on localhost:11163 at 13:17:45.347
+starting worker pid=68796 on localhost:11163 at 13:17:45.593
+starting worker pid=68807 on localhost:11163 at 13:17:45.835
+starting worker pid=68818 on localhost:11163 at 13:17:46.078
+starting worker pid=68829 on localhost:11163 at 13:17:46.317
+starting worker pid=68840 on localhost:11163 at 13:17:46.556
+starting worker pid=68851 on localhost:11163 at 13:17:46.797
 [1] "warning maximization: code=3 symptom=2 snp=484 trying alterative..."
 There were 27 warnings (use warnings() to see them)
 [1] "writing results to file..."
