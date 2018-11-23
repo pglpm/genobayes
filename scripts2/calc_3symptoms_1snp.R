@@ -42,7 +42,7 @@ data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 
 savedir <- '3sym_1snp_gamma/' # directory for saving results
 filename <- 'freq-3_1_gamma-' # filename prefix
-writethreshold <- TRUE # whether to write the results for each case/snp combination in a file
+writethreshold <- 2 # write the results in a file if spread>=writethreshold
 
 cores <- 30 # for parallel processing
 
@@ -53,14 +53,14 @@ prefixsymptoms <- '' # for filename
 binarysymptomvariants <- c(0,1,2,4,3,5,6,7) # auxiliary quantity
 ## below gives the list of all combinations: c(0,0,0), c(1,0,0), ... c(1,1,1)
 symptomvariants <- lapply(binarysymptomvariants,function(x){tobinary(x,3)})
-namesymptomvariants <- c('0','A','B','C','AB','AC','BC','ABC')
+namesymptomvariants <- c('0','O','M','T','OM','OT','MT','OMT')
 
 snps <- as.list(3+(1:94)) # list of gene indices in data
 namesnps <- colnames(data)[(1:94)+3]
 prefixsnps <- 'snp_' # for filename
 
 snpvariants <- list(0, 1) # list of allele values
-namesnpvariants <- c('0','1') # allele names
+namesnpvariants <- c('A','B') # allele names
 
 
 ## log-prior for thetas: see research notes
