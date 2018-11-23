@@ -49,3 +49,10 @@ starting worker pid=50113 on localhost:11830 at 13:09:24.720
 starting worker pid=50124 on localhost:11830 at 13:09:24.955
 starting worker pid=50135 on localhost:11830 at 13:09:25.194
 starting worker pid=50146 on localhost:11830 at 13:09:25.430
+[1] "warning maximization: code=3 symptom=2 snp=484 trying alterative..."
+There were 27 warnings (use warnings() to see them)
+[1] "writing results to file..."
+[1] "end"
+Warning message:
+In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+  already exporting variable(s): savedir, filename, writethreshold, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, namesnpvariants, namestatistics, logpriortheta, spread

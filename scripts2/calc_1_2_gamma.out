@@ -1,0 +1,56 @@
+
+Attaching package: 'cowplot'
+
+The following object is masked from 'package:ggplot2':
+
+    ggsave
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+starting worker pid=67675 on localhost:11700 at 13:11:15.691
+starting worker pid=67686 on localhost:11700 at 13:11:15.930
+starting worker pid=67697 on localhost:11700 at 13:11:16.167
+starting worker pid=67708 on localhost:11700 at 13:11:16.405
+starting worker pid=67719 on localhost:11700 at 13:11:16.643
+starting worker pid=67730 on localhost:11700 at 13:11:16.880
+starting worker pid=67741 on localhost:11700 at 13:11:17.128
+starting worker pid=67752 on localhost:11700 at 13:11:17.370
+starting worker pid=67763 on localhost:11700 at 13:11:17.617
+starting worker pid=67806 on localhost:11700 at 13:11:17.851
+starting worker pid=67817 on localhost:11700 at 13:11:18.086
+starting worker pid=67828 on localhost:11700 at 13:11:18.323
+starting worker pid=67839 on localhost:11700 at 13:11:18.559
+starting worker pid=67850 on localhost:11700 at 13:11:18.797
+starting worker pid=67862 on localhost:11700 at 13:11:19.036
+starting worker pid=67873 on localhost:11700 at 13:11:19.276
+starting worker pid=67884 on localhost:11700 at 13:11:19.515
+starting worker pid=67895 on localhost:11700 at 13:11:19.754
+starting worker pid=67906 on localhost:11700 at 13:11:19.998
+starting worker pid=67917 on localhost:11700 at 13:11:20.238
+starting worker pid=67928 on localhost:11700 at 13:11:20.474
+starting worker pid=67939 on localhost:11700 at 13:11:20.710
+starting worker pid=67950 on localhost:11700 at 13:11:20.952
+starting worker pid=67961 on localhost:11700 at 13:11:21.193
+starting worker pid=67972 on localhost:11700 at 13:11:21.434
+starting worker pid=67983 on localhost:11700 at 13:11:21.673
+starting worker pid=67994 on localhost:11700 at 13:11:21.914
+starting worker pid=68005 on localhost:11700 at 13:11:22.149
+starting worker pid=68016 on localhost:11700 at 13:11:22.384
+starting worker pid=68027 on localhost:11700 at 13:11:22.622
+srun: Job step aborted: Waiting up to 2 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: *** STEP 326106.0 CANCELLED AT 2018-11-23T13:14:58 ***
+slurmstepd: *** JOB 326106 CANCELLED AT 2018-11-23T13:14:58 ***
+srun: error: compute-0-1: task 0: Terminated
