@@ -19,38 +19,33 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-starting worker pid=67675 on localhost:11700 at 13:11:15.691
-starting worker pid=67686 on localhost:11700 at 13:11:15.930
-starting worker pid=67697 on localhost:11700 at 13:11:16.167
-starting worker pid=67708 on localhost:11700 at 13:11:16.405
-starting worker pid=67719 on localhost:11700 at 13:11:16.643
-starting worker pid=67730 on localhost:11700 at 13:11:16.880
-starting worker pid=67741 on localhost:11700 at 13:11:17.128
-starting worker pid=67752 on localhost:11700 at 13:11:17.370
-starting worker pid=67763 on localhost:11700 at 13:11:17.617
-starting worker pid=67806 on localhost:11700 at 13:11:17.851
-starting worker pid=67817 on localhost:11700 at 13:11:18.086
-starting worker pid=67828 on localhost:11700 at 13:11:18.323
-starting worker pid=67839 on localhost:11700 at 13:11:18.559
-starting worker pid=67850 on localhost:11700 at 13:11:18.797
-starting worker pid=67862 on localhost:11700 at 13:11:19.036
-starting worker pid=67873 on localhost:11700 at 13:11:19.276
-starting worker pid=67884 on localhost:11700 at 13:11:19.515
-starting worker pid=67895 on localhost:11700 at 13:11:19.754
-starting worker pid=67906 on localhost:11700 at 13:11:19.998
-starting worker pid=67917 on localhost:11700 at 13:11:20.238
-starting worker pid=67928 on localhost:11700 at 13:11:20.474
-starting worker pid=67939 on localhost:11700 at 13:11:20.710
-starting worker pid=67950 on localhost:11700 at 13:11:20.952
-starting worker pid=67961 on localhost:11700 at 13:11:21.193
-starting worker pid=67972 on localhost:11700 at 13:11:21.434
-starting worker pid=67983 on localhost:11700 at 13:11:21.673
-starting worker pid=67994 on localhost:11700 at 13:11:21.914
-starting worker pid=68005 on localhost:11700 at 13:11:22.149
-starting worker pid=68016 on localhost:11700 at 13:11:22.384
-starting worker pid=68027 on localhost:11700 at 13:11:22.622
-srun: Job step aborted: Waiting up to 2 seconds for job step to finish.
-srun: got SIGCONT
-slurmstepd: *** STEP 326106.0 CANCELLED AT 2018-11-23T13:14:58 ***
-slurmstepd: *** JOB 326106 CANCELLED AT 2018-11-23T13:14:58 ***
-srun: error: compute-0-1: task 0: Terminated
+starting worker pid=50682 on localhost:11317 at 13:15:40.677
+starting worker pid=50693 on localhost:11317 at 13:15:40.919
+starting worker pid=50704 on localhost:11317 at 13:15:41.163
+starting worker pid=50715 on localhost:11317 at 13:15:41.405
+starting worker pid=50726 on localhost:11317 at 13:15:41.648
+starting worker pid=50737 on localhost:11317 at 13:15:41.890
+starting worker pid=50748 on localhost:11317 at 13:15:42.133
+starting worker pid=50759 on localhost:11317 at 13:15:42.374
+starting worker pid=50770 on localhost:11317 at 13:15:42.617
+starting worker pid=50781 on localhost:11317 at 13:15:42.861
+starting worker pid=50792 on localhost:11317 at 13:15:43.104
+starting worker pid=50803 on localhost:11317 at 13:15:43.346
+starting worker pid=50814 on localhost:11317 at 13:15:43.588
+starting worker pid=50825 on localhost:11317 at 13:15:43.830
+starting worker pid=50836 on localhost:11317 at 13:15:44.077
+starting worker pid=50847 on localhost:11317 at 13:15:44.319
+starting worker pid=50858 on localhost:11317 at 13:15:44.565
+starting worker pid=50869 on localhost:11317 at 13:15:44.806
+starting worker pid=50880 on localhost:11317 at 13:15:45.050
+starting worker pid=50891 on localhost:11317 at 13:15:45.291
+starting worker pid=50902 on localhost:11317 at 13:15:45.534
+starting worker pid=50913 on localhost:11317 at 13:15:45.776
+starting worker pid=50924 on localhost:11317 at 13:15:46.025
+starting worker pid=50935 on localhost:11317 at 13:15:46.267
+starting worker pid=50946 on localhost:11317 at 13:15:46.511
+starting worker pid=50957 on localhost:11317 at 13:15:46.755
+starting worker pid=50968 on localhost:11317 at 13:15:46.998
+starting worker pid=50979 on localhost:11317 at 13:15:47.240
+starting worker pid=50990 on localhost:11317 at 13:15:47.485
+starting worker pid=51001 on localhost:11317 at 13:15:47.729
