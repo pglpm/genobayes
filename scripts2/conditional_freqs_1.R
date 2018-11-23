@@ -17,7 +17,7 @@ condfreqstatistics <- function(
                                filename,# initial part of file name
                                logpriortheta,# prior log-probability of log(theta)
                                spread,# spread measure
-                               writeflag=-Inf,# write result to file when its spread is larger that 'writeflag'
+                               writethreshold=-Inf,# write result to file when its spread is larger than 'writethreshold'
                                cores=1# cores for parallel processing, 1=no parallel
                                ){
 
@@ -29,9 +29,9 @@ condfreqstatistics <- function(
     namestatistics <- c(sapply(c('EV_','SD_','post.theta_','opt.theta_','max.spread_'),function(y){
     sapply(namesymptomvariants,function(x){paste0(y,x)})}))
 
-    if(writeflag==FALSE){writeflag <- +Inf}
+    if(writethreshold==FALSE){writethreshold <- +Inf}
 
-    if(writeflag < +Inf){dir.create(savedir)}
+    if(writethreshold < +Inf){dir.create(savedir)}
 
 ## setup parallel processing
 `%dox%` <- `%do%`
@@ -42,10 +42,10 @@ registerDoParallel(cl)
 }
 
 result <- foreach(symptom=1:numsymptoms,
-                  .export=c('savedir','filename','writeflag','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namestatistics','logpriortheta','spread')
+                  .export=c('savedir','filename','writethreshold','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namestatistics','logpriortheta','spread')
                   ) %:%
     foreach(snp=1:numsnps,
-                  .export=c('savedir','filename','writeflag','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namestatistics','logpriortheta','spread')
+                  .export=c('savedir','filename','writethreshold','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namestatistics','logpriortheta','spread')
             ) %dox%
     {
         sdata <- data[,c(symptoms[[symptom]],snps[[snp]])] # load data for that symptom and snp
@@ -69,6 +69,7 @@ result <- foreach(symptom=1:numsymptoms,
                 - sum(lgamma(apply(r2,2,sum)))
                 + numsnpvariants * (lgamma(sum(t)) - sum(lgamma(t)))
                 + logpriortheta(lt,t))
+
         }
         ## gradient <- function(lt){
         ##     t <- exp(lt)
@@ -114,8 +115,8 @@ result <- foreach(symptom=1:numsymptoms,
     rownames(quantities) <- namestatistics
     colnames(quantities) <- namesnpvariants
 
-        if(max(spreads)>writeflag){
-            write.csv(quantities,paste0(savedir,filename,prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'-spr_',max(spreads),'.csv'))
+        if(max(spreads)>writethreshold){
+            write.csv(quantities,paste0(savedir,filename,prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'-spr_',format(round(max(spreads),3),digits=3,nsmall=3),'.csv'))
         }
     quantities
 }

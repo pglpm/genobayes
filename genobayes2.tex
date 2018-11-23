@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-19T19:01:48+0100
+%% Last-Updated: 2018-11-22T00:11:59+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -272,7 +272,7 @@ british%
 % \DeclareMathSymbol{\omicronup}{\mathalpha}{egreekr}{"6F}
   \DeclareMathSymbol{\piup}{\mathalpha}{egreekr}{"19}
 % \DeclareMathSymbol{\rhoup}{\mathalpha}{egreekr}{"1A}
-% \DeclareMathSymbol{\sigmaup}{\mathalpha}{egreekr}{"1B}
+ \DeclareMathSymbol{\sigmaup}{\mathalpha}{egreekr}{"1B}
 % \DeclareMathSymbol{\tauup}{\mathalpha}{egreekr}{"1C}
 % \DeclareMathSymbol{\upsilonup}{\mathalpha}{egreekr}{"1D}
 % \DeclareMathSymbol{\phiup}{\mathalpha}{egreekr}{"1E}
@@ -743,6 +743,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator{\cov}{cov}
 \DeclareMathOperator{\var}{var}
+\newcommand*{\std}{\sigmaup}
 \DeclareMathOperator{\diag}{diag}
 \newcommand*{\ptext}[1]{\text{\small #1}}
 \newcommand*{\dob}{degree of belief}
@@ -768,7 +769,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yub}{v}
 \newcommand*{\yuam}{\yua_{\text{M}}}
 \newcommand*{\yubm}{\yub_{\text{M}}}
-\newcommand*{\yum}{\bm{u}_{text{M}}}
+\newcommand*{\yum}{\bm{u}_{\text{M}}}
 \newcommand*{\yna}{k}
 \newcommand*{\yf}{\bm{f}}
 \newcommand*{\ysum}{\tsum}
@@ -1210,6 +1211,13 @@ In fact, from the update formula*** we see that $\yA$ quantifies the amount
 of data necessary to modify our initial belief.
 
 
+
+\[
+  \frac{  \expe{f_{\ysA\|\ya} - f_{\ysA\|\yb} \| \yD, \yI}}{
+    \std(f_{\ysA\|\ya} - f_{\ysA\|\yb} \| \yD, \yI)}
+\]
+
+
 \section{Results}
 \label{sec:results}
 
@@ -1324,6 +1332,43 @@ This distribution has expected value and variance
 \mynote{Possible further developments: use of hyper-Dirichlet priors, use
   of graphical models to infer causal relationships
   \citep{pearl2000_r2009}}
+
+\[
+\begin{aligned}
+\pf(f \|\yD)  &\propto \pf(\yD \| f)\;\pf(f \| \yI)
+  \\
+  &\propto \pf(\yD \| f)\;\int\di u\, \pf(f \|u)\, \pf(u\| \yI)
+  \\
+  &\propto \int\di u\,\pf(\yD \| f)\; \pf(f \|u)\; \pf(u\| \yI)
+  \\
+  &\propto \int\di u\,\pf(\yD \| f,u)\, \pf(f \|u)\;
+    \pf(\yD \| u)\, \pf(u\| \yI)
+  \\
+  &\propto \int\di u\,\pf(f \| D,u)\;
+    \pf(u \| \yD)
+\end{aligned}
+\]
+
+\[
+  \begin{aligned}
+    \pf(u \|\yD)
+    &\propto \int\di f\, \pf(\yD \| f)\,\pf(f \| u)\;\pf(u \| \yI)
+    \\
+    &\propto
+      \prod_{x=\ya,\yb}\Biggl[ 
+      \frac{\Gamma(\tsum_su_s)}
+      {\tprod_s\Gamma(u_s)}\;
+      \frac{\tprod_s\Gamma(N_xF_{s\|x}+u_s)}
+      {\Gamma(N_x+\tsum_su_s)}
+       \Biggr]
+  \end{aligned}
+\]
+
+
+\[
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI) \approx
+  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yuam,\yubm,\yI)
+\]
 
 
 
