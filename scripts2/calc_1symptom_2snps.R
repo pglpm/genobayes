@@ -36,7 +36,7 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- '1sym_2snp_cauchy/' # directory for saving results
+savedir <- 'check-1sym_2snp_cauchy/' # directory for saving results
 filename <- 'freq-1_2_cauchy-' # filename prefix
 writethreshold <- 2 # write the results in a file if spread <= writethreshold
 
