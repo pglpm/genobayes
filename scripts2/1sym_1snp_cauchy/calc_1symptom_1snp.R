@@ -1,5 +1,5 @@
 ## Calculation of expected value, std, thetas, spread of conditional frequencies
-## of each symptom given each pair of SNPs
+## of each symptom given each SNP
 
 #### PREAMBLE
 ## libraries and colour-blind palette from http://www.sron.nl/~pault/
@@ -36,9 +36,9 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- '1sym_2snp_gamma/' # directory for saving results
-filename <- 'freq-1_2_gamma-' # filename prefix
-writethreshold <- 2 # write the results in a file if spread <= writethreshold
+savedir <- '1sym_1snp_gamma/' # directory for saving results
+filename <- 'freq-1_1_gamma-' # filename prefix
+writethreshold <- -Inf # write the results for each case/snp combination in a file when the spread is larger than this
 
 cores <- 30 # for parallel processing
 
@@ -49,23 +49,26 @@ prefixsymptoms <- 'sym_' # for filename
 symptomvariants <- list(0,1)
 namesymptomvariants <- c('absent','present')
 
-ngenes <- 94 # auxiliary quantity
-snps <- unlist(lapply(1:(ngenes-1),function(x){lapply((x+1):ngenes,function(y){3+c(x,y)})}),
-               recursive=FALSE) # list of all pairs of snps
-namesnps <- sapply(snps,function(x){paste0(x[1]-3,'_',x[2]-3)})
-prefixsnps <- 'snps_' # for filename
+snps <- as.list(3+(1:94)) # list of gene indices in data
+namesnps <- colnames(data)[(1:94)+3]
+prefixsnps <- 'snp_' # for filename
 
-snpvariants <- list(c(0,0),c(0,1),c(1,0),c(1,1)) # list of allele-pair values
-namesnpvariants <- c('AA','AB','BA','BB') # allele-pair names
+snpvariants <- list(0, 1) # list of allele values
+namesnpvariants <- c('A','B') # allele names
 
 ## log-prior for thetas: see research notes
 ## 'lt' is the log of theta
+
+## first prior: the product of two Jeffreys priors for the two scale variables of the beta distribution = constant in log(variable), but regularized as a very broad Cauchy distribution. See research notes.
 #logpriortheta <- function(lt,t){sum(dcauchy(lt,location=log(1000),scale=log(1000),log=TRUE))-sum(lt)}
+
+## second prior: constant in the frequency parameter and a very broad gamma density for the pseudocount parameter. See research notes.
 logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
 
 ## measure of spread, applied to the final matrix of quantities
-## it calculates abs((EV_freq1 - EV_freq2)/(SD_freq1 + SD_freq2))
-## for all pairs and takes the maximum
+## it calculates abs((EV_freq1 - EV_freq2)/sqrt(SD_freq1^2 + SD_freq2^2))
+## for all pairs and takes the maximum.
+## This corresponds to the mean/std of the distribution for the frequency difference
 spread <- function(q,numsymptomvariants,numsnpvariants){
     sapply(1:numsymptomvariants,function(co){
         max(abs(unlist(
