@@ -36,12 +36,12 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- 'mcdir_1sym_1snp_gamma/' # directory for saving results
+savedir <- 'mcdir2e5_1sym_1snp_gamma/' # directory for saving results
 filename <- 'freq-1_1_gamma-' # filename prefix
 writethreshold <- -Inf # write the results for each case/snp combination in a file when the spread is larger than this
 
 cores <- 30 # for parallel processing
-mciterations <- 2e4 # number of Monte-Carlo samples
+mciterations <- 2e5 # number of Monte-Carlo samples
 
 symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('O','M','T')
