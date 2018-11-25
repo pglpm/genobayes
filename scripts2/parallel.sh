@@ -15,7 +15,7 @@
 # We request an exclusive node for every job in the array
 ## SBATCH --exclusive
 # reserve MB of memory
-#SBATCH --mem=30000
+#SBATCH --mem=60000
 # Specify the number of tasks (processes)
 #SBATCH --ntasks 1
 # Our job is multithreaded, so we ask 4 CPUs per process
