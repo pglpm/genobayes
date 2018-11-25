@@ -96,7 +96,7 @@ result <- foreach(symptom=1:numsymptoms,
                         Algorithm="AFSS", Specs=list(A=mcdiscard, B=NULL, m=100, n=0, w=1)
                         )
 
-        statsfunction(f,usamples$Posterior1,numsymptomvariants,numsnpvariants)
+        statsfunction(f,usamples$Posterior2,numsymptomvariants,numsnpvariants)
 }
 if(cores>1){
 stopCluster(cl)
