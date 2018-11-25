@@ -43,14 +43,14 @@ writethreshold <- -Inf # write the results for each case/snp combination in a fi
 cores <- 30 # for parallel processing
 mciterations <- 1e6 # number of Monte-Carlo samples
 
-symptoms <- list(1) # symptoms A, B, C correspond to data indices 1, 2, 3
+symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('O','M','T')
 prefixsymptoms <- 'sym_' # for filename
 
 symptomvariants <- list(0,1)
 namesymptomvariants <- c('absent','present')
 
-snps <- as.list(3+(1:4)) # list of gene indices in data
+snps <- as.list(3+(1:94)) # list of gene indices in data
 namesnps <- sapply(snps,function(x){paste0(x[1]-3)})
 ## namesnps <- colnames(data)[(1:94)+3] # this was writing full SNP names
 prefixsnps <- 'snp_' # for filename
