@@ -74,7 +74,7 @@ result <- foreach(symptom=1:numsymptoms,
             fnew <- data$y+t
 
             LL <- (sum(lgamma(fnew))
-            - sum(lgamma(apply(fnew,2,sum)))
+            - sum(lgamma(colSums(fnew)))
                 + numsnpvariants * (lgamma(sum(t)) - sum(lgamma(t))))
             
             LP <- LL + logpriortheta(parm,t) + sum(parm)
