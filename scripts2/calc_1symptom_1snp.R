@@ -10,7 +10,7 @@ library('cowplot')
 library('png')
 library('plot3D')
 library('doParallel')
-#library('GA')
+#library('LaplacesDemon')
 library('dplyr')
 #
 mypurpleblue <- '#4477AA'
@@ -61,10 +61,10 @@ namesnpvariants <- c('A','B') # allele names
 ## 'lt' is the log of theta
 
 ## first prior: the product of two Jeffreys priors for the two scale variables of the beta distribution = constant in log(variable), but regularized as a very broad Cauchy distribution. See research notes.
-logpriortheta <- function(lt,t){sum(dcauchy(lt,location=log(1000),scale=log(1000),log=TRUE))-sum(lt)}
+#logpriortheta <- function(lt,t){sum(dcauchy(lt,location=log(1000),scale=log(1000),log=TRUE))-sum(lt)}
 
 ## second prior: constant in the frequency parameter and a very broad gamma density for the pseudocount parameter. See research notes.
-#logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
+logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
 
 ## measure of spread, applied to the final matrix of quantities
 ## it calculates abs((EV_freq1 - EV_freq2)/sqrt(SD_freq1^2 + SD_freq2^2))
