@@ -1,8 +1,477 @@
-Error in file(filename, "r", encoding = encoding) : 
-  cannot open the connection
-Calls: source -> file
-In addition: Warning message:
-In file(filename, "r", encoding = encoding) :
-  cannot open file 'mccalc_1sym_1snps.R': No such file or directory
-Execution halted
-srun: error: compute-0-0: task 0: Exited with exit code 1
+
+Attaching package: 'cowplot'
+
+The following object is masked from 'package:ggplot2':
+
+    ggsave
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+starting worker pid=41117 on localhost:11200 at 23:45:40.711
+starting worker pid=41128 on localhost:11200 at 23:45:40.948
+starting worker pid=41139 on localhost:11200 at 23:45:41.185
+starting worker pid=41150 on localhost:11200 at 23:45:41.422
+starting worker pid=41161 on localhost:11200 at 23:45:41.658
+starting worker pid=41172 on localhost:11200 at 23:45:41.901
+starting worker pid=41183 on localhost:11200 at 23:45:42.141
+starting worker pid=41194 on localhost:11200 at 23:45:42.381
+starting worker pid=41205 on localhost:11200 at 23:45:42.620
+starting worker pid=41216 on localhost:11200 at 23:45:42.859
+starting worker pid=41227 on localhost:11200 at 23:45:43.096
+starting worker pid=41238 on localhost:11200 at 23:45:43.335
+starting worker pid=41249 on localhost:11200 at 23:45:43.573
+starting worker pid=41260 on localhost:11200 at 23:45:43.812
+starting worker pid=41271 on localhost:11200 at 23:45:44.050
+starting worker pid=41282 on localhost:11200 at 23:45:44.287
+starting worker pid=41293 on localhost:11200 at 23:45:44.524
+starting worker pid=41304 on localhost:11200 at 23:45:44.763
+starting worker pid=41315 on localhost:11200 at 23:45:45.006
+starting worker pid=41326 on localhost:11200 at 23:45:45.247
+starting worker pid=41337 on localhost:11200 at 23:45:45.485
+starting worker pid=41348 on localhost:11200 at 23:45:45.722
+starting worker pid=41359 on localhost:11200 at 23:45:45.967
+starting worker pid=41370 on localhost:11200 at 23:45:46.208
+starting worker pid=41381 on localhost:11200 at 23:45:46.444
+starting worker pid=41392 on localhost:11200 at 23:45:46.681
+starting worker pid=41403 on localhost:11200 at 23:45:46.922
+starting worker pid=41414 on localhost:11200 at 23:45:47.160
+starting worker pid=41425 on localhost:11200 at 23:45:47.398
+starting worker pid=41436 on localhost:11200 at 23:45:47.636
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Laplace's Demon was called on 
+Performing initial checks...
+Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Laplace's Demon was called on 
+Performing initial checks...
+Sun Nov 25 23:45:49 2018
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+
+Performing initial checks...
+
+Performing initial checks...
+Suggestion: 1 Suggestion:possible instance(s) of apply functions
+ 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+     in a faster language such as C++ via the Rcpp package.
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+Suggestion: 1 Suggestion:possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+ 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+Suggestion:     in a faster language such as C++ via the Rcpp package.
+ 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+Suggestion: 1 possible instance(s) of apply functions
+     in a faster language such as C++ via the Rcpp package.
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+     in a faster language such as C++ via the Rcpp package.
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+     in a faster language such as C++ via the Rcpp package.
+
+Performing initial checks...
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Laplace's Demon was called on 
+Performing initial checks...
+Sun Nov 25 23:45:49 2018
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+
+Performing initial checks...
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on 
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+Suggestion:Sun Nov 25 23:45:49 2018 
+1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+
+Performing initial checks...
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+
+Performing initial checks...
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+     increase if apply functions are vectorized in R or coded
+Suggestion:     in a faster language such as C++ via the Rcpp package.
+ 1 possible instance(s) of apply functions
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+     in a faster language such as C++ via the Rcpp package.
+     were found in the Model specification. Iteration speed will
+
+Performing initial checks...
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+
+Laplace's Demon was called on Sun Nov 25 23:45:49 2018
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+
+Performing initial checks...
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+Suggestion: 1 possible instance(s) of apply functions
+Suggestion:      were found in the Model specification. Iteration speed will
+1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+Suggestion: 1 possible instance(s) of apply functions
+     were found in the Model specification. Iteration speed will
+     increase if apply functions are vectorized in R or coded
+     in a faster language such as C++ via the Rcpp package.
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Eigendecomposition will occur every Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Laplace's Demon is beginning to update...
+20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 
+Eigendecomposition will occur every 2000020000  iterations.
+
+iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm:Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+ Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every
+Eigendecomposition will occur every 20000 iterations.
+
+ 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur everyAlgorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+ 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 
+Eigendecomposition will occur every20000 iterations.
+
+ 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+Algorithm: 
+Laplace's Demon is beginning to update...
+Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm:Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+ Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every
+Eigendecomposition will occur every 20000 iterations.
+
+ 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm:
+Eigendecomposition will occur every
+Eigendecomposition will occur every  Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+20000 iterations.
+
+ 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+srun: Job step aborted: Waiting up to 2 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: *** STEP 326120.0 CANCELLED AT 2018-11-25T23:50:17 ***
+slurmstepd: *** JOB 326120 CANCELLED AT 2018-11-25T23:50:17 ***
+srun: error: compute-0-0: task 0: Terminated
+srun: forcing job termination
