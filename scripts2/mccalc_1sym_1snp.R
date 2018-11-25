@@ -36,12 +36,12 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- 'testdir_1sym_1snp_cauchy/' # directory for saving results
-filename <- 'freq-1_1_cauchy-' # filename prefix
+savedir <- 'mcdir_1sym_1snp_gamma/' # directory for saving results
+filename <- 'freq-1_1_gamma-' # filename prefix
 writethreshold <- -Inf # write the results for each case/snp combination in a file when the spread is larger than this
 
 cores <- 30 # for parallel processing
-mciterations <- 1e4 # number of Monte-Carlo samples
+mciterations <- 1e5 # number of Monte-Carlo samples
 
 symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('O','M','T')
@@ -75,32 +75,7 @@ namesnpcombos <- unlist(sapply(1:(numsnpvariants-1),
 ## second prior: constant in the frequency parameter and a very broad gamma density for the pseudocount parameter. See research notes.
 logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
 
-## measure of spread, applied to the final matrix of quantities
-## it calculates abs((EV_freq1 - EV_freq2)/sqrt(SD_freq1^2 + SD_freq2^2))
-## for all pairs and takes the maximum.
-## This corresponds to the mean/std of the distribution for the frequency difference
-spread <- function(q,numsymptomvariants,numsnpvariants){
-    sapply(1:numsymptomvariants,function(co){
-        max(abs(unlist(
-            sapply(1:(numsnpvariants-1),function(x){
-                sapply((x+1):numsnpvariants,function(y){
-                    (q[co,x]-q[co,y])/sqrt(q[co+numsymptomvariants,x]+q[co+numsymptomvariants,y])
-                })
-            })
-        )))
-    })
-}
-
-stats.names <- c(
-    unlist(sapply(1:(numsnpvariants-1),
-           function(y){sapply((y+1):numsnpvariants,
-                              function(z){paste0('spread_',namesymptomvariants,namesnpvariants[y],'.',namesnpvariants[z])}
-                              )}
-           )),
-    sapply(1:numsnpvariants,function(x)paste0('EV_',namesymptomvariants,namesnpvariants[x])),
-    sapply(1:numsnpvariants,function(x)paste0('SD_',namesymptomvariants,namesnpvariants[x]))
-)
-
+## This function calculates the EVs and SDs of the marginals and all the differences of the conditional frequencies. For the latter also calculates the spreads ("significance"). It writes the results on two files if the max spread is larger than a given value
 
 statsfunction <- function(f,samples,numsymptomvariants,numsnpvariants){
     avgmoments <- rowMeans(apply(samples,1,function(tt){
