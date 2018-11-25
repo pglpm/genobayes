@@ -41,7 +41,7 @@ filename <- 'freq-1_1_gamma-' # filename prefix
 writethreshold <- -Inf # write the results for each case/snp combination in a file when the spread is larger than this
 
 cores <- 30 # for parallel processing
-mciterations <- 1e5 # number of Monte-Carlo samples
+mciterations <- 2e4 # number of Monte-Carlo samples
 
 symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('O','M','T')
@@ -102,7 +102,7 @@ statsfunction <- function(f,samples,numsymptomvariants,numsnpvariants){
 
     diffsds <- sqrt(avgmoments[seq(from=2,length.out=numsnpvariants*(numsnpvariants-1)/2,by=2)] - diffevs^2)
 
-    spreads <- diffsds/diffevs
+    spreads <- diffevs/diffsds
 
     maxspread <- max(abs(c(spreads)))
 
