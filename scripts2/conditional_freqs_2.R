@@ -104,7 +104,7 @@ result <- foreach(symptom=1:numsymptoms,
         
         endstats <- statsfunction(f,samples,numsymptomvariants,numsnpvariants)
         if(endstats$writeflag){
-        write.csv(rbind(usamples$Summary1,c(usamples$LML,rep(NA,6))usamples$Summary2),paste0(savedir,filename,'mcsummary-',prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'.csv'))
+        write.csv(rbind(usamples$Summary1,c(usamples$LML,rep(NA,6)),usamples$Summary2),paste0(savedir,filename,'mcsummary-',prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'.csv'))
         }
         endstats
 }
