@@ -36,21 +36,20 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- 'mcdir2e5_1sym_1snp_cauchy/' # directory for saving results
-filename <- 'freq-1_1_cauchy-' # filename prefix
-writethreshold <- -Inf # write the results for each case/snp combination in a file when the spread is larger than this
+savedir <- 'testmcdir2e5_1sym_1snp_gamma/' # directory for saving results
+filename <- 'freq-1_1_gamma-' # filename prefix
 
 cores <- 30 # for parallel processing
-mciterations <- 2e5 # number of Monte-Carlo samples
+mciterations <- 1e4 # number of Monte-Carlo samples
 
-symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
+symptoms <- list(1,2) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('O','M','T')
 prefixsymptoms <- 'sym_' # for filename
 
 symptomvariants <- list(0,1)
 namesymptomvariants <- c('absent','present')
 
-snps <- as.list(3+(1:94)) # list of gene indices in data
+snps <- as.list(3+(1:5)) # list of gene indices in data
 namesnps <- sapply(snps,function(x){paste0(x[1]-3)})
 ## namesnps <- colnames(data)[(1:94)+3] # this was writing full SNP names
 prefixsnps <- 'snp_' # for filename
@@ -70,10 +69,10 @@ namesnpcombos <- unlist(sapply(1:(numsnpvariants-1),
 ## 'lt' is the log of theta
 
 ## first prior: the product of two Jeffreys priors for the two scale variables of the beta distribution = constant in log(variable), but regularized as a very broad Cauchy distribution. See research notes.
-logpriortheta <- function(lt,t){sum(dcauchy(lt,location=log(1000),scale=log(1000),log=TRUE))-sum(lt)}
+#logpriortheta <- function(lt,t){sum(dcauchy(lt,location=log(1000),scale=log(1000),log=TRUE))-sum(lt)}
 
 ## second prior: constant in the frequency parameter and a very broad gamma density for the pseudocount parameter. See research notes.
-#logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
+logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
 
 ## This function calculates the EVs and SDs of the marginals and all the differences of the conditional frequencies. For the latter also calculates the spreads ("significance"). It writes the results on two files if the max spread is larger than a given value
 
@@ -113,11 +112,15 @@ statsfunction <- function(f,samples,numsymptomvariants,numsnpvariants){
         rownames(margdata) <- c('EV_y','SD_y')
         colnames(margdata) <- namesnpvariants
 
+    writeflag <- FALSE
     if(maxspread>-Inf){
+        writeflag <- TRUE
         write.csv(diffdata,paste0(savedir,filename,'spreads-',prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'-spr_',format(round(max(abs(c(spreads))),3),digits=3,nsmall=3),'.csv'))
-        write.csv(margdata,paste0(savedir,filename,'margs-',prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'-spr_',format(round(maxspread,3),digits=3,nsmall=3),'.csv'))
+        
+        write.csv(margdata,paste0(savedir,filename,'margs-',prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'.csv'))
     }
-    list(maxspread=maxspread,diffdata=diffdata,margdata=margdata)
+
+    list(maxspread=maxspread,diffdata=diffdata,margdata=margdata,writeflag=writeflag)
     }
 
 results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunction,cores,mciterations)

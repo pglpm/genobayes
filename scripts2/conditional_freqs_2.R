@@ -40,11 +40,11 @@ registerDoParallel(cl)
 }
 
 result <- foreach(symptom=1:numsymptoms,
-                  .export=c('savedir','filename','writethreshold','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namesnpcombos','logpriortheta','statsfunction','mciterations','mcdiscard'),
+                  .export=c('savedir','filename','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namesnpcombos','logpriortheta','statsfunction','mciterations','mcdiscard'),
                   .packages=c('LaplacesDemon')
                   ) %:%
     foreach(snp=1:numsnps,
-                  .export=c('savedir','filename','writethreshold','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namesnpcombos','logpriortheta','statsfunction','mciterations','mcdiscard'),
+                  .export=c('savedir','filename','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namesnpcombos','logpriortheta','statsfunction','mciterations','mcdiscard'),
                   .packages=c('LaplacesDemon')
             ) %dox%
     {
@@ -70,6 +70,7 @@ result <- foreach(symptom=1:numsymptoms,
                )
 
         logprob <- function(parm,data){
+            parm <- interval(parm,-700,700)
             t <- exp(parm)
             fnew <- data$y+t
 
@@ -95,8 +96,17 @@ result <- foreach(symptom=1:numsymptoms,
                         ##Algorithm="Slice", Specs=list(B=NULL, Bounds=c(0,1), m=Inf, Type="Continuous", w=0.001)
                         Algorithm="AFSS", Specs=list(A=mcdiscard, B=NULL, m=100, n=0, w=1)
                         )
-
-        statsfunction(f,usamples$Posterior2,numsymptomvariants,numsnpvariants)
+        samples <- usamples$Posterior2
+        if(length(samples)<mciterations*numsymptomvariants/2){
+            print(paste0('warning, sym=',symptom,', snp=',snp,': low acceptance rate ', length(samples)/(mciterations*numsymptomvariants),'; using non-stationary samples'))
+            samples <- usamples$Posterior1
+        }
+        
+        endstats <- statsfunction(f,samples,numsymptomvariants,numsnpvariants)
+        if(endstats$writeflag){
+        write.csv(rbind(usamples$Summary1,usamples$Summary2),paste0(savedir,filename,'mcsummary-',prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'.csv'))
+        }
+        endstats
 }
 if(cores>1){
 stopCluster(cl)
