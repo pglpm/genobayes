@@ -126,7 +126,7 @@ statsfunction <- function(f,samples,numsymptomvariants,numsnpvariants){
     list(maxspread=maxspread,diffdata=diffdata,margdata=margdata,writeflag=writeflag)
     }
 
-#results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunction,cores,mciterations)
+results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunction,cores,mciterations)
 
 ## Call a function that samples without data, to plot the initial belief
 ## Not called in the case of constant prior
