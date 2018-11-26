@@ -79,7 +79,7 @@ logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(s
 
 ## This function calculates the EVs and SDs of the marginals and all the differences of the conditional frequencies. For the latter also calculates the spreads ("significance"). It writes the results on two files if the max spread is larger than a given value
 
-statsfunction <- function(f,samples,numsymptomvariants,numsnpvariants){
+statsfunction <- function(f,samples,symptom,snp,numsymptomvariants,numsnpvariants){
     avgmoments <- rowMeans(apply(samples,1,function(tt){
         fnew <- f+exp(tt)
         N <-  colSums(fnew)

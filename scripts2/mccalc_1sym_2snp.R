@@ -37,10 +37,10 @@ data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
 savedir <- 'mc1e6_1sym_2snp_unif/' # directory for saving results
-filename <- 'freq-1_1_unif-' # filename prefix
+filename <- 'freq-1_2_unif-' # filename prefix
 
-cores <- 30 # for parallel processing
-mciterations <- 1e3 # number of Monte-Carlo samples
+cores <- 1 # for parallel processing
+mciterations <- 1e6 # number of Monte-Carlo samples
 
 symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('O','M','T')
@@ -80,7 +80,7 @@ logpriortheta <- FALSE
 
 ## This function calculates the EVs and SDs of the marginals and all the differences of the conditional frequencies. For the latter also calculates the spreads ("significance"). It writes the results on two files if the max spread is larger than a given value
 
-statsfunction <- function(f,samples,numsymptomvariants,numsnpvariants){
+statsfunction <- function(f,samples,symptom,snp,numsymptomvariants,numsnpvariants){
     avgmoments <- rowMeans(apply(samples,1,function(tt){
         fnew <- f+exp(tt)
         N <-  colSums(fnew)
@@ -131,6 +131,6 @@ results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,nam
 
 ## Call a function that samples without data, to plot the initial belief
 ## Not called in the case of constant prior
-if(is.function(logpriortheta)){
-    insamples <- priorsamples(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunction,cores,mciterations)
-}
+## if(is.function(logpriortheta)){
+##     insamples <- priorsamples(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunction,cores,mciterations)
+## }
