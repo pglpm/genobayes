@@ -36,8 +36,8 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- 'testbmc1e6_1sym_1snp_const/' # directory for saving results
-filename <- 'freq-1_1_const-' # filename prefix
+savedir <- 'testmc1e6_1sym_1snp_cons/' # directory for saving results
+filename <- 'freq-1_1_cons-' # filename prefix
 
 cores <- 30 # for parallel processing
 mciterations <- 1e6 # number of Monte-Carlo samples
@@ -69,13 +69,13 @@ namesnpcombos <- unlist(sapply(1:(numsnpvariants-1),
 ## 'lt' is the log of t
 
 ## first prior: constant in the frequency parameter and a very broad gamma density for the pseudocount parameter. See research notes.
-#logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
+logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
 
 ## second prior: constant in the frequency parameter and Jeffreys prior for the pseudocount variables of the beta distribution = constant in log(variable), but regularized as a very broad Cauchy distribution. See research notes.
 #logpriortheta <- function(lt,t){dcauchy(log(sum(t)),location=log(1000),scale=log(1000),log=TRUE)-2*log(sum(t))}
 
 ## third prior: constant. See research notes.
-logpriortheta <- FALSE
+##logpriortheta <- FALSE
 
 ## This function calculates the EVs and SDs of the marginals and all the differences of the conditional frequencies. For the latter also calculates the spreads ("significance"). It writes the results on two files if the max spread is larger than a given value
 
@@ -126,7 +126,7 @@ statsfunction <- function(f,samples,numsymptomvariants,numsnpvariants){
     list(maxspread=maxspread,diffdata=diffdata,margdata=margdata,writeflag=writeflag)
     }
 
-results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunction,cores,mciterations)
+#results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunction,cores,mciterations)
 
 ## Call a function that samples without data, to plot the initial belief
 ## Not called in the case of constant prior
