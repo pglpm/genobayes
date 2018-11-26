@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-24T21:06:19+0100
+%% Last-Updated: 2018-11-27T00:18:38+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1012,7 +1012,7 @@ show this symptom is
   \label{eq:sampling_belief}
   \pf( F_{\ysA\|\ya} \| f_{\ysA\|\ya},  N_{\ya}, \yI)
   =
-  {f_{\ysA\|\ya}}^{N_{\ya}\,F_{\ysA\|\ya}} \;
+\binom{N_{\ya}}{N_{\ya}\,F_{\ysA\|\ya}}\;  {f_{\ysA\|\ya}}^{N_{\ya}\,F_{\ysA\|\ya}} \;
   {(1-f_{\ysA\|\ya})}^{N_{\ya}\,(1-F_{\ysA\|\ya})},
 \end{equation}
 and analogously for allele $\yb$. Our belief about obtaining data
@@ -1021,7 +1021,7 @@ $\yD = (F_{\ysA\|\ya}, F_{\ysA\|\yb})$ is therefore
   \label{eq:sampling_belief_combined}
   \pf(\yD \|  f_{\ysA\|\ya},f_{\ysA\|\yb}, N_{\ya}, N_{\yb}, \yI)
   =
- \prod_{x=\ya,\yb} {f_{\ysA\|x}}^{N_{x}\,F_{\ysA\|x}} \;
+ \prod_{x=\ya,\yb} \binom{N_{x}}{N_{x}\,F_{\ysA\|x}}\;{f_{\ysA\|x}}^{N_{x}\,F_{\ysA\|x}} \;
   {(1-f_{\ysA\|x})}^{N_{x}\,(1-F_{\ysA\|x})}.
 \end{equation}
 
