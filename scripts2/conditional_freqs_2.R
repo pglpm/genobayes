@@ -191,6 +191,6 @@ priorsamples <- function(
 
         print('writing samples to file...')
         write.csv(samples,paste0(savedir,filename,'priorsamples.csv'))
-        saveRDS(result,paste0(savedir,'_',filename,'priorsamples.rds'))
+        saveRDS(samples,paste0(savedir,'_',filename,'priorsamples.rds'))
         print('end')
 }
