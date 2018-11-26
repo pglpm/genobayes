@@ -36,20 +36,20 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- 'testmcdir2e5_1sym_1snp_gamma/' # directory for saving results
+savedir <- 'mc2e5_1sym_1snp_gamma/' # directory for saving results
 filename <- 'freq-1_1_gamma-' # filename prefix
 
 cores <- 30 # for parallel processing
-mciterations <- 1e4 # number of Monte-Carlo samples
+mciterations <- 2e5 # number of Monte-Carlo samples
 
-symptoms <- list(1,2) # symptoms A, B, C correspond to data indices 1, 2, 3
+symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('O','M','T')
 prefixsymptoms <- 'sym_' # for filename
 
 symptomvariants <- list(0,1)
 namesymptomvariants <- c('absent','present')
 
-snps <- as.list(3+(1:5)) # list of gene indices in data
+snps <- as.list(3+(1:94)) # list of gene indices in data
 namesnps <- sapply(snps,function(x){paste0(x[1]-3)})
 ## namesnps <- colnames(data)[(1:94)+3] # this was writing full SNP names
 prefixsnps <- 'snp_' # for filename
