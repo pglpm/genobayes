@@ -36,11 +36,11 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- 'testmc1e6_1sym_1snp_cons/' # directory for saving results
-filename <- 'freq-1_1_cons-' # filename prefix
+savedir <- 'mc1e6_1sym_2snp_unif/' # directory for saving results
+filename <- 'freq-1_1_unif-' # filename prefix
 
 cores <- 30 # for parallel processing
-mciterations <- 1e6 # number of Monte-Carlo samples
+mciterations <- 1e3 # number of Monte-Carlo samples
 
 symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('O','M','T')
@@ -49,13 +49,14 @@ prefixsymptoms <- 'sym_' # for filename
 symptomvariants <- list(0,1)
 namesymptomvariants <- c('absent','present')
 
-snps <- as.list(3+(1:94)) # list of gene indices in data
-namesnps <- sapply(snps,function(x){paste0(x[1]-3)})
-## namesnps <- colnames(data)[(1:94)+3] # this was writing full SNP names
-prefixsnps <- 'snp_' # for filename
+ngenes <- 94 # auxiliary quantity
+snps <- unlist(lapply(1:(ngenes-1),function(x){lapply((x+1):ngenes,function(y){3+c(x,y)})}),
+               recursive=FALSE) # list of all pairs of snps
+namesnps <- sapply(snps,function(x){paste0(x[1]-3,'_',x[2]-3)})
+prefixsnps <- 'snps_' # for filename
 
-snpvariants <- list(0, 1) # list of allele values
-namesnpvariants <- c('A','B') # allele names
+snpvariants <- list(c(0,0),c(0,1),c(1,0),c(1,1)) # list of allele-pair values
+namesnpvariants <- c('AA','AB','BA','BB') # allele-pair names
 
 ## combos of allele names (for conditional-frequency differences)
 numsnpvariants <- length(snpvariants)
@@ -69,10 +70,10 @@ namesnpcombos <- unlist(sapply(1:(numsnpvariants-1),
 ## 'lt' is the log of t
 
 ## first prior: constant in the frequency parameter and a very broad gamma density for the pseudocount parameter. See research notes.
-logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
+##logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
 
 ## second prior: constant. See research notes.
-##logpriortheta <- FALSE
+logpriortheta <- FALSE
 
 ## third prior: constant in the frequency parameter and Jeffreys prior for the pseudocount variables of the beta distribution = constant in log(variable), but regularized as a very broad Cauchy distribution. See research notes.
 #logpriortheta <- function(lt,t){dcauchy(log(sum(t)),location=log(1000),scale=log(1000),log=TRUE)-2*log(sum(t))}

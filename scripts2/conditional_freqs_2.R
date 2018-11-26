@@ -59,6 +59,10 @@ result <- foreach(symptom=1:numsymptoms,
             })
         })
 
+        if(min(c(f))<2){
+            print(paste0('warning, sym=',symptom,', snp=',snp,': ',min(c(f)),' sample'))
+        }
+
         if(is.function(logpriortheta)){
 ### Case of general hierarchic prior
 
