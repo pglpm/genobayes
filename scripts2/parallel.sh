@@ -1,6 +1,6 @@
 #!/bin/bash
 #################### Set the name of the job
-#SBATCH --job-name calc_1_1_gamma
+#SBATCH --job-name testcalc_1_1_gamma
 # Launch an array of 100 jobs
 ## SBATCH --array 1-10
 # Specify a time limit
@@ -8,8 +8,8 @@
 # Redirect stderr and stdout to the same file:
 # %A will be replaced by the job ID and %a by the array index
 ####################
-#SBATCH -o calc_1_1_gamma.out
-#SBATCH -e calc_1_1_gamma.out
+#SBATCH -o testcalc_1_1_gamma.out
+#SBATCH -e testcalc_1_1_gamma.out
 # Send email notifications
 ## SBATCH --mail-type=ALL
 # We request an exclusive node for every job in the array
