@@ -1,0 +1,29 @@
+
+Attaching package: 'cowplot'
+
+The following object is masked from 'package:ggplot2':
+
+    ggsave
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+[1] "warning, sym=1, snp=94: 1 sample"
+[1] "warning, sym=1, snp=95: 0 sample"
+srun: Job step aborted: Waiting up to 2 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: *** JOB 326132 CANCELLED AT 2018-11-26T19:46:47 ***
+srun: forcing job termination
+slurmstepd: *** STEP 326132.0 CANCELLED AT 2018-11-26T19:46:47 ***
+srun: error: compute-0-0: task 0: Terminated
