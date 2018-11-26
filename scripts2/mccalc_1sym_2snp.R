@@ -117,7 +117,7 @@ statsfunction <- function(f,samples,symptom,snp,numsymptomvariants,numsnpvariant
         colnames(margdata) <- namesnpvariants
 
     writeflag <- FALSE
-    if(maxspread>-Inf){
+    if(maxspread>=2){
         writeflag <- TRUE
         write.csv(diffdata,paste0(savedir,filename,'spreads-',prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'-spr_',format(round(max(abs(c(spreads))),3),digits=3,nsmall=3),'.csv'))
         
