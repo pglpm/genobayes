@@ -40,7 +40,7 @@ savedir <- 'testmc1e6_1sym_1snp_gamma/' # directory for saving results
 filename <- 'freq-1_1_gamma-' # filename prefix
 
 cores <- 30 # for parallel processing
-mciterations <- 1e4 # number of Monte-Carlo samples
+mciterations <- 1e6 # number of Monte-Carlo samples
 
 symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('O','M','T')
