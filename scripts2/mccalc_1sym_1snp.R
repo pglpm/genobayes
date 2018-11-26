@@ -36,8 +36,8 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- 'testmc1e6_1sym_1snp_gamma/' # directory for saving results
-filename <- 'freq-1_1_gamma-' # filename prefix
+savedir <- 'testmc1e6_1sym_1snp_cauchy/' # directory for saving results
+filename <- 'freq-1_1_cauchy-' # filename prefix
 
 cores <- 30 # for parallel processing
 mciterations <- 1e6 # number of Monte-Carlo samples
@@ -69,10 +69,10 @@ namesnpcombos <- unlist(sapply(1:(numsnpvariants-1),
 ## 'lt' is the log of t
 
 ## first prior: constant in the frequency parameter and a very broad gamma density for the pseudocount parameter. See research notes.
-logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
+#logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-log(sum(t))}
 
 ## second prior: constant in the frequency parameter and Jeffreys prior for the pseudocount variables of the beta distribution = constant in log(variable), but regularized as a very broad Cauchy distribution. See research notes.
-#logpriortheta <- function(lt,t){dcauchy(log(sum(t)),location=0,scale=log(1000),log=TRUE)-2*log(sum(t))}
+logpriortheta <- function(lt,t){dcauchy(log(sum(t)),location=0,scale=log(1000),log=TRUE)-2*log(sum(t))}
 
 
 ## This function calculates the EVs and SDs of the marginals and all the differences of the conditional frequencies. For the latter also calculates the spreads ("significance"). It writes the results on two files if the max spread is larger than a given value
