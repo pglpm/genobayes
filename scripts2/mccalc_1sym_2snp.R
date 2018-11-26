@@ -39,7 +39,7 @@ data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 savedir <- 'mc1e6_1sym_2snp_unif/' # directory for saving results
 filename <- 'freq-1_2_unif-' # filename prefix
 
-cores <- 1 # for parallel processing
+cores <- 30 # for parallel processing
 mciterations <- 1e6 # number of Monte-Carlo samples
 
 symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
