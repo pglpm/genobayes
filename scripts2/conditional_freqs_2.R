@@ -192,5 +192,14 @@ priorsamples <- function(
         print('writing samples to file...')
         write.csv(samples,paste0(savedir,filename,'priorsamples.csv'))
         saveRDS(samples,paste0(savedir,'_',filename,'priorsamples.rds'))
-        print('end')
+
+    print('producing frequency samples and writing them...')
+    fsamples <- t(apply(samples,1,function(tt){
+        et <- exp(tt)
+        c(rbeta(1,et[1],et[2]),rbeta(1,et[1],et[2]))
+        }))
+        write.csv(fsamples,paste0(savedir,filename,'priorfsamples.csv'))
+        saveRDS(fsamples,paste0(savedir,'_',filename,'priorfsamples.rds'))
+
+    print('end')
 }
