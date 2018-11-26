@@ -4442,3 +4442,973 @@ Estimating Log of the Marginal Likelihood
 Creating Output
 
 Laplace's Demon has finished.
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3326
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.7
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Creating Summaries
+Creating Summaries
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.5
+
+Assessing Stationarity
+Estimating Log of the Marginal Likelihood
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325.5
+
+Assessing Stationarity
+Creating Summaries
+Assessing Thinning and ESS
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.9
+
+Assessing Stationarity
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.8
+
+Assessing Stationarity
+Creating Output
+
+Laplace's Demon has finished.
+Creating Summaries
+Assessing Thinning and ESS
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+Creating Summaries
+Creating Summaries
+
+Laplace's Demon was called on Mon Nov 26 14:25:27 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3326.8
+
+Assessing Stationarity
+
+Laplace's Demon was called on Mon Nov 26 14:25:38 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325.1
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+
+Laplace's Demon was called on Mon Nov 26 14:25:55 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3327.8
+
+Assessing Stationarity
+Creating Summaries
+Assessing Thinning and ESS
+Creating Output
+
+Laplace's Demon has finished.
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325
+
+Assessing Stationarity
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325.7
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Creating Summaries
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3326
+
+Assessing Stationarity
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.7
+
+Assessing Stationarity
+Creating Summaries
+Assessing Thinning and ESS
+Assessing Thinning and ESS
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325.2
+
+Assessing Stationarity
+Creating Output
+
+Laplace's Demon has finished.
+Creating Output
+
+Laplace's Demon has finished.
+Assessing Thinning and ESS
+Creating Summaries
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+Creating Summaries
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3326
+
+Assessing Stationarity
+Estimating Log of the Marginal Likelihood
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.1
+
+Assessing Stationarity
+Creating Output
+
+Laplace's Demon has finished.
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+Creating Output
+
+Laplace's Demon has finished.
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.3
+
+Assessing Stationarity
+
+Laplace's Demon was called on Mon Nov 26 14:30:40 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3326
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Creating Summaries
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.9
+
+Assessing Stationarity
+Creating Output
+
+Laplace's Demon has finished.
+Assessing Thinning and ESS
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.1
+
+Assessing Stationarity
+Creating Summaries
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3326
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Assessing Thinning and ESS
+Creating Summaries
+
+Laplace's Demon was called on Mon Nov 26 14:31:41 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.7
+
+Assessing Stationarity
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Assessing Thinning and ESS
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Estimating Log of the Marginal Likelihood
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+
+Laplace's Demon was called on Mon Nov 26 14:32:56 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Creating Output
+
+Laplace's Demon has finished.
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.2
+
+Assessing Stationarity
+Creating Output
+
+Laplace's Demon has finished.
+
+Laplace's Demon was called on Mon Nov 26 14:33:15 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.1
+
+Assessing Stationarity
+Assessing Thinning and ESS
+
+Laplace's Demon was called on Mon Nov 26 14:33:29 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Creating Output
+
+Laplace's Demon has finished.
+Assessing Thinning and ESS
+
+Laplace's Demon was called on Mon Nov 26 14:33:35 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Creating Output
+
+Laplace's Demon has finished.
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.2
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+
+Laplace's Demon was called on Mon Nov 26 14:34:52 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Laplace's Demon was called on Mon Nov 26 14:34:55 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Laplace's Demon was called on Mon Nov 26 14:34:57 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Creating Summaries
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325.8
+
+Assessing Stationarity
+Creating Output
+
+Laplace's Demon has finished.
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+Creating Summaries
+
+Laplace's Demon was called on Mon Nov 26 14:36:07 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Laplace's Demon was called on Mon Nov 26 14:36:29 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Laplace's Demon was called on Mon Nov 26 14:36:46 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Creating Output
+
+Laplace's Demon has finished.
+Estimating Log of the Marginal Likelihood
+
+Laplace's Demon was called on Mon Nov 26 14:36:57 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Laplace's Demon was called on Mon Nov 26 14:37:05 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Creating Output
+
+Laplace's Demon has finished.
+
+Laplace's Demon was called on Mon Nov 26 14:38:19 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Laplace's Demon was called on Mon Nov 26 14:39:03 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Laplace's Demon was called on Mon Nov 26 14:39:42 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Laplace's Demon was called on Mon Nov 26 14:40:19 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Laplace's Demon was called on Mon Nov 26 14:40:28 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3327.3
+
+Assessing Stationarity
+Assessing Thinning and ESS
+
+Laplace's Demon was called on Mon Nov 26 14:41:01 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Creating Summaries
+
+Laplace's Demon was called on Mon Nov 26 14:41:17 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Laplace's Demon was called on Mon Nov 26 14:41:26 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Estimating Log of the Marginal Likelihood
+
+Laplace's Demon was called on Mon Nov 26 14:42:19 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Creating Output
+
+Laplace's Demon has finished.
+
+Laplace's Demon was called on Mon Nov 26 14:43:35 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Laplace's Demon was called on Mon Nov 26 14:43:46 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3326.4
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Creating Summaries
+
+Laplace's Demon was called on Mon Nov 26 14:45:10 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+
+Laplace's Demon was called on Mon Nov 26 14:50:25 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Laplace's Demon was called on Mon Nov 26 14:50:33 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.9
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3327.2
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325.3
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Creating Summaries
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3323.3
+
+Assessing Stationarity
+Creating Output
+
+Laplace's Demon has finished.
+Estimating Log of the Marginal Likelihood
+Assessing Thinning and ESS
+Creating Summaries
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325.9
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.3
+
+Assessing Stationarity
+Creating Output
+
+Laplace's Demon has finished.
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.9
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Assessing Thinning and ESS
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3323.4
+
+Assessing Stationarity
+Creating Summaries
+Creating Summaries
+Assessing Thinning and ESS
+Creating Output
+
+Laplace's Demon has finished.
+Creating Summaries
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3323
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3323.7
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Creating Output
+
+Laplace's Demon has finished.
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.7
+
+Assessing Stationarity
+Creating Output
+
+Laplace's Demon has finished.
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Creating Summaries
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3327
+
+Assessing Stationarity
+Creating Output
+
+Laplace's Demon has finished.
+Assessing Thinning and ESS
+
+Laplace's Demon was called on Mon Nov 26 15:05:46 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Creating Summaries
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.6
+
+Assessing Stationarity
+Estimating Log of the Marginal Likelihood
+Assessing Thinning and ESS
+Creating Output
+
+Laplace's Demon has finished.
+Creating Summaries
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325.2
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3326
+
+Assessing Stationarity
+Creating Output
+
+Laplace's Demon has finished.
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.5
+
+Assessing Stationarity
+Creating Summaries
+Assessing Thinning and ESS
+
+Laplace's Demon was called on Mon Nov 26 15:07:17 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.3
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Assessing Thinning and ESS
+Creating Summaries
+Creating Summaries
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324
+
+Assessing Stationarity
+Estimating Log of the Marginal Likelihood
+
+Laplace's Demon was called on Mon Nov 26 15:08:45 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Assessing Thinning and ESS
+Creating Output
+
+Laplace's Demon has finished.
+Creating Summaries
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325
+
+Assessing Stationarity
+
+Laplace's Demon was called on Mon Nov 26 15:09:19 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Assessing Thinning and ESS
+Creating Output
+
+Laplace's Demon has finished.
+Creating Output
+
+Laplace's Demon has finished.
+
+Laplace's Demon was called on Mon Nov 26 15:09:29 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.9
+
+Assessing Stationarity
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Creating Output
+Assessing Thinning and ESS
+
+Laplace's Demon has finished.
+Creating Summaries
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.4
+
+Assessing Stationarity
+Creating Summaries
+Assessing Thinning and ESS
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3323.8
+
+Assessing Stationarity
+Creating Output
+
+Laplace's Demon has finished.
+Assessing Thinning and ESS
+Creating Output
+
+Laplace's Demon has finished.
+Creating Summaries
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+
+Laplace's Demon was called on Mon Nov 26 15:11:37 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325.1
+
+Assessing Stationarity
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.8
+
+Assessing Stationarity
+
+Laplace's Demon was called on Mon Nov 26 15:11:43 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Estimating Log of the Marginal Likelihood
+Assessing Thinning and ESS
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.3
+Creating Summaries
+
+Assessing Stationarity
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Assessing Thinning and ESS
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+Creating Output
+
+Laplace's Demon has finished.
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325.2
+
+Assessing Stationarity
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.6
+
+Assessing Stationarity
+Creating Output
+
+Laplace's Demon has finished.
+Assessing Thinning and ESS
+Creating Output
+
+Laplace's Demon has finished.
+Assessing Thinning and ESS
+Creating Summaries
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.2
+
+Assessing Stationarity
+Creating Output
+
+Laplace's Demon has finished.
+Assessing Thinning and ESS
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325.1
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3326.1
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325.2
+
+Assessing Stationarity
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3325.4
+
+Assessing Stationarity
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3326.2
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Assessing Thinning and ESS
+Assessing Thinning and ESS
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Creating Summaries
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.1
+
+Assessing Stationarity
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.7
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Creating Output
+
+Laplace's Demon has finished.
+Assessing Thinning and ESS
+Creating Output
+
+Laplace's Demon has finished.
+Creating Output
+
+Laplace's Demon has finished.
+Creating Summaries
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3324.3
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Creating Output
+
+Laplace's Demon has finished.
+Creating Summaries
+Creating Output
+
+Laplace's Demon has finished.
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+[1] "writing results to file..."
+[1] "end"
+Warning message:
+In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+  already exporting variable(s): savedir, filename, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, logpriortheta, statsfunction, mciterations, mcdiscard
