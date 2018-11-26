@@ -36,11 +36,11 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- 'mc1e6_1sym_1snp_gamma/' # directory for saving results
+savedir <- 'testmc1e6_1sym_1snp_gamma/' # directory for saving results
 filename <- 'freq-1_1_gamma-' # filename prefix
 
 cores <- 30 # for parallel processing
-mciterations <- 1e6 # number of Monte-Carlo samples
+mciterations <- 1e4 # number of Monte-Carlo samples
 
 symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('O','M','T')
@@ -124,4 +124,6 @@ statsfunction <- function(f,samples,numsymptomvariants,numsnpvariants){
     list(maxspread=maxspread,diffdata=diffdata,margdata=margdata,writeflag=writeflag)
     }
 
-results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunction,cores,mciterations)
+## results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunction,cores,mciterations)
+
+insamples <- priorsamples(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunction,cores,mciterations)
