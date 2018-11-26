@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     62654,       1549]
-NotebookOptionsPosition[     59761,       1499]
-NotebookOutlinePosition[     60107,       1514]
-CellTagsIndexPosition[     60064,       1511]
+NotebookDataLength[     62776,       1555]
+NotebookOptionsPosition[     59883,       1505]
+NotebookOutlinePosition[     60229,       1520]
+CellTagsIndexPosition[     60186,       1517]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -124,9 +124,9 @@ Cell[BoxData[
         Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
   Function[BoxForm`e$, 
    MatrixForm[BoxForm`e$]]]], "Output",
- CellChangeTimes->{3.7522154931288695`*^9, 
-  3.7522170289429674`*^9},ExpressionUUID->"e508f07f-dca0-4e27-ad4e-\
-e296326f75ec"]
+ CellChangeTimes->{3.7522154931288695`*^9, 3.7522170289429674`*^9, 
+  3.7522271317636213`*^9},ExpressionUUID->"4b34e18a-178f-4332-a298-\
+5215f52ed230"]
 }, Open  ]],
 
 Cell[BoxData[{
@@ -217,8 +217,8 @@ Cell[BoxData[{
            RowBox[{"[", "snpvariant", "]"}], "]"}]}], ")"}], "/.", 
         RowBox[{"{", 
          RowBox[{
-          RowBox[{"\"\<0\>\"", "\[Rule]", "\"\<A\>\""}], ",", 
-          RowBox[{"\"\<1\>\"", "\[Rule]", "\"\<B\>\""}]}], "}"}]}], "]"}], 
+          RowBox[{"\"\<0\>\"", "\[Rule]", "\"\<a\>\""}], ",", 
+          RowBox[{"\"\<1\>\"", "\[Rule]", "\"\<b\>\""}]}], "}"}]}], "]"}], 
       ",", 
       RowBox[{"{", 
        RowBox[{"snpvariant", ",", "numsnpvariants"}], "}"}]}], "]"}]}], ";"}],
@@ -346,8 +346,8 @@ Cell[BoxData[{
   3.7522099742924676`*^9}, {3.752210969825816*^9, 3.752211014005094*^9}, {
   3.752211132598502*^9, 3.7522111394157143`*^9}, {3.7522114829147177`*^9, 
   3.752211485441922*^9}, {3.752215484158854*^9, 3.7522155265753284`*^9}, {
-  3.752216246520593*^9, 
-  3.752216248064996*^9}},ExpressionUUID->"b3146c6b-5130-47bc-9006-\
+  3.752216246520593*^9, 3.752216248064996*^9}, {3.7522273013837194`*^9, 
+  3.7522273037237234`*^9}},ExpressionUUID->"b3146c6b-5130-47bc-9006-\
 df63cc6b434d"],
 
 Cell[BoxData[
@@ -429,236 +429,242 @@ Cell[BoxData[{
    RowBox[{"sortvar", "=", "2"}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"ticknamesnpvariants", "=", 
-   RowBox[{"Flatten", "@", 
-    RowBox[{"Table", "[", 
-     RowBox[{
-      RowBox[{"\"\<      \>\"", "<>", 
-       RowBox[{"namesnpvariants", "[", 
-        RowBox[{"[", "ii", "]"}], "]"}], "<>", "\"\<-\>\"", "<>", 
-       RowBox[{"namesnpvariants", "[", 
-        RowBox[{"[", "jj", "]"}], "]"}]}], ",", 
-      RowBox[{"{", 
-       RowBox[{"ii", ",", 
-        RowBox[{
-         RowBox[{"Length", "@", "namesnpvariants"}], "-", "1"}]}], "}"}], ",", 
-      RowBox[{"{", 
-       RowBox[{"jj", ",", 
-        RowBox[{"ii", "+", "1"}], ",", 
-        RowBox[{"Length", "@", "namesnpvariants"}]}], "}"}]}], "]"}]}]}], ";", 
+  RowBox[{
+   RowBox[{"ticknamesnpvariants", "=", 
+    RowBox[{"Flatten", "@", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"\"\<      \>\"", "<>", 
+        RowBox[{"namesnpvariants", "[", 
+         RowBox[{"[", "ii", "]"}], "]"}], "<>", "\"\<-\>\"", "<>", 
+        RowBox[{"namesnpvariants", "[", 
+         RowBox[{"[", "jj", "]"}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"ii", ",", 
+         RowBox[{
+          RowBox[{"Length", "@", "namesnpvariants"}], "-", "1"}]}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"jj", ",", 
+         RowBox[{"ii", "+", "1"}], ",", 
+         RowBox[{"Length", "@", "namesnpvariants"}]}], "}"}]}], "]"}]}]}], 
+   ";"}], 
   RowBox[{"(*", 
    RowBox[{
     RowBox[{
      RowBox[{
       RowBox[{"StringJoin", "[", 
        RowBox[{"\"\<      \>\"", ",", "#"}], "]"}], "&"}], "/@", 
-     "namesnpvariants"}], ";"}], "*)"}], "\[IndentingNewLine]", 
-  RowBox[{"Do", "[", "\[IndentingNewLine]", 
+     "namesnpvariants"}], ";"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", "\[IndentingNewLine]", 
+  RowBox[{
    RowBox[{
-    RowBox[{
-     RowBox[{"maxplotsnps", "=", 
-      RowBox[{"Min", "[", 
-       RowBox[{"maxmaxsnps", ",", 
-        RowBox[{"numsnps", "[", 
-         RowBox[{"[", "symptom", "]"}], "]"}]}], "]"}]}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"(*", 
+    RowBox[{"maxplotsnps", "=", 
+     RowBox[{"Min", "[", 
+      RowBox[{"maxmaxsnps", ",", 
+       RowBox[{"numsnps", "[", 
+        RowBox[{"[", "symptom", "]"}], "]"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", 
+     RowBox[{
+      RowBox[{"sortedsnps", "=", 
+       RowBox[{
+        RowBox[{"sortspreads", "[", 
+         RowBox[{"symptom", ",", "sortvar"}], "]"}], "[", 
+        RowBox[{"[", 
+         RowBox[{";;", "maxsnps"}], "]"}], "]"}]}], ";"}], "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"plotdata", "=", 
+     RowBox[{"results", "[", 
+      RowBox[{"[", 
+       RowBox[{"symptom", ",", ";;", ",", 
+        RowBox[{"{", 
+         RowBox[{"3", ",", "4"}], "}"}]}], "]"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"min", "=", 
+     RowBox[{"Min", "[", 
       RowBox[{
-       RowBox[{"sortedsnps", "=", 
-        RowBox[{
-         RowBox[{"sortspreads", "[", 
-          RowBox[{"symptom", ",", "sortvar"}], "]"}], "[", 
-         RowBox[{"[", 
-          RowBox[{";;", "maxsnps"}], "]"}], "]"}]}], ";"}], "*)"}], 
-     "\[IndentingNewLine]", 
-     RowBox[{"plotdata", "=", 
-      RowBox[{"results", "[", 
-       RowBox[{"[", 
-        RowBox[{"symptom", ",", ";;", ",", 
-         RowBox[{"{", 
-          RowBox[{"3", ",", "4"}], "}"}]}], "]"}], "]"}]}], ";", 
+       RowBox[{"plotdata", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", ",", "1"}], "]"}], "]"}], "-", 
+       RowBox[{"plotdata", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", ",", "2"}], "]"}], "]"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"max", "=", 
+     RowBox[{"Max", "[", 
+      RowBox[{
+       RowBox[{"plotdata", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", ",", "1"}], "]"}], "]"}], "+", 
+       RowBox[{"plotdata", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", ",", "2"}], "]"}], "]"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"ticknames", "=", "\[IndentingNewLine]", 
+     RowBox[{"Flatten", "@", 
+      RowBox[{"Table", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Join", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"namesnps", "[", 
+              RowBox[{"[", 
+               RowBox[{"symptom", ",", "ii", ",", "jj"}], "]"}], "]"}], "<>", 
+             RowBox[{"ticknamesnpvariants", "[", 
+              RowBox[{"[", "jj", "]"}], "]"}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"jj", ",", 
+              RowBox[{"Length", "[", 
+               RowBox[{"namesnps", "[", 
+                RowBox[{"[", 
+                 RowBox[{"symptom", ",", "ii"}], "]"}], "]"}], "]"}]}], 
+             "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"ticknamesnpvariants", "[", 
+           RowBox[{"[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Length", "[", 
+               RowBox[{"namesnps", "[", 
+                RowBox[{"[", 
+                 RowBox[{"symptom", ",", "ii"}], "]"}], "]"}], "]"}], "+", 
+              "1"}], ";;"}], "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"ii", ",", 
+          RowBox[{"Length", "@", 
+           RowBox[{"namesnps", "[", 
+            RowBox[{"[", "symptom", "]"}], "]"}]}]}], "}"}]}], "]"}]}]}], ";",
      "\[IndentingNewLine]", "\[IndentingNewLine]", 
-     RowBox[{"min", "=", 
-      RowBox[{"Min", "[", 
-       RowBox[{
-        RowBox[{"plotdata", "[", 
-         RowBox[{"[", 
-          RowBox[{";;", ",", "1"}], "]"}], "]"}], "-", 
-        RowBox[{"plotdata", "[", 
-         RowBox[{"[", 
-          RowBox[{";;", ",", "2"}], "]"}], "]"}]}], "]"}]}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"max", "=", 
-      RowBox[{"Max", "[", 
-       RowBox[{
-        RowBox[{"plotdata", "[", 
-         RowBox[{"[", 
-          RowBox[{";;", ",", "1"}], "]"}], "]"}], "+", 
-        RowBox[{"plotdata", "[", 
-         RowBox[{"[", 
-          RowBox[{";;", ",", "2"}], "]"}], "]"}]}], "]"}]}], ";", 
-     "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-     RowBox[{"ticknames", "=", "\[IndentingNewLine]", 
-      RowBox[{"Flatten", "@", 
-       RowBox[{"Table", "[", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"Join", "[", 
-          RowBox[{
-           RowBox[{"Table", "[", 
-            RowBox[{
+    RowBox[{"plot", "=", 
+     RowBox[{"ErrorListPlot", "[", 
+      RowBox[{"plotdata", ",", 
+       RowBox[{"Joined", "\[Rule]", "False"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"min", ",", "max"}], "}"}]}], ",", 
+       RowBox[{"Joined", "\[Rule]", "False"}], ",", 
+       RowBox[{"AspectRatio", "\[Rule]", 
+        RowBox[{"1", "/", "7"}]}], ",", 
+       RowBox[{"Frame", "\[Rule]", "Auto"}], ",", 
+       RowBox[{"Axes", "\[Rule]", "None"}], ",", 
+       RowBox[{"FrameLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<SNP\>\"", ",", "41"}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"HoldForm", "[", 
              RowBox[{
-              RowBox[{"namesnps", "[", 
-               RowBox[{"[", 
-                RowBox[{"symptom", ",", "ii", ",", "jj"}], "]"}], "]"}], "<>", 
-              RowBox[{"ticknamesnpvariants", "[", 
-               RowBox[{"[", "jj", "]"}], "]"}]}], ",", 
+              RowBox[{"Subscript", "[", 
+               RowBox[{"f", ",", 
+                RowBox[{"\"\<O|\>\"", "a"}]}], "]"}], "-", 
+              RowBox[{"Subscript", "[", 
+               RowBox[{"f", ",", 
+                RowBox[{"\"\<O|\>\"", "b"}]}], "]"}]}], "]"}], ",", "41"}], 
+           "]"}]}], "}"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"FrameStyle", "\[Rule]", 
+        RowBox[{"Directive", "[", 
+         RowBox[{"Large", ",", "Black"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"FrameTicks", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Auto", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"T", "@", 
              RowBox[{"{", 
-              RowBox[{"jj", ",", 
-               RowBox[{"Length", "[", 
-                RowBox[{"namesnps", "[", 
-                 RowBox[{"[", 
-                  RowBox[{"symptom", ",", "ii"}], "]"}], "]"}], "]"}]}], 
-              "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
-           RowBox[{"ticknamesnpvariants", "[", 
-            RowBox[{"[", 
-             RowBox[{
               RowBox[{
-               RowBox[{"Length", "[", 
-                RowBox[{"namesnps", "[", 
-                 RowBox[{"[", 
-                  RowBox[{"symptom", ",", "ii"}], "]"}], "]"}], "]"}], "+", 
-               "1"}], ";;"}], "]"}], "]"}]}], "]"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"ii", ",", 
-           RowBox[{"Length", "@", 
-            RowBox[{"namesnps", "[", 
-             RowBox[{"[", "symptom", "]"}], "]"}]}]}], "}"}]}], "]"}]}]}], 
-     ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-     RowBox[{"plot", "=", 
-      RowBox[{"ErrorListPlot", "[", 
-       RowBox[{"plotdata", ",", 
-        RowBox[{"Joined", "\[Rule]", "False"}], ",", 
-        RowBox[{"PlotRange", "\[Rule]", 
-         RowBox[{"{", 
-          RowBox[{"min", ",", "max"}], "}"}]}], ",", 
-        RowBox[{"Joined", "\[Rule]", "False"}], ",", 
-        RowBox[{"AspectRatio", "\[Rule]", 
-         RowBox[{"1", "/", "7"}]}], ",", 
-        RowBox[{"Frame", "\[Rule]", "Auto"}], ",", 
-        RowBox[{"Axes", "\[Rule]", "None"}], ",", 
-        RowBox[{"FrameLabel", "\[Rule]", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"Style", "[", 
-            RowBox[{"\"\<SNP\>\"", ",", "41"}], "]"}], ",", 
-           RowBox[{"Style", "[", 
-            RowBox[{
-             RowBox[{
-             "\"\<frequency\>\"", "[", "\"\<symptom | SNP alleles\>\"", "]"}],
-              ",", "41"}], "]"}]}], "}"}]}], ",", "\[IndentingNewLine]", 
-        RowBox[{"FrameStyle", "\[Rule]", 
-         RowBox[{"Directive", "[", 
-          RowBox[{"Large", ",", "Black"}], "]"}]}], ",", 
-        "\[IndentingNewLine]", 
-        RowBox[{"FrameTicks", "\[Rule]", 
-         RowBox[{"{", 
-          RowBox[{"Auto", ",", 
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{"T", "@", 
-              RowBox[{"{", 
+               RowBox[{"Range", "[", 
+                RowBox[{"Length", "@", "ticknames"}], "]"}], ",", 
                RowBox[{
-                RowBox[{"Range", "[", 
-                 RowBox[{"Length", "@", "ticknames"}], "]"}], ",", 
                 RowBox[{
+                 RowBox[{"Style", "[", 
+                  RowBox[{"#", ",", "15"}], "]"}], "&"}], "/@", 
+                RowBox[{"(", 
                  RowBox[{
-                  RowBox[{"Style", "[", 
-                   RowBox[{"#", ",", "15"}], "]"}], "&"}], "/@", 
-                 RowBox[{"(", 
                   RowBox[{
-                   RowBox[{
-                    RowBox[{"Rotate", "[", 
+                   RowBox[{"Rotate", "[", 
                     RowBox[{"#", ",", 
                     RowBox[{"Pi", "/", "2"}]}], "]"}], "&"}], "/@", 
-                   RowBox[{"(", "ticknames", ")"}]}], ")"}]}]}], "}"}]}], ",",
-              "None"}], "}"}]}], "}"}]}], ",", "\[IndentingNewLine]", 
-        RowBox[{"PlotStyle", "\[Rule]", 
-         RowBox[{"PointSize", "[", 
-          RowBox[{"Scaled", "[", "0.005", "]"}], "]"}]}], ",", 
-        "\[IndentingNewLine]", 
-        RowBox[{"GridLines", "\[Rule]", 
-         RowBox[{"{", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{"{", 
-              RowBox[{"i", ",", "Thick"}], "}"}], ",", 
-             RowBox[{"{", 
-              RowBox[{"i", ",", 
-               RowBox[{"1", "/", "2"}], ",", 
-               RowBox[{
-                RowBox[{"Length", "@", "ticknames"}], "+", 
-                RowBox[{"1", "/", "2"}]}], ",", 
-               RowBox[{"numsnpvariants", "*", 
-                RowBox[{
-                 RowBox[{"(", 
-                  RowBox[{"numsnpvariants", "-", "1"}], ")"}], "/", "2"}]}]}],
-               "}"}]}], "]"}], "\[IndentingNewLine]", ",", "Auto"}], "}"}]}], 
-        ",", "\[IndentingNewLine]", 
-        RowBox[{"ImageSize", "\[Rule]", 
-         RowBox[{"a4longside", "*", 
-          RowBox[{"{", 
-           RowBox[{"4.7", ",", "1"}], "}"}]}]}], ",", 
-        RowBox[{"ImagePadding", "\[Rule]", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{"Auto", "\[IndentingNewLine]", ",", "Auto"}], "}"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"Auto", ",", "50"}], "}"}]}], "}"}]}], ",", 
-        RowBox[{"Epilog", "\[Rule]", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{"Thick", ",", "Dashed", ",", "red", ",", 
-             RowBox[{"Line", "[", 
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"{", 
-                 RowBox[{"0", ",", "0"}], "}"}], ",", 
-                RowBox[{"{", 
-                 RowBox[{
-                  RowBox[{
-                   RowBox[{"Length", "@", "ticknames"}], "+", "1"}], ",", 
-                  "0"}], "}"}]}], "}"}], "]"}]}], "}"}], ",", 
-           RowBox[{"Text", "[", 
-            RowBox[{
-             RowBox[{"Rotate", "[", 
-              RowBox[{
-               RowBox[{"Style", "[", 
-                RowBox[{
-                 RowBox[{"label", "<>", "\"\<, symptom \>\"", "<>", 
-                  RowBox[{"namesymptoms", "[", 
-                   RowBox[{"[", "symptom", "]"}], "]"}]}], ",", "36"}], "]"}],
-                ",", 
-               RowBox[{"Pi", "/", "2"}]}], "]"}], ",", 
-             RowBox[{"Sequence", "@@", 
-              RowBox[{"labelposition", "[", 
-               RowBox[{"{", 
-                RowBox[{"0.01", ",", "0.95"}], "}"}], "]"}]}]}], "]"}]}], 
-          "}"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
-     RowBox[{"Export", "[", 
-      RowBox[{
-       RowBox[{"dir", "<>", "fileprefix", "<>", "\"\<sym_\>\"", "<>", 
-        RowBox[{"namesymptoms", "[", 
-         RowBox[{"[", "symptom", "]"}], "]"}], "<>", "\"\<.pdf\>\""}], ",", 
-       RowBox[{"Rotate", "[", 
-        RowBox[{"plot", ",", 
+                  RowBox[{"(", "ticknames", ")"}]}], ")"}]}]}], "}"}]}], ",", 
+            "None"}], "}"}]}], "}"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"PointSize", "[", 
+         RowBox[{"Scaled", "[", "0.005", "]"}], "]"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"GridLines", "\[Rule]", 
+        RowBox[{"{", "\[IndentingNewLine]", 
          RowBox[{
-          RowBox[{"-", "Pi"}], "/", "2"}]}], "]"}]}], "]"}], ";"}], 
-    "\[IndentingNewLine]", ",", 
-    RowBox[{"{", 
-     RowBox[{"symptom", ",", "numsymptoms"}], "}"}]}], "]"}]}]}], "Input",
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"i", ",", "Thick"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", 
+              RowBox[{"1", "/", "2"}], ",", 
+              RowBox[{
+               RowBox[{"Length", "@", "ticknames"}], "+", 
+               RowBox[{"1", "/", "2"}]}], ",", 
+              RowBox[{"numsnpvariants", "*", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"numsnpvariants", "-", "1"}], ")"}], "/", "2"}]}]}], 
+             "}"}]}], "]"}], "\[IndentingNewLine]", ",", "Auto"}], "}"}]}], 
+       ",", "\[IndentingNewLine]", 
+       RowBox[{"ImageSize", "\[Rule]", 
+        RowBox[{"a4longside", "*", "4.7"}]}], ",", 
+       RowBox[{"ImagePadding", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"Auto", "\[IndentingNewLine]", ",", "Auto"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"Auto", ",", "50"}], "}"}]}], "}"}]}], ",", 
+       RowBox[{"Epilog", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"Thick", ",", "Dashed", ",", "red", ",", 
+            RowBox[{"Line", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "0"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Length", "@", "ticknames"}], "+", "1"}], ",", 
+                 "0"}], "}"}]}], "}"}], "]"}]}], "}"}], ",", 
+          RowBox[{"Text", "[", 
+           RowBox[{
+            RowBox[{"Rotate", "[", 
+             RowBox[{
+              RowBox[{"Style", "[", 
+               RowBox[{
+                RowBox[{"label", "<>", "\"\<, symptom \>\"", "<>", 
+                 RowBox[{"namesymptoms", "[", 
+                  RowBox[{"[", "symptom", "]"}], "]"}]}], ",", "36"}], "]"}], 
+              ",", 
+              RowBox[{"Pi", "/", "2"}]}], "]"}], ",", 
+            RowBox[{"Sequence", "@@", 
+             RowBox[{"labelposition", "[", 
+              RowBox[{"{", 
+               RowBox[{"0.01", ",", "0.95"}], "}"}], "]"}]}]}], "]"}]}], 
+         "}"}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{
+      RowBox[{"dir", "<>", "fileprefix", "<>", "\"\<sym_\>\"", "<>", 
+       RowBox[{"namesymptoms", "[", 
+        RowBox[{"[", "symptom", "]"}], "]"}], "<>", "\"\<.pdf\>\""}], ",", 
+      RowBox[{"Rotate", "[", 
+       RowBox[{"plot", ",", 
+        RowBox[{
+         RowBox[{"-", "Pi"}], "/", "2"}]}], "]"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"symptom", ",", "numsymptoms"}], "}"}]}], "]"}]}], "Input",
  CellChangeTimes->{{3.750056738404808*^9, 3.750056797263712*^9}, {
    3.750059294923699*^9, 3.7500593010077095`*^9}, {3.7500595054304686`*^9, 
    3.750059519829294*^9}, {3.7500595627761693`*^9, 3.7500595884538145`*^9}, {
@@ -710,8 +716,8 @@ Cell[BoxData[{
    3.752216595025205*^9}, {3.752216640000084*^9, 3.7522167032113953`*^9}, {
    3.752216762054699*^9, 3.7522168834697123`*^9}, {3.752216940425412*^9, 
    3.75221695076823*^9}, {3.7522170016107197`*^9, 3.7522170027027216`*^9}, {
-   3.7522170446063952`*^9, 
-   3.752217045199196*^9}},ExpressionUUID->"268e26be-3807-4af6-b244-\
+   3.7522170446063952`*^9, 3.752217045199196*^9}, {3.7522272065345526`*^9, 
+   3.7522272903701*^9}},ExpressionUUID->"268e26be-3807-4af6-b244-\
 a93048b76aa2"],
 
 Cell[BoxData[
@@ -1519,38 +1525,38 @@ Cell[1006, 35, 463, 11, 31, "Input",ExpressionUUID->"3c0df4f5-357a-4856-a3d4-b9f
 Cell[1472, 48, 314, 8, 48, "Input",ExpressionUUID->"2da8d5e3-a23b-4bd0-a622-38b7b0936749"],
 Cell[CellGroupData[{
 Cell[1811, 60, 1690, 43, 233, "Input",ExpressionUUID->"a7799457-427b-489c-b842-ee7907c13eea"],
-Cell[3504, 105, 904, 23, 52, "Output",ExpressionUUID->"e508f07f-dca0-4e27-ad4e-e296326f75ec"]
+Cell[3504, 105, 928, 23, 66, "Output",ExpressionUUID->"4b34e18a-178f-4332-a298-5215f52ed230"]
 }, Open  ]],
-Cell[4423, 131, 7925, 219, 1080, "Input",ExpressionUUID->"b3146c6b-5130-47bc-9006-df63cc6b434d"],
-Cell[12351, 352, 1210, 36, 137, "Input",ExpressionUUID->"9a50876c-ada6-4154-9938-f0414a5ed3f4"],
+Cell[4447, 131, 7975, 219, 1080, "Input",ExpressionUUID->"b3146c6b-5130-47bc-9006-df63cc6b434d"],
+Cell[12425, 352, 1210, 36, 115, "Input",ExpressionUUID->"9a50876c-ada6-4154-9938-f0414a5ed3f4"],
 Cell[CellGroupData[{
-Cell[13586, 392, 258, 7, 28, "Input",ExpressionUUID->"666391aa-180a-4d62-a2bd-d391cf436119"],
-Cell[13847, 401, 558, 15, 52, "Output",ExpressionUUID->"aecaeada-71be-4a74-b538-8a980f182aa7"]
+Cell[13660, 392, 258, 7, 28, "Input",ExpressionUUID->"666391aa-180a-4d62-a2bd-d391cf436119"],
+Cell[13921, 401, 558, 15, 52, "Output",ExpressionUUID->"aecaeada-71be-4a74-b538-8a980f182aa7"]
 }, Open  ]],
-Cell[14420, 419, 13263, 295, 1127, "Input",ExpressionUUID->"268e26be-3807-4af6-b244-a93048b76aa2"],
-Cell[27686, 716, 403, 7, 200, "Input",ExpressionUUID->"b447a442-055b-4160-ad78-80fd2311e5ec"],
-Cell[28092, 725, 363, 9, 48, "Input",ExpressionUUID->"3eb8a95a-fe50-43d5-b4d5-700ad37566f4"],
-Cell[28458, 736, 736, 13, 48, "Input",ExpressionUUID->"b2658f4b-974c-4049-87d3-bc4cf277908c"],
+Cell[14494, 419, 13311, 301, 1130, "Input",ExpressionUUID->"268e26be-3807-4af6-b244-a93048b76aa2"],
+Cell[27808, 722, 403, 7, 200, "Input",ExpressionUUID->"b447a442-055b-4160-ad78-80fd2311e5ec"],
+Cell[28214, 731, 363, 9, 48, "Input",ExpressionUUID->"3eb8a95a-fe50-43d5-b4d5-700ad37566f4"],
+Cell[28580, 742, 736, 13, 48, "Input",ExpressionUUID->"b2658f4b-974c-4049-87d3-bc4cf277908c"],
 Cell[CellGroupData[{
-Cell[29219, 753, 1191, 31, 115, "Input",ExpressionUUID->"a7df16e9-60dd-471e-8308-8d6d20f55d98"],
-Cell[30413, 786, 1186, 27, 52, "Output",ExpressionUUID->"a7d3e368-62ca-4250-b674-e3077f161b54"]
+Cell[29341, 759, 1191, 31, 115, "Input",ExpressionUUID->"a7df16e9-60dd-471e-8308-8d6d20f55d98"],
+Cell[30535, 792, 1186, 27, 52, "Output",ExpressionUUID->"a7d3e368-62ca-4250-b674-e3077f161b54"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[31636, 818, 167, 3, 28, "Input",ExpressionUUID->"697383c2-4779-4719-b07d-405552e43f43"],
-Cell[31806, 823, 179, 5, 32, "Output",ExpressionUUID->"2fd8f0c3-de13-4256-a799-4e76e10e7d29"]
+Cell[31758, 824, 167, 3, 28, "Input",ExpressionUUID->"697383c2-4779-4719-b07d-405552e43f43"],
+Cell[31928, 829, 179, 5, 32, "Output",ExpressionUUID->"2fd8f0c3-de13-4256-a799-4e76e10e7d29"]
 }, Open  ]],
-Cell[32000, 831, 193, 4, 28, "Input",ExpressionUUID->"c2a039f9-b148-4815-a5fb-7e6e7dd73c71"],
-Cell[32196, 837, 7904, 216, 1143, "Input",ExpressionUUID->"870ca51d-4dce-4fac-a7df-934d85dc83c1"],
+Cell[32122, 837, 193, 4, 28, "Input",ExpressionUUID->"c2a039f9-b148-4815-a5fb-7e6e7dd73c71"],
+Cell[32318, 843, 7904, 216, 1143, "Input",ExpressionUUID->"870ca51d-4dce-4fac-a7df-934d85dc83c1"],
 Cell[CellGroupData[{
-Cell[40125, 1057, 186, 4, 28, "Input",ExpressionUUID->"6d2d7b20-60e9-43e5-ad53-e8b2e8f5bd86"],
-Cell[40314, 1063, 3799, 77, 453, "Output",ExpressionUUID->"3aee5572-86e5-489d-bebe-c6baba03378a"]
+Cell[40247, 1063, 186, 4, 28, "Input",ExpressionUUID->"6d2d7b20-60e9-43e5-ad53-e8b2e8f5bd86"],
+Cell[40436, 1069, 3799, 77, 453, "Output",ExpressionUUID->"3aee5572-86e5-489d-bebe-c6baba03378a"]
 }, Open  ]],
-Cell[44128, 1143, 1544, 35, 134, "Input",ExpressionUUID->"3c3c89a4-5749-4816-b668-a29324f8b3f0"],
+Cell[44250, 1149, 1544, 35, 134, "Input",ExpressionUUID->"3c3c89a4-5749-4816-b668-a29324f8b3f0"],
 Cell[CellGroupData[{
-Cell[45697, 1182, 641, 12, 28, "Input",ExpressionUUID->"951d97d3-d64a-4b35-9a61-abe96b667563"],
-Cell[46341, 1196, 2016, 41, 218, "Output",ExpressionUUID->"cf182d31-af4a-4fcb-83f0-ac14509b2198"]
+Cell[45819, 1188, 641, 12, 28, "Input",ExpressionUUID->"951d97d3-d64a-4b35-9a61-abe96b667563"],
+Cell[46463, 1202, 2016, 41, 218, "Output",ExpressionUUID->"cf182d31-af4a-4fcb-83f0-ac14509b2198"]
 }, Open  ]],
-Cell[48372, 1240, 11385, 257, 1048, "Input",ExpressionUUID->"e6b5ad6b-7de5-4f0e-a146-5f6e5b88d585"]
+Cell[48494, 1246, 11385, 257, 1048, "Input",ExpressionUUID->"e6b5ad6b-7de5-4f0e-a146-5f6e5b88d585"]
 }
 ]
 *)
