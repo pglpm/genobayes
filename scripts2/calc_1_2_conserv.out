@@ -24158,3 +24158,177 @@ Iteration: 100000,   Proposal: Multivariate,   LP: -3553.1
 
 Assessing Stationarity
 Assessing Thinning and ESS
+Iteration: 100000,   Proposal: Multivariate,   LP: -3553.1
+
+Assessing Stationarity
+Creating Summaries
+Assessing Thinning and ESS
+
+Laplace's Demon was called on Mon Nov 26 22:48:37 2018
+
+Performing initial checks...
+WARNING: Matrix y may be rank-deficient.
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 2000 iterations.
+
+Creating Summaries
+Iteration: 100000,   Proposal: Multivariate,   LP: -3552.9
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+Creating Summaries
+
+Laplace's Demon was called on Mon Nov 26 22:48:40 2018
+
+Performing initial checks...
+WARNING: Matrix y may be rank-deficient.
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 2000 iterations.
+
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+Creating Output
+
+Laplace's Demon has finished.
+Creating Output
+
+Laplace's Demon has finished.
+Iteration: 100000,   Proposal: Multivariate,   LP: -3552.9
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Iteration: 100000,   Proposal: Multivariate,   LP: -3553.4
+
+Assessing Stationarity
+Creating Summaries
+Assessing Thinning and ESS
+
+Laplace's Demon was called on Mon Nov 26 22:48:54 2018
+
+Performing initial checks...
+WARNING: Matrix y may be rank-deficient.
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 2000 iterations.
+
+Creating Summaries
+
+Laplace's Demon was called on Mon Nov 26 22:48:55 2018
+
+Performing initial checks...
+WARNING: Matrix y may be rank-deficient.
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 2000 iterations.
+
+Estimating Log of the Marginal Likelihood
+Estimating Log of the Marginal Likelihood
+
+Laplace's Demon was called on Mon Nov 26 22:49:00 2018
+
+Performing initial checks...
+WARNING: Matrix y may be rank-deficient.
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 2000 iterations.
+
+Creating Output
+
+Laplace's Demon has finished.
+Creating Output
+
+Laplace's Demon has finished.
+
+Laplace's Demon was called on Mon Nov 26 22:49:06 2018
+
+Performing initial checks...
+WARNING: Matrix y may be rank-deficient.
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 2000 iterations.
+
+Iteration: 100000,   Proposal: Multivariate,   LP: -3552.8
+
+Assessing Stationarity
+Iteration: 100000,   Proposal: Multivariate,   LP: -3552.4
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Assessing Thinning and ESS
+Creating Summaries
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+
+Laplace's Demon was called on Mon Nov 26 22:49:21 2018
+
+Performing initial checks...
+WARNING: Matrix y may be rank-deficient.
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 2000 iterations.
+
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+Creating Output
+
+Laplace's Demon has finished.
+
+Laplace's Demon was called on Mon Nov 26 22:49:30 2018
+
+Performing initial checks...
+WARNING: Matrix y may be rank-deficient.
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 2000 iterations.
+
+
+Laplace's Demon was called on Mon Nov 26 22:49:31 2018
+
+Performing initial checks...
+WARNING: Matrix y may be rank-deficient.
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 2000 iterations.
+
+
+Laplace's Demon was called on Mon Nov 26 22:49:41 2018
+
+Performing initial checks...
+WARNING: Matrix y may be rank-deficient.
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 2000 iterations.
+
+Iteration: 100000,   Proposal: Multivariate,   LP: -3553.5
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Creating Summaries
