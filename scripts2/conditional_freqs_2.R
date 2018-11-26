@@ -59,6 +59,9 @@ result <- foreach(symptom=1:numsymptoms,
             })
         })
 
+        if(is.function(logpriortheta)){
+### Case of general hierarchic prior
+
 ### Here is the set-up for the Markov-chain Monte Carlo sampling of the parameters
 ### Uses package LaplacesDemon
 
@@ -100,6 +103,15 @@ result <- foreach(symptom=1:numsymptoms,
         if(length(samples)<mciterations*numsymptomvariants/2){
             print(paste0('warning, sym=',symptom,', snp=',snp,': low acceptance rate ', length(samples)/(mciterations*numsymptomvariants),'; using non-stationary samples'))
             samples <- usamples$Posterior1
+        }
+        }else{### case of constant prior. Mimicked by zero-valued samples
+            samples <- matrix(0,nrow=2,ncol=numsymptomvariants)
+            fnew <- f+1
+            usamples <- list(
+                Summary1=rep(NA,7),
+                Summary2=rep(NA,7),
+                LML= sum(lgamma(fnew)) - sum(lgamma(colSums(fnew)))
+                )
         }
         
         endstats <- statsfunction(f,samples,numsymptomvariants,numsnpvariants)
@@ -203,3 +215,4 @@ priorsamples <- function(
 
     print('end')
 }
+
