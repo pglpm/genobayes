@@ -53,7 +53,7 @@ ngenes <- 94 # auxiliary quantity
 snps <- unlist(lapply(1:(ngenes-1),function(x){lapply((x+1):ngenes,function(y){3+c(x,y)})}),
                recursive=FALSE) # list of all pairs of snps
 namesnps <- sapply(snps,function(x){paste0(x[1]-3,'_',x[2]-3)})
-prefixsnps <- 'snps_' # for filename
+prefixsnps <- 'snp_' # for filename
 
 snpvariants <- list(c(0,0),c(0,1),c(1,0),c(1,1)) # list of allele-pair values
 namesnpvariants <- c('AA','AB','BA','BB') # allele-pair names
