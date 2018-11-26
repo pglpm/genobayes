@@ -1818,7 +1818,7 @@ Cell[BoxData["1"], "Output",
 }, Open  ]]
 },
 WindowSize->{640, 755},
-WindowMargins->{{Automatic, 171}, {Automatic, 0}},
+WindowMargins->{{Automatic, 178}, {Automatic, 0}},
 FrontEndVersion->"11.2 for Microsoft Windows (32-bit) (September 10, 2017)",
 StyleDefinitions->"Default.nb"
 ]
