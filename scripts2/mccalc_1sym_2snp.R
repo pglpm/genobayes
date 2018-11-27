@@ -36,11 +36,11 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- 'mc1e5_1sym_2snp_conserv/' # directory for saving results
+savedir <- 'mc5e4_1sym_2snp_conserv/' # directory for saving results
 filename <- 'freq-1_2_conserv-' # filename prefix
 
 cores <- 30 # for parallel processing
-mciterations <- 1e5 # number of Monte-Carlo samples
+mciterations <- 5e4 # number of Monte-Carlo samples
 
 symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
 namesymptoms <- c('O','M','T')
@@ -117,7 +117,7 @@ statsfunction <- function(f,samples,symptom,snp,numsymptomvariants,numsnpvariant
         colnames(margdata) <- namesnpvariants
 
     writeflag <- FALSE
-    if(maxspread>=3){
+    if(maxspread>=2){
         writeflag <- TRUE
         write.csv(diffdata,paste0(savedir,filename,'spreads-',prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'-spr_',format(round(max(abs(c(spreads))),3),digits=3,nsmall=3),'.csv'))
         
