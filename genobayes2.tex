@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-27T12:15:42+0100
+%% Last-Updated: 2018-11-27T14:56:40+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -909,7 +909,7 @@ difference may indicate some sort of biologic association between the \snp\
 (or another \snp\ linked to it) and the symptom. This difference in the
 large population is unknown however; we can at most make a plausible
 inference about its value. The most complete statement we can make about it
-is through a plausibility distribution like that plotted in
+is through a distribution of plausibility $\pf(\df)$ like the one plotted in
 \fig~\ref{fig:example_difference_distributions}.
 \begin{figure}[t!]%{r}{0.4\linewidth} % with wrapfigure
  \centering\includegraphics[width=0.75\linewidth]{example_diff.pdf}\\
@@ -920,10 +920,16 @@ is through a plausibility distribution like that plotted in
 % "spread_y",-2.23267970003192
 % "EV_y",-0.0260880661493155
 % "SD_y",0.0116846434125515
-This distribution gives us many pieces of information: for example, it is
-8.3\% plausible that the difference $\abs{\df}<0.01$, and therefore 91.7\%
-plausible that $\abs{\df}>0.01$; it is 90\% plausible that
-$-0.045 < \df < -0.007$, and so on. Several measures
+This distribution gives us many pieces of information: for example, a
+negative difference $\df$ is more plausible than a positive one; it is
+8.3\% plausible that $\abs{\df}<0.01$, and therefore 91.7\% plausible that
+$\abs{\df}>0.01$; it is 90\% plausible that $-0.045 < \df < -0.007$; and so
+on. Several measures can be chosen to summarize the distribution with one
+number. For example, we could use the plausibility that $\abs{\df}$ exceeds
+a given value, say $\pf(\abs{\df}\ge 0.01)$. A roughly equivalent but
+perhaps more preferable measure is the minimal frequency difference we are
+highly sure about: $x$ such that $\pf(\abs{\df}\ge x)=0.9$. For the plot of
+\fig~\ref{fig:example_difference_distributions} such measure is $0.0112$.
 
 
 The conditional frequencies and their difference are unknown, so we can
