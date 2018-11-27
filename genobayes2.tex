@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-27T00:18:38+0100
+%% Last-Updated: 2018-11-27T12:15:42+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -233,7 +233,7 @@ british%
 % \DeclareMathSymbol{\Alpha}{\mathalpha}{egreekr}{"41}
 % \DeclareMathSymbol{\Beta}{\mathalpha}{egreekr}{"42}
  \DeclareMathSymbol{\Gamma}{\mathalpha}{egreekr}{"00}
-% \DeclareMathSymbol{\Delta}{\mathalpha}{egreekr}{"01}
+ \DeclareMathSymbol{\Delta}{\mathalpha}{egreekr}{"01}
 % \DeclareMathSymbol{\Epsilon}{\mathalpha}{egreekr}{"45}
 % \DeclareMathSymbol{\Zeta}{\mathalpha}{egreekr}{"5A}
 % \DeclareMathSymbol{\Eta}{\mathalpha}{egreekr}{"48}
@@ -670,7 +670,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \DeclarePairedDelimiter\clop{[}{[}
 %\DeclarePairedDelimiter\opcl{]}{]}
 %\DeclarePairedDelimiter\opop{]}{[}
-%\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
 %\DeclarePairedDelimiter\norm{\lVert}{\rVert}
 \DeclarePairedDelimiter\set{\{}{\}}
 %\DeclareMathOperator{\pr}{P}%probability
@@ -740,9 +740,12 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand{\mynote}[1]{ {\color{notecolour}\puzzle\ #1}}
 \newcommand*{\widebar}[1]{{\mkern1.5mu\skew{2}\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}}
 
+%@@@@ Custom macros for this file @@@@
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator{\cov}{cov}
 \DeclareMathOperator{\var}{var}
+\newcommand*{\rs}{\texttt}
+\newcommand*{\rv}[1]{\underline{#1}}% random variable
 \newcommand*{\std}{\sigmaup}
 \DeclareMathOperator{\diag}{diag}
 \newcommand*{\ptext}[1]{\text{\small #1}}
@@ -753,6 +756,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yI}{I}
 \newcommand*{\ya}{a}
 \newcommand*{\yb}{b}
+\newcommand*{\ysS}{s}% generic insomnia symbol
 \newcommand*{\ysA}{\textrm{O}}% onset insomnia
 \newcommand*{\ysB}{\textrm{M}}% maintenance insomnia
 \newcommand*{\ysC}{\textrm{T}}% terminal insomnia
@@ -774,6 +778,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yf}{\bm{f}}
 \newcommand*{\ysum}{\tsum}
 \newcommand*{\yprod}{\tprod}
+\newcommand*{\df}{\Delta f}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \firmlists
@@ -880,21 +885,50 @@ Result section we discuss the different relevant associations found.
 \subsection{Outline}
 \label{sec:method_outline}
 
-Let's first focus on the simplest kind of association: between one
-particular \snp\ with two alleles $\ya$, $\yb$, and one symptom $S$. In an
-arbitrarily large population, consider the fraction $f_{S\|\ya}$ of
-individuals that show symptom $S$ among those having allele $\ya$, and the
-fraction $f_{S\|\yb}$ among those having allele $\yb$. These are
-\emph{conditional relative frequencies}. If these conditional frequencies
-are markedly different, then we can conclude that the \snp\ must have some
-causal relevance, however indirect, for the symptom.
+We focus on the simplest kind of association: between one particular \snp\
+with two alleles $\ya$, $\yb$, and one insomnia symptom. For example, we
+could be speaking of the \snp\ \rs{rs875994} with alleles $\ya=\textrm{C}$,
+$\yb=\textrm{T}$, and onset insomnia $\ysA$.
 
-\mynote{Add some remarks about the role of \enquote{limit frequencies} and
-  \enquote{arbitrarily large population}. Relation to partial
-  exchangeability and belief about next individual in an endless sequence.}
+We imagine to have an arbitrarily large population from the same genetic
+pool as our sample. In this population we would like to know how large are
+the fraction $f_{\ya}$ of individuals that show the symptom among those
+having allele $\ya$, and the fraction $f_{\yb}$ that show the symptom among
+those having allele $\yb$. These two fractions are \emph{conditional
+  relative frequencies} (note that $f_{\ya}+f_{\yb} \ne 1$ in general,
+since we are not speaking about the frequencies of two mutually exclusive
+and exhaustive alternatives, but of frequencies \emph{conditional} on such
+alternatives). \mynote{Add some remarks about the role of \enquote{limit
+    frequencies} and \enquote{arbitrarily large population}? Relation to
+  partial exchangeability and belief about next individual in an endless
+  sequence.}
 
-We want to quantify our \dob\ about the values of such conditional
-frequencies in an arbitrarily large population, given
+We are in particular interested in knowing how much these two conditional
+frequencies differ, that is, in $f_{\ya}-f_{\yb} \defs df$. A larger
+difference may indicate some sort of biologic association between the \snp\
+(or another \snp\ linked to it) and the symptom. This difference in the
+large population is unknown however; we can at most make a plausible
+inference about its value. The most complete statement we can make about it
+is through a plausibility distribution like that plotted in
+\fig~\ref{fig:example_difference_distributions}.
+\begin{figure}[t!]%{r}{0.4\linewidth} % with wrapfigure
+ \centering\includegraphics[width=0.75\linewidth]{example_diff.pdf}\\
+ \caption{Example of uncertainty distribution about the conditional-frequency
+   difference $\df$}\label{fig:example_difference_distributions}
+\end{figure}% scripts2/plot_curves.nb
+% freq-1_1_conserv-spreads-sym_O-snp_6-spr_2.233.csv
+% "spread_y",-2.23267970003192
+% "EV_y",-0.0260880661493155
+% "SD_y",0.0116846434125515
+This distribution gives us many pieces of information: for example, it is
+8.3\% plausible that the difference $\abs{\df}<0.01$, and therefore 91.7\%
+plausible that $\abs{\df}>0.01$; it is 90\% plausible that
+$-0.045 < \df < -0.007$, and so on. Several measures
+
+
+The conditional frequencies and their difference are unknown, so we can
+only make plausible inferences about them. We want to quantify our \dob\
+about their values, given
 \begin{enumerate*}[label=(\arabic*)]
 \item the conditional frequencies in a population sample, \item our initial
   information or guesses about such frequencies.
@@ -905,7 +939,7 @@ frequencies in an arbitrarily large population, given
 
 Degrees of belief follow the probability calculus
 \citep{jeffreys1939_r1983,cox1946,jaynes1994_r2003,hailperin1996}, hence to
-quantify our belief we use Bayes's theorem:
+quantify our belief we can use Bayes's theorem:
 \begin{multline}
   \label{eq:intuitive_Bayes}
   \pf(\ptext{frequencies} \| \ptext{data}, \ptext{initial info})
@@ -915,9 +949,9 @@ quantify our belief we use Bayes's theorem:
   \pf(\ptext{frequencies} \| \ptext{initial info}).
 \end{multline}
 The first \dob\ in the product above is given by a simple sampling formula,
-which we'll discuss shortly. The second can be modelled in several ways,
-but all will lead to the same final \dobs\ about the conditional
-frequencies, if the sample data are enough.
+which we'll discuss shortly. The second can be modelled in several
+reasonable ways; we'll see, however, that they all lead to very similar final
+\dobs\ about the conditional frequencies, owing to our large sample size.
 
 Once we have a quantified distribution of belief about the conditional
 frequencies in an arbitrarily large population, we can quantitatively
@@ -975,12 +1009,12 @@ given one \snp\ at a time.
 \label{sec:inference}
 
 In this section we do step by step the calculations outlined above. For
-definiteness we consider onset insomnia ($\ysA$) and the \snp\ rs875994
+definiteness we consider onset insomnia ($\ysS$) and the \snp\ rs875994
 with alleles $\ya$, $\yb$. The limit conditional frequencies are denoted
-$f_{\ysA\|\ya}$ and $f_{\ysA\|\yb}$. The sample data, denoted by $\yD$,
-consist of the number of individuals $F_{\ysA\|\ya}$ that show symptom
-$\ysA$ among the sampled individuals having allele $\ya$, and the number
-$F_{\ysA\|\yb}$ showing the same symptom among those having allele $\yb$.
+$f_{\ya}$ and $f_{\yb}$. The sample data, denoted by $\yD$,
+consist of the number of individuals $F_{\ya}$ that show symptom
+$\ysS$ among the sampled individuals having allele $\ya$, and the number
+$F_{\yb}$ showing the same symptom among those having allele $\yb$.
 Our initial information consists in the number $N_{\ya}$ of sampled
 individuals with allele $\ya$, and the number $N_{\yb}$ with allele $\yb$.
 The total number of sampled individuals is therefore $N_{\ya}+N_{\yb}$.
@@ -992,44 +1026,44 @@ Our belief about the joint conditional frequencies is expressed by the
 density function
 \begin{equation}
   \label{eq:joint_belief_f}
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI).
+  \pf(f_{\ya}, f_{\yb} \| \yD, \yI).
 \end{equation}
 According to Bayes's theorem~\eqref{eq:intuitive_Bayes}, the belief above
 is proportional to the product of
-$\pf(\yD \| f_{\ysA\|\ya}, f_{\ysA\|\yb}, \yI)$ and our initial belief
-$\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)$. Let's consider these in turn.
+$\pf(\yD \| f_{\ya}, f_{\yb}, \yI)$ and our initial belief
+$\pf(f_{\ya}, f_{\yb} \| \yI)$. Let's consider these in turn.
 
 
 \medskip
 
-In our hypothetical large population a fraction $f_{\ysA\|\ya}$ of
-individuals having allele $\ya$ shows symptom $\ysA$, and a fraction
-$1-f_{\ysA\|\ya}$ doesn't show that symptom. Then, upon sampling $N_{\ya}$
-individuals with allele $\ya$, our belief that a fraction $F_{\ysA\|\ya}$
-of these will show symptom $\ysA$ and a fraction $1-F_{\ysA\|\ya}$ won't
+In our hypothetical large population a fraction $f_{\ya}$ of
+individuals having allele $\ya$ shows symptom $\ysS$, and a fraction
+$1-f_{\ya}$ doesn't show that symptom. Then, upon sampling $N_{\ya}$
+individuals with allele $\ya$, our belief that a fraction $F_{\ya}$
+of these will show symptom $\ysS$ and a fraction $1-F_{\ya}$ won't
 show this symptom is
 \begin{equation}
   \label{eq:sampling_belief}
-  \pf( F_{\ysA\|\ya} \| f_{\ysA\|\ya},  N_{\ya}, \yI)
+  \pf( F_{\ya} \| f_{\ya},  N_{\ya}, \yI)
   =
-\binom{N_{\ya}}{N_{\ya}\,F_{\ysA\|\ya}}\;  {f_{\ysA\|\ya}}^{N_{\ya}\,F_{\ysA\|\ya}} \;
-  {(1-f_{\ysA\|\ya})}^{N_{\ya}\,(1-F_{\ysA\|\ya})},
+\binom{N_{\ya}}{N_{\ya}\,F_{\ya}}\;  {f_{\ya}}^{N_{\ya}\,F_{\ya}} \;
+  {(1-f_{\ya})}^{N_{\ya}\,(1-F_{\ya})},
 \end{equation}
 and analogously for allele $\yb$. Our belief about obtaining data
-$\yD = (F_{\ysA\|\ya}, F_{\ysA\|\yb})$ is therefore
+$\yD = (F_{\ya}, F_{\yb})$ is therefore
 \begin{equation}
   \label{eq:sampling_belief_combined}
-  \pf(\yD \|  f_{\ysA\|\ya},f_{\ysA\|\yb}, N_{\ya}, N_{\yb}, \yI)
+  \pf(\yD \|  f_{\ya},f_{\yb}, N_{\ya}, N_{\yb}, \yI)
   =
- \prod_{x=\ya,\yb} \binom{N_{x}}{N_{x}\,F_{\ysA\|x}}\;{f_{\ysA\|x}}^{N_{x}\,F_{\ysA\|x}} \;
-  {(1-f_{\ysA\|x})}^{N_{x}\,(1-F_{\ysA\|x})}.
+ \prod_{x=\ya,\yb} \binom{N_{x}}{N_{x}\,F_{\ysS\|x}}\;{f_{\ysS\|x}}^{N_{x}\,F_{\ysS\|x}} \;
+  {(1-f_{\ysS\|x})}^{N_{x}\,(1-F_{\ysS\|x})}.
 \end{equation}
 
 \medskip
 
 Our initial \dob\ about the limit conditional frequencies is based on the
 following main assumption: we expect the frequencies conditional on the two
-alleles, $f_{\ysA\|\ya}$ and $f_{\ysA\|\yb}$, not to be wildly different.
+alleles, $f_{\ya}$ and $f_{\yb}$, not to be wildly different.
 This is a conservative assumption. Therefore, if our updated belief
 conditional on the data will show clearly distinct conditional frequencies,
 it will be because the data have given enough evidence to overwhelm our
@@ -1042,23 +1076,23 @@ This initial belief is represented by a density qualitatively shown in
 \caption{Qualitative plot of our initial belief}\label{fig:initial_belief}
 \end{figure}% scripts2/plots_distributions.nb
 Note how most of our belief's mass is concentrated along the diagonal of
-the coordinates $(f_{\ysA\|\ya}, f_{\ysA\|\yb})$. \mynote{Say something
+the coordinates $(f_{\ya}, f_{\yb})$. \mynote{Say something
   about the rises at the edges of the diagonal.} Mathematically we write
 this density as an integral:
 \begin{gather}
   \label{eq:beta_gamma_prior}
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)
+  \pf(f_{\ya}, f_{\yb} \| \yI)
   =
   \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
   \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\;
-\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yua,\yub,\yI)\;
+\pf(f_{\ya}, f_{\yb} \| \yua,\yub,\yI)\;
   \dA(\yua,\yub \| \yI)
   \\
 \shortintertext{with}
   \label{eq:def_ff_given_Aq}
-\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yua,\yub,\yI)\defd
-  \dbeta(f_{\ysA\|\ya} \| \yua,\yub)\;
-  \dbeta(f_{\ysA\|\yb} \| \yua,\yub)
+\pf(f_{\ya}, f_{\yb} \| \yua,\yub,\yI)\defd
+  \dbeta(f_{\ya} \| \yua,\yub)\;
+  \dbeta(f_{\yb} \| \yua,\yub)
 \end{gather}
 where $\dbeta(f \| \yua,\yub)$ is a beta density with shape
 parameters $\yua$ and $\yub$:
@@ -1074,33 +1108,33 @@ different choices for $\dA$ will be used, to test how much our inferences
 depend on our initial belief. We discuss these choices in \sect*** together
 with the meaning of the parameters $\yua$, $\yub$.
 
-We express $\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)$ as an integral to
-emphasize that our initial beliefs about $f_{\ysA\|\ya}$ and
-$f_{\ysA\|\yb}$ are \emph{not} disjoint, and to show how their mutual
+We express $\pf(f_{\ya}, f_{\yb} \| \yI)$ as an integral to
+emphasize that our initial beliefs about $f_{\ya}$ and
+$f_{\yb}$ are \emph{not} disjoint, and to show how their mutual
 dependence comes about: by first considering two independent densities
 having the same parameters, and then mixing their product over these
 parameters.
 
 This construction has the interesting consequence for our updated belief
-$\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI)$. According to Bayes's
+$\pf(f_{\ya}, f_{\yb} \| \yD, \yI)$. According to Bayes's
 theorem~\eqref{eq:intuitive_Bayes} combined with our initial
 belief~\eqref{eq:beta_gamma_prior} it is given by
 \begin{equation}
   \label{eq:straight_Bayes}
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI)
+  \pf(f_{\ya}, f_{\yb} \| \yD, \yI)
   \propto
-  \pf(\yD \| f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)\;
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI),
+  \pf(\yD \| f_{\ya}, f_{\yb} \| \yI)\;
+  \pf(f_{\ya}, f_{\yb} \| \yI),
 \end{equation}
 but, as shown in appendix~\ref{sec:bayes_hierarcic}, it can also be written
 in the following way:
 \begin{equation}
   \label{eq:formal_hierarchic}
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI) =
+  \pf(f_{\ya}, f_{\yb} \| \yD, \yI) =
   \tint\di\yua\tint\di\yub\;
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yD,\yua,\yub,\yI)\;
-  %   \dbeta(f_{\ysA\|\ya} \| \yua,\yub)\,
-  % \dbeta(f_{\ysA\|\yb} \| \yua,\yub)\;
+  \pf(f_{\ya}, f_{\yb}\| \yD,\yua,\yub,\yI)\;
+  %   \dbeta(f_{\ya} \| \yua,\yub)\,
+  % \dbeta(f_{\yb} \| \yua,\yub)\;
   \dA(\yua,\yub \|\yD, \yI),
 \end{equation}
 with the normalized density $\dA(\yua,\yub \|\yD, \yI)$ defined by
@@ -1109,11 +1143,11 @@ with the normalized density $\dA(\yua,\yub \|\yD, \yI)$ defined by
   \dA(\yua,\yub \|\yD, \yI) \propto   \dA(\yua,\yub \|\yI)
 \times{}\\
 %\Bigl[
-\underbrace{\tint\di f_{\ysA\|\ya}\tint\di f_{\ysA\|\yb}\;
-  \pf(\yD \|f_{\ysA\|\ya}, f_{\ysA\|\yb}, \yI)\;
- \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \|\yua,\yub, \yI)}_{\zerob{\footnotesize${}\defs\pf(\yD \|\yua,\yub,\yI)$}}.
-      % \dbeta(f_{\ysA\|\ya} \| \yua,\yub)\,
-      % \dbeta(f_{\ysA\|\yb} \| \yua,\yub)
+\underbrace{\tint\di f_{\ya}\tint\di f_{\yb}\;
+  \pf(\yD \|f_{\ya}, f_{\yb}, \yI)\;
+ \pf(f_{\ya}, f_{\yb} \|\yua,\yub, \yI)}_{\zerob{\footnotesize${}\defs\pf(\yD \|\yua,\yub,\yI)$}}.
+      % \dbeta(f_{\ya} \| \yua,\yub)\,
+      % \dbeta(f_{\yb} \| \yua,\yub)
 %       \Bigr]
 \end{multline}
 It is as if $\yua$, $\yub$ were unknown parameters with initial belief
@@ -1129,7 +1163,7 @@ there is no mathematical difference between a hierarchic and a
 non-hierarchic model: we could forget about the integrals in
 formula~\eqref{eq:beta_gamma_prior} and about the update
 formula~\eqref{eq:formal_hierarchic}, and simply treat
-$\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)$ as the density depicted in
+$\pf(f_{\ya}, f_{\yb} \| \yI)$ as the density depicted in
 \fig~\ref{fig:initial_belief}, with update~\eqref{eq:intuitive_Bayes}. The
 results would be the same. Further discussion about the formulae above is
 given in \sect***.
@@ -1137,14 +1171,14 @@ given in \sect***.
 
 With large sample sizes the density $\dA(\yua,\yub \|\yD, \yI)$ turns out to
 be so peaked with respect to
-$\pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yua,\yub,\yI)$ that it can be considered
+$\pf(f_{\ya}, f_{\yb}\| \yua,\yub,\yI)$ that it can be considered
 as a Dirac delta centred on the parameters $\yuam$, $\yubm$ that maximize it.
 We thus obtain a good approximation of the updated
 belief~\eqref{eq:formal_hierarchic} that doesn't involve parameter integration:
 \begin{multline}
   \label{eq:formal_hierarchic_approx}
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI) \approx
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yuam,\yubm,\yI)\\
+  \pf(f_{\ya}, f_{\yb} \| \yD, \yI) \approx
+  \pf(f_{\ya}, f_{\yb}\| \yuam,\yubm,\yI)\\
   \text{with}\quad
   (\yuam,\yubm) \defd \argmax_{\yua,\yub}\dA(\yua,\yub \|\yD, \yI).
 \end{multline}
@@ -1164,9 +1198,9 @@ following explicit approximate formula for our belief about the conditional
 frequencies given the data:
 \begin{multline}
   \label{eq:formal_hierarchic_approx_final}
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI) \approx
-  \dbeta(f_{\ysA\|\ya} \| \yuam,\yubm)\;
-  \dbeta(f_{\ysA\|\yb} \| \yuam,\yubm)\\
+  \pf(f_{\ya}, f_{\yb} \| \yD, \yI) \approx
+  \dbeta(f_{\ya} \| \yuam,\yubm)\;
+  \dbeta(f_{\yb} \| \yuam,\yubm)\\
   \text{with
     $(\yuam,\yubm)$ maximizing~\eqref{eq:to_optimize}}.
 \end{multline}
@@ -1236,7 +1270,7 @@ of data necessary to modify our initial belief.
  \centering\includegraphics[width=0.75\linewidth]{difference_symA_snp6.pdf}\\
  \caption{Distribution for the difference between the frequencies
    $f_{\ysA\|\ya}$, $f_{\ysA\|\yb}$ of onset insomnia ($\ysA$) conditional on
-   the two alleles of \snp\ rs875994}\label{fig:example_difference_distributions}
+   the two alleles of \snp\ rs875994}\label{fig:difference_distributions}
 \end{figure}% scripts/condfreqs_general_tests.nb
 %% snp #6,
 %% EV: -0.0330998, SD: 0.0120472
