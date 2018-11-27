@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-27T14:56:40+0100
+%% Last-Updated: 2018-11-27T16:42:43+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -892,10 +892,10 @@ $\yb=\textrm{T}$, and onset insomnia $\ysA$.
 
 We imagine to have an arbitrarily large population from the same genetic
 pool as our sample. In this population we would like to know how large are
-the fraction $f_{\ya}$ of individuals that show the symptom among those
-having allele $\ya$, and the fraction $f_{\yb}$ that show the symptom among
+the fraction $f_{|\ya}$ of individuals that show the symptom among those
+having allele $\ya$, and the fraction $f_{|\yb}$ that show the symptom among
 those having allele $\yb$. These two fractions are \emph{conditional
-  relative frequencies} (note that $f_{\ya}+f_{\yb} \ne 1$ in general,
+  relative frequencies} (note that $f_{|\ya}+f_{|\yb} \ne 1$ in general,
 since we are not speaking about the frequencies of two mutually exclusive
 and exhaustive alternatives, but of frequencies \emph{conditional} on such
 alternatives). \mynote{Add some remarks about the role of \enquote{limit
@@ -904,12 +904,13 @@ alternatives). \mynote{Add some remarks about the role of \enquote{limit
   sequence.}
 
 We are in particular interested in knowing how much these two conditional
-frequencies differ, that is, in $f_{\ya}-f_{\yb} \defs df$. A larger
+frequencies differ, that is, in $f_{|\ya}-f_{|\yb} \defs \df$. A larger
 difference may indicate some sort of biologic association between the \snp\
 (or another \snp\ linked to it) and the symptom. This difference in the
-large population is unknown however; we can at most make a plausible
-inference about its value. The most complete statement we can make about it
-is through a distribution of plausibility $\pf(\df)$ like the one plotted in
+large population is unknown, however; we can only make a plausible
+inference about its value from sampled data and other initial information.
+The most detailed statement we can make about it is by quantifying the
+distribution of our \dob\ $\pf(\df)$ like the one plotted in
 \fig~\ref{fig:example_difference_distributions}.
 \begin{figure}[t!]%{r}{0.4\linewidth} % with wrapfigure
  \centering\includegraphics[width=0.75\linewidth]{example_diff.pdf}\\
@@ -930,22 +931,28 @@ a given value, say $\pf(\abs{\df}\ge 0.01)$. A roughly equivalent but
 perhaps more preferable measure is the minimal frequency difference we are
 highly sure about: $x$ such that $\pf(\abs{\df}\ge x)=0.9$. For the plot of
 \fig~\ref{fig:example_difference_distributions} such measure is $0.0112$.
+\mynote{add something about dependence of broadness on sample size, and
+  \enquote{smoothing} as discussed by MacKay \amp\ Bauman Peto
+  \citey[\sect~2.6]{mackayetal1995}.}
 
-
-The conditional frequencies and their difference are unknown, so we can
-only make plausible inferences about them. We want to quantify our \dob\
-about their values, given
+A more complete quantification of our uncertainty is the distribution
+$\pf(f_{|\ya}, f_{|\yb})$ among the possible joint values of the two
+conditional frequencies, from which $\pf(\df)$ can be calculated. This
+joint distribution is also the optimal starting point when frequencies
+conditional on allele combinations of several \snp\ are considered. Our
+goal is therefore to quantify this joint \dob, given:
 \begin{enumerate*}[label=(\arabic*)]
 \item the conditional frequencies in a population sample, \item our initial
   information or guesses about such frequencies.
 \end{enumerate*} In formulae, we want to assign a numerical value to
 \begin{equation*}
-  \pf(\ptext{conditional frequencies} \| \ptext{sample data}, \ptext{initial information}).
+  \pf(\ptext{conditional frequencies} \|
+  \ptext{sample data}, \ptext{initial information}).
 \end{equation*}
 
-Degrees of belief follow the probability calculus
-\citep{jeffreys1939_r1983,cox1946,jaynes1994_r2003,hailperin1996}, hence to
-quantify our belief we can use Bayes's theorem:
+To calculate this \dob\ we use the probability calculus
+\citep{jeffreys1939_r1983,cox1946,jaynes1994_r2003,hailperin1996}. First
+step is to use Bayes's theorem:
 \begin{multline}
   \label{eq:intuitive_Bayes}
   \pf(\ptext{frequencies} \| \ptext{data}, \ptext{initial info})
@@ -956,40 +963,11 @@ quantify our belief we can use Bayes's theorem:
 \end{multline}
 The first \dob\ in the product above is given by a simple sampling formula,
 which we'll discuss shortly. The second can be modelled in several
-reasonable ways; we'll see, however, that they all lead to very similar final
-\dobs\ about the conditional frequencies, owing to our large sample size.
+reasonable ways; we'll see, however, that they all lead to very similar
+conclusions about the conditional frequencies and their difference, owing to
+our large sample size.
 
-Once we have a quantified distribution of belief about the conditional
-frequencies in an arbitrarily large population, we can quantitatively
-estimate their difference and its significance in a variety of ways. The
-most direct approach is to calculate our belief about their difference;
-% \begin{equation}
-%   \label{eq:distribution_difference}
-%     \pf(\ptext{frequency difference} \| \ptext{data}, \ptext{initial info})
-% \end{equation}
-\fig~\ref{fig:example_difference_distributions} is a concrete example. The
-figure shows that we expect their difference to be $0.033$, with an
-uncertainty of $0.012$ as measured by the standard deviation. The expected
-difference is therefore $2.75$ standard deviations away from zero, and this
-can be a way to quantify the significance of the difference. The belief
-distribution also says, for example, that the difference is $2.7\%$ likely
-to be in the interval $\clcl{-0.01,0.01}$; this isn't a meaningful measure
-of significance, though: any interval around zero is arbitrary since we're
-considering an arbitrarily large population.
 
-% See for example the distributions in \fig~\ref{fig:example_distributions}:
-% from the sample data we expect conditional frequencies $0.259$ and $0.284$
-% for the symptom conditional on the two alleles, with standard deviations
-% $0.008$ and $0.006$. From the two belief distributions we can even
-% calculate our belief that the two conditional frequencies are equal to
-% within some range; in the case of the figure our belief that the two
-% frequencies are the same within $0.01$ is $3.2\%$. Many other
-% quantifications are possible; for example our belief that a conditional
-% frequency lies between two particular values, and so on.
-
-\mynote{add something about dependence of broadness on sample size, and
-  \enquote{smoothing} as discussed by MacKay \amp\ Bauman Peto
-  \citey[\sect~2.6]{mackayetal1995}.}
 
 The approach just outlined is not dichotomous, unlike a classical
 \enquote{significance} test. Rather, we will find a graduation of cases:
