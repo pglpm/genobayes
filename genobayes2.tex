@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-27T22:58:39+0100
+%% Last-Updated: 2018-11-27T23:17:23+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -754,6 +754,8 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\snp}{\textsc{snp}}
 \newcommand*{\yD}{D}
 \newcommand*{\yI}{I}
+\newcommand*{\yIu}{\yI_\text{u}}
+\newcommand*{\yIc}{\yI_\text{c}}
 \newcommand*{\ya}{a}
 \newcommand*{\yb}{b}
 \newcommand*{\ysS}{s}% generic insomnia symbol
@@ -1085,21 +1087,27 @@ the data is therefore
 
 \paragraph{Initial plausibility for the frequencies}
 
-Our initial \dob\ about the limit conditional frequencies is based on the
-following main assumption: we expect the frequencies conditional on the two
-alleles, $f_{|\ya}$ and $f_{\yb}$, not to be wildly different.
-This is a conservative assumption. Therefore, if our updated belief
-conditional on the data will show clearly distinct conditional frequencies,
-it will be because the data have given enough evidence to overwhelm our
-initial conservative belief.
-
-This initial belief is represented by a density qualitatively shown in
-\fig~\ref{fig:initial_belief}.
+We consider two different initial assumptions about the conditional
+frequencies. Their densities are represented in
+\fig~\ref{fig:initial_beliefs}. The first (left plot) assigns equal
+plausibility to equal areas in the $(f_{|\ya},f_{|\yb})$-coordinate plane;
+we call this the \enquote{uniform} state of knowledge and denote it $\yIu$.
+The second (right plot) expresses a strong belief that the two frequencies
+should be equal, as clear from the very high density along the diagonal of
+the $(f_{|\ya},f_{|\yb})$-coordinate plane; we call this a
+\enquote{conservative} state of knowledge and denote it $\yIc$.
 \begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
  \centering\includegraphics[width=0.49\linewidth]{unif_prior_list.png}%
 \includegraphics[width=0.49\linewidth]{conserv_prior_list.png}
 \caption{Qualitative plot of our initial beliefs}\label{fig:initial_beliefs}
 \end{figure}% scripts2/plot_priors.nb
+
+We will examine how much our conclusions about the frequencies differ
+between the two initial states of knowledge. Note that the second is indeed
+very conservative. Therefore, if our updated belief conditional on the data
+will show clearly distinct conditional frequencies, it will be because the
+data have given enough evidence to overwhelm this conservative belief.
+
 Note how most of our belief's mass is concentrated along the diagonal of
 the coordinates $(f_{|\ya}, f_{\yb})$. \mynote{Say something
   about the rises at the edges of the diagonal.} Mathematically we write
