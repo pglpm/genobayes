@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-27T16:42:43+0100
+%% Last-Updated: 2018-11-27T16:54:09+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -929,7 +929,11 @@ on. Several measures can be chosen to summarize the distribution with one
 number. For example, we could use the plausibility that $\abs{\df}$ exceeds
 a given value, say $\pf(\abs{\df}\ge 0.01)$. A roughly equivalent but
 perhaps more preferable measure is the minimal frequency difference we are
-highly sure about: $x$ such that $\pf(\abs{\df}\ge x)=0.9$. For the plot of
+highly sure about:
+\begin{equation}\label{eq:significance_measure}
+x\quad\text{such that}\quad \pf(\abs{\df}\ge x)=0.9.
+\end{equation}
+For the plot of
 \fig~\ref{fig:example_difference_distributions} such measure is $0.0112$.
 \mynote{add something about dependence of broadness on sample size, and
   \enquote{smoothing} as discussed by MacKay \amp\ Bauman Peto
@@ -949,33 +953,18 @@ goal is therefore to quantify this joint \dob, given:
   \pf(\ptext{conditional frequencies} \|
   \ptext{sample data}, \ptext{initial information}).
 \end{equation*}
+In the rest of this section we shall calculate this \dob\ by methodically
+applying the probability calculus
+\citep{jeffreys1939_r1983,cox1946,jaynes1994_r2003,hailperin1996}.
 
-To calculate this \dob\ we use the probability calculus
-\citep{jeffreys1939_r1983,cox1946,jaynes1994_r2003,hailperin1996}. First
-step is to use Bayes's theorem:
-\begin{multline}
-  \label{eq:intuitive_Bayes}
-  \pf(\ptext{frequencies} \| \ptext{data}, \ptext{initial info})
-  \propto{}\\
-  \pf(\ptext{data} \| \ptext{frequencies}, \ptext{initial info})
-  \times
-  \pf(\ptext{frequencies} \| \ptext{initial info}).
-\end{multline}
-The first \dob\ in the product above is given by a simple sampling formula,
-which we'll discuss shortly. The second can be modelled in several
-reasonable ways; we'll see, however, that they all lead to very similar
-conclusions about the conditional frequencies and their difference, owing to
-our large sample size.
-
-
-
-The approach just outlined is not dichotomous, unlike a classical
-\enquote{significance} test. Rather, we will find a graduation of cases:
-from conditional frequencies predicted to be clearly distinct, to
-conditional frequencies with uncertainties too large for drawing definite
-conclusions. These cases can be sorted, obtaining a sequence of \snp s with
-a decreasing belief of causal association with the symptom. How many of
-these \snp s are to be selected for further study depends on one's
+First let's observe that the approach just outlined is not dichotomous,
+unlike a classical \enquote{significance} test. Rather, we will find a
+gradation of cases: from conditional frequencies likely to be very
+distinct, to conditional frequencies likely to be very similar. These cases
+can be sorted, for example with the measure of
+formula~\eqref{eq:significance_measure}, obtaining a sequence of \snp s
+with a decreasing belief of causal association with the symptom. How many
+of these \snp s are to be selected for further study depends on one's
 experimental and computational resources.
 
 
@@ -991,6 +980,23 @@ given one \snp\ at a time.
 
 \subsection{Inference: concrete calculation}
 \label{sec:inference}
+
+ First
+step is to use Bayes's theorem:
+\begin{multline}
+  \label{eq:intuitive_Bayes}
+  \pf(\ptext{frequencies} \| \ptext{data}, \ptext{initial info})
+  \propto{}\\
+  \pf(\ptext{data} \| \ptext{frequencies}, \ptext{initial info})
+  \times
+  \pf(\ptext{frequencies} \| \ptext{initial info}).
+\end{multline}
+The first \dob\ in the product above is given by a simple sampling formula,
+which we'll discuss shortly. The second can be modelled in several
+reasonable ways; we'll see, however, that they all lead to very similar
+conclusions about the conditional frequencies and their difference, owing to
+our large sample size.
+
 
 In this section we do step by step the calculations outlined above. For
 definiteness we consider onset insomnia ($\ysS$) and the \snp\ rs875994
