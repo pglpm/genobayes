@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-28T12:41:54+0100
+%% Last-Updated: 2018-11-28T13:31:39+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1312,30 +1312,44 @@ Carlo sample. The means, variances, and covariance of the final density are
   \end{align}
 \end{subequations}
 The covariance does not vanish owing to our initial correlated beliefs
-about the two conditional frequencies, but it's generally reduced by the
-sample data.
+about the two conditional frequencies.
+
+It is worth remarking that for our data sample the typical average values
+of the shape parameters $\uav{\yua}$, $\uav{\yub}$ are comparable to the
+sample size $N_{\ya}+N_{\yb}$. Trying an expansion of
+formulae~\eqref{eq:stats_final_conserv} around the uniform
+formulae~\eqref{eq:stats_final_unif} in powers of $\uav{\yua}$,
+$\uav{\yub}$ is therefore prone to produce bad approximations.
+
+
 
 \subsection{Plausibilities for the frequency differences}
 \label{sec:p_df}
 
-  \begin{align}
-    \label{eq:mean_final_diff}
+We finally find an approximate expression for our final \dob\ about the
+conditional-frequency difference $\df$. The density is also approximately
+normal, and for each initial state of knowledge $\yI=\yIu,\yIc$ its mean
+and variance can be found by the standard formulae \mynote{give ref for
+  these}
+\begin{align}
+  \label{eq:mean_final_diff}
     &\expe{f_{|\ya}- f_{|\yb} \| \yD, \yI} =
     \expe{f_{|\ya} \| \yD, \yI} -
-    \expe{ f_{|\yb} \| \yD, \yI}
+    \expe{ f_{|\yb} \| \yD, \yI},
     % \frac{N_{\ya}\,F_{|\ya}+1}{N_{\ya}+2} -
     % \frac{N_{\yb}\,F_{|\yb}+1}{N_{\yb}+2}  
-    \\
-    \label{eq:cov_final_diff}
+    \\[\jot]
+  \label{eq:cov_final_diff}
     &\var(f_{|\ya}- f_{|\yb} \| \yD, \yI) =
-    \var(f_{|\ya} \| \yD, \yI) +
-    \var(f_{|\yb} \| \yD, \yI) -
-    2\cov(f_{|\ya},f_{|\yb} \| \yD, \yI)
+      \var(f_{|\ya} \| \yD, \yI) +
+      \var(f_{|\yb} \| \yD, \yI) -
+      2\cov(f_{|\ya},f_{|\yb} \| \yD, \yI),
       % \frac{(N_{\ya}F_{|\ya}+1)\,[N_{\ya}\,(1-F_{|\ya})+1)}{(N_{\ya}+2)^2\,(N_{\ya}+3)}
       % +
       % \frac{(N_{\yb}F_{|\yb}+1)\,[N_{\yb}\,(1-F_{|\yb})+1)}{(N_{\yb}+2)^2\,(N_{\yb}+3)}
-  \end{align}
-
+\end{align}
+from the formulae~\eqref{eq:stats_final_unif},
+\eqref{eq:stats_final_conserv} given in the previous section.
 
 
 
