@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-28T14:38:44+0100
+%% Last-Updated: 2018-11-28T15:21:00+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1298,19 +1298,23 @@ Carlo sample. The means, variances, and covariance of the final density are
 \var(f_{|x} \| \yD, \yIu) =
   \uav{\frac{(N_{x}F_{|x}+\yua)\,(N_{x}F_{|x}+\yua+1)}{(N_{x}+\yua+\yub)\,(N_{x}+\yua+\yub+1)}}
   -
-  \uav{\frac{N_{\ya}\,F_{|\ya}+\yua}{N_{\ya}+\yua+\yub}}^2,
+  \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}^2,
   \\ x=\ya,\yb  
 \end{multlined}
     \\
     \label{eq:cov_final_conserv}
-&\!\begin{multlined}[\linewidth]
-    \cov(f_{|\ya}, f_{|\yb} \| \yD, \yIu) ={}\\[\jot]
-    \uav{\frac{N_{\ya}\,F_{|\ya}+\yua}{N_{\ya}+\yua+\yub}\,
-      \frac{N_{\yb}\,F_{|\yb}+\yua}{N_{\yb}+\yua+\yub}}
-    -
-    \uav{\frac{N_{\ya}\,F_{|\ya}+\yua}{N_{\ya}+\yua+\yub}}\,
-    \uav{\frac{N_{\yb}\,F_{|\yb}+\yua}{N_{\yb}+\yua+\yub}}.
-  \end{multlined}
+&    \cov(f_{|\ya}, f_{|\yb} \| \yD, \yIu) =
+    \uav{\prod_{x=\ya,\yb}\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}
+    - \prod_{x=\ya,\yb}
+    \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}.
+% &\!\begin{multlined}[\linewidth]
+%     \cov(f_{|\ya}, f_{|\yb} \| \yD, \yIu) ={}\\[\jot]
+%     \uav{\frac{N_{\ya}\,F_{|\ya}+\yua}{N_{\ya}+\yua+\yub}\,
+%       \frac{N_{\yb}\,F_{|\yb}+\yua}{N_{\yb}+\yua+\yub}}
+%     -
+%     \uav{\frac{N_{\ya}\,F_{|\ya}+\yua}{N_{\ya}+\yua+\yub}}\,
+%     \uav{\frac{N_{\yb}\,F_{|\yb}+\yua}{N_{\yb}+\yua+\yub}}.
+%   \end{multlined}
   \end{align}
 \end{subequations}
 The covariance does not vanish owing to our initial correlated beliefs
