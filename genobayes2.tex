@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-28T15:21:00+0100
+%% Last-Updated: 2018-11-28T16:22:42+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1237,7 +1237,8 @@ sampled shape parameters).
 Thanks to the large sample sizes $N_{\ya}$, $N_{\yb}$ the final densities
 above can be well approximated by normal densities. We only need to
 determine their means and covariance matrices. These can be easily
-calculated using the first and second raw moments of a beta distribution:
+calculated using the first and second raw moments of a beta
+distribution:\mynote{refs for this}
 \begin{equation}
   \label{eq:moments_beta}
   \expe{f \| \yua,\yub} = \frac{\yua}{\yua+\yub},
@@ -1254,13 +1255,13 @@ the means, variances, and covariance are readily calculated:
     \label{eq:mean_final_unif}
     &\expe{f_{|x}\| \yD, \yIu} =
     \frac{N_{x}\,F_{|x}+1}{N_{x}+2},
-    \frac{N_{\yb}\,F_{|\yb}+1}{N_{\yb}+2},
-    \qquad x=\ya,\yb
+    \frac{N_{\yb}\,F_{|\yb}+1}{N_{\yb}+2}
+    \qquad x=\ya,\yb,
     \\
     \label{eq:var_final_unif}
     &\var(f_{|x} \| \yD, \yIu) =
-    \frac{(N_{x}F_{|x}+1)\,[N_{x}\,(1-F_{|x})+1)}{(N_{x}+2)^2\,(N_{x}+3)},
-    \qquad x=\ya,\yb
+    \frac{(N_{x}F_{|x}+1)\,[N_{x}\,(1-F_{|x})+1)}{(N_{x}+2)^2\,(N_{x}+3)}
+    \qquad x=\ya,\yb,
     \\
     \label{eq:cov_final_unif}
     &\cov(f_{|\ya}, f_{|\yb} \| \yD, \yIu) = 0.
@@ -1290,20 +1291,20 @@ Carlo sample. The means, variances, and covariance of the final density are
   \begin{align}
     \label{eq:mean_final_conserv}
     &\expe{f_{|x} \| \yD, \yIc} =
-                                 \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}},
+                                 \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}
                                  \qquad x=\ya,\yb,
 \\
   \label{eq:var_final_conserv}
     &\!\begin{multlined}[\linewidth]
-\var(f_{|x} \| \yD, \yIu) =
+\var(f_{|x} \| \yD, \yIc) =
   \uav{\frac{(N_{x}F_{|x}+\yua)\,(N_{x}F_{|x}+\yua+1)}{(N_{x}+\yua+\yub)\,(N_{x}+\yua+\yub+1)}}
   -
-  \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}^2,
+  \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}^2
   \\ x=\ya,\yb  
 \end{multlined}
     \\
     \label{eq:cov_final_conserv}
-&    \cov(f_{|\ya}, f_{|\yb} \| \yD, \yIu) =
+&    \cov(f_{|\ya}, f_{|\yb} \| \yD, \yIc) =
     \uav{\prod_{x=\ya,\yb}\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}
     - \prod_{x=\ya,\yb}
     \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}.
