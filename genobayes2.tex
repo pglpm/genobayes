@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-28T13:31:39+0100
+%% Last-Updated: 2018-11-28T14:38:44+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1103,7 +1103,9 @@ the $(f_{|\ya},f_{|\yb})$-coordinate plane; we call this a
 \begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
  \centering\includegraphics[width=0.49\linewidth]{unif_prior_list.png}%
 \includegraphics[width=0.49\linewidth]{conserv_prior_list.png}
-\caption{Qualitative plot of our initial beliefs}\label{fig:initial_beliefs}
+\caption{Sampling plots of our two initial states of knowledge, 100\,000
+  samples each. Left: uniform belief~\eqref{eq:uniform_prior}; right:
+  conservative belief~\eqref{eq:conservative_prior}.}\label{fig:initial_beliefs}
 \end{figure}% scripts2/plot_priors.nb
 
 
@@ -1376,10 +1378,41 @@ from the formulae~\eqref{eq:stats_final_unif},
 
 \subsection{Generalization to symptom combinations}
 \label{sec:generalization_symptom_combinations}
+\mynote{move to appendix?}
 
 
 
 
+\section{Results}
+\label{sec:results}
+
+
+
+\begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
+ \centering\includegraphics[width=0.75\linewidth]{example_distr_condfreqs.pdf}\\
+\caption{Example of distributions of belief}\label{fig:example_distributions}
+\end{figure}% scripts/single_gene_condfreqs_thetamax.nb
+%% EVs: 0.25917, 0.283506; SDs: 0.00804727, 0.00635616
+%% overlap at 0.01 = 0.0321908
+
+
+
+\begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
+ \centering\includegraphics[width=0.75\linewidth]{difference_symA_snp6.pdf}\\
+ \caption{Distribution for the difference between the frequencies
+   $f_{\ysA\|\ya}$, $f_{\ysA\|\yb}$ of onset insomnia ($\ysA$) conditional on
+   the two alleles of \snp\ rs875994}\label{fig:difference_distributions}
+\end{figure}% scripts/condfreqs_general_tests.nb
+%% snp #6,
+%% EV: -0.0330998, SD: 0.0120472
+%% EV/SD: 2.75
+%% 0.0274176 within 0.01
+
+\newpage
+%\renewcommand*{\appendixpagename}{Appendix}
+%\renewcommand*{\appendixname}{Appendix}
+%\appendixpage
+\appendix
 \subsection{Choices of initial beliefs and meaning of the parameters}
 \label{sec:choices_prior_info}
 
@@ -1416,38 +1449,7 @@ of data necessary to modify our initial belief.
     \std(f_{\ysA\|\ya} - f_{\ysA\|\yb} \| \yD, \yI)}
 \]
 
-
-\section{Results}
-\label{sec:results}
-
-
-
-\begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
- \centering\includegraphics[width=0.75\linewidth]{example_distr_condfreqs.pdf}\\
-\caption{Example of distributions of belief}\label{fig:example_distributions}
-\end{figure}% scripts/single_gene_condfreqs_thetamax.nb
-%% EVs: 0.25917, 0.283506; SDs: 0.00804727, 0.00635616
-%% overlap at 0.01 = 0.0321908
-
-
-
-\begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
- \centering\includegraphics[width=0.75\linewidth]{difference_symA_snp6.pdf}\\
- \caption{Distribution for the difference between the frequencies
-   $f_{\ysA\|\ya}$, $f_{\ysA\|\yb}$ of onset insomnia ($\ysA$) conditional on
-   the two alleles of \snp\ rs875994}\label{fig:difference_distributions}
-\end{figure}% scripts/condfreqs_general_tests.nb
-%% snp #6,
-%% EV: -0.0330998, SD: 0.0120472
-%% EV/SD: 2.75
-%% 0.0274176 within 0.01
-
-\newpage
-%\renewcommand*{\appendixpagename}{Appendix}
-%\renewcommand*{\appendixname}{Appendix}
-%\appendixpage
-\appendix
-
+*********************************
 
 This construction has the interesting consequence for our updated belief
 $\pf(f_{|\ya}, f_{\yb} \| \yD, \yI)$. According to Bayes's
