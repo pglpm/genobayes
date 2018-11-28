@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-28T18:00:10+0100
+%% Last-Updated: 2018-11-28T23:59:32+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -184,13 +184,13 @@ british%
 % \DeclareMathSymbol{\iota}{\mathalpha}{egreeki}{"13}
 % \DeclareMathSymbol{\kappa}{\mathalpha}{egreeki}{"14}
 % \DeclareMathSymbol{\lambda}{\mathalpha}{egreeki}{"15}
-% \DeclareMathSymbol{\mu}{\mathalpha}{egreeki}{"16}
+ \DeclareMathSymbol{\mu}{\mathalpha}{egreeki}{"16}
  \DeclareMathSymbol{\nu}{\mathalpha}{egreeki}{"17}
 % \DeclareMathSymbol{\xi}{\mathalpha}{egreeki}{"18}
 % \DeclareMathSymbol{\omicron}{\mathalpha}{egreeki}{"6F}
  \DeclareMathSymbol{\pi}{\mathalpha}{egreeki}{"19}
 % \DeclareMathSymbol{\rho}{\mathalpha}{egreeki}{"1A}
-% \DeclareMathSymbol{\sigma}{\mathalpha}{egreeki}{"1B}
+ \DeclareMathSymbol{\sigma}{\mathalpha}{egreeki}{"1B}
 % \DeclareMathSymbol{\tau}{\mathalpha}{egreeki}{"1C}
 % \DeclareMathSymbol{\upsilon}{\mathalpha}{egreeki}{"1D}
 % \DeclareMathSymbol{\phi}{\mathalpha}{egreeki}{"1E}
@@ -744,6 +744,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator{\cov}{cov}
 \DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\erf}{erf}
 \newcommand*{\rs}{\texttt}
 \newcommand*{\rv}[1]{\underline{#1}}% random variable
 \newcommand*{\std}{\sigmaup}
@@ -913,32 +914,39 @@ difference may indicate some sort of biologic association between the \snp\
 large population is unknown, however; we can only make a plausible
 inference about its value from sampled data and other initial information.
 The most detailed statement we can make about it is by quantifying the
-distribution of our \dob\ $\pf(\df)$ like the one plotted in
+distribution of our \dob\ about $\df$ or its absolute values, $\pf(\df)$
+and $\pf(\abs{\df})$, like the ones plotted in
 \fig~\ref{fig:example_difference_distributions}.
 \begin{figure}[t!]%{r}{0.4\linewidth} % with wrapfigure
- \centering\includegraphics[width=0.75\linewidth]{example_diff.pdf}\\
- \caption{Example of uncertainty distribution about the conditional-frequency
-   difference $\df$}\label{fig:example_difference_distributions}
+ \centering\includegraphics[width=0.49\linewidth]{example_diff.pdf}\hspace*{\stretch{1}}\includegraphics[width=0.49\linewidth]{example_absdiff.pdf}\\
+ \caption{Example of uncertainty distributions about the
+   conditional-frequency difference $\df$ and its absolute value
+   $\abs{\df}$.}\label{fig:example_difference_distributions}
 \end{figure}% scripts2/plot_curves.nb
 % freq-1_1_conserv-spreads-sym_O-snp_6-spr_2.233.csv
 % "spread_y",-2.23267970003192
 % "EV_y",-0.0260880661493155
 % "SD_y",0.0116846434125515
-This distribution gives us many pieces of information: for example, a
+These distributions give us many pieces of information: for example, a
 negative difference $\df$ is more plausible than a positive one; it is
 8.3\% plausible that $\abs{\df}<0.01$, and therefore 91.7\% plausible that
 $\abs{\df}>0.01$; it is 90\% plausible that $-0.045 < \df < -0.007$; and so
 on. Several measures can be chosen to summarize the distribution with one
-number. For example, we could use the plausibility that $\abs{\df}$ exceeds
-a given value, say $\pf(\abs{\df} > 0.01)$. A roughly equivalent but
-perhaps more preferable measure is the minimal frequency difference we are
-highly sure about:
+number. For example, we could use the lowest 10-quantile of
+$\pf(\abs{\df})$ as minimal frequency difference we are highly sure about:
 \begin{equation}\label{eq:significance_measure}
-x\;\text{ such that }\; \pf(\abs{\df} > x)=0.9.
+x\;\text{ such that }\; \pf(\abs{\df} > x)=0.9,
 \end{equation}
-For the plot of
-\fig~\ref{fig:example_difference_distributions} such measure is $0.0112$.
-\mynote{add something about dependence of broadness on sample size, and
+or simply the expectation of the absolute value of the difference
+\citep{leoneetal1961}:
+\begin{equation}\label{eq:significance_measure_expabs}
+\expe{\abs{\df}} \equiv \sqrt{\frac{2}{\pu}}\sigma\exp\Biggl(-\frac{\mu^2}{2\sigma^2} \Biggr) + \mu \erf\Biggl( \frac{\mu}{\sqrt{2}\sigma} \Biggr),
+\end{equation}
+where $\mu$ and $\sigma$ are the mean and standard deviation of $\pf(\df)$.
+For the plot of \fig~\ref{fig:example_difference_distributions} such
+measures are $0.0112$ and $0.0262$.
+% values obtained in scripts2/plot_curves.nb
+\mynote{add maybe something about dependence of broadness on sample size, and
   \enquote{smoothing} as discussed by MacKay \amp\ Bauman Peto
   \citey[\sect~2.6]{mackayetal1995}.}
 
@@ -1392,8 +1400,13 @@ from the formulae~\eqref{eq:stats_final_unif},
 \label{sec:results}
 
 \begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
- \centering\includegraphics[height=\textheight]{relevance-sym_O.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{relevance-sym_M.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{relevance-sym_T.pdf}\\
+ \centering\includegraphics[height=\textheight]{x90-sym_O.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90-sym_M.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90-sym_T.pdf}\\
 \caption{\enquote{Relevance} of the 94 \snp s for the three symptoms.}\label{fig:relevance_o}
+\end{figure}% scripts2/plot_results.nb
+
+\begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
+ \centering\includegraphics[height=\textheight]{x90sort-sym_O.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90sort-sym_M.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90sort-sym_T.pdf}\\
+\caption{\enquote{Relevance} of the 94 \snp s for the three symptoms, sorted.}\label{fig:relevance_o}
 \end{figure}% scripts2/plot_results.nb
 
 
@@ -1538,7 +1551,7 @@ be optimized, discussed in appendix***,
 \end{equation}
 
 
-\section{Derivation of Bayes's theorem in hierarcic form}
+\section{Derivation of Bayes's theorem in hierarchic form}
 \label{sec:bayes_hierarcic}
 
 We write Bayes's theorem~\eqref{eq:straight_Bayes} with our initial
