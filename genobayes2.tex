@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-28T00:37:08+0100
+%% Last-Updated: 2018-11-28T12:41:54+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -781,6 +781,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\ysum}{\tsum}
 \newcommand*{\yprod}{\tprod}
 \newcommand*{\df}{\Delta f}
+\newcommand*{\uav}[1]{\left\langle #1 \right\rangle}
 %@@@@@@@@@@ new macros end @@@@@@@@@@
 
 \firmlists
@@ -1055,7 +1056,8 @@ With this notation, Bayes's theorem above is written
 
 \medskip
 
-\paragraph{Plausibility for the data given the frequencies}
+\subsection{Plausibility for the data given the frequencies}
+\label{sec:p_data_from_freqs}
 
 Our \dob\ about the data given the frequencies is given by simple counting
 and symmetry. We have an arbitrarily large population where a fraction
@@ -1078,15 +1080,16 @@ An analogous reasoning holds for allele $\yb$. Our belief about obtaining
 the data is therefore
 \begin{equation}
   \label{eq:sampling_belief_combined}
-  \pf(F_{|\ya},F_{|\yb} \|  f_{|\ya},f_{|\yb}, N_{\ya}, N_{\yb}, \yI)
+%  \pf(F_{|\ya},F_{|\yb} \|  f_{|\ya},f_{|\yb}, N_{\ya}, N_{\yb}, \yI)
+  \pf(\yD \|  f_{|\ya},f_{|\yb}, \yI)
   =
  \prod_{x=\ya,\yb} \binom{N_{x}}{N_{x}\,F_{|x}}\;{f_{|x}}^{N_{x}\,F_{|x}} \;
   {(1-f_{|x})}^{N_{x}\,(1-F_{|x})}.
 \end{equation}
 
-\medskip
 
-\paragraph{Initial plausibility for the frequencies}
+\subsection{Initial plausibility for the frequencies}
+\label{sec:p_initial}
 
 We consider two different initial assumptions about the conditional
 frequencies. Their densities are represented in
@@ -1111,44 +1114,47 @@ The uniform state of knowledge is given by the simple density
   =1.%\di f_{|\ya}\,\di f_{|\yb}.
 \end{equation}
 The conservative state of knowledge is given by the following integral:
-\begin{gather}
+\begin{subequations}
   \label{eq:conservative_prior}
-  \pf(f_{|\ya}, f_{|\yb} \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
-  =
-  \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
-  \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\;
-\pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\;
-  \pf(\yua,\yub \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
-  \\
-\shortintertext{with}
-  \label{eq:beta_product}
-\pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\defd
-  \dbeta(f_{|\ya} \| \yua,\yub)\;
-  \dbeta(f_{|\yb} \| \yua,\yub),
-  \\
-  \pf(\yua,\yub \| \yIc)\defd \frac{1}{u+v}\,\dgamma(u+v \| 1, 1000)
-\end{gather}
-where $\dbeta$ and $dgamma$ are a beta and a gamma density:
-\begin{gather}
-  \label{eq:def_beta}
-  \dbeta(f \| \yua,\yub) \defd
-  \frac{\Gamma(\yua+\yub)}{\Gamma(\yua)\,\Gamma(\yub)}\;
-  f^{\yua-1}\;(1-f)^{\yub-1},
-  \qquad  \yua,\yub>0,
-  \\
-  \label{eq:def_gamma}
-  \dgamma(\yA \| 1, 1000) \defd
-  \frac{1}{1000}\,\exp(-\yA/1000).
-\end{gather}
-
-The integral expression~\eqref{eq:conservative_prior} can be interpreted
-this way: we consider several independent beliefs about of the two
+  \begin{gather}
+    \pf(f_{|\ya}, f_{|\yb} \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
+    =
+    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
+    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\;
+    \pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\;
+    \pf(\yua,\yub \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
+    \\
+    \shortintertext{with}
+    \label{eq:beta_product}
+    \pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\defd
+    \dbeta(f_{|\ya} \| \yua,\yub)\;
+    \dbeta(f_{|\yb} \| \yua,\yub),
+    \\
+    \label{eq:p_initial_parameters}
+    \pf(\yua,\yub \| \yIc)\defd \frac{1}{u+v}\,\dgamma(u+v \| 1, 1000)
+  \end{gather}
+  where $\dbeta$ and $\dgamma$ are beta and gamma densities:
+  \begin{gather}
+    \label{eq:def_beta}
+    \dbeta(f \| \yua,\yub) \defd
+    \frac{\Gamma(\yua+\yub)}{\Gamma(\yua)\,\Gamma(\yub)}\;
+    f^{\yua-1}\;(1-f)^{\yub-1},
+    \qquad  \yua,\yub>0,
+    \\
+    \label{eq:def_gamma}
+    \dgamma(\yA \| 1, 1000) \defd
+    \frac{1}{1000}\,\exp(-\yA/1000).
+  \end{gather}
+\end{subequations}
+The integral expression~\eqref{eq:conservative_prior} can be interpreted as
+follows: we consider several independent beliefs about of the two
 frequencies (the product of beta densities, depending on identical shape
 parameters), and then weigh and mix them together to arrive at a belief
-that is not independent about the two frequencies. The particular shape and
-scale values of the gamma density are chosen so as to concentrate our
-initial belief along the $(f_{|\ya}, f_{|\yb})$ diagonal; this choice has
-also a deeper interpretation, discussed in appendix***.
+that is not independent about the two frequencies. This also corresponds to
+defining a so-called hierarchic model \citep{good1980}. The particular
+shape and scale values of the gamma density are chosen so as to concentrate
+our initial belief along the $(f_{|\ya}, f_{|\yb})$ diagonal; this choice
+has also a deeper interpretation, discussed in appendix***.
 
 \medskip
 
@@ -1159,57 +1165,201 @@ will show clearly distinct conditional frequencies, it will be because the
 data have given enough evidence to overwhelm this conservative belief.
 
 
+\subsection{Final plausibilities}
+\label{sec:p_final}
+
+Now we have the plausibility~\eqref{eq:sampling_belief_combined} for the
+sampled data, and two choices of initial
+plausibilities~\eqref{eq:uniform_prior}, \eqref{eq:conservative_prior}, and
+we can multiply and renormalize these in Bayes's
+theorem~\eqref{eq:intuitive_Bayes} to obtain our final \dobs.
+
+In the case of the uniform initial state of knowledge, multiplication of
+the sampling formula~\eqref{eq:sampling_belief_combined} and initial
+\dob~\eqref{eq:uniform_prior} leads to a density for the frequencies
+proportional to the product of two beta densities. Our final \dob\ in this
+case is
 \begin{equation}
   \label{eq:final_from_uniform}
   \pf(f_{|\ya}, f_{|\yb} \| \yD, \yIu)
   =
 \prod_{x=\ya,\yb}
-\dbeta[f_{|x} \bigcond N_{x}\,F_{|x}+1, \yub+N_{x}\,(1-F_{|x})+1]
+\dbeta[f_{|x} \bigcond N_{x}\,F_{|x}+1, N_{x}\,(1-F_{|x})+1]
 % \frac{\Gamma(N_{x}\,F_{|x}+1)\,\Gamma[N_{x}\,(1-F_{|x})+1]}{
 %   \Gamma(N_{x}+2)}\;
 % {f_{|x}}^{N_{x}\,F_{|x}} \;  {(1-f_{|x})}^{N_{x}\,(1-F_{|x})}.
 \end{equation}
+This is the product of two independent beliefs about the frequencies.
 
-\begin{multline}
+In the case of the conservative initial state of knowledge, multiplication
+of~\eqref{eq:sampling_belief_combined} and the beta densities within the
+integral of \eqn~\eqref{eq:conservative_prior} leads to two new
+unnormalized beta densities. Grouping the ensuing normalization constant
+with the density for the parameters~\eqref{eq:p_initial_parameters} yields
+a final \dob\ in integral form:
+\begin{subequations}
   \label{eq:final_from_conservative}
-  \pf(f_{|\ya}, f_{|\yb} \| \yD, \yIc)
-  ={}\\
+  \begin{gather}
+  \begin{multlined}[t][\linewidth]
+    \pf(f_{|\ya}, f_{|\yb} \| \yD, \yIc)
+    ={}\\[\jot]
     \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
-    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\;
-   \prod_{x=\ya,\yb}\bigl\{ 
-  \dbeta\bigl[f_{|x} \bigcond N_{x}\,F_{|x} +\yua, N_{x}\,(1-F_{|x})+\yub\bigr]
- \bigr\}\, \pf(\yua,\yub \| \yD,\yIc)
-\end{multline}
-with
-\begin{multline}
-  \label{eq:posterior_parameters}
-  \pf(\yua,\yub \| \yD,\yIc) \propto{}\\
-  \prod_{x=\ya,\yb}\left\{
-  \frac{\Gamma(N_{x}\,F_{|x}+\yua)\;\Gamma[N_{x}\,(1-F_{|x})+\yub]}
-  {\Gamma(N_{x}+\yua+\yub)}\,
-  \frac{\Gamma(\yua+\yub)}
-  {\Gamma(\yua)\;\Gamma(\yub)} \right\}
-  \,\frac{\dgamma(\yua+\yub \| 1, 1000)}{\yua+\yub}
-\end{multline}
+    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\,
+    \prod_{x=\ya,\yb}\bigl\{ 
+    \dbeta\bigl[f_{|x} \bigcond N_{x}\,F_{|x} +\yua, N_{x}\,(1-F_{|x})+\yub\bigr]
+    \bigr\}\, \pf(\yua,\yub \| \yD,\yIc)
+  \end{multlined}\\
+  \shortintertext{with}
+      \label{eq:posterior_parameters}
+  \begin{multlined}[t][\linewidth]
+    \pf(\yua,\yub \| \yD,\yIc) \propto{}\\[\jot]
+    \prod_{x=\ya,\yb}\left\{
+      \frac{\Gamma(N_{x}\,F_{|x}+\yua)\;\Gamma[N_{x}\,(1-F_{|x})+\yub]}
+      {\Gamma(N_{x}+\yua+\yub)}\,
+      \frac{\Gamma(\yua+\yub)}
+      {\Gamma(\yua)\;\Gamma(\yub)} \right\}
+    \,\frac{\dgamma(\yua+\yub \| 1, 1000)}{\yua+\yub}.
+  \end{multlined}
+\end{gather}
+\end{subequations}
+This is a hierarchic model. The integral doesn't have an analytic form, but
+the final density for the frequencies can be sampled by generating samples
+of the shape parameters $\yua$, $\yub$ from~\eqref{eq:posterior_parameters}
+via Markov-Chain Monte Carlo methods, and for each generating samples of
+the frequencies from the beta densities with those shape parameters
+(alternatively we can write an averaged sum of beta distributions having the
+sampled shape parameters).
+
+\medskip
+
+Thanks to the large sample sizes $N_{\ya}$, $N_{\yb}$ the final densities
+above can be well approximated by normal densities. We only need to
+determine their means and covariance matrices. These can be easily
+calculated using the first and second raw moments of a beta distribution:
+\begin{equation}
+  \label{eq:moments_beta}
+  \expe{f \| \yua,\yub} = \frac{\yua}{\yua+\yub},
+  \qquad
+  \expe{f^2 \| \yua,\yub} = \frac{\yua\,(\yua+1)}{(\yua+\yub)\,(\yua+\yub+1)}.  
+\end{equation}
 
 
-Combininig \eqns~\eqref{eq:formal_hierarchic_approx},
-\eqref{eq:def_ff_given_Aq}, \eqref{eq:def_beta} we thus arrive at the
-following explicit approximate formula for our belief about the conditional
-frequencies given the data:
-\begin{multline}
-  \label{eq:formal_hierarchic_approx_final}
-  \pf(f_{|\ya}, f_{\yb} \| \yD, \yI) \approx
-  \dbeta(f_{|\ya} \| \yuam,\yubm)\;
-  \dbeta(f_{\yb} \| \yuam,\yubm)\\
-  \text{with
-    $(\yuam,\yubm)$ maximizing~\eqref{eq:to_optimize}}.
-\end{multline}
+For the uniform initial state of knowledge~\eqref{eq:final_from_uniform}
+the means, variances, and covariance are readily calculated:
+\begin{subequations}
+  \label{eq:stats_final_unif}
+  \begin{align}
+    \label{eq:mean_final_unif}
+    &\expe{f_{|x}\| \yD, \yIu} =
+    \frac{N_{x}\,F_{|x}+1}{N_{x}+2},
+    \frac{N_{\yb}\,F_{|\yb}+1}{N_{\yb}+2},
+    \qquad x=\ya,\yb
+    \\
+    \label{eq:var_final_unif}
+    &\var(f_{|x} \| \yD, \yIu) =
+    \frac{(N_{x}F_{|x}+1)\,[N_{x}\,(1-F_{|x})+1)}{(N_{x}+2)^2\,(N_{x}+3)},
+    \qquad x=\ya,\yb
+    \\
+    \label{eq:cov_final_unif}
+    &\cov(f_{|\ya}, f_{|\yb} \| \yD, \yIu) = 0.
+    % \begin{pmatrix}
+    %   \frac{(N_{\ya}F_{|\ya}+1)\,[N_{\ya}\,(1-F_{|\ya})+1)}{(N_{\ya}+2)^2\,(N_{\ya}+3)}
+    %   &0\\0&
+    %   \frac{(N_{\yb}F_{|\yb}+1)\,[N_{\yb}\,(1-F_{|\yb})+1)}{(N_{\yb}+2)^2\,(N_{\yb}+3)}
+    % \end{pmatrix}.
+  \end{align}
+\end{subequations}
+The covariance vanishes owing to the product form of the final density.
+
+For the conservative initial state of
+knowledge~\eqref{eq:final_from_conservative} let us first introduce the
+notation
+\begin{equation}
+  \label{eq:notation_avg_parameters}
+  \uav{X(\yua,\yub)} \defd
+      \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
+    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\,
+X(\yua,\yub) \, \pf(\yua,\yub \| \yD,\yIc);
+\end{equation}
+such an average can approximately be computed by averaging from a Monte
+Carlo sample. The means, variances, and covariance of the final density are
+\begin{subequations}
+  \label{eq:stats_final_conserv}
+  \begin{align}
+    \label{eq:mean_final_conserv}
+    &\expe{f_{|x} \| \yD, \yIc} =
+                                 \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}},
+                                 \qquad x=\ya,\yb,
+\\
+  \label{eq:var_final_conserv}
+    &\!\begin{multlined}[\linewidth]
+\var(f_{|x} \| \yD, \yIu) =
+  \uav{\frac{(N_{x}F_{|x}+\yua)\,(N_{x}F_{|x}+\yua+1)}{(N_{x}+\yua+\yub)\,(N_{x}+\yua+\yub+1)}}
+  -
+  \uav{\frac{N_{\ya}\,F_{|\ya}+\yua}{N_{\ya}+\yua+\yub}}^2,
+  \\ x=\ya,\yb  
+\end{multlined}
+    \\
+    \label{eq:cov_final_conserv}
+&\!\begin{multlined}[\linewidth]
+    \cov(f_{|\ya}, f_{|\yb} \| \yD, \yIu) ={}\\[\jot]
+    \uav{\frac{N_{\ya}\,F_{|\ya}+\yua}{N_{\ya}+\yua+\yub}\,
+      \frac{N_{\yb}\,F_{|\yb}+\yua}{N_{\yb}+\yua+\yub}}
+    -
+    \uav{\frac{N_{\ya}\,F_{|\ya}+\yua}{N_{\ya}+\yua+\yub}}\,
+    \uav{\frac{N_{\yb}\,F_{|\yb}+\yua}{N_{\yb}+\yua+\yub}}.
+  \end{multlined}
+  \end{align}
+\end{subequations}
+The covariance does not vanish owing to our initial correlated beliefs
+about the two conditional frequencies, but it's generally reduced by the
+sample data.
+
+\subsection{Plausibilities for the frequency differences}
+\label{sec:p_df}
+
+  \begin{align}
+    \label{eq:mean_final_diff}
+    &\expe{f_{|\ya}- f_{|\yb} \| \yD, \yI} =
+    \expe{f_{|\ya} \| \yD, \yI} -
+    \expe{ f_{|\yb} \| \yD, \yI}
+    % \frac{N_{\ya}\,F_{|\ya}+1}{N_{\ya}+2} -
+    % \frac{N_{\yb}\,F_{|\yb}+1}{N_{\yb}+2}  
+    \\
+    \label{eq:cov_final_diff}
+    &\var(f_{|\ya}- f_{|\yb} \| \yD, \yI) =
+    \var(f_{|\ya} \| \yD, \yI) +
+    \var(f_{|\yb} \| \yD, \yI) -
+    2\cov(f_{|\ya},f_{|\yb} \| \yD, \yI)
+      % \frac{(N_{\ya}F_{|\ya}+1)\,[N_{\ya}\,(1-F_{|\ya})+1)}{(N_{\ya}+2)^2\,(N_{\ya}+3)}
+      % +
+      % \frac{(N_{\yb}F_{|\yb}+1)\,[N_{\yb}\,(1-F_{|\yb})+1)}{(N_{\yb}+2)^2\,(N_{\yb}+3)}
+  \end{align}
 
 
 
 
- \mynote{ref here to \citep{mackay1996}}
+
+
+
+
+% Combining \eqns~\eqref{eq:formal_hierarchic_approx},
+% \eqref{eq:def_ff_given_Aq}, \eqref{eq:def_beta} we thus arrive at the
+% following explicit approximate formula for our belief about the conditional
+% frequencies given the data:
+% \begin{multline}
+%   \label{eq:formal_hierarchic_approx_final}
+%   \pf(f_{|\ya}, f_{\yb} \| \yD, \yI) \approx
+%   \dbeta(f_{|\ya} \| \yuam,\yubm)\;
+%   \dbeta(f_{\yb} \| \yuam,\yubm)\\
+%   \text{with
+%     $(\yuam,\yubm)$ maximizing~\eqref{eq:to_optimize}}.
+% \end{multline}
+%  \mynote{ref here to \citep{mackay1996}}
+
+
+
+
 \subsection{Generalization to symptom combinations}
 \label{sec:generalization_symptom_combinations}
 
