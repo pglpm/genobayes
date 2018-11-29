@@ -132,6 +132,6 @@ results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,nam
 
 ## Call a function that samples without data, to plot the initial belief
 ## Not called in the case of constant prior
-##if(is.function(logpriortheta)){
+if(is.function(logpriortheta)){
     insamples <- priorsamples(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunction,cores,mciterations)
-}
+
