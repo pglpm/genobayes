@@ -134,4 +134,4 @@ results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,nam
 ## Not called in the case of constant prior
 if(is.function(logpriortheta)){
     insamples <- priorsamples(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunction,cores,mciterations)
-
+}
