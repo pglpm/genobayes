@@ -1,7 +1,0 @@
-Error in source("mccalc_1snp_1snp.R") : 
-  mccalc_1snp_1snp.R:137:1: unexpected '}'
-136:     insamples <- priorsamples(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunctio
-137: }
-     ^
-Execution halted
-srun: error: compute-0-3: task 0: Exited with exit code 1
