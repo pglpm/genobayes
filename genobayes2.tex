@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-12-02T15:22:34+0100
+%% Last-Updated: 2018-12-02T17:45:51+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -759,7 +759,10 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yIc}{\yI_\text{c}}
 \newcommand*{\ya}{a}
 \newcommand*{\yb}{b}
+\newcommand*{\yas}{c}
+\newcommand*{\ybs}{d}
 \newcommand*{\ysS}{s}% generic insomnia symbol
+\newcommand*{\ysO}{\textrm{N}}% onset insomnia
 \newcommand*{\ysA}{\textrm{O}}% onset insomnia
 \newcommand*{\ysB}{\textrm{M}}% maintenance insomnia
 \newcommand*{\ysC}{\textrm{T}}% terminal insomnia
@@ -1166,8 +1169,8 @@ values of the gamma density are chosen so as to concentrate our initial
 belief along the $(f_{|\ya}, f_{|\yb})$ diagonal. The use of beta densities
 in this problem seems to have been first endorsed by G. F. Hardy
 \citey{hardy1889}; Good \citey[\sect~4.1]{good1965}[\sect~4]{good1980}
-motivates the use of their mixtures. Further interpretations of this
-initial state of knowledge are discussed in appendix***.
+motivates the use of their mixtures. We discuss further interpretations of
+this initial state of knowledge in appendix***.
 
 \medskip
 
@@ -1392,12 +1395,6 @@ from the formulae~\eqref{eq:stats_final_unif},
 
 
 
-\subsection{Generalization to symptom combinations}
-\label{sec:generalization_symptom_combinations}
-\mynote{move to appendix?}
-
-
-
 
 \section{Results}
 \label{sec:results}
@@ -1438,6 +1435,65 @@ from the formulae~\eqref{eq:stats_final_unif},
 %\renewcommand*{\appendixname}{Appendix}
 %\appendixpage
 \appendix
+
+
+\section{Generalizations}
+
+\subsection{Generalization to \snp\ combinations}
+\label{sec:generalize_snp}
+
+The ideas and mathematical results discussed in the Method section are
+easily generalized to the frequencies of a symptom conditional on the
+combination of the alleles of two or more \snp s. Consider the simplest
+case of two; denote the two alleles of the first \snp\ by $\ya$, $\yb$, and
+of the second $\yas$, $\ybs$. We then have $2^2$ conditional frequencies
+$f_{|\ya\yas}$, $f_{|\ya\ybs}$, $f_{|\yb\yas}$, $f_{|\yb\ybs}$ and we want
+to quantify the plausibility density
+$\pf(f_{|\ya\yas},f_{|\ya\ybs},f_{|\yb\yas},f_{|\yb\ybs} \| \yD, \yI)$
+given the conditional frequencies $F_{|\ya\yas}$, $F_{|\ya\ybs}$,
+$F_{|\yb\yas}$, $F_{|\yb\ybs}$ observed in a sample of size
+$N_{\ya\yas}+N_{\ya\ybs}+N_{\yb\yas}+N_{\yb\ybs}$.
+
+Bayes's theorem~\eqref{eq:intuitive_Bayes} applies as before. The sampling
+plausibility~\eqref{eq:sampling_belief_combined}, obtained by the same
+reasoning, generalizes to the product over
+$x=\ya\yas,\ya\ybs,\yb\yas,\yb\ybs$. The uniform initial state of knowledge
+has still unit density as in~\eqref{eq:uniform_prior}. The conservative
+initial state of knowledge~\eqref{eq:conservative_prior} generalizes to the
+mixture of the product of $2^2$ beta distributions, one for each
+combination of alleles, conditional on the same parameters $\yua$, $\yub$.
+The rest of the calculations proceed analogously.
+
+In this case we have $\tbinom{4}{2}\equiv 6$ conditional-frequency
+differences of interest: $f_{|\ya\yas}- f_{|\ya\ybs}$,
+$f_{|\ya\yas}- f_{|\yb\yas}$, $f_{|\ya\yas}- f_{|\yb\ybs}$, and so on. The
+analysis of the results therefore offers more interesting possibilities.
+
+\subsection{Generalization to symptom combinations}
+\label{sec:generalize_symptoms}
+
+The Method section is also easily generalized to the conditional
+frequencies of non-dichotomous symptoms, or of symptom combinations. For
+example, for our study we could consider the $2^3$ combinations: individual
+with no symptoms, or with only symptom $\ysA$ present, or with only
+symptoms $\ysA$ and $\ysB$ present, and so on up to all three symptoms
+$\ysA$, $\ysB$, $\ysC$ present. We can denote these cases by $\ysO$,
+$\ysA$, $\ysA\ysB$, and so on. Each of these frequencies would be
+conditional on whether the individual has allele $\ya$ or $\yb$ of a
+particular \snp. We thus have two conditional-frequency distributions:
+\begin{equation}
+  \label{eq:f_distr_symptom_combo}
+  \begin{aligned}
+    &(f_{\ysO\|\ya},f_{\ysA\|\ya},\dotsc,f_{\ysA\ysB\|\ya},\dotsc,f_{\ysA\ysB\ysC\|\ya}),
+    \qquad&\sum_{y} f_{y\|\ya} =1,
+      \\
+    &(f_{\ysO\|\yb},f_{\ysA\|\yb},\dotsc,f_{\ysA\ysB\|\yb},\dotsc,f_{\ysA\ysB\ysC\|\yb}),
+    \qquad&\sum_{y} f_{y\|\yb} =1.
+  \end{aligned}
+\end{equation}
+
+
+
 \subsection{Choices of initial beliefs and meaning of the parameters}
 \label{sec:choices_prior_info}
 
