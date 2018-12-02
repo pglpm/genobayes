@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-08-07T20:36:31+0200
-%% Last-Updated: 2018-11-29T00:35:38+0100
+%% Last-Updated: 2018-12-02T15:22:34+0100
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Report-no: ***
 \newif\ifarxiv
@@ -1067,10 +1067,10 @@ With this notation, Bayes's theorem above is written
 \subsection{Plausibility for the data given the frequencies}
 \label{sec:p_data_from_freqs}
 
-Our \dob\ about the data given the frequencies is given by simple counting
-and symmetry. We have an arbitrarily large population where a fraction
-$f_{|\ya}$ of individuals having allele $\ya$ show the symptom, and a
-fraction $1- f_{|\ya}$ therefore don't show the symptom. We casually
+The plausibility of obtaining the data given the frequencies is given by
+simple counting and symmetry. We have an arbitrarily large population where
+a fraction $f_{|\ya}$ of individuals having allele $\ya$ show the symptom,
+and a fraction $1- f_{|\ya}$ therefore don't show the symptom. We casually
 observe $N_{\ya}$ individuals with allele $\ya$. The plausibility that a
 fraction $F_{|\ya}$ of these show the symptom is then counted as a
 \enquote{drawing with replacement} because of the arbitrarily large size of
@@ -1157,14 +1157,17 @@ The conservative state of knowledge is given by the following integral:
   \end{gather}
 \end{subequations}
 The integral expression~\eqref{eq:conservative_prior} can be interpreted as
-follows: we consider several independent beliefs about of the two
-frequencies (the product of beta densities, depending on identical shape
-parameters), and then weigh and mix them together to arrive at a belief
-that is not independent about the two frequencies. This also corresponds to
-defining a so-called hierarchic model \citep{good1980}. The particular
-shape and scale values of the gamma density are chosen so as to concentrate
-our initial belief along the $(f_{|\ya}, f_{|\yb})$ diagonal; this choice
-has also a deeper interpretation, discussed in appendix***.
+follows: we consider several independent beliefs about the two frequencies
+-- the product of beta densities, depending on identical shape parameters
+-- and then weigh and mix them together to arrive at a belief that is not
+independent about the two frequencies. This also corresponds to defining a
+so-called hierarchic model \citep{good1980}. The particular shape and scale
+values of the gamma density are chosen so as to concentrate our initial
+belief along the $(f_{|\ya}, f_{|\yb})$ diagonal. The use of beta densities
+in this problem seems to have been first endorsed by G. F. Hardy
+\citey{hardy1889}; Good \citey[\sect~4.1]{good1965}[\sect~4]{good1980}
+motivates the use of their mixtures. Further interpretations of this
+initial state of knowledge are discussed in appendix***.
 
 \medskip
 
