@@ -27,4 +27,4 @@
 # we use slurm's environment variables to create unique output files and echo the name of the executing node in that file
 ##module load anaconda
 ##source activate r
-srun Rscript -e 'source("mccalc2_1snp_1snp.R")'
+srun Rscript -e 'source("mccalc2_1sym_1snp.R")'
