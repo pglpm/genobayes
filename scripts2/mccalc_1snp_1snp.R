@@ -39,7 +39,7 @@ data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 savedir <- 'mc1e6_1snp_1snp_cons/' # directory for saving results
 filename <- 'freqsnp-1_1_cons-' # filename prefix
 
-cores <- 30 # for parallel processing
+cores <- 1 # for parallel processing
 mciterations <- 1e6 # number of Monte-Carlo samples
 
 studysnp <- sort(c(1,6,13,8,9,68,17,28,67,66,12,71,14,65))
@@ -105,8 +105,8 @@ statsfunction <- function(f,samples,symptom,snp,numsymptomvariants,numsnpvariant
                              ))
 
     diffsds <- sqrt(avgmoments[seq(from=2,length.out=numsnpvariants*(numsnpvariants-1)/2,by=2)] - diffevs^2)
-
-    spreads <- sqrt(2/pi)*diffsds*exp(-diffevs^2/(2*diffsds^2))+diffevs*erf(diffevs/(sqrt(2)*diffsds))
+#erf <- function(x) 2 * pnorm(x * sqrt(2)) - 1
+    spreads <- sqrt(2/pi)*diffsds*exp(-diffevs^2/(2*diffsds^2))+diffevs*(2*pnorm(diffevs/diffsds)-1)
 
     maxspread <- max(abs(c(spreads)))
 
