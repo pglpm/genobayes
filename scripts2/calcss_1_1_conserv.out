@@ -1,8 +1,351 @@
-Error in file(filename, "r", encoding = encoding) : 
-  cannot open the connection
-Calls: source -> file
-In addition: Warning message:
-In file(filename, "r", encoding = encoding) :
-  cannot open file 'mccalc2_1snp_1snp.R': No such file or directory
-Execution halted
-srun: error: compute-0-0: task 0: Exited with exit code 1
+
+Attaching package: 'cowplot'
+
+The following object is masked from 'package:ggplot2':
+
+    ggsave
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+starting worker pid=34736 on localhost:11383 at 16:18:22.487
+starting worker pid=34747 on localhost:11383 at 16:18:22.723
+starting worker pid=34758 on localhost:11383 at 16:18:22.959
+starting worker pid=34769 on localhost:11383 at 16:18:23.195
+starting worker pid=34780 on localhost:11383 at 16:18:23.433
+starting worker pid=34791 on localhost:11383 at 16:18:23.670
+starting worker pid=34802 on localhost:11383 at 16:18:23.906
+starting worker pid=34813 on localhost:11383 at 16:18:24.143
+starting worker pid=34824 on localhost:11383 at 16:18:24.378
+starting worker pid=34835 on localhost:11383 at 16:18:24.614
+starting worker pid=34846 on localhost:11383 at 16:18:24.852
+starting worker pid=34857 on localhost:11383 at 16:18:25.088
+starting worker pid=34868 on localhost:11383 at 16:18:25.325
+starting worker pid=34879 on localhost:11383 at 16:18:25.561
+starting worker pid=34890 on localhost:11383 at 16:18:25.798
+starting worker pid=34901 on localhost:11383 at 16:18:26.032
+starting worker pid=34912 on localhost:11383 at 16:18:26.267
+starting worker pid=34923 on localhost:11383 at 16:18:26.503
+starting worker pid=34934 on localhost:11383 at 16:18:26.739
+starting worker pid=34945 on localhost:11383 at 16:18:26.975
+starting worker pid=34956 on localhost:11383 at 16:18:27.211
+starting worker pid=34967 on localhost:11383 at 16:18:27.446
+starting worker pid=34978 on localhost:11383 at 16:18:27.684
+starting worker pid=35001 on localhost:11383 at 16:18:27.922
+starting worker pid=35032 on localhost:11383 at 16:18:28.156
+starting worker pid=35043 on localhost:11383 at 16:18:28.390
+starting worker pid=35054 on localhost:11383 at 16:18:28.626
+starting worker pid=35065 on localhost:11383 at 16:18:28.861
+starting worker pid=35076 on localhost:11383 at 16:18:29.094
+starting worker pid=35087 on localhost:11383 at 16:18:29.328
+
+Laplace's Demon was called on Tue Dec  4 16:18:30 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:30 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on 
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018Tue Dec  4 16:18:31 2018
+
+
+Performing initial checks...
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+
+Laplace's Demon was called on Tue Dec  4 16:18:31 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm:Algorithm:  Automated Factor Slice SamplerAutomated Factor Slice Sampler  
+
+
+Laplace's Demon is beginning to update...
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every
+Eigendecomposition will occur every  2000020000  iterations.
+
+iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Algorithm:Automated Factor Slice Sampler  
+Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every
+Eigendecomposition will occur every  2000020000  iterations.
+
+iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every
+Eigendecomposition will occur every  2000020000  iterations.
+
+iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 Algorithm:iterations.
+
+ Automated Factor Slice Sampler 
+
+Eigendecomposition will occur every 
+Laplace's Demon is beginning to update...
+20000 iterations.
+
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
+
+Eigendecomposition will occur every 20000 iterations.
+
