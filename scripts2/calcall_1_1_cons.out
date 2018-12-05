@@ -928,3 +928,13 @@ Estimating Log of the Marginal Likelihood
 Creating Output
 
 Laplace's Demon has finished.
+
+Laplace's Demon was called on Wed Dec  5 16:25:32 2018
+
+Performing initial checks...
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 20000 iterations.
+
