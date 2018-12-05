@@ -31,7 +31,7 @@ mmtoin <- 0.0393701
 source('conditional_freqs_2.R') ## calls the function that calculates and writes the statistics
 
 dpath  <-  "./"
-datafile <- 'testalldata.csv'
+datafile <- 'alldata.csv'
 nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
@@ -43,7 +43,7 @@ cores <- 30 # for parallel processing
 mciterations <- 1e6 # number of Monte-Carlo samples
 
 symptoms <- list(1,2,3) # symptoms A, B, C correspond to data indices 1, 2, 3
-namesymptoms <- #c('O','M','T')
+namesymptoms <- c('O','M','T')
 prefixsymptoms <- 'sym_' # for filename
 
 symptomvariants <- list(0,1)
