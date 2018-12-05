@@ -19,39 +19,38 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-starting worker pid=7639 on localhost:11338 at 15:36:40.268
-starting worker pid=7650 on localhost:11338 at 15:36:40.830
-starting worker pid=7661 on localhost:11338 at 15:36:41.404
-starting worker pid=7672 on localhost:11338 at 15:36:41.974
-starting worker pid=7683 on localhost:11338 at 15:36:42.544
-starting worker pid=7694 on localhost:11338 at 15:36:43.107
-starting worker pid=7705 on localhost:11338 at 15:36:43.677
-starting worker pid=7716 on localhost:11338 at 15:36:44.233
-starting worker pid=7727 on localhost:11338 at 15:36:44.793
-starting worker pid=7738 on localhost:11338 at 15:36:45.354
-starting worker pid=7749 on localhost:11338 at 15:36:46.018
-starting worker pid=7760 on localhost:11338 at 15:36:46.487
-starting worker pid=7771 on localhost:11338 at 15:36:47.096
-starting worker pid=7782 on localhost:11338 at 15:36:47.553
-starting worker pid=7793 on localhost:11338 at 15:36:48.110
-starting worker pid=7804 on localhost:11338 at 15:36:48.567
-starting worker pid=7815 on localhost:11338 at 15:36:49.197
-starting worker pid=7826 on localhost:11338 at 15:36:49.654
-starting worker pid=7837 on localhost:11338 at 15:36:50.545
-starting worker pid=7880 on localhost:11338 at 15:36:51.006
-starting worker pid=7891 on localhost:11338 at 15:36:51.719
-starting worker pid=7902 on localhost:11338 at 15:36:52.367
-starting worker pid=7916 on localhost:11338 at 15:36:52.837
-starting worker pid=7927 on localhost:11338 at 15:36:53.634
-starting worker pid=7938 on localhost:11338 at 15:36:54.103
-starting worker pid=7949 on localhost:11338 at 15:36:54.650
-starting worker pid=7960 on localhost:11338 at 15:36:55.110
-starting worker pid=7971 on localhost:11338 at 15:36:55.572
-starting worker pid=7982 on localhost:11338 at 15:36:56.037
-starting worker pid=7993 on localhost:11338 at 15:36:56.539
+starting worker pid=12728 on localhost:11935 at 16:40:48.148
+starting worker pid=12739 on localhost:11935 at 16:40:48.391
+starting worker pid=12750 on localhost:11935 at 16:40:48.630
+starting worker pid=12762 on localhost:11935 at 16:40:48.869
+starting worker pid=12773 on localhost:11935 at 16:40:49.107
+starting worker pid=12784 on localhost:11935 at 16:40:49.344
+starting worker pid=12795 on localhost:11935 at 16:40:49.581
+starting worker pid=12806 on localhost:11935 at 16:40:49.823
+starting worker pid=12817 on localhost:11935 at 16:40:50.060
+starting worker pid=12828 on localhost:11935 at 16:40:50.300
+starting worker pid=12839 on localhost:11935 at 16:40:50.541
+starting worker pid=12850 on localhost:11935 at 16:40:50.781
+starting worker pid=12861 on localhost:11935 at 16:40:51.022
+starting worker pid=12872 on localhost:11935 at 16:40:51.259
+starting worker pid=12883 on localhost:11935 at 16:40:51.502
+starting worker pid=12894 on localhost:11935 at 16:40:51.738
+starting worker pid=12905 on localhost:11935 at 16:40:51.974
+starting worker pid=12916 on localhost:11935 at 16:40:52.213
+starting worker pid=12927 on localhost:11935 at 16:40:52.451
+starting worker pid=12938 on localhost:11935 at 16:40:52.690
+starting worker pid=12949 on localhost:11935 at 16:40:52.931
+starting worker pid=12960 on localhost:11935 at 16:40:53.168
+starting worker pid=12971 on localhost:11935 at 16:40:53.407
+starting worker pid=12982 on localhost:11935 at 16:40:53.644
+starting worker pid=12993 on localhost:11935 at 16:40:53.887
+starting worker pid=13004 on localhost:11935 at 16:40:54.128
+starting worker pid=13015 on localhost:11935 at 16:40:54.367
+starting worker pid=13026 on localhost:11935 at 16:40:54.607
+starting worker pid=13037 on localhost:11935 at 16:40:54.846
+starting worker pid=13048 on localhost:11935 at 16:40:55.084
 [1] "writing results to file..."
 [1] "end"
-Warning messages:
-1: In dir.create(savedir) : 'allmc1e6_1sym_1snp_unif' already exists
-2: In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+Warning message:
+In e$fun(obj, substitute(ex), parent.frame(), e$data) :
   already exporting variable(s): savedir, filename, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, logpriortheta, statsfunction, mciterations, mcdiscard
