@@ -36,8 +36,8 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- 'anxmc1e6_4cat_3sym_unif/' # directory for saving results
-filename <- 'freq-4_3_unif-' # filename prefix
+savedir <- 'anxmc1e6_4cat_8sym_unif/' # directory for saving results
+filename <- 'freq-4_8_unif-' # filename prefix
 
 cores <- 30 # for parallel processing
 mciterations <- 1e6 # number of Monte-Carlo samples
@@ -49,12 +49,13 @@ prefixsymptoms <- 'cat_' # for filename
 symptomvariants <- as.list(0:3)
 namesymptomvariants <- c(0:3)
 
-snps <- as.list(2:4) # list of insomnia symptoms indices in data
-namesnps <- c('O','M','T')
+nins <- 3 # auxiliary quantity
+snps <- list(c(2,3,4))
+namesnps <- 'combo'
 prefixsnps <- 'sym_' # for filename
 
-snpvariants <- list(0, 1) # list of symptom values
-namesnpvariants <- c('n','y') # symptom-value names
+snpvariants <- list(c(0,0,0),c(1,0,0),c(0,1,0),c(0,0,1),c(1,1,0),c(1,0,1),c(0,1,1),c(1,1,1)) # list of combo values
+namesnpvariants <- c('N','O','M','T','OM','OT','MT','OMT') # allele-pair names
 
 ## combos of symptom values names (for conditional-frequency differences)
 numsnpvariants <- length(snpvariants)
@@ -92,17 +93,18 @@ statsfunction <- function(f,samples,symptom,snp,numsymptomvariants,numsnpvariant
         c(unlist(mxs),m1s,m2s)
     }))
 
-        ksamples3 <- apply(samples,1,function(tt){
+    mval <- matrix(0:3,8,4,byrow=T)
+        diffsamples <- apply(samples,1,function(tt){
             fnew <- f+exp(tt)
-            d1 <- rdirichlet(1,fnew[,1])
-            d2 <- rdirichlet(1,fnew[,2])
-            m1 <- sum((0:3)*d1)
-            v1 <- sum(((0:3)-m1)^2*d1)
-            m2 <- sum((0:3)*d2)
-            v2 <- sum(((0:3)-m2)^2*d2)
+            dd <- t(rdirichlet(numsnpvariants,t(fnew)))
+            me <- colSums((0:3)*dd)
+            va <- colSums(t(mval-me)^2*dd)
+            kdiffs <- sapply(2:8,function(z){kam(dd[,z],dd[,1])})
 
-            c(kam(d1,d2), m2-m1, v2-v1)
-    })
+            c(me[-1]-me[1],
+              va[-1]-va[1],
+              kdiffs)
+        })
 
 
     kam <- function(a,b){sum(abs(cumsum(a-b)))}
