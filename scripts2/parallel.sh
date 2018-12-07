@@ -1,6 +1,6 @@
 #!/bin/bash
 #################### Set the name of the job
-#SBATCH --job-name calcanx_4_8_cons
+#SBATCH --job-name calcanx_4_8_unif
 # Launch an array of 100 jobs
 ## SBATCH --array 1-10
 # Specify a time limit
@@ -8,8 +8,8 @@
 # Redirect stderr and stdout to the same file:
 # %A will be replaced by the job ID and %a by the array index
 ####################
-#SBATCH -o calcanx_4_8_cons.out
-#SBATCH -e calcanx_4_8_cons.out
+#SBATCH -o calcanx_4_8_unif.out
+#SBATCH -e calcanx_4_8_unif.out
 # Send email notifications
 ## SBATCH --mail-type=ALL
 # We request an exclusive node for every job in the array
