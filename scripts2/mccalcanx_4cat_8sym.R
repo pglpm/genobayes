@@ -39,7 +39,7 @@ data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 savedir <- 'anxmc1e6_4cat_8sym_unif/' # directory for saving results
 filename <- 'freq-4_8_unif-' # filename prefix
 
-cores <- 30 # for parallel processing
+cores <- 3 # for parallel processing
 mciterations <- 1e6 # number of Monte-Carlo samples
 
 symptoms <- list(1) # anxiety category corresponds to data index 1
@@ -82,7 +82,7 @@ statsfunction <- function(f,samples,symptom,snp,numsymptomvariants,numsnpvariant
     mval <- matrix(0:3,8,4,byrow=T)
     kam <- function(a,b){sum(abs(cumsum(a-b)))}
 
-    diffsamples <- t(apply(samples,1,function(tt){
+    diffdata <- t(apply(samples,1,function(tt){
         fnew <- f+exp(tt)
         dd <- t(rdirichlet(numsnpvariants,t(fnew)))
         me <- colSums((0:3)*dd)
@@ -96,7 +96,7 @@ statsfunction <- function(f,samples,symptom,snp,numsymptomvariants,numsnpvariant
           kdiffs)
     }))
 
-    colnames(diffsamples) <- c(paste0('diffmean_',namesnpvariants[-1]),
+    colnames(diffdata) <- c(paste0('diffmean_',namesnpvariants[-1]),
                                paste0('diffvar_',namesnpvariants[-1]),
                                paste0('diffskew_',namesnpvariants[-1]),
                                paste0('kantorovich_',namesnpvariants[-1]))
