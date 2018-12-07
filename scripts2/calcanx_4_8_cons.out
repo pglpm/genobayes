@@ -61,3 +61,12 @@ Laplace's Demon is beginning to update...
 
 Eigendecomposition will occur every 40000 iterations.
 
+srun: Job step aborted: Waiting up to 2 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: *** JOB 326449 CANCELLED AT 2018-12-08T00:38:22 ***
+srun: forcing job termination
+slurmstepd: *** STEP 326449.0 CANCELLED AT 2018-12-08T00:38:22 ***
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+srun: error: compute-0-0: task 0: Terminated
