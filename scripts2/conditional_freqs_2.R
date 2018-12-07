@@ -109,7 +109,7 @@ result <- foreach(symptom=1:numsymptoms,
             samples <- usamples$Posterior1
         }
         }else{### case of constant prior. Mimicked by zero-valued samples
-            samples <- matrix(0,nrow=2,ncol=numsymptomvariants)
+            samples <- matrix(0,nrow=mciterations,ncol=numsymptomvariants)
             fnew <- f+1
             usamples <- list(
                 Summary1=rep(NA,7),
@@ -118,7 +118,7 @@ result <- foreach(symptom=1:numsymptoms,
                 )
         }
         
-        endstats <- statsfunction(f,samples,symptom,snp,numsymptomvariants,numsnpvariants)
+        endstats <- statsfunction(f,samples,symptom,snp,numsymptomvariants,numsnpvariants,namesnpvariants)
         if(endstats$writeflag){
         write.csv(rbind(usamples$Summary1,c(usamples$LML,rep(NA,6)),usamples$Summary2),paste0(savedir,filename,'mcsummary-',prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'.csv'))
         }
