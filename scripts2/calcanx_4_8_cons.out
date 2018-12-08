@@ -34,3 +34,18 @@ Laplace's Demon is beginning to update...
 
 Eigendecomposition will occur every 40000 iterations.
 
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3341.3
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+[1] "writing results to file..."
+[1] "end"
+Warning messages:
+1: In dir.create(savedir) : 'anxmc1e6_4cat_8sym_cons' already exists
+2: In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+  already exporting variable(s): savedir, filename, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, namesnpvariants, logpriortheta, statsfunction, mciterations, mcdiscard
