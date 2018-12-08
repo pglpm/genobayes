@@ -19,39 +19,12 @@ The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union
 
-starting worker pid=114532 on localhost:11327 at 00:15:34.537
-starting worker pid=114575 on localhost:11327 at 00:15:34.775
-starting worker pid=114586 on localhost:11327 at 00:15:35.013
-starting worker pid=114597 on localhost:11327 at 00:15:35.248
-starting worker pid=114608 on localhost:11327 at 00:15:35.486
-starting worker pid=114619 on localhost:11327 at 00:15:35.721
-starting worker pid=114630 on localhost:11327 at 00:15:35.956
-starting worker pid=114641 on localhost:11327 at 00:15:36.198
-starting worker pid=114652 on localhost:11327 at 00:15:36.436
-starting worker pid=114663 on localhost:11327 at 00:15:36.674
-starting worker pid=114674 on localhost:11327 at 00:15:36.913
-starting worker pid=114685 on localhost:11327 at 00:15:37.148
-starting worker pid=114696 on localhost:11327 at 00:15:37.382
-starting worker pid=114707 on localhost:11327 at 00:15:37.618
-starting worker pid=114718 on localhost:11327 at 00:15:37.858
-starting worker pid=114730 on localhost:11327 at 00:15:38.095
-starting worker pid=114741 on localhost:11327 at 00:15:38.332
-starting worker pid=114752 on localhost:11327 at 00:15:38.570
-starting worker pid=114763 on localhost:11327 at 00:15:38.804
-starting worker pid=114774 on localhost:11327 at 00:15:39.037
-starting worker pid=114785 on localhost:11327 at 00:15:39.281
-starting worker pid=114796 on localhost:11327 at 00:15:39.518
-starting worker pid=114807 on localhost:11327 at 00:15:39.754
-starting worker pid=114818 on localhost:11327 at 00:15:39.996
-starting worker pid=114829 on localhost:11327 at 00:15:40.238
-starting worker pid=114840 on localhost:11327 at 00:15:40.475
-starting worker pid=114851 on localhost:11327 at 00:15:40.714
-starting worker pid=114862 on localhost:11327 at 00:15:40.951
-starting worker pid=114873 on localhost:11327 at 00:15:41.186
-starting worker pid=114884 on localhost:11327 at 00:15:41.422
+starting worker pid=116706 on localhost:11396 at 00:39:45.333
+starting worker pid=116717 on localhost:11396 at 00:39:45.592
+starting worker pid=116728 on localhost:11396 at 00:39:45.849
 [1] "warning, sym=1, snp=1: 0 sample"
 
-Laplace's Demon was called on Sat Dec  8 00:15:43 2018
+Laplace's Demon was called on Sat Dec  8 00:39:47 2018
 
 Performing initial checks...
 WARNING: Matrix y may be rank-deficient.
@@ -61,3 +34,18 @@ Laplace's Demon is beginning to update...
 
 Eigendecomposition will occur every 40000 iterations.
 
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3341.3
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+[1] "writing results to file..."
+[1] "end"
+Warning messages:
+1: In dir.create(savedir) : 'anxmc1e6_4cat_8sym_cons' already exists
+2: In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+  already exporting variable(s): savedir, filename, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, namesnpvariants, logpriortheta, statsfunction, mciterations, mcdiscard
