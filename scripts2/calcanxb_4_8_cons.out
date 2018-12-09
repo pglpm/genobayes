@@ -1,0 +1,36 @@
+
+Attaching package: 'cowplot'
+
+The following object is masked from 'package:ggplot2':
+
+    ggsave
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+starting worker pid=20182 on localhost:11225 at 13:54:11.665
+starting worker pid=20193 on localhost:11225 at 13:54:11.901
+starting worker pid=20204 on localhost:11225 at 13:54:12.135
+[1] "warning, sym=1, snp=1: 0 sample"
+
+Laplace's Demon was called on Sun Dec  9 13:54:13 2018
+
+Performing initial checks...
+WARNING: Matrix y may be rank-deficient.
+Algorithm: Automated Factor Slice Sampler 
+
+Laplace's Demon is beginning to update...
+
+Eigendecomposition will occur every 4000 iterations.
+
