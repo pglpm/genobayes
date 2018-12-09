@@ -41,7 +41,8 @@ filename <- 'freq-4_8_cons-' # filename prefix
 
 cores <- 3 # for parallel processing
 mciterations <- 1e6 # number of Monte-Carlo samples
-thinning <- 10
+thinning <- 10 # thinning of Monte Carlo samples
+mcdiscard <- 500 # number of initial Monte Carlo samples to discard
 
 symptoms <- list(1) # anxiety category corresponds to data index 1
 namesymptoms <- c('anxiety')
@@ -109,7 +110,7 @@ c(dd)
     list(writeflag=writeflag)
     }
 
-results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunction,cores,mciterations)
+results <- condfreqstatistics(data,symptoms,symptomvariants,snps,snpvariants,namesymptoms,namesymptomvariants,namesnps,namesnpvariants,namesnpcombos,savedir,filename,logpriortheta,statsfunction,cores,mciterations,thinning,mcdiscard)
 
 ## Call a function that samples without data, to plot the initial belief
 ## Not called in the case of constant prior

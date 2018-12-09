@@ -128,10 +128,10 @@ result <- foreach(symptom=1:numsymptoms,
 if(cores>1){
 stopCluster(cl)
 }
-    print('writing results to file...')
-    saveRDS(result,paste0(savedir,'_',filename,'all.rds'))
+    #print('writing results to file...')
+    #saveRDS(result,paste0(savedir,'_',filename,'all.rds'))
     print('end')
-    result}
+    NULL}
 
 
 
