@@ -34,3 +34,17 @@ Laplace's Demon is beginning to update...
 
 Eigendecomposition will occur every 4000 iterations.
 
+Iteration: 1000000,   Proposal: Multivariate,   LP: -3340.4
+
+Assessing Stationarity
+Assessing Thinning and ESS
+Creating Summaries
+Estimating Log of the Marginal Likelihood
+Creating Output
+
+Laplace's Demon has finished.
+[1] "warning, sym=1, snp=1: low acceptance rate 0.1; using non-stationary samples"
+[1] "end"
+Warning message:
+In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+  already exporting variable(s): savedir, filename, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, namesnpvariants, logpriortheta, statsfunction, mciterations, mcdiscard, thinning
