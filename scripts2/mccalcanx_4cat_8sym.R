@@ -36,8 +36,8 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- 'catanxmc1e6_4cat_8sym_cons/' # directory for saving results
-filename <- 'freq-4_8_cons-' # filename prefix
+savedir <- 'catanxmc1e6_4cat_8sym_unif/' # directory for saving results
+filename <- 'freq-4_8_unif-' # filename prefix
 
 cores <- 3 # for parallel processing
 mciterations <- 1e6 # number of Monte-Carlo samples
@@ -70,10 +70,10 @@ namesnpcombos <- unlist(sapply(1:(numsnpvariants-1),
 ## 'lt' is the log of t
 
 ## first prior: constant in the frequency parameter and a very broad gamma density for the pseudocount parameter. See research notes.
-logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-3*log(sum(t))}
+#logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-3*log(sum(t))}
 
 ## second prior: constant. See research notes.
-#logpriortheta <- FALSE
+logpriortheta <- FALSE
 
 ## third prior: constant in the frequency parameter and Jeffreys prior for the pseudocount variables of the beta distribution = constant in log(variable), but regularized as a very broad Cauchy distribution. See research notes.
 #logpriortheta <- function(lt,t){dcauchy(log(sum(t)),location=log(1000),scale=log(1000),log=TRUE)-2*log(sum(t))}
