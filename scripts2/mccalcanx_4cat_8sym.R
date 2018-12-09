@@ -36,11 +36,12 @@ nfile  <-  dir(path = dpath,pattern = datafile)
 data <- read.csv(paste0(dpath,nfile[1]))[,-1]
 ##n <- length(data[,1])
 
-savedir <- 'anxmc1e6_4cat_8sym_cons/' # directory for saving results
+savedir <- 'catanxmc1e6_4cat_8sym_cons/' # directory for saving results
 filename <- 'freq-4_8_cons-' # filename prefix
 
 cores <- 3 # for parallel processing
 mciterations <- 1e6 # number of Monte-Carlo samples
+thinning <- 10
 
 symptoms <- list(1) # anxiety category corresponds to data index 1
 namesymptoms <- c('anxiety')
@@ -79,30 +80,31 @@ logpriortheta <- function(lt,t){dgamma(sum(t),shape=1,scale=1000,log=TRUE)-3*log
 ## This function calculates the EVs and SDs of the marginals and all the differences of the conditional frequencies. For the latter also calculates the spreads ("significance"). It writes the results on two files if the max spread is larger than a given value
 
 statsfunction <- function(f,samples,symptom,snp,numsymptomvariants,numsnpvariants,namesnpvariants=''){
-    mval <- matrix(0:3,8,4,byrow=T)
-    kam <- function(a,b){sum(abs(cumsum(a-b)))}
+#    mval <- matrix(0:3,8,4,byrow=T)
+#    kam <- function(a,b){sum(abs(cumsum(a-b)))}
 
     diffdata <- t(apply(samples,1,function(tt){
         fnew <- f+exp(tt)
-        dd <- t(rdirichlet(numsnpvariants,t(fnew)))
-        me <- colSums((0:3)*dd)
-        va <- colSums(t(mval-me)^2*dd)
-        sk <- colSums(t(mval-me)^3*dd)
-        kdiffs <- sapply(2:8,function(z){kam(dd[,z],dd[,1])})
+        dd <- rdirichlet(numsnpvariants,t(fnew))
+        ## me <- colSums((0:3)*dd)
+        ## va <- colSums(t(mval-me)^2*dd)
+        ## sk <- colSums(t(mval-me)^3*dd)
+#        kdiffs <- sapply(2:8,function(z){kam(dd[,z],dd[,1])})
         
-        c(me[-1]-me[1],
-          va[-1]-va[1],
-          sk[-1]-sk[1],
-          kdiffs)
+        ## c(me[-1]-me[1],
+        ##   va[-1]-va[1],
+        ##   sk[-1]-sk[1],
+        ##   kdiffs)
+c(dd)
     }))
 
-    colnames(diffdata) <- c(paste0('diffmean_',namesnpvariants[-1]),
-                               paste0('diffvar_',namesnpvariants[-1]),
-                               paste0('diffskew_',namesnpvariants[-1]),
-                               paste0('kantorovich_',namesnpvariants[-1]))
+    colnames(diffdata) <- c(paste0('cat_1_',namesnpvariants),
+                               paste0('cat_2_',namesnpvariants),
+                               paste0('cat_3_',namesnpvariants),
+                               paste0('cat_4_',namesnpvariants))
 
     writeflag <- TRUE
-        write.csv(diffdata,paste0(savedir,filename,'spreads-',prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'.csv'))
+    write.csv(diffdata,paste0(savedir,filename,'spreads-',prefixsymptoms,namesymptoms[symptom],'-',prefixsnps,namesnps[snp],'.csv'),row.names=FALSE)
 
     list(writeflag=writeflag)
     }

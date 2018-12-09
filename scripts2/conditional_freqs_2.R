@@ -20,6 +20,7 @@ condfreqstatistics <- function(
                                statsfunction,# calculate relevant quantities & write to file
                                cores=1,# cores for parallel processing, 1=no parallel
                                mciterations=1e5,# number of Monte Carlo iterations
+                               thinning=1,#thinning of Monte Carlo samples
                                mcdiscard=500# number of initial Monte Carlo iterations to be discarded
                                ){
 
@@ -40,11 +41,11 @@ registerDoParallel(cl)
 }
 
 result <- foreach(symptom=1:numsymptoms,
-                  .export=c('savedir','filename','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namesnpcombos','logpriortheta','statsfunction','mciterations','mcdiscard'),
+                  .export=c('savedir','filename','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namesnpcombos','logpriortheta','statsfunction','mciterations','mcdiscard','thinning'),
                   .packages=c('LaplacesDemon')
                   ) %:%
     foreach(snp=1:numsnps,
-                  .export=c('savedir','filename','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namesnpcombos','logpriortheta','statsfunction','mciterations','mcdiscard'),
+                  .export=c('savedir','filename','data','symptoms','prefixsymptoms','namesymptoms','symptomvariants','numsymptomvariants','namesymptomvariants','snps','prefixsnps','namesnps','snpvariants','numsnpvariants','namesnpvariants','namesnpcombos','logpriortheta','statsfunction','mciterations','mcdiscard','thinning'),
                   .packages=c('LaplacesDemon')
             ) %dox%
     {
@@ -96,7 +97,7 @@ result <- foreach(symptom=1:numsymptoms,
 
         usamples <- LaplacesDemon(logprob, mydata, Initial.Values,
                         Covar=NULL,
-                        Thinning=1,
+                        Thinning=thinning,
                         Iterations=mciterations, Status=mciterations,
                         #Chains=nchains,CPUs=nchains,LogFile=paste0(filename,'_LDlog'), #Packages=c('Matrix'),#Type="MPI",
                         ##Algorithm="RDMH"#, Specs=list(B=list(1:d,d1:d2,d3:dnp))
@@ -109,7 +110,7 @@ result <- foreach(symptom=1:numsymptoms,
             samples <- usamples$Posterior1
         }
         }else{### case of constant prior. Mimicked by zero-valued samples
-            samples <- matrix(0,nrow=mciterations,ncol=numsymptomvariants)
+            samples <- matrix(0,nrow=round(mciterations/thinning),ncol=numsymptomvariants)
             fnew <- f+1
             usamples <- list(
                 Summary1=rep(NA,7),
@@ -154,6 +155,7 @@ priorsamples <- function(
                                statsfunction,# calculate relevant quantities & write to file
                                cores=1,# cores for parallel processing, 1=no parallel
                                mciterations=1e5,# number of Monte Carlo iterations
+                               thinning=1,#thinning of Monte Carlo samples
                                mcdiscard=500# number of initial Monte Carlo iterations to be discarded
                                ){
 
@@ -191,7 +193,7 @@ priorsamples <- function(
 
         usamples <- LaplacesDemon(logprob, mydata, Initial.Values,
                         Covar=NULL,
-                        Thinning=1,
+                        Thinning=thinning,
                         Iterations=mciterations, Status=mciterations,
                         #Chains=nchains,CPUs=nchains,LogFile=paste0(filename,'_LDlog'), #Packages=c('Matrix'),#Type="MPI",
                         ##Algorithm="RDMH"#, Specs=list(B=list(1:d,d1:d2,d3:dnp))
