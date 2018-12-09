@@ -1,0 +1,29 @@
+
+Attaching package: 'cowplot'
+
+The following object is masked from 'package:ggplot2':
+
+    ggsave
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+starting worker pid=20090 on localhost:11962 at 13:55:45.203
+starting worker pid=20101 on localhost:11962 at 13:55:45.443
+starting worker pid=20112 on localhost:11962 at 13:55:45.683
+[1] "warning, sym=1, snp=1: 0 sample"
+[1] "end"
+Warning message:
+In e$fun(obj, substitute(ex), parent.frame(), e$data) :
+  already exporting variable(s): savedir, filename, data, symptoms, namesymptoms, symptomvariants, numsymptomvariants, snps, namesnps, snpvariants, numsnpvariants, namesnpvariants, logpriortheta, statsfunction, mciterations, mcdiscard, thinning
