@@ -1,0 +1,96 @@
+%\documentclass[11pt,fleqn,reqno]{article}
+\documentclass[12pt]{iopart}
+\usepackage[dvips]{graphicx}
+\usepackage{epsfig}
+\usepackage{subfigure}
+%s\usepackage{amsmath}
+\usepackage{epsfig}
+\usepackage{color}
+\bibstyle{apsrev}
+
+
+\newcommand{\barr}{\bar{r}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bolr}{\mathbf{r}}
+\newcommand{\bd}{\mathbf{d}}
+\newcommand{\bL}{\mathbf{L}}
+\newcommand{\bh}{\mathbf{h}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bols}{\mathbf{s}}
+\newcommand{\bolm}{\mathbf{m}}
+\newcommand{\bolsigma}{\mbox{\protect\boldmath $\sigma$}}
+\newcommand{\btheta}{\mbox{\protect\boldmath $\theta$}}
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\blue}{\textcolor{blue}}
+\newcommand{\green}{\textcolor{green}}
+\newcommand{\magenta}{\textcolor{magenta}}
+\newcommand{\order}{{\cal O}}
+\newcommand{\mMF}{m^{\rm MF}}
+\newcommand{\mTAP}{m^{\rm TAP}}
+\newcommand{\rangleD}{\rangle_{\rm D}}
+\newcommand{\hatm}{\hat{m}}
+\newcommand{\hatth}{\hat{\theta}}
+\newcommand{\jp}{{j^{\prime}}}
+\newcommand{\kp}{{k^{\prime}}}
+\newcommand{\tp}{{t^{\prime}}}
+\newcommand{\spr}{{s^{\prime}}}
+\newcommand{\at}{{\Big |}}
+
+
+
+\begin{document}
+\section{Posterior over conditional frequencies in large populations}
+We start of by considering the empirical fraction of individuals with a given insomnia symptom (Onset, Maintenance or Terminal) that have alleles $a$ and $b$. We denote these
+conditional empirical frequencies by $F_a$ and $F_b$. Since these empirical frequencies are estimated from a finite sample, our goal is to infer the distribution over the frequencies $f_a$ and $f_b$ that we would have got if the population was arbitrarily large. We denote this distribution by $p(f_a,f_b| F_a,F_b, I)$. Here $I$ is any set of information available for inference, including, for instance,  $N_a$ and $N_b$, the number of individuals in the sample with alleles $a$ and $b$ respectively in the data.
+
+This distribution of interest can be written using the Bayes rule as 
+\begin{eqnarray}
+p(f_a,f_b\vert F_a,F_b,  I) \propto p(F_a,F_b \vert f_a,f_b,I) p(f_a,f_b \vert I)
+\label{bayes}
+\end{eqnarray}
+The first term on the right hand side of Eq.\ \ref{bayes} can be easily estimated as 
+\begin{eqnarray}
+p(F_a,F_b\vert f_a,f_b,I)  = \prod_{x=a,b} {N_x \choose N_x F_x} f^{N_x F_x}_x (1-f_x)^{N_x (1-F_x)}
+\label{binom}
+\end{eqnarray}
+The second term in the right hand side of Eq.\ \ref{bayes} reflects our prior belief about the actual large population limit frequencies. In analyzing the data in this paper
+we have considered two very different priors. The first prior is a uniform prior which assigns one to every possible outcome, namely
+\begin{equation}
+p(f_a,f_b \vert I) = 1
+\label{uniform}
+\end{equation} 
+The second prior is a mixture hierarchical prior which is represented as
+\begin{equation}
+p(f_a,f_b\vert I) = \int^{\infty}_0 du \int^{\infty}_0 dv p(f_a,f_b\vert u ,v, I) p(u,v\vert I)
+\label{priorbeta}
+\end{equation}
+This is a mixture of probabilities $p(f_a,f_b| u ,v, I)$ with parameters $u$ and $v$ weighted by a distribution over these 
+parameters $p(u,v|I)$. For the probability distribution  $p(f_a,f_b| u ,v, I)$ we choose the beta distributions,
+\begin{eqnarray}
+p(f_a,f_b\vert u ,v, I) = \beta(u,v \vert I) \beta(u,v\vert I)
+\label{beta}
+\end{eqnarray}
+The choice of the beta distribution in this case is justified by the fact that the beta distribution is the conjugate prior to the binomial 
+distribution in Eq.\ \ref{binom} making the calculation of the posterior in Eq.\ \ref{bayes} straightforward. 
+
+The weighting term in the right hand side of Eq.\ \ref{priorbeta} is chosen to be a gamma distribution as
+\begin{equation}
+p(u,v\vert I) = \gamma(u+v \vert 1, 1000) = \frac{1}{1000} \exp\left \{ \frac{u+v}{1000}\right \}
+\label{gamma}
+\end{equation}
+The weighting term Eq.\ \ref{gamma} in Eq.\ \ref{priorbeta} signals our lack of knowledge about how much data we need to win over the prior: the parameters $u$ and $v$ in the beta 
+distributions in Eq.\ \ref{beta} determine such amount of data. We do not want to commit to a specific values for these parameters and rather consider a broad range for them. This is codified in the gamma distribution in Eq.\ \ref{gamma} which gives a weight only to positive values of these parameters and is scale invariant for them in the log scale. Although we have used $1000$ as the parameters in the exponential in Eq.\ \ref{gamma} to concentrate the distribution over $f_a$ and $f_b$ along the diagonal, other choices of
+this parameter, e.g. $1$, $100$ or $1000000$ yield quantitatively similar results. 
+ 
+With the priors in Eqs.\ \ref{uniform} and \ref{priorbeta} we can now calculate the posterior distributions in Eq.\ \ref{bayes}. The expression for the uniform prior can be calculated analytically and would be a product of two beta functions with updated parameters, while for the case of the hierarchical prior in Eq.\ \ref{priorbeta}, one obtains an integral form 
+which should be calculated using Monte Carlo.  
+
+\section{Measure of Significance}
+Once we have calculated the posterior in Eq.\ \ref{bayes}, we can determine pairs of alleles which show significant difference in their large population frequency differences $f_a$ and $f_b$.  As the main measure of allele frequency difference we consider $E[\vert f_a-f_b \vert]$, namely the expectation of the absolute value of the difference between the allele frequencies. This expected value can either be directly calculated from the samples of the distribution $p(f_a-f_b)$, or from first estimating the mean and standard deviation of this distribution and calculating the expected value of the difference using a Gaussian approximation to $p(f_a-f_b)$. 
+
+Although the expected value of the differences is the main quantity according to which we have sorted the genes in this paper, we note that other measures of significant difference, e.g. 
+sorting the genes according the lowest 10-quantile of $p(f_a-f_b)$, yield quantitatively the same results. 
+ 
+\bibliographystyle{abbrv}
+\bibliography{mybibliography2010}
+\end{document}
