@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-11-11T20:53:34+0200
-%% Last-Updated: 2019-08-21T10:11:55+0200
+%% Last-Updated: 2019-08-24T18:08:29+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -262,10 +262,10 @@ citestyle=authoryear-comp,bibstyle=pglpm-authoryear,autopunct=false,sorting=ny,s
 %\appto{\citesetup}{\footnotesize}% smaller font for citations
 \defbibheading{bibliography}[\bibname]{\section*{#1}\addcontentsline{toc}{section}{#1}%\markboth{#1}{#1}
 }
-\newcommand*{\citep}{\parencites}
-\newcommand*{\citey}{\parencites*}
+\newcommand*{\citep}{\footcites}
+\newcommand*{\citey}{\footcites}
 %\renewcommand*{\cite}{\parencite}
-\renewcommand*{\cites}{\parencites}
+%\renewcommand*{\cites}{\parencites}
 \providecommand{\href}[2]{#2}
 \providecommand{\eprint}[2]{\texttt{\href{#1}{#2}}}
 \newcommand*{\amp}{\&}
@@ -757,6 +757,38 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 
 \subsection{Introduction and goals}
 \label{sec:intro_goals}
+
+The purpose of the present work is to investigate the statistical link or relation
+between some insomnia symptoms and a specific set of \snp s. Our approach
+is characterized by two main features:
+\begin{enumerate}[wide]
+\item We quantify the probable link between these two variates in a
+  continuous way, instead of asking the more traditional null-hypothesis
+  question \enquote{is there an association between this \snp\ and this
+    symptom -- yes or no?} The complexity of the human organism makes this
+  kind of dichotomous question very artificial, and their yes/no answers
+  liable to an arbitrary choice of cut-off. Our results
+  (\fig~\ref{fig:relevance_sorted}) indeed show that there's a continuum of
+  statistical links, with no clear \enquote{significant vs non-significant}
+  division. Any such cut-off should be made case by case depending on the
+  further research questions asked. For example, one research group might
+  want to further investigate some specific \snp s, but have budget and
+  resources only for two; in this case they'd choose the two most strongly
+  linked \snp s. Another research group might have enough budget and
+  resources for five; they'd choose the five most strongly linked \snp s.
+
+  Our perspective reflects recent foundational reevaluations and
+  recommendations in the Probability \amp\ Statistics community
+  \citep{asa2016,asa2019,amrheinetal2019}[see
+  also][]{bergeretal1988,bergeretal1987b,johnson1999}[Box~3
+  p.~687]{stephensetal2003}
+\end{enumerate}
+
+
+
+
+
+
 
 \mynote{Some intro about insomnia and its symptoms here}
 
@@ -1331,12 +1363,12 @@ from the formulae~\eqref{eq:stats_final_unif},
 
 \begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
  \centering\includegraphics[height=\textheight]{x90-sym_O.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90-sym_M.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90-sym_T.pdf}\\
-\caption{\enquote{Relevance} of the 94 \snp s for the three symptoms.}\label{fig:relevance_o}
+\caption{\enquote{Relevance} of the 94 \snp s for the three symptoms.}\label{fig:relevance}
 \end{figure}% scripts2/plot_results.nb
 
 \begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
  \centering\includegraphics[height=\textheight]{x90sort-sym_O.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90sort-sym_M.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90sort-sym_T.pdf}\\
-\caption{\enquote{Relevance} of the 94 \snp s for the three symptoms, sorted.}\label{fig:relevance_o}
+\caption{\enquote{Relevance} of the 94 \snp s for the three symptoms, sorted.}\label{fig:relevance_sorted}
 \end{figure}% scripts2/plot_results.nb
 
 
