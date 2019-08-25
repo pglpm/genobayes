@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-11-11T20:53:34+0200
-%% Last-Updated: 2019-08-25T18:35:18+0200
+%% Last-Updated: 2019-08-25T20:00:29+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -843,7 +843,7 @@ connection. Since any causal link should go in the direction
 \snp${}\to{}$symptom, we consider the conditional frequencies of the
 symptom given the two alleles: $f_{|\ya}$ and $f_{|\yb}$, which should be
 more robust to contextual changes\citep[\sect~1.3.2 \mynote{check also
-  pearl2003c, pearl2004}]{pearl2000_r2009} (the bar in the notation wants
+  pearl2004}]{pearl2000_r2009}{pearl2003} (the bar in the notation wants
 to remind us that these are conditional frequencies, so that
 $f_{|\ya}+f_{|\yb} \ne 1$ in general).
 
@@ -864,7 +864,7 @@ goals and resources. The plausibility of the possible differences is then
 expressed by the probability distribution $\pf(\abs{\df})$, such as that
 shown in \fig~\ref{fig:example_difference_distributions}. This distribution
 is conditional on: \begin{enumerate*}[label=(\alph*)]
-\item the data we've collected, \item our initial information or guesses
+\item the data we've collected, \item our pre-data information or guesses
   about the frequencies of the hypothetical population.
 \end{enumerate*}
 \begin{figure}[t!]%{r}{0.4\linewidth} % with wrapfigure
@@ -901,14 +901,128 @@ but the results are the same if we use the expectation. \mynote{add maybe
   \enquote{smoothing} as discussed by MacKay \amp\ Bauman Peto
   \citey[\sect~2.6]{mackayetal1995}.}
 
-
-
 A more complete quantification of our plausible guesses is the joint
 probability distribution $\pf(f_{|\ya}, f_{|\yb})$ for the two conditional
-frequencies, from which $\pf(\df)$ can be calculated. This joint
-distribution is therefore the starting point of our investigation in the
-next section.
+frequencies given the data and our pre-data assumptions, from which
+$\pf(\df)$ can be calculated. This joint distribution is therefore the
+pivot of our method in the next section.
 
+
+\section{Methods}
+\label{sec:methods}
+
+\subsection{General plan}
+\label{sec:inference}
+
+To explain our method, consider a specific \snp\ with alleles $\ya$ and
+$\yb$, and a specific insomnia symptom, for example $\ysO$. As announced in
+the previous section, our calculations hinge on the joint probability for
+the conditional frequencies of the symptom given the two alleles in a
+hypothetical infinite population,
+\begin{equation}
+  \label{eq:goal_joint_prob}
+  \pf(f_{|\ya}, f_{|\yb} \| \ptext{data}, \ptext{initial info}),
+\end{equation}
+conditional on the collected data an on our pre-data information or
+assumptions.
+
+The first step is to use Bayes's theorem:
+\begin{multline}
+  \label{eq:intuitive_Bayes}
+  \pf(f_{|\ya}, f_{|\yb} \| \ptext{data}, \ptext{pre-data info})
+  \propto{}\\
+  \pf(\ptext{data} \| f_{|\ya}, f_{|\yb}, \ptext{pre-data info})
+  \times
+  \pf(f_{|\ya}, f_{|\yb} \| \ptext{pre-data info}),
+\end{multline}
+which says that we need to provide a probability and a probability
+distribution:
+\begin{enumerate*}[label=(\roman*)]
+\item the probability of observing our sampled data if we had known the
+  conditional frequencies in the larger population; \item our pre-data
+  probability distribution for the conditional frequencies.
+\end{enumerate*}
+The first is given by a sampling formula. The second can be modelled in
+several reasonable ways, and we'll see that, owing to the large size of our
+sample, they all lead to very similar conclusions about the conditional
+frequencies and their difference.
+
+
+
+
+First of all, introduce some notation. The conditional frequencies are
+denoted $f_{|\ya}$, $f_{|\yb}$ as above. The data $\yD$ consist in the
+conditional frequencies observed in the sample: $F_{|\ya}$ is the fraction
+showing the symptom among the sampled individuals having allele $\ya$, and
+$F_{|\yb}$ is the analogous fraction for allele $\yb$. Finally, our initial
+information $\yI$ consists in our initial beliefs and in the numbers
+$N_{\ya}$, $N_{\yb}$ of sampled individuals having allele $\ya$ and $\yb$;
+although these numbers are part of $\yI$ we will sometimes write them
+explicitly besides $\yI$. (Note that $N_{\ya}$, $N_{\yb}$ are not part of
+the \enquote{data} in the sense that they don't help us to update our
+belief about the frequencies $f_{|\ya}$, $f_{|\yb}$ and therefore remain on
+the right side of the conditional.)
+
+\iffalse
+In this section we do step by step the calculations outlined above. For
+definiteness we consider onset insomnia ($\ysS$) and the \snp\ rs875994
+with alleles $\ya$, $\yb$. The limit conditional frequencies are denoted
+$f_{\ya}$ and $f_{\yb}$. The sample data, denoted by $\yD$,
+consist of the number of individuals $F_{\ya}$ that show symptom
+$\ysS$ among the sampled individuals having allele $\ya$, and the number
+$F_{\yb}$ showing the same symptom among those having allele $\yb$.
+Our initial information consists in the number $N_{\ya}$ of sampled
+individuals with allele $\ya$, and the number $N_{\yb}$ with allele $\yb$.
+The total number of sampled individuals is therefore $N_{\ya}+N_{\yb}$.
+This initial information and our initial beliefs are denoted by $\yI$; the
+numbers $N_{\ya}$, $N_{\yb}$ will often be indicated explicitly even though
+they're part of $\yI$.
+\fi
+
+With this notation, Bayes's theorem above is written
+\begin{multline}
+  \labelbis{eq:intuitive_Bayes}
+  \pf(f_{|\ya}, f_{|\yb} \| \yD, \yI)
+  \propto
+  \pf(\yD \|f_{|\ya}, f_{|\yb}, \yI)\;
+  \pf(f_{|\ya}, f_{|\yb} \| \yI)
+  \equiv{}\\
+  \pf(F_{|\ya}, F_{|\yb} \|f_{|\ya}, f_{|\yb}, N_{\ya},N_{\yb},\yI)\;
+  \pf(f_{|\ya}, f_{|\yb} \| N_{\ya},N_{\yb},\yI).
+\end{multline}
+
+\medskip
+
+\subsection{Plausibility for the data given the frequencies}
+\label{sec:p_data_from_freqs}
+
+The plausibility of obtaining the data given the frequencies is given by
+simple counting and symmetry. We have an arbitrarily large population where
+a fraction $f_{|\ya}$ of individuals having allele $\ya$ show the symptom,
+and a fraction $1- f_{|\ya}$ therefore don't show the symptom. We casually
+observe $N_{\ya}$ individuals with allele $\ya$. The plausibility that a
+fraction $F_{|\ya}$ of these show the symptom is then counted as a
+\enquote{drawing with replacement} because of the arbitrarily large size of
+the full population, given by a (rescaled) binomial distribution
+\cites[\chap~3]{jaynes1994_r2003}[\sect~4.6]{ross1976_r2010}[\sect~VI.2]{feller1950_r1968}:
+\begin{equation}
+  \label{eq:sampling_belief}
+  \pf( F_{|\ya} \| f_{|\ya},  N_{\ya}, \yI)
+  =
+\binom{N_{\ya}}{N_{\ya}\,F_{|\ya}}\;  {f_{|\ya}}^{N_{\ya}\,F_{|\ya}} \;
+  {(1-f_{|\ya})}^{N_{\ya}\,(1-F_{|\ya})}.
+\end{equation}
+
+An analogous reasoning holds for allele $\yb$. Our belief about obtaining
+the data is therefore
+\begin{equation}
+  \label{eq:sampling_belief_combined}
+%  \pf(F_{|\ya},F_{|\yb} \|  f_{|\ya},f_{|\yb}, N_{\ya}, N_{\yb}, \yI)
+  \pf(\yD \|  f_{|\ya},f_{|\yb}, \yI)
+  =
+ \prod_{x=\ya,\yb} \binom{N_{x}}{N_{x}\,F_{|x}}\;{f_{|x}}^{N_{x}\,F_{|x}} \;
+  {(1-f_{|x})}^{N_{x}\,(1-F_{|x})}.
+\end{equation}
 
 
 
