@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-11-11T20:53:34+0200
-%% Last-Updated: 2019-08-24T19:56:43+0200
+%% Last-Updated: 2019-08-25T17:56:17+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -673,6 +673,7 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \DeclareMathOperator{\diag}{diag}
 \newcommand*{\ptext}[1]{\text{\small #1}}
 \newcommand*{\snp}{\textsc{snp}}
+\newcommand*{\hunt}{\textsc{hunt}}
 \newcommand*{\yD}{D}
 \newcommand*{\yI}{I}
 \newcommand*{\yIu}{\yI_\text{u}}
@@ -682,10 +683,9 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \newcommand*{\yas}{c}
 \newcommand*{\ybs}{d}
 \newcommand*{\ysS}{s}% generic insomnia symbol
-\newcommand*{\ysO}{\textrm{N}}% onset insomnia
-\newcommand*{\ysA}{\textrm{O}}% onset insomnia
-\newcommand*{\ysB}{\textrm{M}}% maintenance insomnia
-\newcommand*{\ysC}{\textrm{T}}% terminal insomnia
+\newcommand*{\ysO}{\textrm{O}}% onset insomnia
+\newcommand*{\ysM}{\textrm{M}}% maintenance insomnia
+\newcommand*{\ysT}{\textrm{T}}% terminal insomnia
 \newcommand*{\dbeta}{\betaup}
 \newcommand*{\dA}{\pi}
 \newcommand*{\dgamma}{\gammaup}
@@ -759,15 +759,12 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 %%% BEGINNING OF MAIN TEXT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{\snp s and insomnia}
+\section{\snp s and insomnia: introduction and goals}
 \label{sec:intro}
-
-\subsection{Introduction and goals}
-\label{sec:intro_goals}
 
 The purpose of the present work is to investigate the statistical link
 between some insomnia symptoms and a specific set of \snp s from
-\textsc{hunt} 3 data. Our approach is characterized by two main features:
+\hunt\ 3 data. Our approach is characterized by two main features:
 \begin{enumerate}[wide]
 \item We quantify the probable link between the two variates in a
   continuous way, instead of asking the more traditional null-hypothesis
@@ -788,14 +785,14 @@ between some insomnia symptoms and a specific set of \snp s from
   Our perspective reflects old and recent foundational reevaluations in the
   Probability \amp\ Statistics
   communities\citep{asa2016,asa2019,amrheinetal2019}[see
-  also][]{bergeretal1988,bergeretal1987b,johnson1999}[Box~3
+  also Kadane in][pp.~347--348]{coxetal1987}{bergeretal1988,johnson1999}[Box~3
   p.~687]{stephensetal2003}.
 
 \item We make full use of the principles of the (Bayesian) probability
   calculus. Derivations similar to ours have appeared before in the
   literature of genetic and related
   studies\citep{lange1995,lange1997_r2003,lewingeretal2007,stingoetal2015}[see
-  also refs in][]{stephensetal2009}. These principles allows us in
+  also refs in][]{stephensetal2009}. These principles allow us in
   particular to take care of \snp s with very low minor-allele counts: we
   show (\fig~\ref{fig:relevance_sorted}) that their probable link strength
   with respect to other \snp s are qualitatively the same whether we adopt
@@ -804,6 +801,120 @@ between some insomnia symptoms and a specific set of \snp s from
   We also strive to make our probability calculations intuitively
   understandable.
 \end{enumerate}
+
+Our study reveals a very probable strong link between individual \snp s
+located in \mynote{recheck location} and the three main insomnia symptoms.
+We also study the link between \emph{pairs} of \snp s and each symptom;
+this interesting interactions between pairs of \snp s \mynote{figure to be
+  added}.
+
+Section~\ref{sec:data} presents our variates, data, and the way we measure
+the link strength between variates. Section~\ref{sec:methods} summarizes
+our methods. Section~\ref{sec:results} presents and discusses the results.
+
+
+\section{Data and link measure}
+\label{sec:data}
+
+\mynote{Description of the \hunt\ data and the locations of the \snp s}
+
+We consider three insomnia symptoms: onset insomnia $\ysO$, maintenance
+insomnia $\ysM$, and terminal insomnia $\ysT$ \mynote{explain them}.
+
+Let's discuss the measure to quantify the link between the alleles $\ya$
+and $\yb$ of a specific \snp\ on one side, and the presence of a specific
+insomnia symptom on the other.
+
+Consider a hypothetical, arbitrarily large
+population from the same genetic pool as our sample. Each individual
+belongs to one of four mutually exclusive classes:
+\begin{enumerate*}[label=(\roman*)]
+\item  allele $\ya$ and symptom,
+\item allele $\yb$ and symptom,
+\item  allele $\ya$, no symptom,
+\item allele $\yb$, no symptom.
+\end{enumerate*}
+Statistical relations between the two variates in the population are fully
+contained in the \emph{conditional relative frequency} of one variate given
+the other. Of course these conditional frequencies don't necessarily
+indicate a causal connection -- there can be confounders -- but they are
+our first and most available handle in the investigation of such
+connection. Since any causal link should go in the direction
+\snp${}\to{}$symptom, we consider the conditional frequencies of the
+symptom given the two alleles: $f_{|\ya}$ and $f_{|\yb}$, which should be
+more robust to contextual changes\citep[\sect~1.3.2 \mynote{check also
+  pearl2003c, pearl2004}]{pearl2000_r2009} (the bar in the notation wants
+to remind us that these are conditional frequencies, so that
+$f_{|\ya}+f_{|\yb} \ne 1$ in general).
+
+Any statistical difference in the links between the two alleles and the
+symptom is then reflected in the difference between the two conditional
+frequencies: $\df \defd f_{|\ya}-f_{|\yb}$. A large positive difference can
+indicate some biologic association between allele $\ya$ and the symptom, and
+analogously for a negative difference and allele $\yb$. A difference around
+zero can indicate a weak association or lack thereof. If we are only interested
+in the link strength, and not in its direction towards one or the other
+allele, we can focus on the absolute difference $\abs{\df}$.
+
+Our approach, as discussed in the Introduction, is to assess the plausible
+value of the difference $\abs{\df}$ in our hypothetical population, without
+choosing any \enquote{significance} threshold a priori. Such threshold can
+always be chosen a posteriori by the readers according to their research
+goals and resources. The plausibility of the possible differences is then
+expressed by the probability distribution $\pf(\abs{\df})$ conditional on
+our data and our biological knowledge or assumptions, such as that shown in \fig~\ref{fig:example_difference_distributions}.
+\begin{figure}[t!]%{r}{0.4\linewidth} % with wrapfigure
+ \centering% \includegraphics[width=0.49\linewidth]{example_diff.pdf}\hspace*{\stretch{1}}
+ \includegraphics[width=0.75\linewidth]{example_absdiff.pdf}\\
+ \caption{Example of probability distributions for $\abs{\df}$, the
+   absolute difference between conditional
+   frequencies.}\label{fig:example_difference_distributions}
+\end{figure}% scripts2/plot_curves.nb
+% freq-1_1_conserv-spreads-sym_O-snp_6-spr_2.233.csv
+% "spread_y",-2.23267970003192
+% "EV_y",-0.0260880661493155
+% "SD_y",0.0116846434125515
+
+This distribution contains all probabilistic information we need, but we
+can also try to summarize it with a single number. We can  for example
+check what is the  minimal frequency difference we are
+90\% sure about, that is, the lowest 10-quantile:
+\begin{equation}\label{eq:significance_measure}
+x\;\text{ such that }\; \pf(\abs{\df} > x)=0.9,
+\end{equation}
+or simply the expectation
+\begin{equation}\label{eq:significance_measure_expabs}
+  \E\bigl(\abs{\df}\bigr).
+  % \equiv \sqrt{\frac{2}{\pu}}\sigma\exp\Biggl(-\frac{\mu^2}{2\sigma^2} \Biggr) + \mu \erf\Biggl( \frac{\mu}{\sqrt{2}\sigma} \Biggr),
+\end{equation}
+For the plot of \fig~\ref{fig:example_difference_distributions} such
+measures are $0.0112$ and $0.0262$.
+% values obtained in scripts2/plot_curves.nb
+In this work we use the quantile measure, but the results are the same if
+we use the expectation. \mynote{add maybe something about dependence of
+  broadness on sample size, and \enquote{smoothing} as discussed by MacKay
+  \amp\ Bauman Peto \citey[\sect~2.6]{mackayetal1995}.}
+
+
+
+A more complete quantification of our uncertainty is the distribution
+$\pf(f_{|\ya}, f_{|\yb})$ among the possible joint values of the two
+conditional frequencies, from which $\pf(\df)$ can be calculated. This
+joint distribution is also the optimal starting point when frequencies
+conditional on allele combinations of several \snp\ are considered. Our
+goal is therefore to quantify this joint \dob, given:
+\begin{enumerate*}[label=(\arabic*)]
+\item the conditional frequencies in a population sample, \item our initial
+  information or guesses about such frequencies.
+\end{enumerate*} In formulae, we want to assign a numerical value to
+\begin{equation}\label{eq:p_goal}
+  \pf(\ptext{conditional frequencies} \|
+  \ptext{sample data}, \ptext{initial information}).
+\end{equation}
+In the rest of this section we shall calculate this \dob\ by methodically
+applying the probability calculus.
+
+
 
 
 
@@ -883,7 +994,7 @@ Result section we discuss the different relevant associations found.
 We focus on the simplest kind of association: between one particular \snp\
 with two alleles $\ya$, $\yb$, and one insomnia symptom. For example, we
 could be speaking of the \snp\ \rs{rs875994} with alleles $\ya=\textrm{C}$,
-$\yb=\textrm{T}$, and onset insomnia $\ysA$.
+$\yb=\textrm{T}$, and onset insomnia $\ysO$.
 
 We imagine to have an arbitrarily large population from the same genetic
 pool as our sample. In this population we would like to know how large are
@@ -1410,7 +1521,7 @@ from the formulae~\eqref{eq:stats_final_unif},
 \begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
  \centering\includegraphics[width=0.75\linewidth]{difference_symA_snp6.pdf}\\
  \caption{Distribution for the difference between the frequencies
-   $f_{\ysA\|\ya}$, $f_{\ysA\|\yb}$ of onset insomnia ($\ysA$) conditional on
+   $f_{\ysO\|\ya}$, $f_{\ysO\|\yb}$ of onset insomnia ($\ysO$) conditional on
    the two alleles of \snp\ rs875994}\label{fig:difference_distributions}
 \end{figure}% scripts/condfreqs_general_tests.nb
 %% snp #6,
@@ -1463,19 +1574,19 @@ analysis of the results therefore offers more interesting possibilities.
 The Method section is also easily generalized to the conditional
 frequencies of non-dichotomous symptoms, or of symptom combinations. For
 example, for our study we could consider the $2^3$ combinations: individual
-with no symptoms, or with only symptom $\ysA$ present, or with only
-symptoms $\ysA$ and $\ysB$ present, and so on up to all three symptoms
-$\ysA$, $\ysB$, $\ysC$ present. We can denote these cases by $\ysO$,
-$\ysA$, $\ysA\ysB$, and so on. Each of these frequencies would be
+with no symptoms, or with only symptom $\ysO$ present, or with only
+symptoms $\ysO$ and $\ysM$ present, and so on up to all three symptoms
+$\ysO$, $\ysM$, $\ysT$ present. We can denote these cases by $\ysO$,
+$\ysO$, $\ysO\ysM$, and so on. Each of these frequencies would be
 conditional on whether the individual has allele $\ya$ or $\yb$ of a
 particular \snp. We thus have two conditional-frequency distributions:
 \begin{equation}
   \label{eq:f_distr_symptom_combo}
   \begin{aligned}
-    &(f_{\ysO\|\ya},f_{\ysA\|\ya},\dotsc,f_{\ysA\ysB\|\ya},\dotsc,f_{\ysA\ysB\ysC\|\ya}),
+    &(f_{\ysO\|\ya},f_{\ysO\|\ya},\dotsc,f_{\ysO\ysM\|\ya},\dotsc,f_{\ysO\ysM\ysT\|\ya}),
     \qquad&\sum_{y} f_{y\|\ya} =1,
       \\
-    &(f_{\ysO\|\yb},f_{\ysA\|\yb},\dotsc,f_{\ysA\ysB\|\yb},\dotsc,f_{\ysA\ysB\ysC\|\yb}),
+    &(f_{\ysO\|\yb},f_{\ysO\|\yb},\dotsc,f_{\ysO\ysM\|\yb},\dotsc,f_{\ysO\ysM\ysT\|\yb}),
     \qquad&\sum_{y} f_{y\|\yb} =1.
   \end{aligned}
 \end{equation}
@@ -1514,8 +1625,8 @@ of data necessary to modify our initial belief.
 
 
 \[
-  \frac{  \E(f_{\ysA\|\ya} - f_{\ysA\|\yb} \| \yD, \yI)}{
-    \std(f_{\ysA\|\ya} - f_{\ysA\|\yb} \| \yD, \yI)}
+  \frac{  \E(f_{\ysO\|\ya} - f_{\ysO\|\yb} \| \yD, \yI)}{
+    \std(f_{\ysO\|\ya} - f_{\ysO\|\yb} \| \yD, \yI)}
 \]
 
 *********************************
@@ -1605,22 +1716,22 @@ We write Bayes's theorem~\eqref{eq:straight_Bayes} with our initial
 belief~\eqref{eq:beta_gamma_prior} written in full:
 \begin{equation}
   \label{eq:straight_Bayes_full_prior}
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI)
+  \pf(f_{\ysO\|\ya}, f_{\ysO\|\yb} \| \yD, \yI)
   \propto
   \tint\di\yA\tint\di\yq\;
-    \pf(\yD \| f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yI)\;
- \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \|\yA,\yq, \yI)\;
+    \pf(\yD \| f_{\ysO\|\ya}, f_{\ysO\|\yb} \| \yI)\;
+ \pf(f_{\ysO\|\ya}, f_{\ysO\|\yb} \|\yA,\yq, \yI)\;
   \dA(\yA,\yq \|\yI).
 \end{equation}
 Multiplying and dividing within the integral with the expression
 \begin{equation}
   \label{eq:def_Aq_given_data}
     \pf(\yD \|\yA,\yq,\yI)\defd
-\tint\di f_{\ysA\|\ya}\tint\di f_{\ysA\|\yb}\;
-  \pf(\yD \|f_{\ysA\|\ya}, f_{\ysA\|\yb}, \yI)\;
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yA,\yq,\yI)
-      % \dbeta(f_{\ysA\|\ya} \| \yA,\yq)\,
-      % \dbeta(f_{\ysA\|\yb} \| \yA,\yq)
+\tint\di f_{\ysO\|\ya}\tint\di f_{\ysO\|\yb}\;
+  \pf(\yD \|f_{\ysO\|\ya}, f_{\ysO\|\yb}, \yI)\;
+  \pf(f_{\ysO\|\ya}, f_{\ysO\|\yb}\| \yA,\yq,\yI)
+      % \dbeta(f_{\ysO\|\ya} \| \yA,\yq)\,
+      % \dbeta(f_{\ysO\|\yb} \| \yA,\yq)
 \end{equation}
 we obtain the alternative form~\eqref{eq:formal_hierarchic}
 
@@ -1634,15 +1745,15 @@ formula~\eqref{eq:update_hyperparameter} we obtain
   \label{eq:parameter_posterior_first}
   \dA(\yA,\yq \|\yD, \yI) \propto
     \dA(\yA,\yq) \times{}\\
-  \Bigl[   \tint\di f_{\ysA\|\ya}\tint\di f_{\ysA\|\yb}\;
-  \dbeta\Bigl(f_{\ysA\|\ya} \|[\Big] \yA+N_{\ya},
-  \frac{\yA\yq+N_{\ya}F_{\ysA\|\ya}}{\yA+N_{\ya}}
+  \Bigl[   \tint\di f_{\ysO\|\ya}\tint\di f_{\ysO\|\yb}\;
+  \dbeta\Bigl(f_{\ysO\|\ya} \|[\Big] \yA+N_{\ya},
+  \frac{\yA\yq+N_{\ya}F_{\ysO\|\ya}}{\yA+N_{\ya}}
     \Bigl)\;
-  \dbeta\Bigl(f_{\ysA\|\yb} \|[\Big] \yA+N_{\yb},
-  \frac{\yA\yq+N_{\yb}F_{\ysA\|\yb}}{\yA+N_{\yb}}
+  \dbeta\Bigl(f_{\ysO\|\yb} \|[\Big] \yA+N_{\yb},
+  \frac{\yA\yq+N_{\yb}F_{\ysO\|\yb}}{\yA+N_{\yb}}
     \Bigr)
        \Bigr]
-%  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \|\yA,\yq, \yI)\;
+%  \pf(f_{\ysO\|\ya}, f_{\ysO\|\yb} \|\yA,\yq, \yI)\;
 \end{multline}
 
 
@@ -1714,8 +1825,8 @@ This distribution has expected value and variance
 
 
 \[
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb} \| \yD, \yI) \approx
-  \pf(f_{\ysA\|\ya}, f_{\ysA\|\yb}\| \yuam,\yubm,\yI)
+  \pf(f_{\ysO\|\ya}, f_{\ysO\|\yb} \| \yD, \yI) \approx
+  \pf(f_{\ysO\|\ya}, f_{\ysO\|\yb}\| \yuam,\yubm,\yI)
 \]
 
 
