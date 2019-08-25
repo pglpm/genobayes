@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-11-11T20:53:34+0200
-%% Last-Updated: 2019-08-25T17:56:17+0200
+%% Last-Updated: 2019-08-25T18:32:07+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -813,7 +813,7 @@ the link strength between variates. Section~\ref{sec:methods} summarizes
 our methods. Section~\ref{sec:results} presents and discusses the results.
 
 
-\section{Data and link measure}
+\section{Variates, data, and link measure}
 \label{sec:data}
 
 \mynote{Description of the \hunt\ data and the locations of the \snp s}
@@ -861,8 +861,12 @@ value of the difference $\abs{\df}$ in our hypothetical population, without
 choosing any \enquote{significance} threshold a priori. Such threshold can
 always be chosen a posteriori by the readers according to their research
 goals and resources. The plausibility of the possible differences is then
-expressed by the probability distribution $\pf(\abs{\df})$ conditional on
-our data and our biological knowledge or assumptions, such as that shown in \fig~\ref{fig:example_difference_distributions}.
+expressed by the probability distribution $\pf(\abs{\df})$, such as that
+shown in \fig~\ref{fig:example_difference_distributions}. This distribution
+is conditional on: \begin{enumerate*}[label=(\alph*)]
+\item the data we've collected, \item our initial information or guesses
+  about the frequencies of the hypothetical population.
+\end{enumerate*}
 \begin{figure}[t!]%{r}{0.4\linewidth} % with wrapfigure
  \centering% \includegraphics[width=0.49\linewidth]{example_diff.pdf}\hspace*{\stretch{1}}
  \includegraphics[width=0.75\linewidth]{example_absdiff.pdf}\\
@@ -890,18 +894,18 @@ or simply the expectation
 For the plot of \fig~\ref{fig:example_difference_distributions} such
 measures are $0.0112$ and $0.0262$.
 % values obtained in scripts2/plot_curves.nb
-In this work we use the quantile measure, but the results are the same if
-we use the expectation. \mynote{add maybe something about dependence of
-  broadness on sample size, and \enquote{smoothing} as discussed by MacKay
-  \amp\ Bauman Peto \citey[\sect~2.6]{mackayetal1995}.}
+In this work we use the quantile measure~\eqref{eq:significance_measure},
+but the results are the same if we use the expectation. \mynote{add maybe
+  something about dependence of broadness on sample size, and
+  \enquote{smoothing} as discussed by MacKay \amp\ Bauman Peto
+  \citey[\sect~2.6]{mackayetal1995}.}
 
 
 
-A more complete quantification of our uncertainty is the distribution
-$\pf(f_{|\ya}, f_{|\yb})$ among the possible joint values of the two
-conditional frequencies, from which $\pf(\df)$ can be calculated. This
-joint distribution is also the optimal starting point when frequencies
-conditional on allele combinations of several \snp\ are considered. Our
+A more complete quantification of our plausible guesses is the joint
+probability distribution $\pf(f_{|\ya}, f_{|\yb})$ for the two conditional
+frequencies, from which $\pf(\df)$ can be calculated. This joint
+distribution is therefore the starting point of our investigation. Our
 goal is therefore to quantify this joint \dob, given:
 \begin{enumerate*}[label=(\arabic*)]
 \item the conditional frequencies in a population sample, \item our initial
@@ -1023,7 +1027,7 @@ and $\pf(\abs{\df})$, like the ones plotted in
  \centering\includegraphics[width=0.49\linewidth]{example_diff.pdf}\hspace*{\stretch{1}}\includegraphics[width=0.49\linewidth]{example_absdiff.pdf}\\
  \caption{Example of uncertainty distributions about the
    conditional-frequency difference $\df$ and its absolute value
-   $\abs{\df}$.}\label{fig:example_difference_distributions}
+   $\abs{\df}$.}\label{fig:example_difference_distributions_old}
 \end{figure}% scripts2/plot_curves.nb
 % freq-1_1_conserv-spreads-sym_O-snp_6-spr_2.233.csv
 % "spread_y",-2.23267970003192
