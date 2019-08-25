@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-11-11T20:53:34+0200
-%% Last-Updated: 2019-08-25T18:32:07+0200
+%% Last-Updated: 2019-08-25T18:35:18+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -871,8 +871,9 @@ is conditional on: \begin{enumerate*}[label=(\alph*)]
  \centering% \includegraphics[width=0.49\linewidth]{example_diff.pdf}\hspace*{\stretch{1}}
  \includegraphics[width=0.75\linewidth]{example_absdiff.pdf}\\
  \caption{Example of probability distributions for $\abs{\df}$, the
-   absolute difference between conditional
-   frequencies.}\label{fig:example_difference_distributions}
+   absolute difference between conditional frequencies.\mynote{add lines
+     indicating the 10-quantile and
+     expectation}}\label{fig:example_difference_distributions}
 \end{figure}% scripts2/plot_curves.nb
 % freq-1_1_conserv-spreads-sym_O-snp_6-spr_2.233.csv
 % "spread_y",-2.23267970003192
@@ -905,18 +906,8 @@ but the results are the same if we use the expectation. \mynote{add maybe
 A more complete quantification of our plausible guesses is the joint
 probability distribution $\pf(f_{|\ya}, f_{|\yb})$ for the two conditional
 frequencies, from which $\pf(\df)$ can be calculated. This joint
-distribution is therefore the starting point of our investigation. Our
-goal is therefore to quantify this joint \dob, given:
-\begin{enumerate*}[label=(\arabic*)]
-\item the conditional frequencies in a population sample, \item our initial
-  information or guesses about such frequencies.
-\end{enumerate*} In formulae, we want to assign a numerical value to
-\begin{equation}\label{eq:p_goal}
-  \pf(\ptext{conditional frequencies} \|
-  \ptext{sample data}, \ptext{initial information}).
-\end{equation}
-In the rest of this section we shall calculate this \dob\ by methodically
-applying the probability calculus.
+distribution is therefore the starting point of our investigation in the
+next section.
 
 
 
