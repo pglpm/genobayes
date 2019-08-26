@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-11-11T20:53:34+0200
-%% Last-Updated: 2019-08-26T15:14:27+0200
+%% Last-Updated: 2019-08-26T16:53:32+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1084,8 +1084,19 @@ for the less conservative one $\yIu$.
 % scripts2/plot_posteriors.nb
 % scripts2/example_joint_posterior.R
 % scripts2/conditional_freqs_2.R
+Note that in both cases most probability mass is actually above the
+diagonal: the spreads of the distributions appears larger than they
+actually are, owing to the high number of samples and the physical print
+size of the points.
 
 
+From the joint distribution above we can find, with a routine calculation,
+the distribution for the absolute value of the difference of the two
+frequencies and its 10-quantile, which is our
+measure~\eqref{eq:significance_measure}. Such quantiles are shown, sorted,
+in \fig~\ref{fig:relevance_sorted} for all \snp-symptom pairs. For each
+pair we show the result for the two pre-data states of knowledge, joined by
+a line.
 
 
 
@@ -1149,15 +1160,15 @@ Result section we discuss the different relevant associations found.
 
 
 \subsection{The data}
-\label{sec:data}
+\label{sec:not-data}
 
 \mynote{description of our data here}
 
 \section{Methods}
-\label{sec:methods}
+\label{sec:not-methods}
 
 \subsection{Outline}
-\label{sec:method_outline}
+\label{sec:not-method_outline}
 
 We focus on the simplest kind of association: between one particular \snp\
 with two alleles $\ya$, $\yb$, and one insomnia symptom. For example, we
@@ -1191,7 +1202,7 @@ and $\pf(\abs{\df})$, like the ones plotted in
  \centering\includegraphics[width=0.49\linewidth]{example_diff.pdf}\hspace*{\stretch{1}}\includegraphics[width=0.49\linewidth]{example_absdiff.pdf}\\
  \caption{Example of uncertainty distributions about the
    conditional-frequency difference $\df$ and its absolute value
-   $\abs{\df}$.}\label{fig:example_difference_distributions_old}
+   $\abs{\df}$.}\label{fig:not-example_difference_distributions_old}
 \end{figure}% scripts2/plot_curves.nb
 % freq-1_1_conserv-spreads-sym_O-snp_6-spr_2.233.csv
 % "spread_y",-2.23267970003192
@@ -1204,12 +1215,12 @@ $\abs{\df}>0.01$; it is 90\% plausible that $-0.045 < \df < -0.007$; and so
 on. Several measures can be chosen to summarize the distribution with one
 number. For example, we could use some minimal frequency difference we are
 highly sure about, for example the lowest 10-quantile:
-\begin{equation}\label{eq:significance_measure}
+\begin{equation}\label{eq:not-significance_measure}
 x\;\text{ such that }\; \pf(\abs{\df} > x)=0.9,
 \end{equation}
 or simply the expectation of the absolute value of the difference
 \citep{leoneetal1961}:
-\begin{equation}\label{eq:significance_measure_expabs}
+\begin{equation}\label{eq:not-significance_measure_expabs}
 \E\bigl(\abs{\df}\bigr) \equiv \sqrt{\frac{2}{\pu}}\sigma\exp\Biggl(-\frac{\mu^2}{2\sigma^2} \Biggr) + \mu \erf\Biggl( \frac{\mu}{\sqrt{2}\sigma} \Biggr),
 \end{equation}
 where $\mu$ and $\sigma$ are the mean and standard deviation of $\pf(\df)$.
@@ -1230,7 +1241,7 @@ goal is therefore to quantify this joint \dob, given:
 \item the conditional frequencies in a population sample, \item our initial
   information or guesses about such frequencies.
 \end{enumerate*} In formulae, we want to assign a numerical value to
-\begin{equation}\label{eq:p_goal}
+\begin{equation}\label{eq:not-p_goal}
   \pf(\ptext{conditional frequencies} \|
   \ptext{sample data}, \ptext{initial information}).
 \end{equation}
@@ -1264,7 +1275,7 @@ experimental and computational resources.
 
 
 \subsection{Inference: concrete calculation}
-\label{sec:inference}
+\label{sec:not-inference}
 
 Once we know the quantity we want to quantify our uncertainty about, the
 calculation of our \dobs\ follows almost mechanically from the rules of the
@@ -1275,7 +1286,7 @@ the desired ones.
 
 The first step is to use Bayes's theorem:
 \begin{multline}
-  \label{eq:intuitive_Bayes}
+  \label{eq:not-intuitive_Bayes}
   \pf(\ptext{frequencies} \| \ptext{data}, \ptext{initial info})
   \propto{}\\
   \pf(\ptext{data} \| \ptext{frequencies}, \ptext{initial info})
@@ -1335,7 +1346,7 @@ With this notation, Bayes's theorem above is written
 \medskip
 
 \subsection{Plausibility for the data given the frequencies}
-\label{sec:p_data_from_freqs}
+\label{sec:not-p_data_from_freqs}
 
 The plausibility of obtaining the data given the frequencies is given by
 simple counting and symmetry. We have an arbitrarily large population where
@@ -1347,7 +1358,7 @@ fraction $F_{|\ya}$ of these show the symptom is then counted as a
 the full population, given by a (rescaled) binomial distribution
 \cites[\chap~3]{jaynes1994_r2003}[\sect~4.6]{ross1976_r2010}[\sect~VI.2]{feller1950_r1968}:
 \begin{equation}
-  \label{eq:sampling_belief}
+  \label{eq:not-sampling_belief}
   \pf( F_{|\ya} \| f_{|\ya},  N_{\ya}, \yI)
   =
 \binom{N_{\ya}}{N_{\ya}\,F_{|\ya}}\;  {f_{|\ya}}^{N_{\ya}\,F_{|\ya}} \;
@@ -1357,7 +1368,7 @@ the full population, given by a (rescaled) binomial distribution
 An analogous reasoning holds for allele $\yb$. Our belief about obtaining
 the data is therefore
 \begin{equation}
-  \label{eq:sampling_belief_combined}
+  \label{eq:not-sampling_belief_combined}
 %  \pf(F_{|\ya},F_{|\yb} \|  f_{|\ya},f_{|\yb}, N_{\ya}, N_{\yb}, \yI)
   \pf(\yD \|  f_{|\ya},f_{|\yb}, \yI)
   =
@@ -1367,7 +1378,7 @@ the data is therefore
 
 
 \subsection{Initial plausibility for the frequencies}
-\label{sec:p_initial}
+\label{sec:not-p_initial}
 
 We consider two different initial assumptions about the conditional
 frequencies. Their densities are represented in
@@ -1383,19 +1394,19 @@ the $(f_{|\ya},f_{|\yb})$-coordinate plane; we call this a
 \includegraphics[width=0.49\linewidth]{conserv_prior_list.png}
 \caption{Sampling plots of our two initial states of knowledge, 100\,000
   samples each. Left: uniform belief~\eqref{eq:uniform_prior}; right:
-  conservative belief~\eqref{eq:conservative_prior}.}\label{fig:initial_beliefs}
+  conservative belief~\eqref{eq:conservative_prior}.}\label{fig:not-initial_beliefs}
 \end{figure}% scripts2/plot_priors.nb
 
 
 The uniform state of knowledge is given by the simple density
 \begin{equation}
-  \label{eq:uniform_prior}
+  \label{eq:not-uniform_prior}
   \pf(f_{|\ya}, f_{|\yb} \| \yIu)%\;\di f_{|\ya}\,\di f_{|\yb}
   =1.%\di f_{|\ya}\,\di f_{|\yb}.
 \end{equation}
 The conservative state of knowledge is given by the following integral:
 \begin{subequations}
-  \label{eq:conservative_prior}
+  \label{eq:not-conservative_prior}
   \begin{gather}
     \pf(f_{|\ya}, f_{|\yb} \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
     =
@@ -1405,23 +1416,23 @@ The conservative state of knowledge is given by the following integral:
     \pf(\yua,\yub \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
     \\
     \shortintertext{with}
-    \label{eq:beta_product}
+    \label{eq:not-beta_product}
     \pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\defd
     \dbeta(f_{|\ya} \| \yua,\yub)\;
     \dbeta(f_{|\yb} \| \yua,\yub),
     \\
-    \label{eq:p_initial_parameters}
+    \label{eq:not-p_initial_parameters}
     \pf(\yua,\yub \| \yIc)\defd \frac{1}{u+v}\,\dgamma(u+v \| 1, 1000)
   \end{gather}
   where $\dbeta$ and $\dgamma$ are beta and gamma densities:
   \begin{gather}
-    \label{eq:def_beta}
+    \label{eq:not-def_beta}
     \dbeta(f \| \yua,\yub) \defd
     \frac{\Gamma(\yua+\yub)}{\Gamma(\yua)\,\Gamma(\yub)}\;
     f^{\yua-1}\;(1-f)^{\yub-1},
     \qquad  \yua,\yub>0,
     \\
-    \label{eq:def_gamma}
+    \label{eq:not-def_gamma}
     \dgamma(\yA \| 1, 1000) \defd
     \frac{1}{1000}\,\exp(-\yA/1000).
   \end{gather}
@@ -1449,7 +1460,7 @@ data have given enough evidence to overwhelm this conservative belief.
 
 
 \subsection{Final plausibilities}
-\label{sec:p_final}
+\label{sec:not-p_final}
 
 Now we have the plausibility~\eqref{eq:sampling_belief_combined} for the
 sampled data, and two choices of initial
@@ -1463,7 +1474,7 @@ the sampling formula~\eqref{eq:sampling_belief_combined} and initial
 proportional to the product of two beta densities. Our final \dob\ in this
 case is
 \begin{equation}
-  \label{eq:final_from_uniform}
+  \label{eq:not-final_from_uniform}
   \pf(f_{|\ya}, f_{|\yb} \| \yD, \yIu)
   =
 \prod_{x=\ya,\yb}
@@ -1481,7 +1492,7 @@ unnormalized beta densities. Grouping the ensuing normalization constant
 with the density for the parameters~\eqref{eq:p_initial_parameters} yields
 a final \dob\ in integral form:
 \begin{subequations}
-  \label{eq:final_from_conservative}
+  \label{eq:not-final_from_conservative}
   \begin{gather}
   \begin{multlined}[t][\linewidth]
     \pf(f_{|\ya}, f_{|\yb} \| \yD, \yIc)
@@ -1493,7 +1504,7 @@ a final \dob\ in integral form:
     \bigr\}\, \pf(\yua,\yub \| \yD,\yIc)
   \end{multlined}\\
   \shortintertext{with}
-      \label{eq:posterior_parameters}
+      \label{eq:not-posterior_parameters}
   \begin{multlined}[t][\linewidth]
     \pf(\yua,\yub \| \yD,\yIc) \propto{}\\[\jot]
     \prod_{x=\ya,\yb}\left\{
@@ -1521,7 +1532,7 @@ determine their means and covariance matrices. These can be easily
 calculated using the first and second raw moments of a beta
 distribution:\mynote{refs for this}
 \begin{equation}
-  \label{eq:moments_beta}
+  \label{eq:not-moments_beta}
   \E(f \| \yua,\yub) = \frac{\yua}{\yua+\yub},
   \qquad
   \E(f^2 \| \yua,\yub) = \frac{\yua\,(\yua+1)}{(\yua+\yub)\,(\yua+\yub+1)}.  
@@ -1531,20 +1542,20 @@ distribution:\mynote{refs for this}
 For the uniform initial state of knowledge~\eqref{eq:final_from_uniform}
 the means, variances, and covariance are readily calculated:
 \begin{subequations}
-  \label{eq:stats_final_unif}
+  \label{eq:not-stats_final_unif}
   \begin{align}
-    \label{eq:mean_final_unif}
+    \label{eq:not-mean_final_unif}
     &\E(f_{|x}\| \yD, \yIu) =
     \frac{N_{x}\,F_{|x}+1}{N_{x}+2},
     \frac{N_{\yb}\,F_{|\yb}+1}{N_{\yb}+2}
     \qquad x=\ya,\yb,
     \\
-    \label{eq:var_final_unif}
+    \label{eq:not-var_final_unif}
     &\var(f_{|x} \| \yD, \yIu) =
     \frac{(N_{x}F_{|x}+1)\,[N_{x}\,(1-F_{|x})+1)}{(N_{x}+2)^2\,(N_{x}+3)}
     \qquad x=\ya,\yb,
     \\
-    \label{eq:cov_final_unif}
+    \label{eq:not-cov_final_unif}
     &\cov(f_{|\ya}, f_{|\yb} \| \yD, \yIu) = 0.
     % \begin{pmatrix}
     %   \frac{(N_{\ya}F_{|\ya}+1)\,[N_{\ya}\,(1-F_{|\ya})+1)}{(N_{\ya}+2)^2\,(N_{\ya}+3)}
@@ -1559,7 +1570,7 @@ For the conservative initial state of
 knowledge~\eqref{eq:final_from_conservative} let us first introduce the
 notation
 \begin{equation}
-  \label{eq:notation_avg_parameters}
+  \label{eq:not-notation_avg_parameters}
   \uav{X(\yua,\yub)} \defd
       \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
     \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\,
@@ -1568,14 +1579,14 @@ X(\yua,\yub) \, \pf(\yua,\yub \| \yD,\yIc);
 such an average can approximately be computed by averaging from a Monte
 Carlo sample. The means, variances, and covariance of the final density are
 \begin{subequations}
-  \label{eq:stats_final_conserv}
+  \label{eq:not-stats_final_conserv}
   \begin{align}
-    \label{eq:mean_final_conserv}
+    \label{eq:not-mean_final_conserv}
     &\E(f_{|x} \| \yD, \yIc) =
                                  \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}
                                  \qquad x=\ya,\yb,
 \\
-  \label{eq:var_final_conserv}
+  \label{eq:not-var_final_conserv}
     &\!\begin{multlined}[\linewidth]
 \var(f_{|x} \| \yD, \yIc) =
   \uav{\frac{(N_{x}F_{|x}+\yua)\,(N_{x}F_{|x}+\yua+1)}{(N_{x}+\yua+\yub)\,(N_{x}+\yua+\yub+1)}}
@@ -1584,7 +1595,7 @@ Carlo sample. The means, variances, and covariance of the final density are
   \\ x=\ya,\yb  
 \end{multlined}
     \\
-    \label{eq:cov_final_conserv}
+    \label{eq:not-cov_final_conserv}
 &    \cov(f_{|\ya}, f_{|\yb} \| \yD, \yIc) =
     \uav{\prod_{x=\ya,\yb}\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}
     - \prod_{x=\ya,\yb}
@@ -1612,7 +1623,7 @@ $\uav{\yub}$ is therefore prone to produce bad approximations.
 
 
 \subsection{Plausibilities for the frequency differences}
-\label{sec:p_df}
+\label{sec:not-p_df}
 
 We finally find an approximate expression for our final \dob\ about the
 conditional-frequency difference $\df$. The density is also approximately
@@ -1620,14 +1631,14 @@ normal, and for each initial state of knowledge $\yI=\yIu,\yIc$ its mean
 and variance can be found by the standard formulae \mynote{give ref for
   these}
 \begin{align}
-  \label{eq:mean_final_diff}
+  \label{eq:not-mean_final_diff}
     &\E(f_{|\ya}- f_{|\yb} \| \yD, \yI) =
     \E(f_{|\ya} \| \yD, \yI) -
     \E( f_{|\yb} \| \yD, \yI),
     % \frac{N_{\ya}\,F_{|\ya}+1}{N_{\ya}+2} -
     % \frac{N_{\yb}\,F_{|\yb}+1}{N_{\yb}+2}  
     \\[\jot]
-  \label{eq:cov_final_diff}
+  \label{eq:not-cov_final_diff}
     &\var(f_{|\ya}- f_{|\yb} \| \yD, \yI) =
       \var(f_{|\ya} \| \yD, \yI) +
       \var(f_{|\yb} \| \yD, \yI) -
@@ -1650,7 +1661,7 @@ from the formulae~\eqref{eq:stats_final_unif},
 % following explicit approximate formula for our belief about the conditional
 % frequencies given the data:
 % \begin{multline}
-%   \label{eq:formal_hierarchic_approx_final}
+%   \label{eq:not-formal_hierarchic_approx_final}
 %   \pf(f_{|\ya}, f_{\yb} \| \yD, \yI) \approx
 %   \dbeta(f_{|\ya} \| \yuam,\yubm)\;
 %   \dbeta(f_{\yb} \| \yuam,\yubm)\\
@@ -1664,11 +1675,11 @@ from the formulae~\eqref{eq:stats_final_unif},
 
 
 \section{Results}
-\label{sec:results}
+\label{sec:not-results}
 
 \begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
  \centering\includegraphics[height=\textheight]{x90-sym_O.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90-sym_M.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90-sym_T.pdf}\\
-\caption{\enquote{Relevance} of the 94 \snp s for the three symptoms.}\label{fig:relevance}
+\caption{\enquote{Relevance} of the 94 \snp s for the three symptoms.}\label{fig:not-relevance}
 \end{figure}% scripts2/plot_results.nb
 
 \begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
@@ -1679,7 +1690,7 @@ from the formulae~\eqref{eq:stats_final_unif},
 
 \begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
  \centering\includegraphics[width=0.75\linewidth]{example_distr_condfreqs.pdf}\\
-\caption{Example of distributions of belief}\label{fig:example_distributions}
+\caption{Example of distributions of belief}\label{fig:not-example_distributions}
 \end{figure}% scripts/single_gene_condfreqs_thetamax.nb
 %% EVs: 0.25917, 0.283506; SDs: 0.00804727, 0.00635616
 %% overlap at 0.01 = 0.0321908
@@ -1690,7 +1701,7 @@ from the formulae~\eqref{eq:stats_final_unif},
  \centering\includegraphics[width=0.75\linewidth]{difference_symA_snp6.pdf}\\
  \caption{Distribution for the difference between the frequencies
    $f_{\ysO\|\ya}$, $f_{\ysO\|\yb}$ of onset insomnia ($\ysO$) conditional on
-   the two alleles of \snp\ rs875994}\label{fig:difference_distributions}
+   the two alleles of \snp\ rs875994}\label{fig:not-difference_distributions}
 \end{figure}% scripts/condfreqs_general_tests.nb
 %% snp #6,
 %% EV: -0.0330998, SD: 0.0120472
@@ -1706,13 +1717,13 @@ from the formulae~\eqref{eq:stats_final_unif},
 
 The uniform state of knowledge is given by the simple density
 \begin{equation}
-  \label{eq:uniform_prior}
+  \label{eq:not-uniform_prior}
   \pf(f_{|\ya}, f_{|\yb} \| \yIu)%\;\di f_{|\ya}\,\di f_{|\yb}
   =1.%\di f_{|\ya}\,\di f_{|\yb}.
 \end{equation}
 The conservative state of knowledge is given by the following integral:
 \begin{subequations}
-  \label{eq:conservative_prior}
+  \label{eq:not-conservative_prior}
   \begin{gather}
     \pf(f_{|\ya}, f_{|\yb} \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
     =
@@ -1722,23 +1733,23 @@ The conservative state of knowledge is given by the following integral:
     \pf(\yua,\yub \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
     \\
     \shortintertext{with}
-    \label{eq:beta_product}
+    \label{eq:not-beta_product}
     \pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\defd
     \dbeta(f_{|\ya} \| \yua,\yub)\;
     \dbeta(f_{|\yb} \| \yua,\yub),
     \\
-    \label{eq:p_initial_parameters}
+    \label{eq:not-p_initial_parameters}
     \pf(\yua,\yub \| \yIc)\defd \frac{1}{u+v}\,\dgamma(u+v \| 1, 1000)
   \end{gather}
   where $\dbeta$ and $\dgamma$ are beta and gamma densities:
   \begin{gather}
-    \label{eq:def_beta}
+    \label{eq:not-def_beta}
     \dbeta(f \| \yua,\yub) \defd
     \frac{\Gamma(\yua+\yub)}{\Gamma(\yua)\,\Gamma(\yub)}\;
     f^{\yua-1}\;(1-f)^{\yub-1},
     \qquad  \yua,\yub>0,
     \\
-    \label{eq:def_gamma}
+    \label{eq:not-def_gamma}
     \dgamma(\yA \| 1, 1000) \defd
     \frac{1}{1000}\,\exp(-\yA/1000).
   \end{gather}
@@ -1763,7 +1774,7 @@ this initial state of knowledge in appendix***.
 \section{Generalizations}
 
 \subsection{Generalization to \snp\ combinations}
-\label{sec:generalize_snp}
+\label{sec:not-generalize_snp}
 
 The ideas and mathematical results discussed in the Method section are
 easily generalized to the frequencies of a symptom conditional on the
@@ -1793,7 +1804,7 @@ $f_{|\ya\yas}- f_{|\yb\yas}$, $f_{|\ya\yas}- f_{|\yb\ybs}$, and so on. The
 analysis of the results therefore offers more interesting possibilities.
 
 \subsection{Generalization to symptom combinations}
-\label{sec:generalize_symptoms}
+\label{sec:not-generalize_symptoms}
 
 The Method section is also easily generalized to the conditional
 frequencies of non-dichotomous symptoms, or of symptom combinations. For
@@ -1805,7 +1816,7 @@ $\ysO$, $\ysO\ysM$, and so on. Each of these frequencies would be
 conditional on whether the individual has allele $\ya$ or $\yb$ of a
 particular \snp. We thus have two conditional-frequency distributions:
 \begin{equation}
-  \label{eq:f_distr_symptom_combo}
+  \label{eq:not-f_distr_symptom_combo}
   \begin{aligned}
     &(f_{\ysO\|\ya},f_{\ysO\|\ya},\dotsc,f_{\ysO\ysM\|\ya},\dotsc,f_{\ysO\ysM\ysT\|\ya}),
     \qquad&\sum_{y} f_{y\|\ya} =1,
@@ -1818,27 +1829,27 @@ particular \snp. We thus have two conditional-frequency distributions:
 
 
 \subsection{Choices of initial beliefs and meaning of the parameters}
-\label{sec:choices_prior_info}
+\label{sec:not-choices_prior_info}
 
 
 The parameters $\yu$ of the Dirichlet density for the frequency
 distribution $\yf$ have very intuitive meanings, even more evident if we
 rewrite them as their sum and a pair of normalized parameters:
 \begin{equation}
-  \label{eq:rewrite_params}
+  \label{eq:not-rewrite_params}
   \yA \defd \ysum\yu,
   \qquad
   \yq\defd\yu/\sum\yu.
 \end{equation}
 The normalized parameters $\yq$ are the expected frequency distribution:
 \begin{equation}
-  \label{eq:meaning_normalized_parameters}
+  \label{eq:not-meaning_normalized_parameters}
   \E(\yf \| \yu) = \yq
 \end{equation}
 The sum of the parameters $\yA$ expresses the sharpness of the
 distribution, as seen from the covariance matrix:
 \begin{equation}
-  \label{eq:variances_covariances}
+  \label{eq:not-variances_covariances}
   \var(f_i \| \yu) = \frac{\yqq_i\;(1-\yqq_i)}{\yA+1},
   \qquad
   \cov(f_i\,f_j \| \yu) = -\frac{\yqq_i\,\yqq_j}{\yA+1}.
@@ -1860,7 +1871,7 @@ $\pf(f_{|\ya}, f_{\yb} \| \yD, \yI)$. According to Bayes's
 theorem~\eqref{eq:intuitive_Bayes} combined with our initial
 belief~\eqref{eq:beta_gamma_prior} it is given by
 \begin{equation}
-  \label{eq:straight_Bayes}
+  \label{eq:not-straight_Bayes}
   \pf(f_{|\ya}, f_{\yb} \| \yD, \yI)
   \propto
   \pf(\yD \| f_{|\ya}, f_{\yb} \| \yI)\;
@@ -1869,7 +1880,7 @@ belief~\eqref{eq:beta_gamma_prior} it is given by
 but, as shown in appendix~\ref{sec:bayes_hierarcic}, it can also be written
 in the following way:
 \begin{equation}
-  \label{eq:formal_hierarchic}
+  \label{eq:not-formal_hierarchic}
   \pf(f_{|\ya}, f_{\yb} \| \yD, \yI) =
   \tint\di\yua\tint\di\yub\;
   \pf(f_{|\ya}, f_{\yb}\| \yD,\yua,\yub,\yI)\;
@@ -1879,7 +1890,7 @@ in the following way:
 \end{equation}
 with the normalized density $\dA(\yua,\yub \|\yD, \yI)$ defined by
 \begin{multline}
-  \label{eq:update_hyperparameter}
+  \label{eq:not-update_hyperparameter}
   \dA(\yua,\yub \|\yD, \yI) \propto   \dA(\yua,\yub \|\yI)
 \times{}\\
 %\Bigl[
@@ -1916,7 +1927,7 @@ as a Dirac delta centred on the parameters $\yuam$, $\yubm$ that maximize it.
 We thus obtain a good approximation of the updated
 belief~\eqref{eq:formal_hierarchic} that doesn't involve parameter integration:
 \begin{multline}
-  \label{eq:formal_hierarchic_approx}
+  \label{eq:not-formal_hierarchic_approx}
   \pf(f_{|\ya}, f_{\yb} \| \yD, \yI) \approx
   \pf(f_{|\ya}, f_{\yb}\| \yuam,\yubm,\yI)\\
   \text{with}\quad
@@ -1926,7 +1937,7 @@ The maximum of $\dA(\yua,\yub \|\yD, \yI)$, or better of its logarithm, can
 easily be found with most optimization methods. The explicit expression to
 be optimized, discussed in appendix***,
 \begin{equation}
-  \label{eq:to_optimize}
+  \label{eq:not-to_optimize}
   \yna\,[\ln\Gamma(\tsum_s\yu_s) - \tsum_s\ln\Gamma(\yu_s)]
   -\sum_{\mathclap{x=\ya,\yb}}
   [\ln\Gamma(N_x+\tsum_s\yu_s) - \tsum_s\ln\Gamma(N_xF_{s\|x}+\yu_s)]
@@ -1934,12 +1945,12 @@ be optimized, discussed in appendix***,
 
 
 \section{Derivation of Bayes's theorem in hierarchic form}
-\label{sec:bayes_hierarcic}
+\label{sec:not-bayes_hierarcic}
 
 We write Bayes's theorem~\eqref{eq:straight_Bayes} with our initial
 belief~\eqref{eq:beta_gamma_prior} written in full:
 \begin{equation}
-  \label{eq:straight_Bayes_full_prior}
+  \label{eq:not-straight_Bayes_full_prior}
   \pf(f_{\ysO\|\ya}, f_{\ysO\|\yb} \| \yD, \yI)
   \propto
   \tint\di\yA\tint\di\yq\;
@@ -1949,7 +1960,7 @@ belief~\eqref{eq:beta_gamma_prior} written in full:
 \end{equation}
 Multiplying and dividing within the integral with the expression
 \begin{equation}
-  \label{eq:def_Aq_given_data}
+  \label{eq:not-def_Aq_given_data}
     \pf(\yD \|\yA,\yq,\yI)\defd
 \tint\di f_{\ysO\|\ya}\tint\di f_{\ysO\|\yb}\;
   \pf(\yD \|f_{\ysO\|\ya}, f_{\ysO\|\yb}, \yI)\;
@@ -1966,7 +1977,7 @@ formula~\eqref{eq:sampling_belief_combined}, the expression of the beta
 density~\eqref{eq:def_beta}, and the update
 formula~\eqref{eq:update_hyperparameter} we obtain
 \begin{multline}
-  \label{eq:parameter_posterior_first}
+  \label{eq:not-parameter_posterior_first}
   \dA(\yA,\yq \|\yD, \yI) \propto
     \dA(\yA,\yq) \times{}\\
   \Bigl[   \tint\di f_{\ysO\|\ya}\tint\di f_{\ysO\|\yb}\;
@@ -1994,14 +2005,14 @@ allele Bx in an \emph{infinite} population is a Beta distribution with
 parameters $n_0+\theta_0$, $n_1+\theta_1$, with
 $\theta \defd \theta_0+\theta_1$:
 \begin{multline}
-  \label{eq:beta_fr}
+  \label{eq:not-beta_fr}
   \pf(f_1 \| n_0,n_1,\theta_0,\theta_1)\;\di f_1 ={}\\
   \frac{\Gamma(n+\theta)}{\Gamma(n_0+\theta_0)\;\Gamma(n_1+\theta_1)}
   \; (1-f_1)^{n_0+\theta_0-1}\;{f_1}^{n_1+\theta_1-1} \;\di f_1
 \end{multline}
 This distribution has expected value and variance
 \begin{equation}
-  \label{eq:exp_value}
+  \label{eq:not-exp_value}
   \begin{split}
   \E(f_1 \| n_0, n_1, \theta_0,\theta_1) &= \frac{n_1+\theta_1}{n+\theta},
   \\
@@ -2057,7 +2068,7 @@ This distribution has expected value and variance
 %%\setlength{\intextsep}{0.5ex}% with wrapfigure
 %\begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
 %  \centering\includegraphics[trim={12ex 0 18ex 0},clip,width=\linewidth]{maxent_saddle.png}\\
-%\caption{caption}\label{fig:comparison_a5}
+%\caption{caption}\label{fig:not-comparison_a5}
 %\end{figure}% exp_family_maxent.nb
 
 

@@ -208,16 +208,23 @@ priorsamples <- function(
         }
 
         print('writing samples to file...')
-        write.csv(samples,paste0(savedir,filename,'priorsamples.csv'))
-        saveRDS(samples,paste0(savedir,'_',filename,'priorsamples.rds'))
+        write.csv(samples,paste0(savedir,filename,'postsamples.csv'))
+        saveRDS(samples,paste0(savedir,'_',filename,'postsamples.rds'))
 
     print('producing frequency samples and writing them...')
     fsamples <- t(apply(samples,1,function(tt){
         et <- exp(tt)
-        c(rbeta(1,et[1],et[2]),rbeta(1,et[1],et[2]))
+        c(rbeta(1,f[]et[1],et[2]),rbeta(1,et[1],et[2]))
         }))
-        write.csv(fsamples,paste0(savedir,filename,'priorfsamples.csv'))
-        saveRDS(fsamples,paste0(savedir,'_',filename,'priorfsamples.rds'))
+        write.csv(fsamples,paste0(savedir,filename,'postfsamples.csv'))
+        saveRDS(fsamples,paste0(savedir,'_',filename,'postfsamples.rds'))
+
+        fsamples <- t(apply(samples,1,function(tt){
+        et <- exp(tt)
+        c(rbeta(1,f[1,2]+et[1],f[2,2]+et[2]),rbeta(1,f[1,1]+et[1],f[2,1]+et[2]))
+        }))
+        write.csv(fsamples,paste0(savedir,filename,'postfsamples.csv'))
+        saveRDS(fsamples,paste0(savedir,'_',filename,'postfsamples.rds'))
 
     print('end')
 }
