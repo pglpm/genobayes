@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-11-11T20:53:34+0200
-%% Last-Updated: 2019-08-25T20:00:29+0200
+%% Last-Updated: 2019-08-26T10:58:08+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -20,9 +20,9 @@ british%
 \newcommand*{\firstpublished}{\firstdraft}
 \newcommand*{\updated}{\ifarxiv***\else\today\fi}
 \newcommand*{\propertitle}{Statistical relations between \textsc{snp}s and
-  insomnia:\\ a Bayesian study {\large[draft]}%
+  insomnia:\\ a simplified Bayesian study {\color{myred}\large[draft]}%
 }% title uses LARGE; set Large for smaller
-\newcommand*{\pdftitle}{\propertitle}
+\newcommand*{\pdftitle}{Statistical relations between SNPs and insomnia: a simplified Bayesian study [draft]}
 \newcommand*{\headtitle}{Bayesian study of \textsc{snp}s and insomnia}
 \newcommand*{\pdfauthor}{D. Bragantini, P.G.L.  Porta Mana, I. C. G\"uzey, Y. Roudi}
 \newcommand*{\headauthor}{Bragantini, Porta Mana, G\"uzey, Roudi}
@@ -762,9 +762,14 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \section{\snp s and insomnia: introduction and goals}
 \label{sec:intro}
 
-The purpose of the present work is to investigate the statistical link
-between some insomnia symptoms and a specific set of \snp s from
-\hunt\ 3 data. Our approach is characterized by two main features:
+The purpose of the present work is to begin an investigation of the
+statistical link between some insomnia symptoms and a specific set of \snp
+s from \hunt\ 3 data. We say \enquote{begin} because we simplify the
+problem as much as possible, for example neglecting important confounding
+variates such as gender, to first develop a method that will be generalized
+to a more realistic analysis later.
+
+Our method is characterized by two main features:
 \begin{enumerate}[wide]
 \item We quantify the probable link between the two variates in a
   continuous way, instead of asking the more traditional null-hypothesis
@@ -802,11 +807,11 @@ between some insomnia symptoms and a specific set of \snp s from
   understandable.
 \end{enumerate}
 
-Our study reveals a very probable strong link between individual \snp s
-located in \mynote{recheck location} and the three main insomnia symptoms.
-We also study the link between \emph{pairs} of \snp s and each symptom;
-this interesting interactions between pairs of \snp s \mynote{figure to be
-  added}.
+Our study, in its simplified setting, indicates a very probable strong link
+between individual \snp s located in \mynote{recheck location} and the
+three main insomnia symptoms. We also apply our method to \emph{pairs} of
+\snp s and each symptom; the results indicate interesting interactions
+between pairs of \snp s \mynote{figure to be added}.
 
 Section~\ref{sec:data} presents our variates, data, and the way we measure
 the link strength between variates. Section~\ref{sec:methods} summarizes
@@ -938,93 +943,47 @@ The first step is to use Bayes's theorem:
 which says that we need to provide a probability and a probability
 distribution:
 \begin{enumerate*}[label=(\roman*)]
-\item the probability of observing our sampled data if we had known the
+\item the probability of observing our data if we had known the
   conditional frequencies in the larger population; \item our pre-data
   probability distribution for the conditional frequencies.
 \end{enumerate*}
-The first is given by a sampling formula. The second can be modelled in
-several reasonable ways, and we'll see that, owing to the large size of our
-sample, they all lead to very similar conclusions about the conditional
-frequencies and their difference.
-
-
-
-
-First of all, introduce some notation. The conditional frequencies are
-denoted $f_{|\ya}$, $f_{|\yb}$ as above. The data $\yD$ consist in the
-conditional frequencies observed in the sample: $F_{|\ya}$ is the fraction
-showing the symptom among the sampled individuals having allele $\ya$, and
-$F_{|\yb}$ is the analogous fraction for allele $\yb$. Finally, our initial
-information $\yI$ consists in our initial beliefs and in the numbers
-$N_{\ya}$, $N_{\yb}$ of sampled individuals having allele $\ya$ and $\yb$;
-although these numbers are part of $\yI$ we will sometimes write them
-explicitly besides $\yI$. (Note that $N_{\ya}$, $N_{\yb}$ are not part of
-the \enquote{data} in the sense that they don't help us to update our
-belief about the frequencies $f_{|\ya}$, $f_{|\yb}$ and therefore remain on
-the right side of the conditional.)
-
-\iffalse
-In this section we do step by step the calculations outlined above. For
-definiteness we consider onset insomnia ($\ysS$) and the \snp\ rs875994
-with alleles $\ya$, $\yb$. The limit conditional frequencies are denoted
-$f_{\ya}$ and $f_{\yb}$. The sample data, denoted by $\yD$,
-consist of the number of individuals $F_{\ya}$ that show symptom
-$\ysS$ among the sampled individuals having allele $\ya$, and the number
-$F_{\yb}$ showing the same symptom among those having allele $\yb$.
-Our initial information consists in the number $N_{\ya}$ of sampled
-individuals with allele $\ya$, and the number $N_{\yb}$ with allele $\yb$.
-The total number of sampled individuals is therefore $N_{\ya}+N_{\yb}$.
-This initial information and our initial beliefs are denoted by $\yI$; the
-numbers $N_{\ya}$, $N_{\yb}$ will often be indicated explicitly even though
-they're part of $\yI$.
-\fi
-
-With this notation, Bayes's theorem above is written
-\begin{multline}
-  \labelbis{eq:intuitive_Bayes}
-  \pf(f_{|\ya}, f_{|\yb} \| \yD, \yI)
-  \propto
-  \pf(\yD \|f_{|\ya}, f_{|\yb}, \yI)\;
-  \pf(f_{|\ya}, f_{|\yb} \| \yI)
-  \equiv{}\\
-  \pf(F_{|\ya}, F_{|\yb} \|f_{|\ya}, f_{|\yb}, N_{\ya},N_{\yb},\yI)\;
-  \pf(f_{|\ya}, f_{|\yb} \| N_{\ya},N_{\yb},\yI).
-\end{multline}
-
-\medskip
+The first is given by a sampling formula, calculated by counting. The
+second can be modelled in several reasonable ways, but our data size is
+large enough to make them all lead to very similar conclusions.
 
 \subsection{Plausibility for the data given the frequencies}
 \label{sec:p_data_from_freqs}
 
-The plausibility of obtaining the data given the frequencies is given by
-simple counting and symmetry. We have an arbitrarily large population where
-a fraction $f_{|\ya}$ of individuals having allele $\ya$ show the symptom,
-and a fraction $1- f_{|\ya}$ therefore don't show the symptom. We casually
-observe $N_{\ya}$ individuals with allele $\ya$. The plausibility that a
-fraction $F_{|\ya}$ of these show the symptom is then counted as a
-\enquote{drawing with replacement} because of the arbitrarily large size of
-the full population, given by a (rescaled) binomial distribution
-\cites[\chap~3]{jaynes1994_r2003}[\sect~4.6]{ross1976_r2010}[\sect~VI.2]{feller1950_r1968}:
+In our data we have $N_{\ya}$ individuals with allele $\ya$; of these, a
+fraction $F_{|\ya}$ show the insomnia symptom of interest. For allele $\yb$
+the number is $N_{\yb}$ and the fraction $F_{|\yb}$. The two fractions constitute
+our data, while the total numbers are part of our pre-data information.
+
+The plausibility of obtaining the data if we had known the frequencies in
+the hypothetical infinite population can be calculated with a simple
+\enquote{drawing with replacement} argument, which can be carried out for
+each allele separately. It leads to a binomial distribution
+\cites[\chap~3]{jaynes1994_r2003}[\sect~4.6]{ross1976_r2010}[\sect~VI.2]{feller1950_r1968}.
+For allele $\ya$ we have
 \begin{equation}
   \label{eq:sampling_belief}
-  \pf( F_{|\ya} \| f_{|\ya},  N_{\ya}, \yI)
+  \pf( F_{|\ya} \| f_{|\ya}, \ptext{pre-data info})
   =
 \binom{N_{\ya}}{N_{\ya}\,F_{|\ya}}\;  {f_{|\ya}}^{N_{\ya}\,F_{|\ya}} \;
-  {(1-f_{|\ya})}^{N_{\ya}\,(1-F_{|\ya})}.
+  {(1-f_{|\ya})}^{N_{\ya}\,(1-F_{|\ya})},
 \end{equation}
+and analogously for allele $\yb$.
 
-An analogous reasoning holds for allele $\yb$. Our belief about obtaining
-the data is therefore
+The plausibility for our full data set $(F_{|\ya},F_{|\yb})$ is therefore
+the product of the binomials for the two alleles:
 \begin{equation}
   \label{eq:sampling_belief_combined}
 %  \pf(F_{|\ya},F_{|\yb} \|  f_{|\ya},f_{|\yb}, N_{\ya}, N_{\yb}, \yI)
-  \pf(\yD \|  f_{|\ya},f_{|\yb}, \yI)
+  \pf(\ptext{data} \|  f_{|\ya},f_{|\yb}, \ptext{pre-data info})
   =
  \prod_{x=\ya,\yb} \binom{N_{x}}{N_{x}\,F_{|x}}\;{f_{|x}}^{N_{x}\,F_{|x}} \;
   {(1-f_{|x})}^{N_{x}\,(1-F_{|x})}.
 \end{equation}
-
-
 
 
 
