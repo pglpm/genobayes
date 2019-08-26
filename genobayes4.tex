@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-11-11T20:53:34+0200
-%% Last-Updated: 2019-08-26T10:58:08+0200
+%% Last-Updated: 2019-08-26T11:35:15+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -801,7 +801,7 @@ Our method is characterized by two main features:
   particular to take care of \snp s with very low minor-allele counts: we
   show (\fig~\ref{fig:relevance_sorted}) that their probable link strength
   with respect to other \snp s are qualitatively the same whether we adopt
-  a conservative or a more unrestrained pre-data guess.
+  a more or less conservative pre-data guess.
 
   We also strive to make our probability calculations intuitively
   understandable.
@@ -913,8 +913,8 @@ $\pf(\df)$ can be calculated. This joint distribution is therefore the
 pivot of our method in the next section.
 
 
-\section{Methods}
-\label{sec:methods}
+\section{Method}
+\label{sec:method}
 
 \subsection{General plan}
 \label{sec:inference}
@@ -951,7 +951,7 @@ The first is given by a sampling formula, calculated by counting. The
 second can be modelled in several reasonable ways, but our data size is
 large enough to make them all lead to very similar conclusions.
 
-\subsection{Plausibility for the data given the frequencies}
+\subsection{Probability for the data given the frequencies}
 \label{sec:p_data_from_freqs}
 
 In our data we have $N_{\ya}$ individuals with allele $\ya$; of these, a
@@ -959,7 +959,7 @@ fraction $F_{|\ya}$ show the insomnia symptom of interest. For allele $\yb$
 the number is $N_{\yb}$ and the fraction $F_{|\yb}$. The two fractions constitute
 our data, while the total numbers are part of our pre-data information.
 
-The plausibility of obtaining the data if we had known the frequencies in
+The probability of obtaining the data if we had known the frequencies in
 the hypothetical infinite population can be calculated with a simple
 \enquote{drawing with replacement} argument, which can be carried out for
 each allele separately. It leads to a binomial distribution
@@ -974,7 +974,7 @@ For allele $\ya$ we have
 \end{equation}
 and analogously for allele $\yb$.
 
-The plausibility for our full data set $(F_{|\ya},F_{|\yb})$ is therefore
+The probability for our full data set $(F_{|\ya},F_{|\yb})$ is therefore
 the product of the binomials for the two alleles:
 \begin{equation}
   \label{eq:sampling_belief_combined}
@@ -985,6 +985,107 @@ the product of the binomials for the two alleles:
   {(1-f_{|x})}^{N_{x}\,(1-F_{|x})}.
 \end{equation}
 
+\subsection{Pre-data probability distribution for the frequencies}
+\label{sec:p_initial}
+
+Our pre-data belief distribution in the conditional relative frequencies
+$f_{|\ya}$, $f_{|\yb}$ must be quantified with care, because it may play an
+important part in our final probabilities if the effective size of the data
+is small. We can assess the importance of our pre-data probability
+distribution by considering several sensible alternative states of
+knowledge and checking the difference of the results they lead to. In our
+case we consider two alternatives.
+
+The first, more conservative, is that we do \emph{not} expect the two
+conditional frequencies $f_{|\ya}$, $f_{|\yb}$ to be very different. This
+means implies some degree of correlation between them. It also means that
+we don't expect, a priori, any strong link between the \snp\ and the
+insomnia symptom under analysis. This conservative state of knowledge,
+which we denote $\yIc$, is represented as a scatter plot of sampled
+frequency pairs in the left panel of \fig~\ref{fig:initial_beliefs}.
+
+The second, less conservative, is that we do not expect any correlation
+between the two conditional frequencies. This means that we don't exclude
+the possibility of a strong link between the \snp\ and the insomnia
+symptom. This state of knowledge, denoted $\yIu$ (for \enquote{u}niform, as
+the distribution), is represented in the right panel of
+\fig~\ref{fig:initial_beliefs}.
+\begin{figure}[t!]%{r}{0.4\linewidth} % with wrapfigure
+ \centering\includegraphics[width=0.49\linewidth]{conserv_prior_list.png}%
+ \includegraphics[width=0.49\linewidth]{unif_prior_list.png}
+ \caption{Scatter plots of 100\,000 samples from two alternative states of
+   knowledge. Left: more conservative state of knowledge $\yIc$
+   (\eqn~\ref{eq:conservative_prior} in the Appendix); right: less
+   conservative state of knowledge $\yIu$ (\eqn~\ref{eq:uniform_prior} in
+   the Appendix).}\label{fig:initial_beliefs}
+\end{figure}% scripts2/plot_priors.nb
+
+The mathematical expression of these states of knowledge is discussed in
+the Appendix. This approach is often called \emph{shrinkage} in
+the probability literature, and has been used in a broad variety of
+association studies, from genetics \citep{lange1995,lockwoodetal2001} to
+contextual text prediction
+
+
+The uniform state of knowledge is given by the simple density
+\begin{equation}
+  \label{eq:uniform_prior}
+  \pf(f_{|\ya}, f_{|\yb} \| \yIu)%\;\di f_{|\ya}\,\di f_{|\yb}
+  =1.%\di f_{|\ya}\,\di f_{|\yb}.
+\end{equation}
+The conservative state of knowledge is given by the following integral:
+\begin{subequations}
+  \label{eq:conservative_prior}
+  \begin{gather}
+    \pf(f_{|\ya}, f_{|\yb} \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
+    =
+    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
+    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\;
+    \pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\;
+    \pf(\yua,\yub \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
+    \\
+    \shortintertext{with}
+    \label{eq:beta_product}
+    \pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\defd
+    \dbeta(f_{|\ya} \| \yua,\yub)\;
+    \dbeta(f_{|\yb} \| \yua,\yub),
+    \\
+    \label{eq:p_initial_parameters}
+    \pf(\yua,\yub \| \yIc)\defd \frac{1}{u+v}\,\dgamma(u+v \| 1, 1000)
+  \end{gather}
+  where $\dbeta$ and $\dgamma$ are beta and gamma densities:
+  \begin{gather}
+    \label{eq:def_beta}
+    \dbeta(f \| \yua,\yub) \defd
+    \frac{\Gamma(\yua+\yub)}{\Gamma(\yua)\,\Gamma(\yub)}\;
+    f^{\yua-1}\;(1-f)^{\yub-1},
+    \qquad  \yua,\yub>0,
+    \\
+    \label{eq:def_gamma}
+    \dgamma(\yA \| 1, 1000) \defd
+    \frac{1}{1000}\,\exp(-\yA/1000).
+  \end{gather}
+\end{subequations}
+The integral expression~\eqref{eq:conservative_prior} can be interpreted as
+follows: we consider several independent beliefs about the two frequencies
+-- the product of beta densities, depending on identical shape parameters
+-- and then weigh and mix them together to arrive at a belief that is not
+independent about the two frequencies. This also corresponds to defining a
+so-called hierarchic model \citep{good1980}. The particular shape and scale
+values of the gamma density are chosen so as to concentrate our initial
+belief along the $(f_{|\ya}, f_{|\yb})$ diagonal. The use of beta densities
+in this problem seems to have been first endorsed by G. F. Hardy
+\citey{hardy1889}; Good \citey[\sect~4.1]{good1965}[\sect~4]{good1980}
+motivates the use of their mixtures. We discuss further interpretations of
+this initial state of knowledge in appendix***.
+
+\medskip
+
+We will examine how much our conclusions about the frequencies differ
+between the two initial states of knowledge. Note that the second is indeed
+very conservative. Therefore, if our updated belief conditional on the data
+will show clearly distinct conditional frequencies, it will be because the
+data have given enough evidence to overwhelm this conservative belief.
 
 
 
