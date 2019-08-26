@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-11-11T20:53:34+0200
-%% Last-Updated: 2019-08-26T11:35:15+0200
+%% Last-Updated: 2019-08-26T15:14:27+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -763,13 +763,13 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \label{sec:intro}
 
 The purpose of the present work is to begin an investigation of the
-statistical link between some insomnia symptoms and a specific set of \snp
+relative link strengths between some insomnia symptoms and a specific set of \snp
 s from \hunt\ 3 data. We say \enquote{begin} because we simplify the
 problem as much as possible, for example neglecting important confounding
 variates such as gender, to first develop a method that will be generalized
 to a more realistic analysis later.
 
-Our method is characterized by two main features:
+Our approach is characterized by two main features:
 \begin{enumerate}[wide]
 \item We quantify the probable link between the two variates in a
   continuous way, instead of asking the more traditional null-hypothesis
@@ -793,25 +793,34 @@ Our method is characterized by two main features:
   also Kadane in][pp.~347--348]{coxetal1987}{bergeretal1988,johnson1999}[Box~3
   p.~687]{stephensetal2003}.
 
+\item We make a relative comparison among the links between each \snp\ and
+  a specific insomnia symptom, and try to detect very fine differences. The
+  absolute strengths we find are all small; yet for some of them we can
+  say, with more than 90\% probability, that they are above a strictly
+  non-zero value. And with the same confidence we can say for several pairs
+  of \snp s that they have completely distinct link strengths.
+
 \item We make full use of the principles of the (Bayesian) probability
   calculus. Derivations similar to ours have appeared before in the
   literature of genetic and related
   studies\citep{lange1995,lange1997_r2003,lewingeretal2007,stingoetal2015}[see
-  also refs in][]{stephensetal2009}. These principles allow us in
-  particular to take care of \snp s with very low minor-allele counts: we
-  show (\fig~\ref{fig:relevance_sorted}) that their probable link strength
-  with respect to other \snp s are qualitatively the same whether we adopt
-  a more or less conservative pre-data guess.
+  also refs in][]{stephensetal2009}. These principles give us the resolving
+  power to infer the fine distinctions mentioned in the previous feature.
+  They also allow us to take care of \snp s with very low minor-allele
+  counts: we show (\fig~\ref{fig:relevance_sorted}) that their probable
+  link strength with respect to other \snp s are qualitatively the same
+  whether we adopt a more or less conservative pre-data guess.
 
   We also strive to make our probability calculations intuitively
   understandable.
 \end{enumerate}
 
-Our study, in its simplified setting, indicates a very probable strong link
-between individual \snp s located in \mynote{recheck location} and the
-three main insomnia symptoms. We also apply our method to \emph{pairs} of
-\snp s and each symptom; the results indicate interesting interactions
-between pairs of \snp s \mynote{figure to be added}.
+Our study, in its simplified setting, indicates highly probable differences
+in link strengths among individual \snp s located in \mynote{recheck
+  location} and the three main insomnia symptoms. We also apply our method
+to \emph{pairs} of \snp s and each symptom; the results indicate
+interesting interactions between pairs of \snp s \mynote{figure to be
+  added}.
 
 Section~\ref{sec:data} presents our variates, data, and the way we measure
 the link strength between variates. Section~\ref{sec:methods} summarizes
@@ -867,8 +876,13 @@ choosing any \enquote{significance} threshold a priori. Such threshold can
 always be chosen a posteriori by the readers according to their research
 goals and resources. The plausibility of the possible differences is then
 expressed by the probability distribution $\pf(\abs{\df})$, such as that
-shown in \fig~\ref{fig:example_difference_distributions}. This distribution
-is conditional on: \begin{enumerate*}[label=(\alph*)]
+shown in \fig~\ref{fig:example_difference_distributions}. Note in that plot
+that all probable frequency differences are less than $0.08$, but at the
+same time we are quite confident that they are non-zero, with a most
+probable value around $0.025$.
+
+The distribution $\pf(\abs{\df})$ is conditional
+on: \begin{enumerate*}[label=(\alph*)]
 \item the data we've collected, \item our pre-data information or guesses
   about the frequencies of the hypothetical population.
 \end{enumerate*}
@@ -951,6 +965,13 @@ The first is given by a sampling formula, calculated by counting. The
 second can be modelled in several reasonable ways, but our data size is
 large enough to make them all lead to very similar conclusions.
 
+Once we have obtained the joint distribution~\eqref{eq:goal_joint_prob}, we
+can calculate the probability distribution for the absolute frequency
+difference, $\pf(\abs{\df} \| \ptext{data}, \ptext{pre-data info})$, by
+standard methods, and from the latter we can compute our measure of link
+strength~\eqref{eq:significance_measure}.
+
+
 \subsection{Probability for the data given the frequencies}
 \label{sec:p_data_from_freqs}
 
@@ -996,20 +1017,6 @@ distribution by considering several sensible alternative states of
 knowledge and checking the difference of the results they lead to. In our
 case we consider two alternatives.
 
-The first, more conservative, is that we do \emph{not} expect the two
-conditional frequencies $f_{|\ya}$, $f_{|\yb}$ to be very different. This
-means implies some degree of correlation between them. It also means that
-we don't expect, a priori, any strong link between the \snp\ and the
-insomnia symptom under analysis. This conservative state of knowledge,
-which we denote $\yIc$, is represented as a scatter plot of sampled
-frequency pairs in the left panel of \fig~\ref{fig:initial_beliefs}.
-
-The second, less conservative, is that we do not expect any correlation
-between the two conditional frequencies. This means that we don't exclude
-the possibility of a strong link between the \snp\ and the insomnia
-symptom. This state of knowledge, denoted $\yIu$ (for \enquote{u}niform, as
-the distribution), is represented in the right panel of
-\fig~\ref{fig:initial_beliefs}.
 \begin{figure}[t!]%{r}{0.4\linewidth} % with wrapfigure
  \centering\includegraphics[width=0.49\linewidth]{conserv_prior_list.png}%
  \includegraphics[width=0.49\linewidth]{unif_prior_list.png}
@@ -1019,73 +1026,65 @@ the distribution), is represented in the right panel of
    conservative state of knowledge $\yIu$ (\eqn~\ref{eq:uniform_prior} in
    the Appendix).}\label{fig:initial_beliefs}
 \end{figure}% scripts2/plot_priors.nb
+The first, more conservative, is that we expect the two conditional
+frequencies $f_{|\ya}$, $f_{|\yb}$ to be very similar. This implies some
+degree of correlation between them. It also means that we don't expect, a
+priori, any strong link between the \snp\ and the insomnia symptom under
+analysis. This conservative state of knowledge, which we denote $\yIc$, is
+represented as a scatter plot of sampled frequency pairs in the left panel
+of \fig~\ref{fig:initial_beliefs}: we see that it's highly probable that
+$f_{|\ya}$ and $f_{|\yb}$ have a similar value (high probability on the
+diagonal), although we are completely uncertain about what the value should
+be (almost uniform probability within the diagonal). Note that this state
+of knowledge is quite conservative; if our post-data joint distribution
+nevertheless shows very distinct conditional frequencies, it means that the
+data have such strong evidence for this difference as to overwhelm this
+conservative state of knowledge.
 
-The mathematical expression of these states of knowledge is discussed in
-the Appendix. This approach is often called \emph{shrinkage} in
-the probability literature, and has been used in a broad variety of
-association studies, from genetics \citep{lange1995,lockwoodetal2001} to
-contextual text prediction
+The second, less conservative, is that we do not expect any correlation
+between the two conditional frequencies. This means that we don't exclude
+the possibility of a strong link between the \snp\ and the insomnia
+symptom. This state of knowledge, denoted $\yIu$ (for \enquote{u}niform, as
+the distribution), is represented in the right panel of
+\fig~\ref{fig:initial_beliefs}: we see that all possible pairs of values
+are equally probable.
 
+The mathematical expression of these two states of knowledge is discussed in
+the Appendix. Here we mention that the more conservative state of knowledge
+$\yIc$ can also be interpreted as so-called \emph{hierarchic}
+model\citep[for example][]{good1980}, and that it corresponds to the
+technique of \emph{shrinkage} in the probability literature, used in a
+variety of association studies, from
+genetics\citep{lange1995,lockwoodetal2001} to contextual text
+prediction\citep{mackayetal1995} and even baseball\citep{jiangetal2010}.
 
-The uniform state of knowledge is given by the simple density
-\begin{equation}
-  \label{eq:uniform_prior}
-  \pf(f_{|\ya}, f_{|\yb} \| \yIu)%\;\di f_{|\ya}\,\di f_{|\yb}
-  =1.%\di f_{|\ya}\,\di f_{|\yb}.
-\end{equation}
-The conservative state of knowledge is given by the following integral:
-\begin{subequations}
-  \label{eq:conservative_prior}
-  \begin{gather}
-    \pf(f_{|\ya}, f_{|\yb} \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
-    =
-    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
-    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\;
-    \pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\;
-    \pf(\yua,\yub \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
-    \\
-    \shortintertext{with}
-    \label{eq:beta_product}
-    \pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\defd
-    \dbeta(f_{|\ya} \| \yua,\yub)\;
-    \dbeta(f_{|\yb} \| \yua,\yub),
-    \\
-    \label{eq:p_initial_parameters}
-    \pf(\yua,\yub \| \yIc)\defd \frac{1}{u+v}\,\dgamma(u+v \| 1, 1000)
-  \end{gather}
-  where $\dbeta$ and $\dgamma$ are beta and gamma densities:
-  \begin{gather}
-    \label{eq:def_beta}
-    \dbeta(f \| \yua,\yub) \defd
-    \frac{\Gamma(\yua+\yub)}{\Gamma(\yua)\,\Gamma(\yub)}\;
-    f^{\yua-1}\;(1-f)^{\yub-1},
-    \qquad  \yua,\yub>0,
-    \\
-    \label{eq:def_gamma}
-    \dgamma(\yA \| 1, 1000) \defd
-    \frac{1}{1000}\,\exp(-\yA/1000).
-  \end{gather}
-\end{subequations}
-The integral expression~\eqref{eq:conservative_prior} can be interpreted as
-follows: we consider several independent beliefs about the two frequencies
--- the product of beta densities, depending on identical shape parameters
--- and then weigh and mix them together to arrive at a belief that is not
-independent about the two frequencies. This also corresponds to defining a
-so-called hierarchic model \citep{good1980}. The particular shape and scale
-values of the gamma density are chosen so as to concentrate our initial
-belief along the $(f_{|\ya}, f_{|\yb})$ diagonal. The use of beta densities
-in this problem seems to have been first endorsed by G. F. Hardy
-\citey{hardy1889}; Good \citey[\sect~4.1]{good1965}[\sect~4]{good1980}
-motivates the use of their mixtures. We discuss further interpretations of
-this initial state of knowledge in appendix***.
+\subsection{Post-data probability distribution for the frequencies}
+\label{sec:p_final}
 
-\medskip
+We now have the probability~\eqref{eq:sampling_belief} for the data, and
+two pre-data probability distributions, \fig~\ref{fig:initial_beliefs}, for
+the frequencies. We can plug them in Bayes's
+theorem~\eqref{eq:intuitive_Bayes} to obtain our post-data probability
+distribution for the pairs of conditional frequencies. As an example, the
+results for onset insomnia $\ysO$ and the \snp\ \texttt{rs875994} are shown
+in \fig~\ref{fig:final_beliefs}. The left panel shows our inference for the
+more conservative pre-data state of knowledge $\yIc$, and the right panel
+for the less conservative one $\yIu$.
+\begin{figure}[t!]%{r}{0.4\linewidth} % with wrapfigure
+ \centering\includegraphics[width=0.49\linewidth]{cons_post_diag_list.png}%
+ \includegraphics[width=0.49\linewidth]{unif_post_diag_list.png}
+ \caption{Scatter plots of 10\,000 samples from the post-data probability
+   distribution for the frequencies of onset insomnia $\ysO$ conditional on
+   the alleles of \snp\ \texttt{rs875994}%_C
+   (first \snp\ in \fig~\ref{fig:relevance_sorted}), relative to the two
+   alternative states of knowledge. Left: more conservative state of
+   knowledge $\yIc$; right: less conservative state of knowledge
+   $\yIu$.}\label{fig:final_beliefs}
+\end{figure}
+% scripts2/plot_posteriors.nb
+% scripts2/example_joint_posterior.R
+% scripts2/conditional_freqs_2.R
 
-We will examine how much our conclusions about the frequencies differ
-between the two initial states of knowledge. Note that the second is indeed
-very conservative. Therefore, if our updated belief conditional on the data
-will show clearly distinct conditional frequencies, it will be because the
-data have given enough evidence to overwhelm this conservative belief.
 
 
 
@@ -1703,6 +1702,62 @@ from the formulae~\eqref{eq:stats_final_unif},
 %\renewcommand*{\appendixname}{Appendix}
 %\appendixpage
 \appendix
+
+
+The uniform state of knowledge is given by the simple density
+\begin{equation}
+  \label{eq:uniform_prior}
+  \pf(f_{|\ya}, f_{|\yb} \| \yIu)%\;\di f_{|\ya}\,\di f_{|\yb}
+  =1.%\di f_{|\ya}\,\di f_{|\yb}.
+\end{equation}
+The conservative state of knowledge is given by the following integral:
+\begin{subequations}
+  \label{eq:conservative_prior}
+  \begin{gather}
+    \pf(f_{|\ya}, f_{|\yb} \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
+    =
+    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
+    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\;
+    \pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\;
+    \pf(\yua,\yub \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
+    \\
+    \shortintertext{with}
+    \label{eq:beta_product}
+    \pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\defd
+    \dbeta(f_{|\ya} \| \yua,\yub)\;
+    \dbeta(f_{|\yb} \| \yua,\yub),
+    \\
+    \label{eq:p_initial_parameters}
+    \pf(\yua,\yub \| \yIc)\defd \frac{1}{u+v}\,\dgamma(u+v \| 1, 1000)
+  \end{gather}
+  where $\dbeta$ and $\dgamma$ are beta and gamma densities:
+  \begin{gather}
+    \label{eq:def_beta}
+    \dbeta(f \| \yua,\yub) \defd
+    \frac{\Gamma(\yua+\yub)}{\Gamma(\yua)\,\Gamma(\yub)}\;
+    f^{\yua-1}\;(1-f)^{\yub-1},
+    \qquad  \yua,\yub>0,
+    \\
+    \label{eq:def_gamma}
+    \dgamma(\yA \| 1, 1000) \defd
+    \frac{1}{1000}\,\exp(-\yA/1000).
+  \end{gather}
+\end{subequations}
+The integral expression~\eqref{eq:conservative_prior} can be interpreted as
+follows: we consider several independent beliefs about the two frequencies
+-- the product of beta densities, depending on identical shape parameters
+-- and then weigh and mix them together to arrive at a belief that is not
+independent about the two frequencies. This also corresponds to defining a
+so-called hierarchic model \citep{good1980}. The particular shape and scale
+values of the gamma density are chosen so as to concentrate our initial
+belief along the $(f_{|\ya}, f_{|\yb})$ diagonal. The use of beta densities
+in this problem seems to have been first endorsed by G. F. Hardy
+\citey{hardy1889}; Good \citey[\sect~4.1]{good1965}[\sect~4]{good1980}
+motivates the use of their mixtures. We discuss further interpretations of
+this initial state of knowledge in appendix***.
+
+
+
 
 
 \section{Generalizations}
