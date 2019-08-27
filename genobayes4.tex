@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-11-11T20:53:34+0200
-%% Last-Updated: 2019-08-27T10:34:19+0200
+%% Last-Updated: 2019-08-27T11:33:18+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -727,9 +727,13 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \setlength{\absrightindent}{0pt}
 \setlength{\abstitleskip}{-\absparindent}
 \begin{abstract}\labelsep 0pt%
-  \noindent ***
-\\\noindent\emph{\footnotesize Note: Dear Reader
-    \amp\ Peer, this manuscript is being peer-reviewed by you. Thank you.}
+  \noindent \mynote{\color{myred}Provisional abstract:} A simplified study
+  of the relative link strengths between a specific set of \snp s and three
+  main insomnia symptoms, based on \hunt\ data, is presented. The study
+  uses a fully Bayesian approach. A continuum range of strengths is found,
+  but about five or six \snp s stand out relative to the others.
+  \\\noindent\emph{\footnotesize Note: Dear Reader \amp\ Peer, this
+    manuscript is being peer-reviewed by you. Thank you.}
 % \par%\\[\jot]
 % \noindent
 % {\footnotesize PACS: ***}\qquad%
@@ -763,13 +767,13 @@ totalheight=\heightof{@}]{atblack.png}}\makeatother
 \label{sec:intro}
 
 The purpose of the present work is to begin an investigation of the
-relative link strengths between some insomnia symptoms and a specific set of \snp
-s from \hunt\ 3 data. We say \enquote{begin} because we simplify the
-problem as much as possible, for example neglecting important confounding
-variates such as gender, to first develop a method that will be generalized
-to a more realistic analysis later.
+relative link strengths between some insomnia symptoms and a specific set
+of \snp s from \hunt\ data\citep{krokstadetal2013}. We say \enquote{begin}
+because we simplify the problem as much as possible, for example neglecting
+important confounding variates such as gender. We first want to develop a
+method that will be generalized to a more realistic analysis later.
 
-Our approach is characterized by two main features:
+Our approach is characterized by three main features:
 \begin{enumerate}[wide]
 \item We quantify the probable link between the two variates in a
   continuous way, instead of asking the more traditional null-hypothesis
@@ -823,7 +827,7 @@ interesting interactions between pairs of \snp s \mynote{figure to be
   added}.
 
 Section~\ref{sec:data} presents our variates, data, and the way we measure
-the link strength between variates. Section~\ref{sec:methods} summarizes
+the link strength between variates. Section~\ref{sec:method} summarizes
 our methods. Section~\ref{sec:results} presents and discusses the results.
 
 
@@ -1044,8 +1048,8 @@ conservative state of knowledge.
 The second, less conservative, is that we do not expect any correlation
 between the two conditional frequencies. This means that we don't exclude
 the possibility of a strong link between the \snp\ and the insomnia
-symptom. This state of knowledge, denoted $\yIu$ (for \enquote{u}niform, as
-the distribution), is represented in the right panel of
+symptom. This state of knowledge, which we call \enquote{uniform} (as its
+distribution) and denote by $\yIu$ , is represented in the right panel of
 \fig~\ref{fig:initial_beliefs}: we see that all possible pairs of values
 are equally probable.
 
@@ -1098,7 +1102,7 @@ pairs. For each pair we show the result for the two pre-data states of
 knowledge, joined by a line.
 
 \section{Results}
-\label{sec:not-results}
+\label{sec:results}
 
 \mynote{discussion of the possible biological connection between the topmost 5--6
   \snp s of \fig~\ref{fig:relevance_sorted} and insomnia}
@@ -1115,8 +1119,285 @@ knowledge, joined by a line.
    symptoms.}\label{fig:relevance_sorted}
 \end{figure}% scripts2/plot_results.nb
 
+\newpage
+\renewcommand*{\appendixpagename}{Appendix}
+\renewcommand*{\appendixname}{Appendix}
+%\appendixpage
+\appendix
+\setcounter{section}{1}%\renewcommand*{\thesection}{\Alph{section}}
+
+\subsection{Pre-data plausibility distributions for the frequencies}
+\label{sec:p_initial}
+
+The pre-data probability density shown in the right panel of
+\fig~\ref{fig:initial_beliefs} is uniform in the two conditional
+frequencies (that is, with respect to the base density
+$\di f_{|\ya}\,\di f_{|\yb}$):
+\begin{equation}
+  \label{eq:uniform_prior}
+  \pf(f_{|\ya}, f_{|\yb} \| \yIu)%\;\di f_{|\ya}\,\di f_{|\yb}
+  =1.%\di f_{|\ya}\,\di f_{|\yb}.
+\end{equation}
+
+The more conservative density in the left panel of the same figure has this
+mathematical expression:
+\begin{subequations}
+  \label{eq:conservative_prior}
+  \begin{gather}
+    \pf(f_{|\ya}, f_{|\yb} \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
+    =
+    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
+    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\;
+    \pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\;
+    \pf(\yua,\yub \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
+    \\
+    \shortintertext{with}
+    \label{eq:beta_product}
+    \pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\defd
+    \dbeta(f_{|\ya} \| \yua,\yub)\;
+    \dbeta(f_{|\yb} \| \yua,\yub),
+    \\
+    \label{eq:p_initial_parameters}
+    \pf(\yua,\yub \| \yIc)\defd \frac{1}{u+v}\,\dgamma(u+v \| 1, 1000)
+  \end{gather}
+  where $\dbeta$ and $\dgamma$ are beta and gamma densities:
+  \begin{gather}
+    \label{eq:def_beta}
+    \dbeta(f \| \yua,\yub) \defd
+    \frac{\Gamma(\yua+\yub)}{\Gamma(\yua)\,\Gamma(\yub)}\;
+    f^{\yua-1}\;(1-f)^{\yub-1},
+    \qquad  \yua,\yub>0,
+    \\
+    \label{eq:def_gamma}
+    \dgamma(\yA \| 1, 1000) \defd
+    \frac{1}{1000}\,\exp(-\yA/1000).
+  \end{gather}
+\end{subequations}
+The integral expression above can be interpreted as follows: we consider
+several joint probability distributions for the two frequencies; each
+distribution being the product of two beta densities with identical shape
+parameters. All these distributions are weighted and mixed together; their
+mixture expresses a belief that is \emph{not} independent in the two
+frequencies. This is a simple example of a hierarchic model\citep[for
+example][]{good1980}.
+
+The weights of the mixture are given by a gamma density. The use of beta
+densities in this problem seems to have been first endorsed by G. F.
+Hardy\citep{hardy1889}; Good\citep[\sect~4.1]{good1965}[\sect~4]{good1980}
+motivates the use of their mixtures. The specific shape and scale values of
+the gamma density are so chosen as to concentrate our initial belief along
+the $(f_{|\ya}, f_{|\yb})$ diagonal. 
+
+\subsection{Final plausibilities}
+\label{sec:p_final}
+
+In the case of the uniform pre-data state of knowledge $\yIu$,
+multiplication of the probability for the
+data~\eqref{eq:sampling_belief_combined} and the pre-data
+density~\eqref{eq:uniform_prior} leads to a density for the frequencies
+proportional to the product of two beta densities. Our final density in
+this case is
+\begin{equation}
+  \label{eq:final_from_uniform}
+  \pf(f_{|\ya}, f_{|\yb} \| \yD, \yIu)
+  =
+\prod_{x=\ya,\yb}
+\dbeta[f_{|x} \| N_{x}\,F_{|x}+1, N_{x}\,(1-F_{|x})+1]
+% \frac{\Gamma(N_{x}\,F_{|x}+1)\,\Gamma[N_{x}\,(1-F_{|x})+1]}{
+%   \Gamma(N_{x}+2)}\;
+% {f_{|x}}^{N_{x}\,F_{|x}} \;  {(1-f_{|x})}^{N_{x}\,(1-F_{|x})}.
+\end{equation}
+This is the product of two independent densities for the frequencies.
+
+In the case of the conservative pre-data state of knowledge $\yIc$,
+multiplication of~\eqref{eq:sampling_belief_combined} and the beta
+densities within the integral of \eqn~\eqref{eq:conservative_prior} leads
+to two new unnormalized beta densities. Grouping the normalization constant
+with the density for the parameters~\eqref{eq:p_initial_parameters} yields
+a final density in integral form:
+\begin{subequations}
+  \label{eq:final_from_conservative}
+  \begin{gather}
+  \begin{multlined}[t][\linewidth]
+    \pf(f_{|\ya}, f_{|\yb} \| \yD, \yIc)
+    ={}\\[\jot]
+    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
+    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\,
+    \prod_{x=\ya,\yb}\Bigl\{ 
+    \dbeta\bigl[f_{|x} \| N_{x}\,F_{|x} +\yua, N_{x}\,(1-F_{|x})+\yub\bigr]
+    \Bigr\}\; \pf(\yua,\yub \| \yD,\yIc)
+  \end{multlined}\\
+  \shortintertext{with}
+      \label{eq:posterior_parameters}
+  \begin{multlined}[t][\linewidth]
+    \pf(\yua,\yub \| \yD,\yIc) \propto{}\\[\jot]
+    \prod_{x=\ya,\yb}\left\{
+      \frac{\Gamma(N_{x}\,F_{|x}+\yua)\;\Gamma[N_{x}\,(1-F_{|x})+\yub]}
+      {\Gamma(N_{x}+\yua+\yub)}\,
+      \frac{\Gamma(\yua+\yub)}
+      {\Gamma(\yua)\;\Gamma(\yub)} \right\}
+    \,\frac{\dgamma(\yua+\yub \| 1, 1000)}{\yua+\yub}.
+  \end{multlined}
+\end{gather}
+\end{subequations}
+This density also has a hierarchic form. The integral doesn't have an
+closed form, but the final density for the frequencies can be sampled by
+generating samples of the shape parameters $\yua$, $\yub$
+from~\eqref{eq:posterior_parameters} via Markov-Chain Monte Carlo methods,
+and for each generating samples of the frequencies from the beta densities
+with those shape parameters (alternatively we can write an averaged sum of
+beta distributions having the sampled shape parameters). For this study we
+used an automated-factor slice sampler\citep{hall2014}.
+
+\subsection{Final calculation of the link strength}
+\label{sec:calc_link}
+
+The final densities~\eqref{eq:final_from_uniform}
+and~\eqref{eq:final_from_conservative} above can be well approximated by
+normal densities. We only need to determine their means and covariance
+matrices. These can be easily calculated using the first and second raw
+moments of a beta distribution:\mynote{refs for this}
+\begin{equation}
+  \label{eq:moments_beta}
+  \E(f \| \yua,\yub) = \frac{\yua}{\yua+\yub},
+  \qquad
+  \E(f^2 \| \yua,\yub) = \frac{\yua\,(\yua+1)}{(\yua+\yub)\,(\yua+\yub+1)}.  
+\end{equation}
 
 
+For the uniform initial state of knowledge~\eqref{eq:final_from_uniform}
+the means, variances, and covariance are readily calculated:
+\begin{subequations}
+  \label{eq:stats_final_unif}
+  \begin{align}
+    \label{eq:mean_final_unif}
+    &\E(f_{|x}\| \yD, \yIu) =
+    \frac{N_{x}\,F_{|x}+1}{N_{x}+2},
+    \frac{N_{\yb}\,F_{|\yb}+1}{N_{\yb}+2}
+    \qquad x=\ya,\yb,
+    \\
+    \label{eq:var_final_unif}
+    &\var(f_{|x} \| \yD, \yIu) =
+    \frac{(N_{x}F_{|x}+1)\,[N_{x}\,(1-F_{|x})+1)}{(N_{x}+2)^2\,(N_{x}+3)}
+    \qquad x=\ya,\yb,
+    \\
+    \label{eq:cov_final_unif}
+    &\cov(f_{|\ya}, f_{|\yb} \| \yD, \yIu) = 0.
+    % \begin{pmatrix}
+    %   \frac{(N_{\ya}F_{|\ya}+1)\,[N_{\ya}\,(1-F_{|\ya})+1)}{(N_{\ya}+2)^2\,(N_{\ya}+3)}
+    %   &0\\0&
+    %   \frac{(N_{\yb}F_{|\yb}+1)\,[N_{\yb}\,(1-F_{|\yb})+1)}{(N_{\yb}+2)^2\,(N_{\yb}+3)}
+    % \end{pmatrix}.
+  \end{align}
+\end{subequations}
+The covariance vanishes owing to the product form of the final density.
+
+For the conservative initial state of
+knowledge~\eqref{eq:final_from_conservative} let us first introduce the
+notation
+\begin{equation}
+  \label{eq:notation_avg_parameters}
+  \uav{X(\yua,\yub)} \defd
+      \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
+    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\,
+X(\yua,\yub) \, \pf(\yua,\yub \| \yD,\yIc);
+\end{equation}
+such an average can approximately be computed by averaging from a Monte
+Carlo sample. The means, variances, and covariance of the final density are
+\begin{subequations}
+  \label{eq:stats_final_conserv}
+  \begin{align}
+    \label{eq:mean_final_conserv}
+    &\E(f_{|x} \| \yD, \yIc) =
+                                 \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}
+                                 \qquad x=\ya,\yb,
+\\
+  \label{eq:var_final_conserv}
+    &\!\begin{multlined}[\linewidth]
+\var(f_{|x} \| \yD, \yIc) =
+  \uav{\frac{(N_{x}F_{|x}+\yua)\,(N_{x}F_{|x}+\yua+1)}{(N_{x}+\yua+\yub)\,(N_{x}+\yua+\yub+1)}}
+  -
+  \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}^2
+  \\ x=\ya,\yb  
+\end{multlined}
+    \\
+    \label{eq:cov_final_conserv}
+&    \cov(f_{|\ya}, f_{|\yb} \| \yD, \yIc) =
+    \uav{\prod_{x=\ya,\yb}\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}
+    - \prod_{x=\ya,\yb}
+    \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}.
+% &\!\begin{multlined}[\linewidth]
+%     \cov(f_{|\ya}, f_{|\yb} \| \yD, \yIu) ={}\\[\jot]
+%     \uav{\frac{N_{\ya}\,F_{|\ya}+\yua}{N_{\ya}+\yua+\yub}\,
+%       \frac{N_{\yb}\,F_{|\yb}+\yua}{N_{\yb}+\yua+\yub}}
+%     -
+%     \uav{\frac{N_{\ya}\,F_{|\ya}+\yua}{N_{\ya}+\yua+\yub}}\,
+%     \uav{\frac{N_{\yb}\,F_{|\yb}+\yua}{N_{\yb}+\yua+\yub}}.
+%   \end{multlined}
+  \end{align}
+\end{subequations}
+The covariance does not vanish owing to our initial correlated beliefs
+about the two conditional frequencies.
+
+It is worth remarking that for our data sample the typical average values
+of the shape parameters $\uav{\yua}$, $\uav{\yub}$ are comparable to the
+sample size $N_{\ya}+N_{\yb}$. Trying an expansion of
+formulae~\eqref{eq:stats_final_conserv} around the uniform
+formulae~\eqref{eq:stats_final_unif} in powers of $\uav{\yua}$,
+$\uav{\yub}$ is therefore prone to produce bad approximations.
+
+
+
+
+%%\setlength{\intextsep}{0.5ex}% with wrapfigure
+%\begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
+%  \centering\includegraphics[trim={12ex 0 18ex 0},clip,width=\linewidth]{maxent_saddle.png}\\
+%\caption{caption}\label{fig:not-comparison_a5}
+%\end{figure}% exp_family_maxent.nb
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Acknowledgements
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\iffalse
+\begin{acknowledgements}
+  PGLPM thanks Mari \amp\ Miri for continuous encouragement and affection;
+  Buster Keaton and Saitama for filling life with awe and inspiration; and
+   the developers and maintainers of \LaTeX, Emacs, AUC\TeX, Open Science
+  Framework, Python, Inkscape, Sci-Hub for making a free and impartial
+  scientific exchange possible.%
+%\rotatebox{15}{P}\rotatebox{5}{I}\rotatebox{-10}{P}\rotatebox{10}{\reflectbox{P}}\rotatebox{-5}{O}.
+%\sourceatright{\autanet}
+%\mbox{}\hfill\autanet
+\end{acknowledgements}
+%\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Appendices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\clearpage
+% %\renewcommand*{\appendixpagename}{Appendix}
+% %\renewcommand*{\appendixname}{Appendix}
+% %\appendixpage
+% \appendix
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\defbibnote{prenote}{{\footnotesize (\enquote{de $X$} is listed under D,
+    \enquote{van $X$} under V, and so on, regardless of national
+    conventions.)\par}}
+% \defbibnote{postnote}{\par\medskip\noindent{\footnotesize% Note:
+%     \arxivp \mparcp \philscip \biorxivp}}
+
+\printbibliography[prenote=prenote%,postnote=postnote
+]
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Cut text (won't be compiled)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \clearpage
 \hrule
 old text below
@@ -1394,248 +1675,6 @@ the data is therefore
 \end{equation}
 
 
-\subsection{Initial plausibility for the frequencies}
-\label{sec:not-p_initial}
-
-We consider two different initial assumptions about the conditional
-frequencies. Their densities are represented in
-\fig~\ref{fig:initial_beliefs}. The first (left plot) assigns equal
-plausibility to equal areas in the $(f_{|\ya},f_{|\yb})$-coordinate plane;
-we call this the \enquote{uniform} state of knowledge and denote it $\yIu$.
-The second (right plot) expresses a strong belief that the two frequencies
-should be equal, as clear from the steep density increase towards the diagonal of
-the $(f_{|\ya},f_{|\yb})$-coordinate plane; we call this a
-\enquote{conservative} state of knowledge and denote it $\yIc$.
-\begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
- \centering\includegraphics[width=0.49\linewidth]{unif_prior_list.png}%
-\includegraphics[width=0.49\linewidth]{conserv_prior_list.png}
-\caption{Sampling plots of our two initial states of knowledge, 100\,000
-  samples each. Left: uniform belief~\eqref{eq:uniform_prior}; right:
-  conservative belief~\eqref{eq:conservative_prior}.}\label{fig:not-initial_beliefs}
-\end{figure}% scripts2/plot_priors.nb
-
-
-The uniform state of knowledge is given by the simple density
-\begin{equation}
-  \label{eq:not-uniform_prior}
-  \pf(f_{|\ya}, f_{|\yb} \| \yIu)%\;\di f_{|\ya}\,\di f_{|\yb}
-  =1.%\di f_{|\ya}\,\di f_{|\yb}.
-\end{equation}
-The conservative state of knowledge is given by the following integral:
-\begin{subequations}
-  \label{eq:not-conservative_prior}
-  \begin{gather}
-    \pf(f_{|\ya}, f_{|\yb} \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
-    =
-    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
-    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\;
-    \pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\;
-    \pf(\yua,\yub \| \yIc)%\;\di f_{|\ya}\,\di f_{|\yb}
-    \\
-    \shortintertext{with}
-    \label{eq:not-beta_product}
-    \pf(f_{|\ya}, f_{|\yb} \| \yua,\yub,\yIc)\defd
-    \dbeta(f_{|\ya} \| \yua,\yub)\;
-    \dbeta(f_{|\yb} \| \yua,\yub),
-    \\
-    \label{eq:not-p_initial_parameters}
-    \pf(\yua,\yub \| \yIc)\defd \frac{1}{u+v}\,\dgamma(u+v \| 1, 1000)
-  \end{gather}
-  where $\dbeta$ and $\dgamma$ are beta and gamma densities:
-  \begin{gather}
-    \label{eq:not-def_beta}
-    \dbeta(f \| \yua,\yub) \defd
-    \frac{\Gamma(\yua+\yub)}{\Gamma(\yua)\,\Gamma(\yub)}\;
-    f^{\yua-1}\;(1-f)^{\yub-1},
-    \qquad  \yua,\yub>0,
-    \\
-    \label{eq:not-def_gamma}
-    \dgamma(\yA \| 1, 1000) \defd
-    \frac{1}{1000}\,\exp(-\yA/1000).
-  \end{gather}
-\end{subequations}
-The integral expression~\eqref{eq:conservative_prior} can be interpreted as
-follows: we consider several independent beliefs about the two frequencies
--- the product of beta densities, depending on identical shape parameters
--- and then weigh and mix them together to arrive at a belief that is not
-independent about the two frequencies. This also corresponds to defining a
-so-called hierarchic model \citep{good1980}. The particular shape and scale
-values of the gamma density are chosen so as to concentrate our initial
-belief along the $(f_{|\ya}, f_{|\yb})$ diagonal. The use of beta densities
-in this problem seems to have been first endorsed by G. F. Hardy
-\citey{hardy1889}; Good \citey[\sect~4.1]{good1965}[\sect~4]{good1980}
-motivates the use of their mixtures. We discuss further interpretations of
-this initial state of knowledge in appendix***.
-
-\medskip
-
-We will examine how much our conclusions about the frequencies differ
-between the two initial states of knowledge. Note that the second is indeed
-very conservative. Therefore, if our updated belief conditional on the data
-will show clearly distinct conditional frequencies, it will be because the
-data have given enough evidence to overwhelm this conservative belief.
-
-
-\subsection{Final plausibilities}
-\label{sec:not-p_final}
-
-Now we have the plausibility~\eqref{eq:sampling_belief_combined} for the
-sampled data, and two choices of initial
-plausibilities~\eqref{eq:uniform_prior}, \eqref{eq:conservative_prior}, and
-we can multiply and renormalize these in Bayes's
-theorem~\eqref{eq:intuitive_Bayes} to obtain our final \dobs.
-
-In the case of the uniform initial state of knowledge, multiplication of
-the sampling formula~\eqref{eq:sampling_belief_combined} and initial
-\dob~\eqref{eq:uniform_prior} leads to a density for the frequencies
-proportional to the product of two beta densities. Our final \dob\ in this
-case is
-\begin{equation}
-  \label{eq:not-final_from_uniform}
-  \pf(f_{|\ya}, f_{|\yb} \| \yD, \yIu)
-  =
-\prod_{x=\ya,\yb}
-\dbeta[f_{|x} \| N_{x}\,F_{|x}+1, N_{x}\,(1-F_{|x})+1]
-% \frac{\Gamma(N_{x}\,F_{|x}+1)\,\Gamma[N_{x}\,(1-F_{|x})+1]}{
-%   \Gamma(N_{x}+2)}\;
-% {f_{|x}}^{N_{x}\,F_{|x}} \;  {(1-f_{|x})}^{N_{x}\,(1-F_{|x})}.
-\end{equation}
-This is the product of two independent beliefs about the frequencies.
-
-In the case of the conservative initial state of knowledge, multiplication
-of~\eqref{eq:sampling_belief_combined} and the beta densities within the
-integral of \eqn~\eqref{eq:conservative_prior} leads to two new
-unnormalized beta densities. Grouping the ensuing normalization constant
-with the density for the parameters~\eqref{eq:p_initial_parameters} yields
-a final \dob\ in integral form:
-\begin{subequations}
-  \label{eq:not-final_from_conservative}
-  \begin{gather}
-  \begin{multlined}[t][\linewidth]
-    \pf(f_{|\ya}, f_{|\yb} \| \yD, \yIc)
-    ={}\\[\jot]
-    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
-    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\,
-    \prod_{x=\ya,\yb}\bigl\{ 
-    \dbeta\bigl[f_{|x} \| N_{x}\,F_{|x} +\yua, N_{x}\,(1-F_{|x})+\yub\bigr]
-    \bigr\}\, \pf(\yua,\yub \| \yD,\yIc)
-  \end{multlined}\\
-  \shortintertext{with}
-      \label{eq:not-posterior_parameters}
-  \begin{multlined}[t][\linewidth]
-    \pf(\yua,\yub \| \yD,\yIc) \propto{}\\[\jot]
-    \prod_{x=\ya,\yb}\left\{
-      \frac{\Gamma(N_{x}\,F_{|x}+\yua)\;\Gamma[N_{x}\,(1-F_{|x})+\yub]}
-      {\Gamma(N_{x}+\yua+\yub)}\,
-      \frac{\Gamma(\yua+\yub)}
-      {\Gamma(\yua)\;\Gamma(\yub)} \right\}
-    \,\frac{\dgamma(\yua+\yub \| 1, 1000)}{\yua+\yub}.
-  \end{multlined}
-\end{gather}
-\end{subequations}
-This is a hierarchic model. The integral doesn't have an analytic form, but
-the final density for the frequencies can be sampled by generating samples
-of the shape parameters $\yua$, $\yub$ from~\eqref{eq:posterior_parameters}
-via Markov-Chain Monte Carlo methods, and for each generating samples of
-the frequencies from the beta densities with those shape parameters
-(alternatively we can write an averaged sum of beta distributions having the
-sampled shape parameters).
-
-\medskip
-
-Thanks to the large sample sizes $N_{\ya}$, $N_{\yb}$ the final densities
-above can be well approximated by normal densities. We only need to
-determine their means and covariance matrices. These can be easily
-calculated using the first and second raw moments of a beta
-distribution:\mynote{refs for this}
-\begin{equation}
-  \label{eq:not-moments_beta}
-  \E(f \| \yua,\yub) = \frac{\yua}{\yua+\yub},
-  \qquad
-  \E(f^2 \| \yua,\yub) = \frac{\yua\,(\yua+1)}{(\yua+\yub)\,(\yua+\yub+1)}.  
-\end{equation}
-
-
-For the uniform initial state of knowledge~\eqref{eq:final_from_uniform}
-the means, variances, and covariance are readily calculated:
-\begin{subequations}
-  \label{eq:not-stats_final_unif}
-  \begin{align}
-    \label{eq:not-mean_final_unif}
-    &\E(f_{|x}\| \yD, \yIu) =
-    \frac{N_{x}\,F_{|x}+1}{N_{x}+2},
-    \frac{N_{\yb}\,F_{|\yb}+1}{N_{\yb}+2}
-    \qquad x=\ya,\yb,
-    \\
-    \label{eq:not-var_final_unif}
-    &\var(f_{|x} \| \yD, \yIu) =
-    \frac{(N_{x}F_{|x}+1)\,[N_{x}\,(1-F_{|x})+1)}{(N_{x}+2)^2\,(N_{x}+3)}
-    \qquad x=\ya,\yb,
-    \\
-    \label{eq:not-cov_final_unif}
-    &\cov(f_{|\ya}, f_{|\yb} \| \yD, \yIu) = 0.
-    % \begin{pmatrix}
-    %   \frac{(N_{\ya}F_{|\ya}+1)\,[N_{\ya}\,(1-F_{|\ya})+1)}{(N_{\ya}+2)^2\,(N_{\ya}+3)}
-    %   &0\\0&
-    %   \frac{(N_{\yb}F_{|\yb}+1)\,[N_{\yb}\,(1-F_{|\yb})+1)}{(N_{\yb}+2)^2\,(N_{\yb}+3)}
-    % \end{pmatrix}.
-  \end{align}
-\end{subequations}
-The covariance vanishes owing to the product form of the final density.
-
-For the conservative initial state of
-knowledge~\eqref{eq:final_from_conservative} let us first introduce the
-notation
-\begin{equation}
-  \label{eq:not-notation_avg_parameters}
-  \uav{X(\yua,\yub)} \defd
-      \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yua
-    \int_{\mathrlap{0}}^{\mathrlap{\infty}}\di\yub\,
-X(\yua,\yub) \, \pf(\yua,\yub \| \yD,\yIc);
-\end{equation}
-such an average can approximately be computed by averaging from a Monte
-Carlo sample. The means, variances, and covariance of the final density are
-\begin{subequations}
-  \label{eq:not-stats_final_conserv}
-  \begin{align}
-    \label{eq:not-mean_final_conserv}
-    &\E(f_{|x} \| \yD, \yIc) =
-                                 \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}
-                                 \qquad x=\ya,\yb,
-\\
-  \label{eq:not-var_final_conserv}
-    &\!\begin{multlined}[\linewidth]
-\var(f_{|x} \| \yD, \yIc) =
-  \uav{\frac{(N_{x}F_{|x}+\yua)\,(N_{x}F_{|x}+\yua+1)}{(N_{x}+\yua+\yub)\,(N_{x}+\yua+\yub+1)}}
-  -
-  \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}^2
-  \\ x=\ya,\yb  
-\end{multlined}
-    \\
-    \label{eq:not-cov_final_conserv}
-&    \cov(f_{|\ya}, f_{|\yb} \| \yD, \yIc) =
-    \uav{\prod_{x=\ya,\yb}\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}
-    - \prod_{x=\ya,\yb}
-    \uav{\frac{N_{x}\,F_{|x}+\yua}{N_{x}+\yua+\yub}}.
-% &\!\begin{multlined}[\linewidth]
-%     \cov(f_{|\ya}, f_{|\yb} \| \yD, \yIu) ={}\\[\jot]
-%     \uav{\frac{N_{\ya}\,F_{|\ya}+\yua}{N_{\ya}+\yua+\yub}\,
-%       \frac{N_{\yb}\,F_{|\yb}+\yua}{N_{\yb}+\yua+\yub}}
-%     -
-%     \uav{\frac{N_{\ya}\,F_{|\ya}+\yua}{N_{\ya}+\yua+\yub}}\,
-%     \uav{\frac{N_{\yb}\,F_{|\yb}+\yua}{N_{\yb}+\yua+\yub}}.
-%   \end{multlined}
-  \end{align}
-\end{subequations}
-The covariance does not vanish owing to our initial correlated beliefs
-about the two conditional frequencies.
-
-It is worth remarking that for our data sample the typical average values
-of the shape parameters $\uav{\yua}$, $\uav{\yub}$ are comparable to the
-sample size $N_{\ya}+N_{\yb}$. Trying an expansion of
-formulae~\eqref{eq:stats_final_conserv} around the uniform
-formulae~\eqref{eq:stats_final_unif} in powers of $\uav{\yua}$,
-$\uav{\yub}$ is therefore prone to produce bad approximations.
 
 
 
@@ -1716,7 +1755,7 @@ from the formulae~\eqref{eq:stats_final_unif},
 %\renewcommand*{\appendixpagename}{Appendix}
 %\renewcommand*{\appendixname}{Appendix}
 %\appendixpage
-\appendix
+%\appendix
 
 
 The uniform state of knowledge is given by the simple density
@@ -2067,57 +2106,6 @@ This distribution has expected value and variance
   \pf(f_{\ysO\|\ya}, f_{\ysO\|\yb} \| \yD, \yI) \approx
   \pf(f_{\ysO\|\ya}, f_{\ysO\|\yb}\| \yuam,\yubm,\yI)
 \]
-
-
-%%\setlength{\intextsep}{0.5ex}% with wrapfigure
-%\begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
-%  \centering\includegraphics[trim={12ex 0 18ex 0},clip,width=\linewidth]{maxent_saddle.png}\\
-%\caption{caption}\label{fig:not-comparison_a5}
-%\end{figure}% exp_family_maxent.nb
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Acknowledgements
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%\iffalse
-\begin{acknowledgements}
-  PGLPM thanks Mari \amp\ Miri for continuous encouragement and affection;
-  Buster Keaton and Saitama for filling life with awe and inspiration; and
-   the developers and maintainers of \LaTeX, Emacs, AUC\TeX, Open Science
-  Framework, Python, Inkscape, Sci-Hub for making a free and impartial
-  scientific exchange possible.%
-%\rotatebox{15}{P}\rotatebox{5}{I}\rotatebox{-10}{P}\rotatebox{10}{\reflectbox{P}}\rotatebox{-5}{O}.
-%\sourceatright{\autanet}
-%\mbox{}\hfill\autanet
-\end{acknowledgements}
-%\fi
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Appendices
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%\clearpage
-% %\renewcommand*{\appendixpagename}{Appendix}
-% %\renewcommand*{\appendixname}{Appendix}
-% %\appendixpage
-% \appendix
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\defbibnote{prenote}{{\footnotesize (\enquote{de $X$} is listed under D,
-    \enquote{van $X$} under V, and so on, regardless of national
-    conventions.)\par}}
-% \defbibnote{postnote}{\par\medskip\noindent{\footnotesize% Note:
-%     \arxivp \mparcp \philscip \biorxivp}}
-
-\printbibliography[prenote=prenote%,postnote=postnote
-]
-
-\end{document}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Cut text (won't be compiled)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 
 %%% Local Variables: 
