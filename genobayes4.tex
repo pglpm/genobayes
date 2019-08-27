@@ -1,7 +1,7 @@
 \pdfoutput=1
 %% Author: PGL  Porta Mana
 %% Created: 2018-11-11T20:53:34+0200
-%% Last-Updated: 2019-08-26T16:53:32+0200
+%% Last-Updated: 2019-08-27T10:34:19+0200
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifarxiv
 \arxivfalse
@@ -1071,8 +1071,8 @@ in \fig~\ref{fig:final_beliefs}. The left panel shows our inference for the
 more conservative pre-data state of knowledge $\yIc$, and the right panel
 for the less conservative one $\yIu$.
 \begin{figure}[t!]%{r}{0.4\linewidth} % with wrapfigure
- \centering\includegraphics[width=0.49\linewidth]{cons_post_diag_list.png}%
- \includegraphics[width=0.49\linewidth]{unif_post_diag_list.png}
+ \centering\includegraphics[width=0.49\linewidth]{cons_post_list.png}%
+ \includegraphics[width=0.49\linewidth]{unif_post_list.png}
  \caption{Scatter plots of 10\,000 samples from the post-data probability
    distribution for the frequencies of onset insomnia $\ysO$ conditional on
    the alleles of \snp\ \texttt{rs875994}%_C
@@ -1084,19 +1084,36 @@ for the less conservative one $\yIu$.
 % scripts2/plot_posteriors.nb
 % scripts2/example_joint_posterior.R
 % scripts2/conditional_freqs_2.R
-Note that in both cases most probability mass is actually above the
-diagonal: the spreads of the distributions appears larger than they
-actually are, owing to the high number of samples and the physical print
-size of the points.
-
+In both cases the probability mass appears to be very close to the
+diagonal, but a more precise calculation reveals that it's more than 90\%
+probable that the absolute difference of the conditional frequencies
+$\abs{\df}$ is larger than $0.01$.
 
 From the joint distribution above we can find, with a routine calculation,
 the distribution for the absolute value of the difference of the two
-frequencies and its 10-quantile, which is our
-measure~\eqref{eq:significance_measure}. Such quantiles are shown, sorted,
-in \fig~\ref{fig:relevance_sorted} for all \snp-symptom pairs. For each
-pair we show the result for the two pre-data states of knowledge, joined by
-a line.
+frequencies $\pf(\abs{\df} \| \ptext{data}, \ptext{pre-data info})$ and its
+10-quantile, our measure~\eqref{eq:significance_measure}. Such quantiles
+are shown, sorted, in \fig~\ref{fig:relevance_sorted} for all \snp-symptom
+pairs. For each pair we show the result for the two pre-data states of
+knowledge, joined by a line.
+
+\section{Results}
+\label{sec:not-results}
+
+\mynote{discussion of the possible biological connection between the topmost 5--6
+  \snp s of \fig~\ref{fig:relevance_sorted} and insomnia}
+
+% \begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
+%  \centering\includegraphics[height=\textheight]{x90-sym_O.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90-sym_M.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90-sym_T.pdf}\\
+% \caption{\enquote{Relevance} of the 94 \snp s for the three symptoms.}\label{fig:not-relevance}
+% \end{figure}% scripts2/plot_results.nb
+
+\begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
+ \centering\includegraphics[height=\textheight]{x90sort-sym_O.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90sort-sym_M.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90sort-sym_T.pdf}\\
+ \caption{Link strength, measured with
+   formula~\eqref{eq:significance_measure}, of the 94 \snp s for the three
+   symptoms.}\label{fig:relevance_sorted}
+\end{figure}% scripts2/plot_results.nb
 
 
 
@@ -1673,19 +1690,6 @@ from the formulae~\eqref{eq:stats_final_unif},
 
 
 
-
-\section{Results}
-\label{sec:not-results}
-
-\begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
- \centering\includegraphics[height=\textheight]{x90-sym_O.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90-sym_M.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90-sym_T.pdf}\\
-\caption{\enquote{Relevance} of the 94 \snp s for the three symptoms.}\label{fig:not-relevance}
-\end{figure}% scripts2/plot_results.nb
-
-\begin{figure}[p!]%{r}{0.4\linewidth} % with wrapfigure
- \centering\includegraphics[height=\textheight]{x90sort-sym_O.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90sort-sym_M.pdf}\hspace*{\stretch{1}}\includegraphics[height=\textheight]{x90sort-sym_T.pdf}\\
-\caption{\enquote{Relevance} of the 94 \snp s for the three symptoms, sorted.}\label{fig:relevance_sorted}
-\end{figure}% scripts2/plot_results.nb
 
 
 \begin{figure}[b!]%{r}{0.4\linewidth} % with wrapfigure
